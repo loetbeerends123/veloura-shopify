@@ -1,0 +1,37 @@
+{%- comment -%} Veloura — Our Story hero (PRD §5.1) {%- endcomment -%}
+<section class="v-story-hero">
+  {%- if section.settings.image != blank -%}
+    <img class="v-story-hero__img" src="{{ section.settings.image | image_url: width: 2000 }}" alt="{{ section.settings.image.alt | escape }}" width="2000" height="875" fetchpriority="high">
+  {%- else -%}
+    <div class="v-story-hero__img v-placeholder" data-label="Editorial · Architectural light"></div>
+  {%- endif -%}
+  <div class="v-story-hero__overlay">
+    <div class="v-container">
+      <h1 class="v-story-hero__title v-serif">{{ section.settings.line_1 }}</h1>
+      <h1 class="v-story-hero__title v-italic v-rust-text">{{ section.settings.line_2 }}</h1>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-story-hero { position: relative; }
+.v-story-hero__img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+.v-story-hero__overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; padding-bottom: clamp(28px, 5vw, 56px); background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%); }
+.v-story-hero__title { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin: 0; }
+.v-story-hero__title:first-child { color: #fff; }
+@media (max-width: 749px) { .v-story-hero__img { aspect-ratio: 16 / 11; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Story Hero",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "line_1", "label": "Line 1", "default": "Engineering Confidence." },
+    { "type": "text", "id": "line_2", "label": "Line 2 (italic rust)", "default": "Sculpting the Future of Skin." }
+  ],
+  "presets": [{ "name": "Veloura Story Hero" }]
+}
+{% endschema %}

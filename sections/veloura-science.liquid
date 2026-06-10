@@ -1,0 +1,63 @@
+{%- comment -%} Veloura — The Science of Stimulation, stats card (PRD §5.4) {%- endcomment -%}
+<section class="v-section v-science-section">
+  <div class="v-container">
+    <div class="v-card v-science v-reveal">
+      <div class="v-science__intro">
+        {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2 class="v-h2">{{ section.settings.heading }}</h2>
+        {%- if section.settings.body != blank -%}<p class="v-muted">{{ section.settings.body }}</p>{%- endif -%}
+      </div>
+      <div class="v-science__stats">
+        {%- for block in section.blocks -%}
+          <div class="v-science__stat" {{ block.shopify_attributes }}>
+            <span class="v-science__figure v-serif">{{ block.settings.figure }}</span>
+            <span class="v-science__label">{{ block.settings.label }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+      <span class="v-science__deco" aria-hidden="true">{% render 'veloura-icon', name: 'cross', size: 120 %}</span>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-science { position: relative; overflow: hidden; padding: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.v-science__intro { max-width: 480px; }
+.v-science__intro .v-h2 { margin-bottom: 16px; }
+.v-science__intro p { font-size: 0.875rem; line-height: 1.7; margin: 0; }
+.v-science__stats { display: grid; grid-template-columns: repeat(3, 1fr); position: relative; z-index: 1; }
+.v-science__stat { text-align: center; padding: 0 12px; }
+.v-science__stat + .v-science__stat { border-left: 1px solid var(--v-border); }
+.v-science__figure { display: block; font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1; color: var(--v-text); }
+.v-science__label { display: block; font-size: 0.625rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v-muted); margin-top: 10px; }
+.v-science__deco { position: absolute; right: -24px; bottom: -24px; color: var(--v-rust); opacity: 0.08; pointer-events: none; }
+@media (max-width: 849px) { .v-science { grid-template-columns: 1fr; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Science",
+  "tag": "section",
+  "class": "veloura-section",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Velo-Lymph™ Technology" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Science of Stimulation" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Our proprietary fabric maps over 47+ micro-pressure points directly into the textile structure. Each point is meticulously calculated to trigger a specific lymphatic pathway with every step you take." }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Stat", "settings": [
+      { "type": "text", "id": "figure", "label": "Figure", "default": "47+" },
+      { "type": "text", "id": "label", "label": "Label", "default": "Pressure Points" }
+    ] }
+  ],
+  "presets": [{
+    "name": "Veloura Science",
+    "blocks": [
+      { "type": "stat", "settings": { "figure": "47+", "label": "Pressure Points" } },
+      { "type": "stat", "settings": { "figure": "8h", "label": "Passive Treatment" } },
+      { "type": "stat", "settings": { "figure": "30%", "label": "Circulation Boost" } }
+    ]
+  }]
+}
+{% endschema %}

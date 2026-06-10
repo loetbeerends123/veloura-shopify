@@ -1,0 +1,83 @@
+{%- comment -%} Veloura — Customer Reviews (PRD §2.6) {%- endcomment -%}
+<section class="v-section v-reviews">
+  <div class="v-container" style="max-width:1000px;">
+    <div class="v-reviews__summary v-card v-reveal">
+      <div class="v-reviews__score">
+        <span class="v-reviews__num v-serif">{{ section.settings.score | default: '4.8' }}</span>
+        <span class="v-stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}</span>
+        <span class="v-body-sm v-muted">{{ section.settings.count_text | default: 'Based on 471 reviews' }}</span>
+      </div>
+      <a href="{{ section.settings.write_url | default: '#' }}" class="v-btn v-btn--outline">{{ section.settings.write_label | default: 'Write a Review' }}</a>
+    </div>
+
+    <div class="v-reviews__list">
+      {%- for block in section.blocks -%}
+        <article class="v-reviews__item v-reveal" {{ block.shopify_attributes }}>
+          <header class="v-reviews__top">
+            <span class="v-review__avatar">{{ block.settings.name | slice: 0 }}</span>
+            <div class="v-reviews__who">
+              <strong>{{ block.settings.name }}</strong>
+              <span class="v-badge v-badge--verified">Verified Purchase</span>
+            </div>
+            <span class="v-stars v-reviews__stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 14 %}{% endfor %}</span>
+          </header>
+          {%- if block.settings.variant != blank -%}<p class="v-reviews__variant">{{ block.settings.variant }}</p>{%- endif -%}
+          {%- if block.settings.title != blank -%}<h3 class="v-reviews__title">{{ block.settings.title }}</h3>{%- endif -%}
+          <p class="v-reviews__body">{{ block.settings.body }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-reviews__summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 32px; margin-bottom: 28px; }
+.v-reviews__score { display: flex; flex-direction: column; gap: 8px; }
+.v-reviews__num { font-size: 3.5rem; line-height: 1; }
+.v-reviews__list { display: grid; gap: 0; }
+.v-reviews__item { padding: 26px 0; border-bottom: 1px solid var(--v-border); }
+.v-reviews__top { display: flex; align-items: center; gap: 12px; }
+.v-reviews__who { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.v-reviews__who strong { font-size: 0.8125rem; font-weight: 600; }
+.v-reviews__stars { margin-left: auto; }
+.v-reviews__variant { font-size: 0.75rem; color: var(--v-muted); margin: 10px 0 0; }
+.v-reviews__title { font-family: var(--v-font-body); font-weight: 600; font-size: 0.9375rem; margin: 8px 0 6px; }
+.v-reviews__body { font-size: 0.9375rem; line-height: 1.65; color: var(--v-muted); margin: 0; }
+@media (max-width: 749px) {
+  .v-reviews__summary { flex-direction: column; align-items: flex-start; }
+  .v-reviews__stars { margin-left: 0; width: 100%; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Reviews",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "text", "id": "score", "label": "Score", "default": "4.8" },
+    { "type": "text", "id": "count_text", "label": "Count text", "default": "Based on 471 reviews" },
+    { "type": "text", "id": "write_label", "label": "Write button label", "default": "Write a Review" },
+    { "type": "url", "id": "write_url", "label": "Write button URL" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "Faith B." },
+        { "type": "text", "id": "variant", "label": "Variant line", "default": "Size: S · Colour: Slate" },
+        { "type": "text", "id": "title", "label": "Title", "default": "I've tried everything. These work." },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Far more comfortable than medical-grade garments and actually something I can wear out." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Veloura Reviews",
+    "blocks": [
+      { "type": "review", "settings": { "name": "Faith B.", "variant": "Size: S · Colour: Slate", "title": "I've tried everything. These work.", "body": "I have had cellulite since I was 16. I am now 34. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments." } },
+      { "type": "review", "settings": { "name": "Eva S.", "variant": "Size: M · Colour: Black", "title": "Day one results are real.", "body": "I'm sceptical by nature but I just bought them because I kept seeing them. This is different. My thighs feel more taut than they've felt from clean eating alone." } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,73 @@
+{%- comment -%}
+  Shared bundle tier rows (PRD §1.4 / §2.1).
+  Params: section (object). Reads these settings:
+    t1_label,t1_sub,t1_price,t1_qty
+    t2_label,t2_sub,t2_price,t2_qty,t2_save,t2_badge
+    t3_label,t3_sub,t3_price,t3_qty,t3_save,t3_badge
+    colors (comma list), sizes (comma list)
+    feature_1, feature_2, feature_3
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign colors = s.colors | default: 'Slate,Black,Espresso' | split: ','
+  assign sizes = s.sizes | default: 'XS,S,M,L,XL' | split: ','
+  assign group = 'bundle-' | append: section.id
+-%}
+<div class="v-tiers" data-bundle>
+  {%- comment -%} Tier 1 {%- endcomment -%}
+  <label class="v-tier" data-qty="{{ s.t1_qty | default: 1 }}" data-price="{{ s.t1_price }}">
+    <span class="v-tier__radio"><input type="radio" name="{{ group }}" value="1"></span>
+    <span class="v-tier__main">
+      <span class="v-tier__label">{{ s.t1_label }}</span>
+      <span class="v-tier__sub">{{ s.t1_sub }}</span>
+    </span>
+    <span class="v-tier__price">{{ s.t1_price }}</span>
+  </label>
+
+  {%- comment -%} Tier 2 — default selected {%- endcomment -%}
+  <label class="v-tier v-tier--popular" data-default data-qty="{{ s.t2_qty | default: 2 }}" data-price="{{ s.t2_price }}">
+    {%- if s.t2_badge != blank -%}<span class="v-badge v-badge--popular v-tier__badge">{{ s.t2_badge }}</span>{%- endif -%}
+    <span class="v-tier__radio"><input type="radio" name="{{ group }}" value="2" checked></span>
+    <span class="v-tier__main">
+      <span class="v-tier__label">{{ s.t2_label }}</span>
+      {%- if s.t2_save != blank -%}<span class="v-badge v-badge--save">{{ s.t2_save }}</span>{%- endif -%}
+      <ul class="v-tier__features">
+        {%- if s.feature_1 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 14 %}{{ s.feature_1 }}</li>{%- endif -%}
+        {%- if s.feature_2 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 14 %}{{ s.feature_2 }}</li>{%- endif -%}
+        {%- if s.feature_3 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 14 %}{{ s.feature_3 }}</li>{%- endif -%}
+      </ul>
+      <span class="v-tier__reveal">
+        <span class="v-tier__reveal-inner">
+          {%- for n in (1..2) -%}
+            <span class="v-tier__pair">
+              <span class="v-tier__pair-label">Pair {{ n }}</span>
+              <span class="v-tier__pair-fields">
+                <select class="v-select" aria-label="Pair {{ n }} colour">
+                  <option value="" disabled selected>Select colour</option>
+                  {%- for c in colors -%}<option>{{ c | strip }}</option>{%- endfor -%}
+                </select>
+                <select class="v-select" aria-label="Pair {{ n }} size">
+                  <option value="" disabled selected>Select size</option>
+                  {%- for sz in sizes -%}<option>{{ sz | strip }}</option>{%- endfor -%}
+                </select>
+              </span>
+            </span>
+          {%- endfor -%}
+        </span>
+      </span>
+    </span>
+    <span class="v-tier__price">{{ s.t2_price }}</span>
+  </label>
+
+  {%- comment -%} Tier 3 {%- endcomment -%}
+  <label class="v-tier" data-qty="{{ s.t3_qty | default: 3 }}" data-price="{{ s.t3_price }}">
+    {%- if s.t3_badge != blank -%}<span class="v-badge v-badge--value v-tier__badge">{{ s.t3_badge }}</span>{%- endif -%}
+    <span class="v-tier__radio"><input type="radio" name="{{ group }}" value="3"></span>
+    <span class="v-tier__main">
+      <span class="v-tier__label">{{ s.t3_label }}</span>
+      <span class="v-tier__sub">{{ s.t3_sub }}</span>
+      {%- if s.t3_save != blank -%}<span class="v-badge v-badge--save">{{ s.t3_save }}</span>{%- endif -%}
+    </span>
+    <span class="v-tier__price">{{ s.t3_price }}</span>
+  </label>
+</div>

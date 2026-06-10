@@ -1,0 +1,71 @@
+{%- comment -%} Veloura — Contact form (PRD §6) {%- endcomment -%}
+<section class="v-section v-contact">
+  <div class="v-contact__wrap v-reveal">
+    <div class="v-section-head" style="margin-bottom:36px;">
+      <h1 class="v-h1" style="font-size:clamp(2.25rem,5vw,3.25rem);">{{ section.settings.heading }}</h1>
+      {%- if section.settings.subheading != blank -%}<p style="margin-top:14px;">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    {%- form 'contact', class: 'v-contact__form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="v-contact__success">{{ section.settings.success_text | default: 'Thank you — we\'ll be in touch shortly.' }}</p>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <p class="v-contact__error">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+
+      <div class="v-field">
+        <label for="v-name">Name</label>
+        <input class="v-input" type="text" id="v-name" name="contact[name]" value="{{ form.name }}" autocomplete="name">
+      </div>
+      <div class="v-field">
+        <label for="v-email">Email Address</label>
+        <input class="v-input" type="email" id="v-email" name="contact[email]" value="{{ form.email }}" autocomplete="email" required>
+      </div>
+      <div class="v-field">
+        <label for="v-order">Order Number (Optional)</label>
+        <input class="v-input" type="text" id="v-order" name="contact[Order Number]" placeholder="Optional">
+      </div>
+      <div class="v-field">
+        <label for="v-message">Message</label>
+        <textarea class="v-textarea" id="v-message" name="contact[body]" required>{{ form.body }}</textarea>
+      </div>
+      <button type="submit" class="v-btn v-btn--green v-btn--full v-btn--lg">{{ section.settings.button_label | default: 'Send Message' }}</button>
+    {%- endform -%}
+
+    <div class="v-contact__info">
+      <hr class="v-hairline">
+      {%- if section.settings.email != blank -%}<p class="v-contact__email">{{ section.settings.email }}</p>{%- endif -%}
+      {%- if section.settings.hours != blank -%}<p class="v-contact__hours v-muted">{{ section.settings.hours }}</p>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-contact { display: flex; justify-content: center; }
+.v-contact__wrap { width: 100%; max-width: 560px; padding-inline: var(--v-gutter); }
+.v-contact__form { display: grid; gap: 16px; margin: 0; }
+.v-contact__success { background: rgba(58,125,68,0.1); color: var(--v-green); padding: 14px 16px; border-radius: var(--v-radius-sm); font-size: 0.875rem; }
+.v-contact__error { background: rgba(192,57,43,0.08); color: var(--v-scarcity); padding: 14px 16px; border-radius: var(--v-radius-sm); font-size: 0.875rem; }
+.v-contact__info { text-align: center; margin-top: 28px; }
+.v-contact__info .v-hairline { margin-bottom: 24px; }
+.v-contact__email { font-size: 0.875rem; margin: 0 0 6px; }
+.v-contact__hours { font-size: 0.8125rem; margin: 0; }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Contact",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Get in Touch" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "We're here to support your journey." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Send Message" },
+    { "type": "text", "id": "success_text", "label": "Success text", "default": "Thank you — we'll be in touch shortly." },
+    { "type": "text", "id": "email", "label": "Email", "default": "hello@veloura.com" },
+    { "type": "text", "id": "hours", "label": "Hours", "default": "Customer Support: Monday–Friday, 9am–6pm GMT" }
+  ],
+  "presets": [{ "name": "Veloura Contact" }]
+}
+{% endschema %}

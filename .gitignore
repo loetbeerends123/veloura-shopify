@@ -1,0 +1,20 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+.vscode/
+
+# Claude Code local settings
+.claude/
+
+# Shopify CLI
+.shopify/
+*.session.json
+
+# Stray empties
+my-store/
+shopify
+
+# Local notes (keep PRD + design refs tracked; drop large temp exports if desired)

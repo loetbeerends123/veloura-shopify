@@ -1,0 +1,57 @@
+{%- comment -%} Veloura — FAQ accordion (PRD §2.3, §10.5) {%- endcomment -%}
+<section class="v-section {% if section.settings.blush %}v-section--blush{% endif %} v-faq-section">
+  <div class="v-narrow" style="max-width:700px;">
+    <div class="v-section-head v-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="v-h2">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="v-faq v-reveal" data-faq data-delay="1">
+      {%- for block in section.blocks -%}
+        <div class="v-faq__item" {{ block.shopify_attributes }}>
+          <button type="button" class="v-faq__q">
+            <span>{{ block.settings.question }}</span>
+            <span class="v-faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="v-faq__a">
+            <div class="v-faq__a-inner">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Veloura FAQ",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How quickly will I see results?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Most customers notice a feeling of lightness within the first wear. Visible skin texture improvement typically begins around week 2–3 of daily wear. Structural changes are most visible at 6–8 weeks of consistent use." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Veloura FAQ",
+    "blocks": [
+      { "type": "qa", "settings": { "question": "How quickly will I see results?", "answer": "Most customers notice a feeling of lightness within the first wear as stagnant fluid starts to move. Visible skin texture improvement typically begins around week 2–3 of daily wear. Structural changes — the real reduction in dimpling — are most visible at 6–8 weeks of consistent use." } },
+      { "type": "qa", "settings": { "question": "I've tried leggings before. Why is this different?", "answer": "Standard compression leggings squeeze superficially, which can actually restrict circulation and worsen the appearance of cellulite over time. Veloura's VELO-LYMPH™ fabric uses 47 mapped micro-pressure points engineered to stimulate lymphatic flow with every step — it works with your body's movement, not against it." } },
+      { "type": "qa", "settings": { "question": "How do I find the right size?", "answer": "We recommend sizing up if you're between sizes for maximum comfort during all-day wear. Our size guide is available on the product image gallery. When in doubt, the fabric has 4-way stretch to accommodate." } },
+      { "type": "qa", "settings": { "question": "How long does shipping take?", "answer": "UK standard shipping: 3–5 business days. UK express: 1–2 business days. EU: 5–8 days. International: 7–14 days. All orders over £65 include free standard UK shipping." } },
+      { "type": "qa", "settings": { "question": "Can I wear them every day?", "answer": "Absolutely — and we encourage it. The clinical results are cumulative: the more consistently you wear them, the better the structural improvement. Machine wash cold, hang dry. They maintain their therapeutic properties for 80+ washes." } },
+      { "type": "qa", "settings": { "question": "What if they don't work for me?", "answer": "We offer a 30-day Clinical Trial Guarantee. If you don't see measurable improvement in skin texture within 30 days of daily wear, contact us for a full refund — no returns required, no questions asked." } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "hero": {
+      "type": "veloura-story-hero",
+      "settings": {
+        "line_1": "Engineering Confidence.",
+        "line_2": "Sculpting the Future of Skin."
+      }
+    },
+    "genesis": {
+      "type": "veloura-feature-split",
+      "settings": {
+        "heading_rust": true,
+        "heading": "The Genesis",
+        "paragraph_1": "Veloura was born at the intersection of rigorous clinical dermatology and high-performance textile engineering. We observed a fundamental flaw in the traditional approach to cellulite and skin texture: the industry treated it as a purely aesthetic fat issue, masking it with restrictive compression rather than addressing the physiological root cause.",
+        "paragraph_2": "Through years of research, we isolated the true mechanism — stagnant microcirculation and lymphatic fluid. This realisation catalysed the development of our proprietary Velo-Lymph™ technology, shifting the paradigm from passive shapewear to active, therapeutic apparel.",
+        "pill_label": "Clinically Designed"
+      }
+    },
+    "philosophy": {
+      "type": "veloura-philosophy",
+      "blocks": {
+        "c1": { "type": "col", "settings": { "icon": "droplet", "title": "Not a Fat Issue", "body": "Dermatologists have established that cellulite is fundamentally a circulation problem — a localised lymphatic drainage failure rather than excess lipid storage." } },
+        "c2": { "type": "col", "settings": { "icon": "cross", "title": "The Flaw in Compression", "body": "Traditional shapewear merely compresses superficially, masking the texture while often exacerbating the underlying circulatory stagnation by restricting blood flow." } },
+        "c3": { "type": "col", "settings": { "icon": "pulse", "title": "Active Stimulation", "body": "We engineered garments that work dynamically with your body's movement, providing continuous micro-massage to stimulate lymphatic flow for the hours you wear them." } }
+      },
+      "block_order": ["c1", "c2", "c3"],
+      "settings": {
+        "eyebrow": "Our Philosophy",
+        "heading": "Beauty through Circulation. Treating the",
+        "heading_italic": "Wrong Problem."
+      }
+    },
+    "science": {
+      "type": "veloura-science",
+      "blocks": {
+        "st1": { "type": "stat", "settings": { "figure": "47+", "label": "Pressure Points" } },
+        "st2": { "type": "stat", "settings": { "figure": "8h", "label": "Passive Treatment" } },
+        "st3": { "type": "stat", "settings": { "figure": "30%", "label": "Circulation Boost" } }
+      },
+      "block_order": ["st1", "st2", "st3"],
+      "settings": {
+        "eyebrow": "Velo-Lymph™ Technology",
+        "heading": "The Science of Stimulation",
+        "body": "Our proprietary fabric maps over 47+ micro-pressure points directly into the textile structure. Each point is meticulously calculated to trigger a specific lymphatic pathway with every step you take."
+      }
+    },
+    "founder": {
+      "type": "veloura-founder-quote",
+      "settings": {
+        "quote": "We didn't set out to make another legging. We set out to engineer a solution that respects the biological reality of women's bodies. Veloura is where scientific rigour meets daily wear.",
+        "attribution": "The Founders",
+        "sub": "Veloura Clinical Innovations"
+      }
+    }
+  },
+  "order": ["hero", "genesis", "philosophy", "science", "founder"]
+}

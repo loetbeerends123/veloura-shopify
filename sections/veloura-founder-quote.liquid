@@ -1,0 +1,34 @@
+{%- comment -%} Veloura — Founder quote block (PRD §5.5) {%- endcomment -%}
+<section class="v-section v-section--dark v-founder">
+  <div class="v-narrow" style="max-width:720px;text-align:center;">
+    <span class="v-founder__mark v-serif" aria-hidden="true">&ldquo;</span>
+    <blockquote class="v-founder__quote v-italic v-reveal">{{ section.settings.quote }}</blockquote>
+    <p class="v-founder__attr v-reveal" data-delay="1">
+      <span class="v-founder__name">{{ section.settings.attribution }}</span>
+      {%- if section.settings.sub != blank -%}<span class="v-founder__sub">{{ section.settings.sub }}</span>{%- endif -%}
+    </p>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-founder { background: var(--v-canvas-dark); }
+.v-founder__mark { display: block; font-size: 6rem; line-height: 0.5; color: var(--v-rust); margin-bottom: 24px; }
+.v-founder__quote { font-size: clamp(1.375rem, 3vw, 1.75rem); line-height: 1.4; color: #fff; margin: 0 0 28px; }
+.v-founder__attr { display: grid; gap: 6px; margin: 0; }
+.v-founder__name { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--v-rust); }
+.v-founder__sub { font-size: 0.8125rem; color: rgba(255,255,255,0.65); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Founder Quote",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "We didn't set out to make another legging. We set out to engineer a solution that respects the biological reality of women's bodies. Veloura is where scientific rigour meets daily wear." },
+    { "type": "text", "id": "attribution", "label": "Attribution", "default": "The Founders" },
+    { "type": "text", "id": "sub", "label": "Sub-attribution", "default": "Veloura Clinical Innovations" }
+  ],
+  "presets": [{ "name": "Veloura Founder Quote" }]
+}
+{% endschema %}

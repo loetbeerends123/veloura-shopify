@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "hero": {
+      "type": "veloura-hero",
+      "settings": {
+        "eyebrow": "Velo-Lymph™ Technology",
+        "heading": "Stop hiding your legs.",
+        "subheading": "The only legging engineered to treat cellulite at the root through clinical micro-compression.",
+        "button_label": "Shop The Veloura Legging",
+        "button_link": "shopify://products/veloura-cellulite-legging"
+      }
+    },
+    "before_after": {
+      "type": "veloura-before-after",
+      "settings": {
+        "layout": "card",
+        "blush": false,
+        "heading": "See the structural change",
+        "body": "Visible reduction in dimpling after 30 days of consistent Velo-Lymph™ therapy."
+      }
+    },
+    "timeline": {
+      "type": "veloura-timeline",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "icon": "droplet", "label": "Day 1", "title": "Fluid Activation", "body": "Immediate sensation of lightness as stagnant lymphatic fluid begins to drain." } },
+        "s2": { "type": "step", "settings": { "icon": "wave", "label": "Day 14", "title": "Surface Smoothing", "body": "Skin texture starts feeling softer. Micro-circulation increases, bringing nutrients to the dermis." } },
+        "s3": { "type": "step", "settings": { "icon": "diamond", "label": "Day 30", "title": "Structural Release", "body": "Fibrous bands begin to relax. Visible reduction in deeper dimpling starts to occur." } },
+        "s4": { "type": "step", "settings": { "icon": "sparkle", "label": "Day 90+", "title": "Lasting Remodelling", "body": "Significant structural improvement. Continuous wear prevents new stagnation from forming." } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "style": "icon",
+        "heading": "The path to smoother skin",
+        "subheading": "Micro-compression works continuously. Here is what to expect."
+      }
+    },
+    "bundle": {
+      "type": "veloura-bundle",
+      "settings": {
+        "heading": "Commit to your results",
+        "subheading": "Choose your protocol. Consistent daily wear is the key to structural remodelling.",
+        "cta_link": "shopify://products/veloura-cellulite-legging",
+        "cta_label": "Secure Checkout"
+      }
+    },
+    "social_proof": {
+      "type": "veloura-social-proof",
+      "blocks": {
+        "r1": { "type": "review", "settings": { "text": "I've spent thousands on creams that did nothing. After finding the science behind Veloura and wearing them for 6 weeks, the back of my thighs are noticeably smoother. The fabric is thick and compressive but surprisingly comfortable.", "name": "Sarah M." } },
+        "e1": { "type": "expert", "settings": { "text": "I recommend these to patients as an adjunct to professional treatments. The continuous micro-compression aids lymphatic drainage effectively between clinic visits.", "name": "— Dr J. Chen, MD" } },
+        "r2": { "type": "review", "settings": { "text": "My daily uniform. I bought the 3-pack because I wanted to wear them every day so I wouldn't miss it. My legs feel incredibly light at the end of the day, no more heavy feeling. The dimpling is definitely fading.", "name": "Elena F." } },
+        "r3": { "type": "review", "settings": { "text": "Loving this compression — comfortable enough to wear close-up, all day.", "name": "Tiff" } }
+      },
+      "block_order": ["r1", "e1", "r2", "r3"],
+      "settings": {
+        "heading": "Real structural change",
+        "subheading": "Join thousands of women who stopped treating the symptom and started treating the cause.",
+        "rating_text": "4.9/5 from 2,400+ reviews",
+        "link_label": "Read all reviews",
+        "link_url": "shopify://products/veloura-cellulite-legging"
+      }
+    }
+  },
+  "order": ["hero", "before_after", "timeline", "bundle", "social_proof"]
+}

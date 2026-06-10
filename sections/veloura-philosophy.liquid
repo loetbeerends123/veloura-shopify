@@ -1,0 +1,65 @@
+{%- comment -%} Veloura — Three-column philosophy (PRD §5.3) {%- endcomment -%}
+<section class="v-section v-philosophy {% if section.settings.blush %}v-section--blush{% endif %}">
+  <div class="v-container" style="max-width:1000px;">
+    <div class="v-section-head v-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="v-h2">{{ section.settings.heading }} {%- if section.settings.heading_italic != blank %}<span class="v-italic v-rust-text">{{ section.settings.heading_italic }}</span>{% endif -%}</h2>
+    </div>
+    <div class="v-philosophy__grid">
+      {%- for block in section.blocks -%}
+        <div class="v-philosophy__col v-reveal" data-delay="{{ forloop.index }}" {{ block.shopify_attributes }}>
+          <span class="v-philosophy__icon">{% render 'veloura-icon', name: block.settings.icon, size: 26 %}</span>
+          <h3 class="v-philosophy__title">{{ block.settings.title }}</h3>
+          <p>{{ block.settings.body }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-philosophy__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px); }
+.v-philosophy__icon { color: var(--v-rust); display: inline-flex; margin-bottom: 16px; }
+.v-philosophy__title { font-family: var(--v-font-body); font-weight: 600; font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 12px; }
+.v-philosophy__col p { font-size: 0.9375rem; line-height: 1.7; color: var(--v-muted); margin: 0; }
+@media (max-width: 749px) { .v-philosophy__grid { grid-template-columns: 1fr; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Philosophy",
+  "tag": "section",
+  "class": "veloura-section",
+  "max_blocks": 3,
+  "settings": [
+    { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Philosophy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Beauty through Circulation. Treating the" },
+    { "type": "text", "id": "heading_italic", "label": "Heading italic (rust)", "default": "Wrong Problem." }
+  ],
+  "blocks": [
+    {
+      "type": "col",
+      "name": "Column",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "droplet", "label": "Droplet" },
+          { "value": "cross", "label": "Cross" },
+          { "value": "pulse", "label": "Pulse" },
+          { "value": "wave", "label": "Wave" }
+        ], "default": "droplet" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Not a Fat Issue" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Dermatologists have established that cellulite is fundamentally a circulation problem — a localised lymphatic drainage failure rather than excess lipid storage." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Veloura Philosophy",
+    "blocks": [
+      { "type": "col", "settings": { "icon": "droplet", "title": "Not a Fat Issue", "body": "Dermatologists have established that cellulite is fundamentally a circulation problem — a localised lymphatic drainage failure rather than excess lipid storage." } },
+      { "type": "col", "settings": { "icon": "cross", "title": "The Flaw in Compression", "body": "Traditional shapewear merely compresses superficially, masking the texture while often exacerbating the underlying circulatory stagnation by restricting blood flow." } },
+      { "type": "col", "settings": { "icon": "pulse", "title": "Active Stimulation", "body": "We engineered garments that work dynamically with your body's movement, providing continuous micro-massage to stimulate lymphatic flow for the hours you wear them." } }
+    ]
+  }]
+}
+{% endschema %}

@@ -1,0 +1,480 @@
+/* ============================================================
+   VELOURA — veloura.css
+   Brand layer on top of Shopify Dawn 15.4.1.
+   Design tokens & type per Veloura_PRD_v2.md §2 (source of truth).
+   Loaded after base.css so these rules win the cascade.
+   ============================================================ */
+
+:root {
+  /* ---- Color (PRD §2.2) ---- */
+  --v-canvas: #FAF6F4;
+  --v-canvas-secondary: #F5EDE8;
+  --v-canvas-dark: #2B1E17;
+  --v-text: #1C1009;
+  --v-muted: #8A7060;
+  --v-rust: #A65B45;
+  --v-rust-light: #C97A5A;
+  --v-green: #3A7D44;
+  --v-green-hover: #2E6435;
+  --v-badge-popular: #8B1A1A;
+  --v-badge-value: #8A7060;
+  --v-border: rgba(28, 16, 9, 0.08);
+  --v-border-strong: rgba(28, 16, 9, 0.16);
+  --v-star: #C97A5A;
+  --v-white: #ffffff;
+  --v-scarcity: #C0392B;
+
+  /* ---- Type ---- */
+  --v-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --v-font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* ---- Spacing / layout (PRD §2.4) ---- */
+  --v-space-xs: 8px;
+  --v-space-sm: 16px;
+  --v-space-md: 32px;
+  --v-space-lg: 64px;
+  --v-space-xl: 96px;
+  --v-space-2xl: 128px;
+  --v-max: 1200px;
+  --v-max-narrow: 800px;
+  --v-gutter: 24px;
+
+  /* ---- Radius / elevation (PRD §2.5) ---- */
+  --v-radius-sm: 4px;
+  --v-radius-md: 8px;
+  --v-radius-lg: 40px;
+  --v-shadow-card: 0 2px 12px rgba(28, 16, 9, 0.06);
+  --v-shadow-sticky: 0 -4px 24px rgba(28, 16, 9, 0.08);
+  --v-shadow-cta: 0 6px 20px rgba(58, 125, 68, 0.22);
+  --v-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* ---- Override Dawn's font + page tokens ---- */
+  --font-heading-family: var(--v-font-display);
+  --font-body-family: var(--v-font-body);
+  --page-width: 120rem;
+}
+
+/* Dawn paints body text at 0.75 opacity foreground — restore full, warm ink. */
+body {
+  background-color: var(--v-canvas);
+  color: var(--v-text);
+  font-family: var(--v-font-body);
+  letter-spacing: 0;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================================
+   Typography utilities (PRD §2.3)
+   ============================================================ */
+.v-display,
+.v-h1 {
+  font-family: var(--v-font-display);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);     /* 44 → 72 */
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  color: var(--v-text);
+  margin: 0;
+}
+.v-h2 {
+  font-family: var(--v-font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);    /* 28 → 44 */
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  color: var(--v-text);
+  margin: 0;
+}
+.v-h3 {
+  font-family: var(--v-font-display);
+  font-weight: 700;
+  font-size: clamp(1.375rem, 2.4vw, 1.625rem);
+  line-height: 1.25;
+  margin: 0;
+}
+.v-serif { font-family: var(--v-font-display); font-weight: 400; }
+.v-italic { font-family: var(--v-font-display); font-style: italic; font-weight: 400; }
+
+.v-eyebrow {
+  display: block;
+  font-family: var(--v-font-body);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--v-rust);
+  margin: 0 0 14px;
+}
+.v-label {
+  font-family: var(--v-font-body);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.v-body { font-family: var(--v-font-body); font-size: 0.9375rem; line-height: 1.65; }
+.v-body-lg { font-size: 1rem; line-height: 1.7; }
+.v-body-sm { font-size: 0.8125rem; line-height: 1.6; }
+.v-muted { color: var(--v-muted); }
+.v-rust-text { color: var(--v-rust); }
+.v-price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.25rem; }
+
+/* ============================================================
+   Layout primitives
+   ============================================================ */
+.v-container { width: 100%; max-width: var(--v-max); margin-inline: auto; padding-inline: var(--v-gutter); }
+.v-narrow { width: 100%; max-width: var(--v-max-narrow); margin-inline: auto; padding-inline: var(--v-gutter); }
+.v-section { padding-block: clamp(48px, 8vw, 80px); }
+.v-section--blush { background: var(--v-canvas-secondary); }
+.v-section--dark { background: var(--v-canvas-dark); color: var(--v-white); }
+.v-section-head { text-align: center; max-width: 640px; margin: 0 auto clamp(32px, 5vw, 56px); }
+.v-section-head .v-h2 { margin-bottom: 12px; }
+.v-section-head p { color: var(--v-muted); font-size: 0.9375rem; margin: 0; }
+.v-hairline { border: 0; border-top: 1px solid var(--v-border); margin: 0; }
+
+/* ============================================================
+   Buttons (PRD §13.1 / §13.2)
+   ============================================================ */
+.v-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--v-font-body);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  border-radius: var(--v-radius-lg);
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  border: 1px solid transparent;
+}
+.v-btn--green {
+  background: var(--v-green);
+  color: var(--v-white);
+  box-shadow: var(--v-shadow-cta);
+}
+.v-btn--green:hover { background: var(--v-green-hover); }
+.v-btn--green:active { transform: scale(0.98); }
+.v-btn--outline {
+  background: transparent;
+  border-color: var(--v-text);
+  color: var(--v-text);
+  font-size: 0.75rem;
+  padding: 12px 24px;
+}
+.v-btn--outline:hover { background: var(--v-text); color: var(--v-white); }
+.v-btn--rust-outline {
+  background: transparent;
+  border-color: var(--v-rust);
+  color: var(--v-rust);
+  font-size: 0.75rem;
+  padding: 11px 22px;
+}
+.v-btn--rust-outline:hover { background: var(--v-rust); color: var(--v-white); }
+.v-btn--full { width: 100%; padding-inline: 0; }
+.v-btn--lg { padding: 18px 36px; font-size: 0.875rem; }
+.v-btn[disabled], .v-btn.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Text / link CTA */
+.v-link-cta {
+  font-family: var(--v-font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--v-rust);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s ease;
+}
+.v-link-cta:hover { color: var(--v-rust-light); }
+
+/* ============================================================
+   Badges / pills (PRD §13.5)
+   ============================================================ */
+.v-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--v-radius-lg);
+  padding: 4px 12px;
+  font-family: var(--v-font-body);
+  font-weight: 500;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.v-badge--popular { background: var(--v-badge-popular); color: var(--v-white); }
+.v-badge--value { background: var(--v-badge-value); color: var(--v-white); }
+.v-badge--verified { background: transparent; border: 1px solid var(--v-green); color: var(--v-green); }
+.v-badge--clinical { background: transparent; border: 1px solid var(--v-rust); color: var(--v-rust); }
+.v-badge--save { background: var(--v-canvas-secondary); color: var(--v-rust); }
+
+/* ============================================================
+   Stars (PRD §2.2 — rust, not yellow)
+   ============================================================ */
+.v-stars { display: inline-flex; gap: 2px; color: var(--v-star); line-height: 1; font-size: 0.95rem; letter-spacing: 1px; }
+.v-stars svg { width: 16px; height: 16px; fill: currentColor; }
+
+/* Generic card */
+.v-card {
+  background: var(--v-white);
+  border-radius: var(--v-radius-md);
+  box-shadow: var(--v-shadow-card);
+}
+
+/* ============================================================
+   Reveal-on-load (PRD §12 — quick, functional)
+   ============================================================ */
+.v-reveal { opacity: 0; transform: translateY(16px); }
+.is-loaded .v-reveal {
+  opacity: 1; transform: none;
+  transition: opacity 0.7s var(--v-ease), transform 0.7s var(--v-ease);
+}
+.is-loaded .v-reveal[data-delay="1"] { transition-delay: 0.08s; }
+.is-loaded .v-reveal[data-delay="2"] { transition-delay: 0.16s; }
+.is-loaded .v-reveal[data-delay="3"] { transition-delay: 0.24s; }
+.is-loaded .v-reveal[data-delay="4"] { transition-delay: 0.32s; }
+
+/* ============================================================
+   Tonal placeholder (used when a merchant image isn't set yet)
+   ============================================================ */
+.v-placeholder {
+  position: relative;
+  background:
+    radial-gradient(120% 120% at 30% 20%, rgba(166, 91, 69, 0.12), transparent 60%),
+    linear-gradient(160deg, #ece1da 0%, #ddcabf 55%, #cdb6a8 100%);
+}
+.v-placeholder::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: auto 0 16px;
+  text-align: center;
+  font-family: var(--v-font-body);
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(28, 16, 9, 0.4);
+}
+
+/* ============================================================
+   Before/After comparison slider (PRD §1.2, §2.4, §10.4)
+   ============================================================ */
+.v-ba {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--v-radius-md);
+  user-select: none;
+  touch-action: pan-y;
+  background: #cdb6a8;
+}
+.v-ba__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v-ba__after { z-index: 1; }
+.v-ba__before-wrap {
+  position: absolute; inset: 0; z-index: 2;
+  width: 50%; overflow: hidden;
+}
+.v-ba__before-wrap .v-ba__img { width: max(100%, 1px); }
+.v-ba__before-inner { position: absolute; inset: 0; height: 100%; }
+.v-ba__tag {
+  position: absolute; top: 14px; z-index: 4;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-family: var(--v-font-body);
+  font-size: 0.6875rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: var(--v-radius-sm);
+}
+.v-ba__tag--before { left: 14px; }
+.v-ba__tag--after { right: 14px; }
+.v-ba__handle {
+  position: absolute; top: 0; bottom: 0; left: 50%; z-index: 3;
+  width: 2px; background: rgba(255, 255, 255, 0.9);
+  transform: translateX(-50%);
+  cursor: ew-resize;
+}
+.v-ba__grip {
+  position: absolute; top: 50%; left: 50%;
+  width: 36px; height: 36px;
+  transform: translate(-50%, -50%);
+  background: #fff; border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  display: grid; place-items: center;
+  color: var(--v-rust);
+}
+.v-ba__grip svg { width: 18px; height: 18px; }
+.v-ba input[type="range"] {
+  position: absolute; inset: 0; z-index: 5;
+  width: 100%; height: 100%;
+  margin: 0; opacity: 0; cursor: ew-resize;
+}
+
+/* ============================================================
+   FAQ accordion (PRD §2.3, §10.5)
+   ============================================================ */
+.v-faq__item { border-bottom: 1px solid var(--v-border); }
+.v-faq__q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 22px 0; text-align: left;
+  font-family: var(--v-font-body); font-weight: 500; font-size: 0.9375rem; color: var(--v-text);
+}
+.v-faq__icon { position: relative; width: 18px; height: 18px; flex: none; }
+.v-faq__icon::before, .v-faq__icon::after {
+  content: ""; position: absolute; top: 50%; left: 50%; background: var(--v-muted);
+  transform: translate(-50%, -50%); transition: transform 0.2s ease;
+}
+.v-faq__icon::before { width: 16px; height: 1.5px; }
+.v-faq__icon::after { width: 1.5px; height: 16px; }
+.v-faq__item.is-open .v-faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+.v-faq__item.is-open .v-faq__icon::before { transform: translate(-50%, -50%) rotate(45deg); }
+.v-faq__a { overflow: hidden; max-height: 0; transition: max-height 0.2s ease-out; }
+.v-faq__a-inner { padding: 0 0 22px; color: var(--v-muted); font-size: 0.9375rem; line-height: 1.7; max-width: 60ch; }
+
+/* ============================================================
+   Sticky bottom cart bar (PRD §2.7)
+   ============================================================ */
+.v-sticky-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  background: var(--v-canvas);
+  box-shadow: var(--v-shadow-sticky);
+  border-top: 1px solid var(--v-border);
+  transform: translateY(100%);
+  transition: transform 0.3s var(--v-ease);
+}
+.v-sticky-bar.is-visible { transform: translateY(0); }
+.v-sticky-bar__inner { display: flex; align-items: center; gap: 16px; min-height: 72px; padding-block: 10px; }
+.v-sticky-bar__thumb { width: 40px; height: 40px; border-radius: var(--v-radius-sm); object-fit: cover; flex: none; }
+.v-sticky-bar__name { font-weight: 500; font-size: 0.875rem; }
+.v-sticky-bar__price { font-weight: 600; font-size: 1rem; margin-left: auto; }
+.v-sticky-bar .v-btn { flex: none; }
+
+@media (max-width: 749px) {
+  .v-sticky-bar__name { font-size: 0.8125rem; }
+  .v-sticky-bar__inner { gap: 10px; }
+  .v-sticky-bar .v-btn { padding: 13px 16px; font-size: 0.6875rem; }
+}
+
+/* ============================================================
+   Forms (PRD §6)
+   ============================================================ */
+.v-field { display: flex; flex-direction: column; gap: 6px; }
+.v-field label { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; color: var(--v-text); }
+.v-input, .v-textarea, .v-select {
+  width: 100%;
+  font-family: var(--v-font-body); font-size: 0.875rem; color: var(--v-text);
+  background: var(--v-white);
+  border: 1px solid var(--v-border-strong);
+  border-radius: var(--v-radius-sm);
+  padding: 13px 15px;
+  transition: border-color 0.15s ease;
+}
+.v-textarea { min-height: 140px; resize: vertical; }
+.v-input:focus, .v-textarea:focus, .v-select:focus { outline: none; border-color: var(--v-green); }
+.v-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7060' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 38px;
+}
+
+/* ============================================================
+   Trust badge row
+   ============================================================ */
+.v-trust { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 18px; color: var(--v-muted); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.v-trust span { display: inline-flex; align-items: center; gap: 6px; }
+.v-trust svg { width: 14px; height: 14px; }
+
+/* ============================================================
+   Bundle tiers (PRD §1.4, §2.1)
+   ============================================================ */
+.v-tiers { display: grid; gap: 14px; }
+.v-tier {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--v-border-strong);
+  border-radius: var(--v-radius-md);
+  background: var(--v-white);
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.v-tier:hover { border-color: var(--v-rust-light); }
+.v-tier.is-selected { border-color: var(--v-green); box-shadow: 0 0 0 1px var(--v-green); }
+.v-tier__radio { padding-top: 2px; }
+.v-tier__radio input { appearance: none; width: 18px; height: 18px; border: 1.5px solid var(--v-border-strong); border-radius: 50%; display: grid; place-items: center; cursor: pointer; }
+.v-tier.is-selected .v-tier__radio input { border-color: var(--v-green); }
+.v-tier__radio input::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--v-green); transform: scale(0); transition: transform 0.15s ease; }
+.v-tier.is-selected .v-tier__radio input::after { transform: scale(1); }
+.v-tier__main { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.v-tier__label { font-family: var(--v-font-body); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
+.v-tier__sub { font-size: 0.8125rem; color: var(--v-muted); }
+.v-tier__price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.125rem; white-space: nowrap; }
+.v-tier__badge { position: absolute; top: -10px; right: 16px; }
+.v-tier__features { display: grid; gap: 5px; margin-top: 4px; }
+.v-tier__features li { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--v-muted); }
+.v-tier__features svg { color: var(--v-green); flex: none; }
+.v-tier .v-badge--save { align-self: flex-start; }
+.v-tier__reveal { display: block; overflow: hidden; max-height: 0; transition: max-height 0.3s var(--v-ease); }
+.v-tier__reveal-inner { display: grid; gap: 12px; padding-top: 14px; }
+.v-tier__pair { display: grid; gap: 6px; }
+.v-tier__pair-label { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v-rust); }
+.v-tier__pair-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ============================================================
+   Review cards (PRD §1.5, §2.6)
+   ============================================================ */
+.v-review { background: var(--v-white); border: 1px solid var(--v-border); border-radius: var(--v-radius-md); padding: 22px; break-inside: avoid; }
+.v-review__text { font-size: 0.9375rem; line-height: 1.6; margin: 12px 0 16px; }
+.v-review__meta { display: flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--v-muted); }
+.v-review__avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--v-canvas-secondary); display: grid; place-items: center; font-weight: 600; color: var(--v-rust); font-size: 0.75rem; flex: none; }
+
+/* ============================================================
+   Dawn cart page — editorial restyle (PRD §7)
+   ============================================================ */
+#main-cart-items .title--primary,
+.cart__warnings .cart__empty-text { font-family: var(--v-font-display); font-weight: 400; letter-spacing: -0.01em; }
+.cart-item__name { font-family: var(--v-font-display) !important; font-weight: 400; font-size: 1.4rem; }
+.cart-items th { font-family: var(--v-font-body); font-size: 1rem; letter-spacing: 0.1em; color: var(--v-muted); }
+.cart-item__details .product-option { color: var(--v-muted); }
+#main-cart-footer .totals__total,
+#main-cart-footer .totals__total-value { font-family: var(--v-font-display); }
+#cart-icon-bubble .cart-count-bubble,
+.cart-count-bubble { background: var(--v-badge-popular) !important; }
+
+/* ============================================================
+   Dawn cart drawer — "Your Selection" editorial restyle (PRD §6 drawer)
+   ============================================================ */
+.drawer__heading { font-family: var(--v-font-display) !important; font-weight: 400; font-size: 1.75rem; letter-spacing: -0.01em; }
+.cart-drawer__overline { display: block; font-family: var(--v-font-body); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--v-rust); margin-top: 4px; }
+.cart-drawer .cart-item__name { font-size: 1.25rem; }
+
+/* Veloura "Complete your protocol" upsell block inside the Dawn drawer */
+.v-drawer-upsell { margin: 16px; padding: 16px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
+.v-drawer-upsell__head { display: flex; align-items: center; gap: 8px; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 12px; }
+.v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 14px; box-shadow: var(--v-shadow-card); }
+.v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 64px; height: 64px; object-fit: cover; border-radius: var(--v-radius-sm); }
+.v-drawer-upsell__name { font-weight: 600; font-size: 0.875rem; }
+.v-drawer-upsell__desc { font-size: 0.75rem; color: var(--v-muted); margin: 2px 0 8px; }
+.v-drawer-upsell__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
+.v-drawer-upsell .v-link-cta { font-size: 0.6875rem; }
+.v-drawer-upsell__added { display: inline-flex; align-items: center; gap: 6px; color: var(--v-green); font-size: 0.75rem; font-weight: 500; }
+
+@media (prefers-reduced-motion: reduce) {
+  .v-reveal { opacity: 1 !important; transform: none !important; }
+}

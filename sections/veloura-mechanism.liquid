@@ -1,0 +1,48 @@
+{%- comment -%} Veloura — Mechanism / Science block (PRD §2.2) {%- endcomment -%}
+<section class="v-section {% if section.settings.blush %}v-section--blush{% endif %} v-mech">
+  <div class="v-narrow">
+    <div class="v-mech__head v-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="v-h2">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="v-mech__body v-reveal" data-delay="1">
+      {%- if section.settings.paragraph_1 != blank -%}<p>{{ section.settings.paragraph_1 }}</p>{%- endif -%}
+      {%- if section.settings.paragraph_2 != blank -%}<p>{{ section.settings.paragraph_2 }}</p>{%- endif -%}
+    </div>
+
+    {%- if section.settings.quote != blank -%}
+      <figure class="v-card v-mech__quote v-reveal" data-delay="2">
+        <blockquote class="v-italic">“{{ section.settings.quote }}”</blockquote>
+        <figcaption>{{ section.settings.quote_attr }}</figcaption>
+      </figure>
+    {%- endif -%}
+  </div>
+</section>
+
+{% stylesheet %}
+.v-mech { text-align: center; }
+.v-mech__head .v-h2 { margin-bottom: 28px; }
+.v-mech__body { max-width: 680px; margin: 0 auto; display: grid; gap: 20px; }
+.v-mech__body p { font-size: 0.9375rem; line-height: 1.75; color: var(--v-muted); }
+.v-mech__quote { max-width: 640px; margin: 40px auto 0; padding: 32px; text-align: left; border-left: 3px solid var(--v-rust); }
+.v-mech__quote blockquote { font-size: 1.375rem; line-height: 1.45; margin: 0 0 14px; }
+.v-mech__quote figcaption { font-size: 0.75rem; letter-spacing: 0.04em; color: var(--v-muted); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Mechanism",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "checkbox", "id": "blush", "label": "Blush background", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You Didn't Fail. You Were Treating the Wrong Problem." },
+    { "type": "textarea", "id": "paragraph_1", "label": "Paragraph 1", "default": "Cellulite is a circulation issue, not a fat issue. The proprietary weave stimulates micro-circulation to smooth skin from within." },
+    { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "Your body has a remarkable self-repair system — but it needs movement to activate it. Veloura's 47+ mapped micro-pressure points keep that system running every hour you wear them." },
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "Micro-compression aids lymphatic drainage more effectively than any topical treatment I've reviewed. The effect is structural, not cosmetic." },
+    { "type": "text", "id": "quote_attr", "label": "Attribution", "default": "— Dr. Vanessa Cole, MD · Dermatology & Clinical Research" }
+  ],
+  "presets": [{ "name": "Veloura Mechanism" }]
+}
+{% endschema %}

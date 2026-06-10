@@ -1,0 +1,26 @@
+{%- comment -%} Veloura — Sticky bottom cart bar (PRD §2.7, §10.3) {%- endcomment -%}
+<div class="v-sticky-bar" data-sticky-bar aria-hidden="false">
+  <div class="v-container v-sticky-bar__inner">
+    {%- if product.featured_image -%}
+      <img class="v-sticky-bar__thumb" src="{{ product.featured_image | image_url: width: 80 }}" alt="" width="40" height="40">
+    {%- else -%}
+      <span class="v-sticky-bar__thumb v-placeholder"></span>
+    {%- endif -%}
+    <span class="v-sticky-bar__name">{{ product.title | default: 'Veloura Cellulite Legging' }}</span>
+    <span class="v-sticky-bar__price v-price" data-bundle-price>{{ section.settings.price | default: '£44.99' }}</span>
+    <button type="button" class="v-btn v-btn--green" data-sticky-atc>{{ section.settings.cta_label | default: 'Start My Transformation' }}</button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Veloura Sticky Bar",
+  "tag": "section",
+  "class": "veloura-section veloura-sticky",
+  "settings": [
+    { "type": "text", "id": "price", "label": "Fallback price", "default": "£44.99" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Start My Transformation" }
+  ],
+  "presets": [{ "name": "Veloura Sticky Bar" }]
+}
+{% endschema %}

@@ -1,0 +1,92 @@
+{%- comment -%} Veloura — Results Timeline (PRD §1.3 four-step / §2.5 three-step) {%- endcomment -%}
+<section class="v-section {% if section.settings.blush %}v-section--blush{% endif %} v-timeline v-timeline--{{ section.settings.style }}">
+  <div class="v-container">
+    <div class="v-section-head v-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="v-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <ol class="v-timeline__grid" style="--cols: {{ section.blocks.size }};">
+      {%- for block in section.blocks -%}
+        <li class="v-timeline__step v-reveal" data-delay="{{ forloop.index }}" {{ block.shopify_attributes }}>
+          {%- if section.settings.style == 'numbered' -%}
+            <span class="v-timeline__num">{{ forloop.index }}</span>
+          {%- else -%}
+            <span class="v-timeline__icon">{% render 'veloura-icon', name: block.settings.icon, size: 26 %}</span>
+          {%- endif -%}
+          <span class="v-timeline__label">{{ block.settings.label }}</span>
+          <h3 class="v-timeline__title">{{ block.settings.title }}</h3>
+          <p class="v-timeline__body">{{ block.settings.body }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-timeline__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 0; }
+.v-timeline__step { padding: 8px clamp(16px, 3vw, 32px); text-align: center; position: relative; }
+.v-timeline__grid > li + li::before { content: ""; position: absolute; left: 0; top: 12px; bottom: 12px; width: 1px; background: var(--v-border); }
+.v-timeline__icon { display: inline-flex; color: var(--v-rust); margin-bottom: 16px; }
+.v-timeline__num {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--v-rust); color: #fff; font-family: var(--v-font-display); font-size: 1.25rem; margin-bottom: 18px;
+}
+.v-timeline__label { display: block; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 8px; }
+.v-timeline__title { font-family: var(--v-font-body); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v-text); margin: 0 0 10px; }
+.v-timeline--numbered .v-timeline__title { font-size: 0.875rem; letter-spacing: 0.02em; }
+.v-timeline__body { font-size: 0.8125rem; line-height: 1.6; color: var(--v-muted); margin: 0 auto; max-width: 24ch; }
+
+@media (max-width: 749px) {
+  .v-timeline__grid { grid-template-columns: repeat(2, 1fr); gap: 36px 0; }
+  .v-timeline__grid > li + li::before { display: none; }
+  .v-timeline--numbered .v-timeline__grid { grid-template-columns: 1fr; gap: 28px; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Timeline",
+  "tag": "section",
+  "class": "veloura-section",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
+    { "type": "select", "id": "style", "label": "Step marker", "options": [
+      { "value": "icon", "label": "Line icon" },
+      { "value": "numbered", "label": "Numbered circle" }
+    ], "default": "icon" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The path to smoother skin" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Micro-compression works continuously. Here is what to expect." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "droplet", "label": "Droplet" },
+          { "value": "wave", "label": "Wave" },
+          { "value": "diamond", "label": "Diamond" },
+          { "value": "sparkle", "label": "Sparkle" },
+          { "value": "pulse", "label": "Pulse" }
+        ], "default": "droplet" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Day 1" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Fluid Activation" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Immediate sensation of lightness as stagnant lymphatic fluid begins to drain." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Veloura Timeline",
+    "blocks": [
+      { "type": "step", "settings": { "icon": "droplet", "label": "Day 1", "title": "Fluid Activation", "body": "Immediate sensation of lightness as stagnant lymphatic fluid begins to drain." } },
+      { "type": "step", "settings": { "icon": "wave", "label": "Day 14", "title": "Surface Smoothing", "body": "Skin texture starts feeling softer. Micro-circulation increases, bringing nutrients to the dermis." } },
+      { "type": "step", "settings": { "icon": "diamond", "label": "Day 30", "title": "Structural Release", "body": "Fibrous bands begin to relax. Visible reduction in deeper dimpling starts to occur." } },
+      { "type": "step", "settings": { "icon": "sparkle", "label": "Day 90+", "title": "Lasting Remodelling", "body": "Significant structural improvement. Continuous wear prevents new stagnation from forming." } }
+    ]
+  }]
+}
+{% endschema %}

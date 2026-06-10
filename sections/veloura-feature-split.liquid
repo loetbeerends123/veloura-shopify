@@ -1,0 +1,54 @@
+{%- comment -%} Veloura — Two-column text + image (PRD §5.2 Genesis; reusable) {%- endcomment -%}
+<section class="v-section v-fsplit {% if section.settings.blush %}v-section--blush{% endif %}">
+  <div class="v-container">
+    <div class="v-fsplit__grid {% if section.settings.image_first %}v-fsplit__grid--rev{% endif %}">
+      <div class="v-fsplit__copy v-reveal">
+        {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2 class="v-h2 {% if section.settings.heading_rust %}v-rust-text{% endif %}">{{ section.settings.heading }}</h2>
+        {%- if section.settings.paragraph_1 != blank -%}<p>{{ section.settings.paragraph_1 }}</p>{%- endif -%}
+        {%- if section.settings.paragraph_2 != blank -%}<p>{{ section.settings.paragraph_2 }}</p>{%- endif -%}
+        {%- if section.settings.pill_label != blank -%}
+          <span class="v-fsplit__pill v-card">{% render 'veloura-icon', name: 'molecule', size: 16 %}{{ section.settings.pill_label }}</span>
+        {%- endif -%}
+      </div>
+      <div class="v-fsplit__media v-reveal" data-delay="1">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 1100 }}" alt="{{ section.settings.image.alt | escape }}" width="1100" height="1200" loading="lazy">
+        {%- else -%}
+          <div class="v-fsplit__ph v-placeholder" data-label="Macro · Fabric structure" style="background:linear-gradient(160deg,#2f3a33,#1d2722);"></div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-fsplit__grid { display: grid; grid-template-columns: 55% 45%; gap: clamp(32px, 5vw, 64px); align-items: center; }
+.v-fsplit__grid--rev { direction: rtl; }
+.v-fsplit__grid--rev > * { direction: ltr; }
+.v-fsplit__copy .v-h2 { margin-bottom: 20px; }
+.v-fsplit__copy p { color: var(--v-muted); font-size: 0.9375rem; line-height: 1.75; margin-bottom: 16px; }
+.v-fsplit__pill { display: inline-flex; align-items: center; gap: 8px; color: var(--v-rust); border-radius: var(--v-radius-lg); padding: 9px 18px; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; }
+.v-fsplit__media img, .v-fsplit__ph { width: 100%; border-radius: var(--v-radius-md); aspect-ratio: 4 / 5; object-fit: cover; }
+@media (max-width: 849px) { .v-fsplit__grid, .v-fsplit__grid--rev { grid-template-columns: 1fr; direction: ltr; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Feature Split",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
+    { "type": "checkbox", "id": "image_first", "label": "Image on left", "default": false },
+    { "type": "checkbox", "id": "heading_rust", "label": "Rust heading", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Genesis" },
+    { "type": "textarea", "id": "paragraph_1", "label": "Paragraph 1", "default": "Veloura was born at the intersection of rigorous clinical dermatology and high-performance textile engineering. We observed a fundamental flaw in the traditional approach to cellulite: the industry treated it as a purely aesthetic fat issue, masking it with restrictive compression rather than addressing the physiological root cause." },
+    { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "Through years of research, we isolated the true mechanism — stagnant microcirculation and lymphatic fluid. This catalysed the development of our proprietary Velo-Lymph™ technology, shifting the paradigm from passive shapewear to active, therapeutic apparel." },
+    { "type": "text", "id": "pill_label", "label": "Pill label", "default": "Clinically Designed" },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "presets": [{ "name": "Veloura Feature Split" }]
+}
+{% endschema %}

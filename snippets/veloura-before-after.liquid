@@ -1,0 +1,38 @@
+{%- comment -%}
+  Reusable Before/After comparison slider (PRD §1.2, §2.4, §10.4).
+  Params:
+    before_img / after_img : image objects (optional)
+    ratio                  : e.g. '3 / 2' (default) or '3 / 4'
+    before_label / after_label
+{%- endcomment -%}
+{%- liquid
+  assign ratio = ratio | default: '3 / 2'
+  assign bl = before_label | default: 'Before'
+  assign al = after_label | default: 'After'
+-%}
+<div class="v-ba" data-before-after style="aspect-ratio: {{ ratio }};">
+  {%- if after_img -%}
+    <img class="v-ba__img v-ba__after" src="{{ after_img | image_url: width: 1200 }}" alt="{{ al | escape }}" loading="lazy" width="1200" height="800">
+  {%- else -%}
+    <div class="v-ba__img v-ba__after v-placeholder" data-label="After"></div>
+  {%- endif -%}
+
+  <div class="v-ba__before-wrap">
+    <div class="v-ba__before-inner" style="aspect-ratio: {{ ratio }};">
+      {%- if before_img -%}
+        <img class="v-ba__img" src="{{ before_img | image_url: width: 1200 }}" alt="{{ bl | escape }}" loading="lazy" width="1200" height="800">
+      {%- else -%}
+        <div class="v-ba__img v-placeholder" data-label="Before" style="filter: contrast(1.05) brightness(0.96);"></div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <span class="v-ba__tag v-ba__tag--before">{{ bl }}</span>
+  <span class="v-ba__tag v-ba__tag--after">{{ al }}</span>
+
+  <div class="v-ba__handle">
+    <span class="v-ba__grip">{% render 'veloura-icon', name: 'arrows', size: 18 %}</span>
+  </div>
+
+  <input type="range" min="0" max="100" value="50" step="0.1" aria-label="Reveal before and after">
+</div>
