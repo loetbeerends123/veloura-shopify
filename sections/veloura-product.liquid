@@ -47,7 +47,10 @@
 
         <hr class="v-hairline">
 
-        <span class="v-eyebrow" style="margin-top:24px;">{{ s.bundle_label | default: 'Bundle & Save' }}</span>
+        {%- if s.offer_banner != blank -%}
+          <p class="v-offer-banner" style="margin-top:24px;">{% render 'veloura-icon', name: 'sparkle', size: 14 %}{{ s.offer_banner }}</p>
+        {%- endif -%}
+        <span class="v-eyebrow" {% if s.offer_banner == blank %}style="margin-top:24px;"{% endif %}>{{ s.bundle_label | default: 'Bundle & Save' }}</span>
         {% render 'veloura-bundle-tiers', section: section %}
 
         <div class="v-pdp__atc" data-atc-anchor>
@@ -88,13 +91,13 @@
 .v-pdp__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .v-pdp__buybox { padding-top: 8px; }
 .v-pdp__name { margin: 0 0 14px; }
-.v-pdp__claim { font-size: 1.5rem; line-height: 1.25; margin: 0 0 14px; }
-.v-pdp__body { font-size: 0.875rem; line-height: 1.7; margin: 0 0 18px; }
-.v-pdp__bullets { display: grid; gap: 8px; margin-bottom: 8px; }
-.v-pdp__bullets li { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; }
+.v-pdp__claim { font-size: 1.75rem; line-height: 1.25; margin: 0 0 16px; }
+.v-pdp__body { font-size: 1.0625rem; line-height: 1.7; margin: 0 0 20px; }
+.v-pdp__bullets { display: grid; gap: 10px; margin-bottom: 8px; }
+.v-pdp__bullets li { display: flex; align-items: center; gap: 10px; font-size: 1.0625rem; }
 .v-pdp__bullets svg { color: var(--v-green); flex: none; }
 .v-pdp__atc { margin-top: 22px; }
-.v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.75rem; color: var(--v-scarcity); }
+.v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 500; color: var(--v-scarcity); }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 .v-pdp__form { margin: 0; }
@@ -115,6 +118,7 @@
     { "type": "textarea", "id": "body", "label": "Body", "default": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to transform your skin while you live your life." },
     { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "Not shapewear. Not compression." },
     { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "Works while you live. Zero effort." },
+    { "type": "text", "id": "offer_banner", "label": "Offer banner (red)", "default": "Limited offer — Buy 1 Get 1 Free + Free Shipping" },
     { "type": "text", "id": "bundle_label", "label": "Bundle label", "default": "Bundle & Save" },
     { "type": "text", "id": "atc_label", "label": "Add to cart label", "default": "Add to Cart" },
     { "type": "text", "id": "scarcity", "label": "Scarcity text", "default": "Only 34 left in stock now" },
@@ -139,9 +143,9 @@
     { "type": "text", "id": "t3_badge", "label": "Badge", "default": "Best Value" },
     { "type": "text", "id": "t3_label", "label": "Label", "default": "3 Leggings" },
     { "type": "text", "id": "t3_sub", "label": "Sub-copy", "default": "Maximum clinical results" },
-    { "type": "text", "id": "t3_price", "label": "Price", "default": "£65.00" },
+    { "type": "text", "id": "t3_price", "label": "Price", "default": "£64.99" },
     { "type": "text", "id": "t3_qty", "label": "Quantity", "default": "3" },
-    { "type": "text", "id": "t3_save", "label": "Save badge", "default": "Save £69 + Free Shipping" }
+    { "type": "text", "id": "t3_save", "label": "Save badge", "default": "Save £69.98 + Free Shipping" }
   ],
   "presets": [{ "name": "Veloura Product" }]
 }

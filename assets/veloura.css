@@ -114,9 +114,9 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.v-body { font-family: var(--v-font-body); font-size: 0.9375rem; line-height: 1.65; }
-.v-body-lg { font-size: 1rem; line-height: 1.7; }
-.v-body-sm { font-size: 0.8125rem; line-height: 1.6; }
+.v-body { font-family: var(--v-font-body); font-size: 1.0625rem; line-height: 1.7; }
+.v-body-lg { font-size: 1.1875rem; line-height: 1.7; }
+.v-body-sm { font-size: 0.9375rem; line-height: 1.6; }
 .v-muted { color: var(--v-muted); }
 .v-rust-text { color: var(--v-rust); }
 .v-price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.25rem; }
@@ -131,7 +131,7 @@ body {
 .v-section--dark { background: var(--v-canvas-dark); color: var(--v-white); }
 .v-section-head { text-align: center; max-width: 640px; margin: 0 auto clamp(32px, 5vw, 56px); }
 .v-section-head .v-h2 { margin-bottom: 12px; }
-.v-section-head p { color: var(--v-muted); font-size: 0.9375rem; margin: 0; }
+.v-section-head p { color: var(--v-muted); font-size: 1.0625rem; line-height: 1.6; margin: 0; }
 .v-hairline { border: 0; border-top: 1px solid var(--v-border); margin: 0; }
 
 /* ============================================================
@@ -219,7 +219,8 @@ body {
 .v-badge--value { background: var(--v-badge-value); color: var(--v-white); }
 .v-badge--verified { background: transparent; border: 1px solid var(--v-green); color: var(--v-green); }
 .v-badge--clinical { background: transparent; border: 1px solid var(--v-rust); color: var(--v-rust); }
-.v-badge--save { background: var(--v-canvas-secondary); color: var(--v-rust); }
+.v-badge--save { background: var(--v-badge-popular); color: var(--v-white); font-weight: 600; }
+.v-tier.is-selected .v-badge--save { background: var(--v-badge-popular); }
 
 /* ============================================================
    Stars (PRD §2.2 — rust, not yellow)
@@ -328,7 +329,7 @@ body {
 .v-faq__q {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 22px 0; text-align: left;
-  font-family: var(--v-font-body); font-weight: 500; font-size: 0.9375rem; color: var(--v-text);
+  font-family: var(--v-font-body); font-weight: 500; font-size: 1.0625rem; color: var(--v-text);
 }
 .v-faq__icon { position: relative; width: 18px; height: 18px; flex: none; }
 .v-faq__icon::before, .v-faq__icon::after {
@@ -340,7 +341,7 @@ body {
 .v-faq__item.is-open .v-faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
 .v-faq__item.is-open .v-faq__icon::before { transform: translate(-50%, -50%) rotate(45deg); }
 .v-faq__a { overflow: hidden; max-height: 0; transition: max-height 0.2s ease-out; }
-.v-faq__a-inner { padding: 0 0 22px; color: var(--v-muted); font-size: 0.9375rem; line-height: 1.7; max-width: 60ch; }
+.v-faq__a-inner { padding: 0 0 22px; color: var(--v-muted); font-size: 1.0625rem; line-height: 1.75; max-width: 60ch; }
 
 /* ============================================================
    Sticky bottom cart bar (PRD §2.7)
@@ -370,10 +371,10 @@ body {
    Forms (PRD §6)
    ============================================================ */
 .v-field { display: flex; flex-direction: column; gap: 6px; }
-.v-field label { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; color: var(--v-text); }
+.v-field label { font-size: 0.9375rem; font-weight: 500; letter-spacing: 0.04em; color: var(--v-text); }
 .v-input, .v-textarea, .v-select {
   width: 100%;
-  font-family: var(--v-font-body); font-size: 0.875rem; color: var(--v-text);
+  font-family: var(--v-font-body); font-size: 1rem; color: var(--v-text);
   background: var(--v-white);
   border: 1px solid var(--v-border-strong);
   border-radius: var(--v-radius-sm);
@@ -421,12 +422,13 @@ body {
 .v-tier__radio input::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--v-green); transform: scale(0); transition: transform 0.15s ease; }
 .v-tier.is-selected .v-tier__radio input::after { transform: scale(1); }
 .v-tier__main { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.v-tier__label { font-family: var(--v-font-body); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
-.v-tier__sub { font-size: 0.8125rem; color: var(--v-muted); }
-.v-tier__price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.125rem; white-space: nowrap; }
-.v-tier__badge { position: absolute; top: -10px; right: 16px; }
-.v-tier__features { display: grid; gap: 5px; margin-top: 4px; }
-.v-tier__features li { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--v-muted); }
+.v-tier__label { font-family: var(--v-font-body); font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
+.v-tier__sub { font-size: 0.9375rem; color: var(--v-muted); }
+.v-tier__price { font-family: var(--v-font-body); font-weight: 700; font-size: 1.375rem; white-space: nowrap; }
+.v-tier__compare { display: block; font-size: 0.8125rem; font-weight: 400; color: var(--v-muted); text-decoration: line-through; margin-top: 2px; }
+.v-tier__badge { position: absolute; top: -11px; right: 16px; box-shadow: 0 2px 8px rgba(139, 26, 26, 0.25); }
+.v-tier__features { display: grid; gap: 6px; margin-top: 4px; }
+.v-tier__features li { display: flex; align-items: center; gap: 8px; font-size: 0.9375rem; color: var(--v-muted); }
 .v-tier__features svg { color: var(--v-green); flex: none; }
 .v-tier .v-badge--save { align-self: flex-start; }
 .v-tier__reveal { display: block; overflow: hidden; max-height: 0; transition: max-height 0.3s var(--v-ease); }
@@ -439,7 +441,7 @@ body {
    Review cards (PRD §1.5, §2.6)
    ============================================================ */
 .v-review { background: var(--v-white); border: 1px solid var(--v-border); border-radius: var(--v-radius-md); padding: 22px; break-inside: avoid; }
-.v-review__text { font-size: 0.9375rem; line-height: 1.6; margin: 12px 0 16px; }
+.v-review__text { font-size: 1.0625rem; line-height: 1.65; margin: 12px 0 16px; }
 .v-review__meta { display: flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--v-muted); }
 .v-review__avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--v-canvas-secondary); display: grid; place-items: center; font-weight: 600; color: var(--v-rust); font-size: 0.75rem; flex: none; }
 
@@ -474,6 +476,48 @@ body {
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
 .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; }
 .v-drawer-upsell__added { display: inline-flex; align-items: center; gap: 6px; color: var(--v-green); font-size: 0.75rem; font-weight: 500; }
+
+/* ============================================================
+   Header — refined VELOURA wordmark + hide account/search (no account)
+   ============================================================ */
+.header__heading-link .h2,
+.header__heading-link h1,
+.header__heading-link h2 {
+  font-family: var(--v-font-display) !important;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  text-indent: 0.34em; /* optical centering for tracking */
+  color: var(--v-text);
+}
+.header__heading-link { transition: opacity 0.2s ease; }
+.header__heading-link:hover { opacity: 0.7; }
+
+/* Remove account + search icons (PRD store has no accounts/search in use) */
+.header__icon--account,
+.header__icon--search,
+#header-search,
+header-drawer .menu-drawer__account,
+.menu-drawer__utility-links .menu-drawer__account-link { display: none !important; }
+
+/* ============================================================
+   Product offer — appeal + urgency (red accents)
+   ============================================================ */
+.v-offer-banner {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--v-badge-popular); color: #fff;
+  font-family: var(--v-font-body); font-weight: 600;
+  font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 9px 14px; border-radius: var(--v-radius-sm);
+  margin-bottom: 16px; text-align: center;
+}
+.v-offer-banner svg { color: #fff; flex: none; }
+.v-pdp__savings { display: inline-flex; align-items: center; gap: 6px; color: var(--v-badge-popular); font-weight: 600; font-size: 0.9375rem; }
+
+/* Slightly stronger selected tier emphasis for conversion */
+.v-tier.is-selected { border-color: var(--v-green); box-shadow: 0 0 0 1.5px var(--v-green); background: #fcfbfa; }
+.v-tier--popular { border-color: var(--v-rust-light); }
 
 @media (prefers-reduced-motion: reduce) {
   .v-reveal { opacity: 1 !important; transform: none !important; }

@@ -481,6 +481,9 @@
       {%- comment -%} Veloura "Complete Your Protocol" upsell (PRD §6 drawer, §10.2) {%- endcomment -%}
       {%- liquid
         assign up = settings.veloura_upsell_product
+        if up == blank and settings.veloura_upsell_handle != blank
+          assign up = all_products[settings.veloura_upsell_handle]
+        endif
         assign up_in_cart = false
         if up != blank
           for line in cart.items

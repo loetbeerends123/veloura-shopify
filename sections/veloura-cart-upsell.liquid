@@ -5,6 +5,12 @@
 {%- endcomment -%}
 {%- liquid
   assign up = section.settings.product
+  if up == blank and settings.veloura_upsell_product != blank
+    assign up = settings.veloura_upsell_product
+  endif
+  if up == blank and settings.veloura_upsell_handle != blank
+    assign up = all_products[settings.veloura_upsell_handle]
+  endif
   assign in_cart = false
   if up != blank
     for line in cart.items

@@ -7,7 +7,9 @@
         <span class="v-stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}</span>
         <span class="v-body-sm v-muted">{{ section.settings.count_text | default: 'Based on 471 reviews' }}</span>
       </div>
-      <a href="{{ section.settings.write_url | default: '#' }}" class="v-btn v-btn--outline">{{ section.settings.write_label | default: 'Write a Review' }}</a>
+      {%- if section.settings.show_write -%}
+        <a href="{{ section.settings.write_url | default: '#' }}" class="v-btn v-btn--outline">{{ section.settings.write_label | default: 'Write a Review' }}</a>
+      {%- endif -%}
     </div>
 
     <div class="v-reviews__list">
@@ -41,8 +43,8 @@
 .v-reviews__who strong { font-size: 0.8125rem; font-weight: 600; }
 .v-reviews__stars { margin-left: auto; }
 .v-reviews__variant { font-size: 0.75rem; color: var(--v-muted); margin: 10px 0 0; }
-.v-reviews__title { font-family: var(--v-font-body); font-weight: 600; font-size: 0.9375rem; margin: 8px 0 6px; }
-.v-reviews__body { font-size: 0.9375rem; line-height: 1.65; color: var(--v-muted); margin: 0; }
+.v-reviews__title { font-family: var(--v-font-body); font-weight: 600; font-size: 1.0625rem; margin: 8px 0 6px; }
+.v-reviews__body { font-size: 1.0625rem; line-height: 1.7; color: var(--v-muted); margin: 0; }
 @media (max-width: 749px) {
   .v-reviews__summary { flex-direction: column; align-items: flex-start; }
   .v-reviews__stars { margin-left: 0; width: 100%; }
@@ -57,6 +59,7 @@
   "settings": [
     { "type": "text", "id": "score", "label": "Score", "default": "4.8" },
     { "type": "text", "id": "count_text", "label": "Count text", "default": "Based on 471 reviews" },
+    { "type": "checkbox", "id": "show_write", "label": "Show 'Write a Review' button", "default": false },
     { "type": "text", "id": "write_label", "label": "Write button label", "default": "Write a Review" },
     { "type": "url", "id": "write_url", "label": "Write button URL" }
   ],
