@@ -1,21 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "veloura-product",
       "settings": {
-        "overline": "Velo-Lymph™ Enhanced",
+        "overline": "",
         "hero_claim": "Reclaim your confidence. Smooth, sculpted legs in 8 weeks.",
         "body": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to transform your skin while you live your life.",
         "bullet_1": "Not shapewear. Not compression.",
         "bullet_2": "Works while you live. Zero effort.",
+        "bundle_label": "Bundle & Save",
         "atc_label": "Add to Cart",
-        "scarcity": "Only 34 left in stock now"
+        "scarcity": "Only 34 left in stock now",
+        "colors": "Slate,Black,Espresso",
+        "sizes": "XS,S,M,L,XL",
+        "t1_label": "1 Legging",
+        "t1_sub": "Starter Protocol",
+        "t1_price": "£44.99",
+        "t1_qty": "1",
+        "t2_badge": "Most Popular",
+        "t2_label": "2 Leggings",
+        "t2_price": "£44.99",
+        "t2_qty": "2",
+        "t2_save": "Save £44 + Free Shipping",
+        "feature_1": "Full cellular update",
+        "feature_2": "Consistent daily therapy",
+        "feature_3": "Never miss a day. Maximum clinical results.",
+        "t3_badge": "Best Value",
+        "t3_label": "3 Leggings",
+        "t3_sub": "Maximum clinical results",
+        "t3_price": "£64.99",
+        "t3_qty": "3",
+        "t3_save": "Save £69.98 + Free Shipping",
+        "offer_banner": "Limited offer — Buy 1 Get 1 Free + Free Shipping"
       }
     },
     "mechanism": {
       "type": "veloura-mechanism",
       "settings": {
         "blush": true,
+        "eyebrow": "",
         "heading": "You Didn't Fail. You Were Treating the Wrong Problem.",
         "paragraph_1": "Cellulite is a circulation issue, not a fat issue. The proprietary weave stimulates micro-circulation to smooth skin from within.",
         "paragraph_2": "Your body has a remarkable self-repair system — but it needs movement to activate it. Veloura's 47+ mapped micro-pressure points keep that system running every hour you wear them.",
@@ -26,21 +58,69 @@
     "faq": {
       "type": "veloura-faq",
       "blocks": {
-        "q1": { "type": "qa", "settings": { "question": "How quickly will I see results?", "answer": "Most customers notice a feeling of lightness within the first wear as stagnant fluid starts to move. Visible skin texture improvement typically begins around week 2–3 of daily wear. Structural changes — the real reduction in dimpling — are most visible at 6–8 weeks of consistent use." } },
-        "q2": { "type": "qa", "settings": { "question": "I've tried leggings before. Why is this different?", "answer": "Standard compression leggings squeeze superficially, which can actually restrict circulation and worsen the appearance of cellulite over time. Veloura's VELO-LYMPH™ fabric uses 47 mapped micro-pressure points engineered to stimulate lymphatic flow with every step — it works with your body's movement, not against it." } },
-        "q3": { "type": "qa", "settings": { "question": "How do I find the right size?", "answer": "We recommend sizing up if you're between sizes for maximum comfort during all-day wear. Our size guide is available on the product image gallery. When in doubt, the fabric has 4-way stretch to accommodate." } },
-        "q4": { "type": "qa", "settings": { "question": "How long does shipping take?", "answer": "UK standard shipping: 3–5 business days. UK express: 1–2 business days. EU: 5–8 days. International: 7–14 days. All orders over £65 include free standard UK shipping." } },
-        "q5": { "type": "qa", "settings": { "question": "Can I wear them every day?", "answer": "Absolutely — and we encourage it. The clinical results are cumulative: the more consistently you wear them, the better the structural improvement. Machine wash cold, hang dry. They maintain their therapeutic properties for 80+ washes." } },
-        "q6": { "type": "qa", "settings": { "question": "What if they don't work for me?", "answer": "We offer a 30-day Clinical Trial Guarantee. If you don't see measurable improvement in skin texture within 30 days of daily wear, contact us for a full refund — no returns required, no questions asked." } }
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "How quickly will I see results?",
+            "answer": "Most customers notice a feeling of lightness within the first wear as stagnant fluid starts to move. Visible skin texture improvement typically begins around week 2–3 of daily wear. Structural changes — the real reduction in dimpling — are most visible at 6–8 weeks of consistent use."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "I've tried leggings before. Why is this different?",
+            "answer": "Standard compression leggings squeeze superficially, which can actually restrict circulation and worsen the appearance of cellulite over time. Veloura's VELO-LYMPH™ fabric uses 47 mapped micro-pressure points engineered to stimulate lymphatic flow with every step — it works with your body's movement, not against it."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "How do I find the right size?",
+            "answer": "We recommend sizing up if you're between sizes for maximum comfort during all-day wear. Our size guide is available on the product image gallery. When in doubt, the fabric has 4-way stretch to accommodate."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "UK standard shipping: 3–5 business days. UK express: 1–2 business days. EU: 5–8 days. International: 7–14 days. All orders over £65 include free standard UK shipping."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I wear them every day?",
+            "answer": "Absolutely — and we encourage it. The clinical results are cumulative: the more consistently you wear them, the better the structural improvement. Machine wash cold, hang dry. They maintain their therapeutic properties for 80+ washes."
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "question": "What if they don't work for me?",
+            "answer": "We offer a 30-day Clinical Trial Guarantee. If you don't see measurable improvement in skin texture within 30 days of daily wear, contact us for a full refund — no returns required, no questions asked."
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6"],
-      "settings": { "heading": "Frequently Asked Questions" }
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "blush": false,
+        "eyebrow": "",
+        "heading": "Frequently Asked Questions"
+      }
     },
     "transformation": {
       "type": "veloura-before-after",
       "settings": {
         "layout": "split",
         "blush": true,
+        "eyebrow": "",
         "heading": "The Transformation You've Been Waiting For.",
         "body": "Your transformation is structural. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura mechanically restructures the skin's surface from within.",
         "quote": "I cried when I saw these photos side by side.",
@@ -50,27 +130,106 @@
     "journey": {
       "type": "veloura-timeline",
       "blocks": {
-        "w1": { "type": "step", "settings": { "label": "Week 2", "title": "Circulation Activated", "body": "Micro-circulation is stimulated. The skin begins to receive nutrients it has been denied." } },
-        "w2": { "type": "step", "settings": { "label": "Week 4", "title": "Texture Softening", "body": "The “orange peel” texture begins to soften. Stagnant fluid is actively draining." } },
-        "w3": { "type": "step", "settings": { "label": "Week 8", "title": "Visible Transformation", "body": "Visible reduction in cellulite. Skin surface is measurably smoother to the touch." } }
+        "w1": {
+          "type": "step",
+          "settings": {
+            "icon": "droplet",
+            "label": "Week 2",
+            "title": "Circulation Activated",
+            "body": "Micro-circulation is stimulated. The skin begins to receive nutrients it has been denied."
+          }
+        },
+        "w2": {
+          "type": "step",
+          "settings": {
+            "icon": "droplet",
+            "label": "Week 4",
+            "title": "Texture Softening",
+            "body": "The “orange peel” texture begins to soften. Stagnant fluid is actively draining."
+          }
+        },
+        "w3": {
+          "type": "step",
+          "settings": {
+            "icon": "droplet",
+            "label": "Week 8",
+            "title": "Visible Transformation",
+            "body": "Visible reduction in cellulite. Skin surface is measurably smoother to the touch."
+          }
+        }
       },
-      "block_order": ["w1", "w2", "w3"],
-      "settings": { "style": "numbered", "heading": "Your 8-Week Journey to Smooth", "subheading": "" }
+      "block_order": [
+        "w1",
+        "w2",
+        "w3"
+      ],
+      "settings": {
+        "blush": false,
+        "style": "numbered",
+        "eyebrow": "",
+        "heading": "Your 8-Week Journey to Smooth",
+        "subheading": ""
+      }
     },
     "reviews": {
       "type": "veloura-reviews",
       "blocks": {
-        "rv1": { "type": "review", "settings": { "name": "Faith B.", "variant": "Size: S · Colour: Slate", "title": "I've tried everything. These work.", "body": "I have had cellulite since I was 16. I am now 34. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments and actually something I can wear out." } },
-        "rv2": { "type": "review", "settings": { "name": "Eva S.", "variant": "Size: M · Colour: Black", "title": "Day one results are real.", "body": "I'm sceptical by nature but I just bought them because I kept seeing them. This is different. My thighs feel more taut than they've felt from clean eating alone." } },
-        "rv3": { "type": "review", "settings": { "name": "Hannah W.", "variant": "Size: L · Colour: Espresso", "title": "The lightness in my legs is unreal.", "body": "By the end of a normal day my legs used to feel heavy and tired. Within a week of wearing these daily that heavy feeling was just gone. Two months in and the texture on the backs of my thighs is visibly smoother. I've already ordered a second pair so I never have a day without them." } }
+        "rv1": {
+          "type": "review",
+          "settings": {
+            "name": "Faith B.",
+            "variant": "Size: S · Colour: Slate",
+            "title": "I've tried everything. These work.",
+            "body": "I have had cellulite since I was 16. I am now 34. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments and actually something I can wear out."
+          }
+        },
+        "rv2": {
+          "type": "review",
+          "settings": {
+            "name": "Eva S.",
+            "variant": "Size: M · Colour: Black",
+            "title": "Day one results are real.",
+            "body": "I'm sceptical by nature but I just bought them because I kept seeing them. This is different. My thighs feel more taut than they've felt from clean eating alone."
+          }
+        },
+        "rv3": {
+          "type": "review",
+          "settings": {
+            "name": "Hannah W.",
+            "variant": "Size: L · Colour: Espresso",
+            "title": "The lightness in my legs is unreal.",
+            "body": "By the end of a normal day my legs used to feel heavy and tired. Within a week of wearing these daily that heavy feeling was just gone. Two months in and the texture on the backs of my thighs is visibly smoother. I've already ordered a second pair so I never have a day without them."
+          }
+        }
       },
-      "block_order": ["rv1", "rv2", "rv3"],
-      "settings": { "score": "4.8", "count_text": "Based on 471 reviews", "show_write": false }
+      "block_order": [
+        "rv1",
+        "rv2",
+        "rv3"
+      ],
+      "settings": {
+        "score": "4.8",
+        "count_text": "Based on 471 reviews",
+        "show_write": false,
+        "write_label": "Write a Review",
+        "write_url": ""
+      }
     },
     "sticky": {
       "type": "veloura-sticky-bar",
-      "settings": { "price": "£44.99", "cta_label": "Start My Transformation" }
+      "settings": {
+        "price": "£44.99",
+        "cta_label": "Start My Transformation"
+      }
     }
   },
-  "order": ["main", "mechanism", "faq", "transformation", "journey", "reviews", "sticky"]
+  "order": [
+    "main",
+    "mechanism",
+    "faq",
+    "transformation",
+    "journey",
+    "reviews",
+    "sticky"
+  ]
 }
