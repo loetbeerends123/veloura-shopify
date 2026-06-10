@@ -1,4 +1,4 @@
-{%- comment -%} Veloura — Home Hero (PRD §1.1): full-bleed product photo, overlaid copy, soft left fade {%- endcomment -%}
+{%- comment -%} Veloura — Home Hero (PRD §1.1): product photo contained in-section, left→right fade {%- endcomment -%}
 {%- liquid
   if section.settings.image != blank
     assign hero_src = section.settings.image | image_url: width: 2400
@@ -8,7 +8,7 @@
     assign hero_alt = 'Model wearing Veloura anti-cellulite leggings'
   endif
 -%}
-<section class="v-hero" data-hero-overlay>
+<section class="v-hero">
   <img class="v-hero__img" src="{{ hero_src }}" alt="{{ hero_alt | escape }}" fetchpriority="high">
   <div class="v-hero__fade"></div>
 
@@ -31,46 +31,55 @@
 </section>
 
 {% stylesheet %}
-.v-hero { position: relative; overflow: hidden; background: var(--v-canvas); isolation: isolate; }
+/* Image is clipped strictly to the hero; the section defines its own height.
+   The hero is a normal flow section, so it sits below the header (no overlap). */
+.v-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--v-canvas);
+  border-bottom: 1px solid var(--v-border);
+  isolation: isolate;
+}
 .v-hero__img {
   position: absolute; inset: 0; z-index: -2;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: 60% 40%;
 }
-/* Soft canvas fade on the LEFT only — copy stays readable, product stays visible */
+/* Left -> right fade into the canvas colour for strong text contrast */
 .v-hero__fade {
   position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(to right,
-    var(--v-canvas) 0%,
-    rgba(250, 246, 244, 0.86) 16%,
-    rgba(250, 246, 244, 0.4) 32%,
-    transparent 48%);
+  background: linear-gradient(
+    to right,
+    rgba(250, 246, 244, 0.95) 0%,
+    rgba(250, 246, 244, 0.85) 25%,
+    rgba(250, 246, 244, 0.40) 50%,
+    rgba(250, 246, 244, 0) 75%
+  );
 }
-.v-hero__inner { display: flex; align-items: center; min-height: min(80vh, 680px); }
-.v-hero__copy { max-width: 430px; padding-block: 64px; }
+.v-hero__inner { display: flex; align-items: center; min-height: min(78vh, 660px); }
+.v-hero__copy { max-width: 440px; padding-block: 64px; }
 .v-hero__title { margin: 0 0 20px; }
 .v-hero__sub { color: var(--v-muted); font-size: 1.0625rem; line-height: 1.7; max-width: 340px; margin: 0 0 28px; }
 .v-hero__cta { align-self: flex-start; }
 
-/* Desktop: pull the hero up under a transparent header so the photo reaches into it */
-@media (min-width: 990px) {
-  .has-hero-overlay #MainContent > .shopify-section:first-child { margin-top: calc(-1 * var(--header-height, 84px)); }
-  .has-hero-overlay .header-wrapper { background: transparent !important; border-bottom: 0 !important; }
-  .has-hero-overlay .header-wrapper.scrolled-past-header { background: var(--v-canvas) !important; box-shadow: var(--v-shadow-card); }
-  .v-hero__inner { padding-top: var(--header-height, 84px); }
+/* Tablet */
+@media (max-width: 989px) {
+  .v-hero__img { object-position: 62% 40%; }
+  .v-hero__inner { min-height: 64vh; }
+  .v-hero__copy { max-width: 60%; }
 }
 
-/* Mobile: taller photo, copy overlaid bottom-left with a bottom fade for legibility */
-@media (max-width: 989px) {
+/* Mobile: copy overlaid lower-left; add a bottom fade so text stays readable */
+@media (max-width: 749px) {
   .v-hero__img { object-position: 64% 38%; }
   .v-hero__fade {
     background:
-      linear-gradient(to top, var(--v-canvas) 4%, rgba(250,246,244,0.6) 26%, transparent 55%),
-      linear-gradient(to right, var(--v-canvas) 0%, rgba(250,246,244,0.35) 40%, transparent 70%);
+      linear-gradient(to top, var(--v-canvas) 4%, rgba(250, 246, 244, 0.6) 28%, transparent 56%),
+      linear-gradient(to right, rgba(250, 246, 244, 0.95) 0%, rgba(250, 246, 244, 0.5) 45%, rgba(250, 246, 244, 0) 80%);
   }
-  .v-hero__inner { align-items: flex-end; min-height: 76vh; }
-  .v-hero__copy { padding-block: 32px 40px; max-width: none; }
+  .v-hero__inner { align-items: flex-end; min-height: 72vh; }
+  .v-hero__copy { max-width: none; padding-block: 32px 40px; }
   .v-hero__sub { max-width: none; }
 }
 {% endstylesheet %}
