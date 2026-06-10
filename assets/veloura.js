@@ -219,9 +219,17 @@
     });
   }
 
+  /* Enable transparent-header overlay when a full-bleed hero is present */
+  function initHeroOverlay() {
+    if (document.querySelector('[data-hero-overlay]')) {
+      document.body.classList.add('has-hero-overlay');
+    }
+  }
+
   /* ---- Boot --------------------------------------------------------------- */
   ready(function () {
     setHeaderHeight();
+    initHeroOverlay();
     relabelNav();
     initStickyAtc();
     document.querySelectorAll('[data-before-after]').forEach(initBeforeAfter);
