@@ -3,6 +3,8 @@
   Sticky image gallery + buy box with bundle selector.
   Add-to-cart uses Dawn's <product-form> so the cart drawer works.
 {%- endcomment -%}
+{%- comment -%} Dawn's product-form custom element powers AJAX add-to-cart + drawer open {%- endcomment -%}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- liquid
   assign product_form_id = 'product-form-' | append: section.id
   assign current_variant = product.selected_or_first_available_variant

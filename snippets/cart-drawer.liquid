@@ -10,6 +10,8 @@
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+{%- comment -%} powers the "Add to Order" upsell button inside the drawer {%- endcomment -%}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 <style>
   .drawer {
@@ -565,9 +567,19 @@
             {%- endif -%}
           </div>
 
-          <div class="totals" role="status">
-            <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+          <div class="v-drawer-totals">
+            <div class="v-drawer-totals__row">
+              <span>Subtotal</span>
+              <span class="v-drawer-totals__val">{{ cart.items_subtotal_price | money }}</span>
+            </div>
+            <div class="v-drawer-totals__row v-drawer-totals__row--muted">
+              <span>Shipping</span>
+              <span><em>Calculated at checkout</em></span>
+            </div>
+            <div class="v-drawer-totals__row v-drawer-totals__row--total" role="status">
+              <span>Total</span>
+              <span class="v-drawer-totals__val">{{ cart.total_price | money_with_currency }}</span>
+            </div>
           </div>
 
           <small class="tax-note caption-large rte">
@@ -624,8 +636,13 @@
               disabled
             {% endif %}
           >
-            {{ 'sections.cart.checkout' | t }}
+            {% render 'veloura-icon', name: 'lock', size: 16 %} Secure Checkout
           </button>
+        </div>
+
+        <div class="v-trust v-drawer-trust">
+          <span>{% render 'veloura-icon', name: 'shield', size: 14 %} 30-Day Clinical Trial</span>
+          <span>{% render 'veloura-icon', name: 'lock', size: 14 %} Encrypted Payment</span>
         </div>
       </div>
     </div>

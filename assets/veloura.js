@@ -102,7 +102,10 @@
      ======================================================================== */
   function initBundle(root) {
     var tiers = Array.prototype.slice.call(root.querySelectorAll('.v-tier'));
-    var qtyInput = root.querySelector('[data-bundle-qty]');
+    // The add-to-cart quantity input lives in the buy box, outside [data-bundle],
+    // so search the enclosing section/page rather than just this element.
+    var scope = root.closest('.v-pdp, .shopify-section') || document;
+    var qtyInput = scope.querySelector('[data-bundle-qty]');
     var priceOut = document.querySelectorAll('[data-bundle-price]');
 
     function select(tier) {
@@ -194,9 +197,32 @@
     if (header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
   }
 
+  /* ========================================================================
+     7. Relabel the "Catalog" header link -> "Veloura Cellulite Leggings"
+     (Menu text is store data; this keeps the visible label on-brand.)
+     ======================================================================== */
+  function relabelNav() {
+    var targets = document.querySelectorAll(
+      '.header__inline-menu a, .header__inline-menu summary span, .menu-drawer__menu a, .menu-drawer__menu summary span'
+    );
+    targets.forEach(function (el) {
+      var t = (el.textContent || '').trim();
+      if (t.toLowerCase() === 'catalog') {
+        // replace only the text node, preserve any child markup/icons
+        el.childNodes.forEach(function (n) {
+          if (n.nodeType === 3 && n.textContent.trim()) n.textContent = 'Veloura Cellulite Leggings';
+        });
+        if (!el.querySelector('*') && el.textContent.trim() !== 'Veloura Cellulite Leggings') {
+          el.textContent = 'Veloura Cellulite Leggings';
+        }
+      }
+    });
+  }
+
   /* ---- Boot --------------------------------------------------------------- */
   ready(function () {
     setHeaderHeight();
+    relabelNav();
     initStickyAtc();
     document.querySelectorAll('[data-before-after]').forEach(initBeforeAfter);
     document.querySelectorAll('[data-faq]').forEach(initFaq);

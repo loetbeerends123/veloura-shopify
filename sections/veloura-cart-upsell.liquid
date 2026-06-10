@@ -23,6 +23,7 @@
   assign up_variant = up.selected_or_first_available_variant
 -%}
 {%- if cart != empty -%}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <section class="v-section v-cart-upsell">
   <div class="v-container" style="max-width:1100px;">
     <h2 class="v-h3" style="font-size:1.75rem;margin-bottom:18px;">{{ section.settings.heading }}</h2>

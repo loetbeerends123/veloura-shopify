@@ -477,22 +477,51 @@ body {
 .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; }
 .v-drawer-upsell__added { display: inline-flex; align-items: center; gap: 6px; color: var(--v-green); font-size: 0.75rem; font-weight: 500; }
 
+/* Drawer totals (Subtotal / Shipping / Total) + trust row */
+.v-drawer-totals { display: grid; gap: 10px; padding: 4px 0 8px; }
+.v-drawer-totals__row { display: flex; align-items: baseline; justify-content: space-between; font-size: 0.9375rem; color: var(--v-text); }
+.v-drawer-totals__row--muted { color: var(--v-muted); font-size: 0.875rem; }
+.v-drawer-totals__row--total { padding-top: 12px; border-top: 1px solid var(--v-border); }
+.v-drawer-totals__row--total span:first-child { font-family: var(--v-font-display); font-size: 1.375rem; }
+.v-drawer-totals__row--total .v-drawer-totals__val { font-family: var(--v-font-display); font-size: 1.375rem; }
+.v-drawer-totals__val { font-weight: 600; }
+.v-drawer-trust { margin-top: 14px; }
+/* Make Dawn's drawer checkout button match the green pill CTA with icon */
+.cart-drawer .cart__checkout-button { display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--v-radius-lg); background: var(--v-green); color: #fff; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+.cart-drawer .cart__checkout-button:hover { background: var(--v-green-hover); }
+.cart-drawer .cart__checkout-button svg { color: #fff; }
+
 /* ============================================================
    Header — refined VELOURA wordmark + hide account/search (no account)
    ============================================================ */
-.header__heading-link .h2,
-.header__heading-link h1,
-.header__heading-link h2 {
-  font-family: var(--v-font-display) !important;
+.veloura-logo { display: inline-flex; align-items: center; gap: 10px; color: var(--v-text); }
+.veloura-logo__mark { color: var(--v-rust); flex: none; }
+.veloura-logo__text { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+.veloura-logo__word {
+  font-family: var(--v-font-display);
   font-weight: 500;
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  letter-spacing: 0.34em;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  text-indent: 0.34em; /* optical centering for tracking */
+  text-indent: 0.3em;
   color: var(--v-text);
 }
+.veloura-logo__tag {
+  font-family: var(--v-font-body);
+  font-weight: 500;
+  font-size: 0.5rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  text-indent: 0.32em;
+  color: var(--v-muted);
+  margin-top: 5px;
+}
 .header__heading-link { transition: opacity 0.2s ease; }
-.header__heading-link:hover { opacity: 0.7; }
+.header__heading-link:hover { opacity: 0.72; }
+@media (max-width: 749px) {
+  .veloura-logo__tag { display: none; }
+  .veloura-logo { gap: 7px; }
+}
 
 /* Remove account + search icons (PRD store has no accounts/search in use) */
 .header__icon--account,
