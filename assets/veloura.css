@@ -513,17 +513,19 @@ body {
    Header — refined VELOURA wordmark + hide account/search (no account)
    ============================================================ */
 .veloura-logo { display: inline-flex; align-items: center; }
-/* Opaque cream-background PNG — multiply drops the light bg into the cream header */
+/* Transparent, trimmed PNG lockup — sized by height (wide ~5.3:1 aspect) */
 .veloura-logo__img {
   display: block;
-  height: 56px;
+  height: 84px;
   width: auto;
-  mix-blend-mode: multiply;
 }
 .header__heading-link { transition: opacity 0.2s ease; }
 .header__heading-link:hover { opacity: 0.72; }
 @media (max-width: 749px) {
-  .veloura-logo__img { height: 44px; }
+  .veloura-logo__img { height: 46px; }
+}
+@media (max-width: 480px) {
+  .veloura-logo__img { height: 40px; }
 }
 
 /* Remove account + search icons (PRD store has no accounts/search in use) */

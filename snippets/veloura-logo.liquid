@@ -1,15 +1,15 @@
 {%- comment -%}
   Veloura logo lockup — emblem (V monogram) + VELOURA wordmark.
   Rendered as an image (assets/veloura-logo.png) in the header in place of
-  the plain shop name. The PNG has a light cream background; CSS uses
-  mix-blend-mode: multiply so it blends into the cream header.
+  the plain shop name. The PNG has a transparent background (keyed + trimmed),
+  so it sits cleanly on any header colour. Sized via CSS (.veloura-logo__img).
 {%- endcomment -%}
 <span class="veloura-logo">
   <img
     class="veloura-logo__img"
     src="{{ 'veloura-logo.png' | asset_url }}"
     alt="{{ shop.name | default: 'Veloura' | escape }}"
-    width="1774"
-    height="887"
+    width="1283"
+    height="242"
     loading="eager">
 </span>
