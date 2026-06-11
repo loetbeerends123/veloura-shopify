@@ -553,7 +553,7 @@ body {
   font-size: 1.1875rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: var(--v-text);
+  color: #877263;   /* matches the header logo ink (taupe) */
 }
 .header__menu-item:hover,
 .header__menu-item:hover span,
