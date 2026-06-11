@@ -512,7 +512,7 @@ body {
 /* ============================================================
    Header — refined VELOURA wordmark + hide account/search (no account)
    ============================================================ */
-.veloura-logo { display: inline-flex; align-items: center; margin-left: -10px; }
+.veloura-logo { display: inline-flex; align-items: center; }
 /* Transparent, trimmed PNG lockup — sized by height (wide ~5.3:1 aspect) */
 .veloura-logo__img {
   display: block;
@@ -523,7 +523,6 @@ body {
 .header__heading-link { display: inline-flex; align-items: center; padding-block: 0; transition: opacity 0.2s ease; }
 .header__heading-link:hover { opacity: 0.72; }
 @media (max-width: 749px) {
-  .veloura-logo { margin-left: -6px; }
   .veloura-logo__img { height: 40px; }
 }
 @media (max-width: 480px) {
