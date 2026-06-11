@@ -12,27 +12,15 @@
   "type": "header",
   "sections": {
     "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ],
+      "type": "veloura-announcement",
       "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
-        "enable_country_selector": false,
-        "enable_language_selector": false
+        "message_1": "❤️ Trusted by customers – Rated 4.8/5",
+        "message_2": "✅ Risk-Free with Our 30-Day Money-Back Guarantee!",
+        "message_3": "🎁 Buy 1, Get 1 Free – Limited Time Only!",
+        "separator": "◆",
+        "speed": 24,
+        "bg_color": "#C0392B",
+        "text_color": "#FFFFFF"
       }
     },
     "header": {

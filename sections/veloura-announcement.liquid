@@ -1,0 +1,105 @@
+{%- comment -%}
+  Veloura — scrolling announcement bar (continuous marquee).
+  Replaces Dawn's rotating announcement bar in the header group. Renders the
+  messages in a seamless horizontal scroll. Two identical groups sit back-to-back
+  and the track translates by -50% so the loop is seamless. Pauses on hover and
+  for reduced-motion users.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign messages = ''
+  if s.message_1 != blank
+    assign messages = messages | append: s.message_1 | append: '||'
+  endif
+  if s.message_2 != blank
+    assign messages = messages | append: s.message_2 | append: '||'
+  endif
+  if s.message_3 != blank
+    assign messages = messages | append: s.message_3 | append: '||'
+  endif
+  assign messages = messages | split: '||'
+-%}
+{%- if messages.size > 0 -%}
+  <div
+    class="v-announce"
+    style="--v-announce-bg: {{ s.bg_color }}; --v-announce-fg: {{ s.text_color }}; --v-announce-speed: {{ s.speed }}s;"
+    role="region"
+    aria-label="Announcements"
+  >
+    <div class="v-announce__viewport">
+      <div class="v-announce__track">
+        {%- for copy in (1..2) -%}
+          <div class="v-announce__group" {% unless forloop.first %}aria-hidden="true"{% endunless %}>
+            {%- for msg in messages -%}
+              <span class="v-announce__item">{{ msg }}</span>
+              <span class="v-announce__sep" aria-hidden="true">{{ s.separator | default: '◆' }}</span>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+.v-announce {
+  background: var(--v-announce-bg, #C0392B);
+  color: var(--v-announce-fg, #ffffff);
+  overflow: hidden;
+}
+.v-announce__viewport { overflow: hidden; }
+.v-announce__track {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  will-change: transform;
+  animation: v-announce-scroll var(--v-announce-speed, 24s) linear infinite;
+}
+.v-announce:hover .v-announce__track { animation-play-state: paused; }
+.v-announce__group { display: inline-flex; align-items: center; }
+.v-announce__item {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 0;
+  font-family: var(--v-font-body);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  color: inherit;
+}
+.v-announce__sep {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 26px;
+  font-size: 0.5rem;
+  opacity: 0.6;
+  color: inherit;
+}
+@keyframes v-announce-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v-announce__track { animation: none; transform: none; }
+  .v-announce__viewport { overflow-x: auto; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Announcement",
+  "tag": "section",
+  "class": "veloura-announcement-section",
+  "settings": [
+    { "type": "paragraph", "content": "A continuous scrolling (marquee) announcement bar. Leave a message blank to hide it." },
+    { "type": "text", "id": "message_1", "label": "Message 1", "default": "❤️ Trusted by customers – Rated 4.8/5" },
+    { "type": "text", "id": "message_2", "label": "Message 2", "default": "✅ Risk-Free with Our 30-Day Money-Back Guarantee!" },
+    { "type": "text", "id": "message_3", "label": "Message 3", "default": "🎁 Buy 1, Get 1 Free – Limited Time Only!" },
+    { "type": "text", "id": "separator", "label": "Separator", "default": "◆" },
+    { "type": "range", "id": "speed", "label": "Scroll duration (seconds)", "min": 8, "max": 60, "step": 1, "unit": "s", "default": 24 },
+    { "type": "color", "id": "bg_color", "label": "Background colour", "default": "#C0392B" },
+    { "type": "color", "id": "text_color", "label": "Text colour", "default": "#FFFFFF" }
+  ],
+  "presets": [{ "name": "Veloura Announcement" }]
+}
+{% endschema %}
