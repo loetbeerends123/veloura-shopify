@@ -545,6 +545,21 @@ body {
   .veloura-logo__img { height: 31px; }
 }
 
+/* Nav links — bold, premium uppercase label style */
+.header__menu-item,
+.header__menu-item span {
+  font-family: var(--v-font-body);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--v-text);
+}
+.header__menu-item:hover,
+.header__menu-item:hover span,
+.header__menu-item:hover .header__active-menu-item { color: var(--v-rust); }
+.header__active-menu-item { color: var(--v-rust); }
+
 /* Remove account + search icons (PRD store has no accounts/search in use) */
 .header__icon--account,
 .header__icon--search,
