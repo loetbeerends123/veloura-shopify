@@ -550,8 +550,8 @@ body {
 .header__menu-item span {
   font-family: var(--v-font-body);
   font-weight: 700;
-  font-size: 1.0625rem;
-  letter-spacing: 0.12em;
+  font-size: 1.1875rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--v-text);
 }
