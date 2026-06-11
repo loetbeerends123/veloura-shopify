@@ -198,7 +198,7 @@
   }
 
   /* ========================================================================
-     7. Relabel the "Catalog" header link -> "Veloura Cellulite Leggings"
+     7. Relabel the "Catalog" header link -> "Cellulite Leggings"
      (Menu text is store data; this keeps the visible label on-brand.)
      ======================================================================== */
   function relabelNav() {
@@ -210,10 +210,10 @@
       if (t.toLowerCase() === 'catalog') {
         // replace only the text node, preserve any child markup/icons
         el.childNodes.forEach(function (n) {
-          if (n.nodeType === 3 && n.textContent.trim()) n.textContent = 'Veloura Cellulite Leggings';
+          if (n.nodeType === 3 && n.textContent.trim()) n.textContent = 'Cellulite Leggings';
         });
-        if (!el.querySelector('*') && el.textContent.trim() !== 'Veloura Cellulite Leggings') {
-          el.textContent = 'Veloura Cellulite Leggings';
+        if (!el.querySelector('*') && el.textContent.trim() !== 'Cellulite Leggings') {
+          el.textContent = 'Cellulite Leggings';
         }
       }
     });
