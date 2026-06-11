@@ -512,33 +512,18 @@ body {
 /* ============================================================
    Header — refined VELOURA wordmark + hide account/search (no account)
    ============================================================ */
-.veloura-logo { display: inline-flex; align-items: center; gap: 10px; color: var(--v-text); }
-.veloura-logo__mark { color: var(--v-rust); flex: none; }
-.veloura-logo__text { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1; }
-.veloura-logo__word {
-  font-family: var(--v-font-display);
-  font-weight: 500;
-  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  text-indent: 0.3em;
-  color: var(--v-text);
-}
-.veloura-logo__tag {
-  font-family: var(--v-font-body);
-  font-weight: 500;
-  font-size: 0.5rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  text-indent: 0.32em;
-  color: var(--v-muted);
-  margin-top: 5px;
+.veloura-logo { display: inline-flex; align-items: center; }
+/* Opaque cream-background PNG — multiply drops the light bg into the cream header */
+.veloura-logo__img {
+  display: block;
+  height: 56px;
+  width: auto;
+  mix-blend-mode: multiply;
 }
 .header__heading-link { transition: opacity 0.2s ease; }
 .header__heading-link:hover { opacity: 0.72; }
 @media (max-width: 749px) {
-  .veloura-logo__tag { display: none; }
-  .veloura-logo { gap: 7px; }
+  .veloura-logo__img { height: 44px; }
 }
 
 /* Remove account + search icons (PRD store has no accounts/search in use) */
