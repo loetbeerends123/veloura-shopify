@@ -520,8 +520,17 @@ body {
   width: auto;
 }
 .header__heading { margin: 0; }
-.header__heading-link { display: inline-flex; align-items: center; padding-block: 0; transition: opacity 0.2s ease; }
+.header__heading-link { display: inline-flex; align-items: center; justify-content: center; padding-block: 0; transition: opacity 0.2s ease; }
 .header__heading-link:hover { opacity: 0.72; }
+/* Keep the centred logo dead-centre on the page: cap the side columns so the
+   wider nav can't expand its grid track and shove the 1fr|auto|1fr off balance. */
+@media (min-width: 990px) {
+  .header.header--middle-center { grid-template-columns: 1fr auto 1fr; }
+  .header.header--middle-center .header__heading { justify-self: center; }
+  .header.header--middle-center .header__inline-menu,
+  .header.header--middle-center .header__icons { min-width: 0; }
+  .header.header--middle-center .header__icons { justify-self: end; }
+}
 @media (max-width: 749px) {
   .veloura-logo__img { height: 40px; }
 }
