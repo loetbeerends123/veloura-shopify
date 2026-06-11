@@ -11,7 +11,7 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
+    "veloura_announcement": {
       "type": "veloura-announcement",
       "settings": {
         "message_1": "❤️ Trusted by customers – Rated 4.8/5",
@@ -44,7 +44,7 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "veloura_announcement",
     "header"
   ]
 }
