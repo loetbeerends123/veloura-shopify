@@ -8,6 +8,8 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
+      {%- assign nav_title = link.title -%}
+      {%- if link.title == 'Catalog' -%}{%- assign nav_title = 'Cellulite Leggings' -%}{%- endif -%}
       <li>
         {%- if link.links != blank -%}
           <header-menu>
@@ -21,7 +23,7 @@
                     class="header__active-menu-item"
                   {% endif %}
                 >
-                  {{- link.title | escape -}}
+                  {{- nav_title | escape -}}
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
@@ -93,7 +95,7 @@
                 class="header__active-menu-item"
               {% endif %}
             >
-              {{- link.title | escape -}}
+              {{- nav_title | escape -}}
             </span>
           </a>
         {%- endif -%}
