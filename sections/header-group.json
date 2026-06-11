@@ -19,7 +19,7 @@
         "message_3": "Buy 1, Get 1 Free – Limited Time Only!",
         "separator": "◆",
         "repeats": 4,
-        "speed": 36,
+        "speed": 50,
         "bg_color": "#5E8C4E",
         "text_color": "#FFFFFF"
       }

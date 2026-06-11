@@ -66,11 +66,12 @@
 .v-announce__item {
   display: inline-flex;
   align-items: center;
-  padding: 12px 0;
+  padding: 8px 0;
   font-family: var(--v-font-body);
   font-weight: 600;
   font-size: 1.125rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: inherit;
 }
 .v-announce__sep {
@@ -103,7 +104,7 @@
     { "type": "text", "id": "message_3", "label": "Message 3", "default": "Buy 1, Get 1 Free – Limited Time Only!" },
     { "type": "text", "id": "separator", "label": "Separator (leave blank for none)", "default": "◆" },
     { "type": "range", "id": "repeats", "label": "Repeats per loop (fills the bar)", "min": 1, "max": 8, "step": 1, "default": 4 },
-    { "type": "range", "id": "speed", "label": "Scroll duration (seconds)", "min": 8, "max": 90, "step": 1, "unit": "s", "default": 36 },
+    { "type": "range", "id": "speed", "label": "Scroll duration (seconds)", "min": 8, "max": 90, "step": 1, "unit": "s", "default": 50 },
     { "type": "color", "id": "bg_color", "label": "Background colour", "default": "#5E8C4E" },
     { "type": "color", "id": "text_color", "label": "Text colour", "default": "#FFFFFF" }
   ],
