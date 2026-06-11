@@ -545,20 +545,21 @@ body {
   .veloura-logo__img { height: 31px; }
 }
 
-/* Nav links — bold, premium uppercase label style */
-.header__menu-item,
-.header__menu-item span {
+/* Nav links — bold, premium uppercase labels in the logo's taupe ink.
+   Scoped under .header__inline-menu to outrank Dawn's .link colour. */
+.header__inline-menu .header__menu-item,
+.header__inline-menu .header__menu-item span,
+.header__inline-menu .header__active-menu-item {
   font-family: var(--v-font-body);
   font-weight: 700;
   font-size: 1.1875rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
-  color: #877263;   /* matches the header logo ink (taupe) */
+  color: #7e6858;   /* sampled from the logo lettering */
 }
-.header__menu-item:hover,
-.header__menu-item:hover span,
-.header__menu-item:hover .header__active-menu-item { color: var(--v-rust); }
-.header__active-menu-item { color: var(--v-rust); }
+.header__inline-menu .header__menu-item:hover,
+.header__inline-menu .header__menu-item:hover span,
+.header__inline-menu .header__menu-item:hover .header__active-menu-item { color: #5f4a3b; }
 
 /* Remove account + search icons (PRD store has no accounts/search in use) */
 .header__icon--account,
