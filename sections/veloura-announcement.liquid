@@ -28,11 +28,18 @@
   >
     <div class="v-announce__viewport">
       <div class="v-announce__track">
+        {%- comment -%} Two identical groups; each repeats the messages enough times to
+          overflow the viewport so the bar always stays full. Track translates -50%
+          (exactly one group) for a seamless loop. {%- endcomment -%}
         {%- for copy in (1..2) -%}
           <div class="v-announce__group" {% unless forloop.first %}aria-hidden="true"{% endunless %}>
-            {%- for msg in messages -%}
-              <span class="v-announce__item">{{ msg }}</span>
-              <span class="v-announce__sep" aria-hidden="true">{{ s.separator | default: '◆' }}</span>
+            {%- for r in (1..s.repeats) -%}
+              {%- for msg in messages -%}
+                <span class="v-announce__item">{{ msg }}</span>
+                {%- if s.separator != blank -%}
+                  <span class="v-announce__sep" aria-hidden="true">{{ s.separator }}</span>
+                {%- endif -%}
+              {%- endfor -%}
             {%- endfor -%}
           </div>
         {%- endfor -%}
@@ -60,17 +67,17 @@
 .v-announce__item {
   display: inline-flex;
   align-items: center;
-  padding: 11px 0;
+  padding: 12px 0;
   font-family: var(--v-font-body);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
   letter-spacing: 0.03em;
   color: inherit;
 }
 .v-announce__sep {
   display: inline-flex;
   align-items: center;
-  padding: 0 26px;
+  padding: 0 52px;
   font-size: 0.5rem;
   opacity: 0.6;
   color: inherit;
@@ -92,11 +99,12 @@
   "class": "veloura-announcement-section",
   "settings": [
     { "type": "paragraph", "content": "A continuous scrolling (marquee) announcement bar. Leave a message blank to hide it." },
-    { "type": "text", "id": "message_1", "label": "Message 1", "default": "❤️ Trusted by customers – Rated 4.8/5" },
-    { "type": "text", "id": "message_2", "label": "Message 2", "default": "✅ Risk-Free with Our 30-Day Money-Back Guarantee!" },
-    { "type": "text", "id": "message_3", "label": "Message 3", "default": "🎁 Buy 1, Get 1 Free – Limited Time Only!" },
-    { "type": "text", "id": "separator", "label": "Separator", "default": "◆" },
-    { "type": "range", "id": "speed", "label": "Scroll duration (seconds)", "min": 8, "max": 60, "step": 1, "unit": "s", "default": 24 },
+    { "type": "text", "id": "message_1", "label": "Message 1", "default": "Trusted by customers – Rated 4.8/5" },
+    { "type": "text", "id": "message_2", "label": "Message 2", "default": "Risk-Free with Our 30-Day Money-Back Guarantee!" },
+    { "type": "text", "id": "message_3", "label": "Message 3", "default": "Buy 1, Get 1 Free – Limited Time Only!" },
+    { "type": "text", "id": "separator", "label": "Separator (leave blank for none)", "default": "◆" },
+    { "type": "range", "id": "repeats", "label": "Repeats per loop (fills the bar)", "min": 1, "max": 8, "step": 1, "default": 4 },
+    { "type": "range", "id": "speed", "label": "Scroll duration (seconds)", "min": 8, "max": 90, "step": 1, "unit": "s", "default": 36 },
     { "type": "color", "id": "bg_color", "label": "Background colour", "default": "#C0392B" },
     { "type": "color", "id": "text_color", "label": "Text colour", "default": "#FFFFFF" }
   ],
