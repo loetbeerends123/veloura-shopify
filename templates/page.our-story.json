@@ -12,8 +12,8 @@
       "settings": {
         "heading_rust": true,
         "heading": "The Genesis",
-        "paragraph_1": "Veloura was born at the intersection of rigorous clinical dermatology and high-performance textile engineering. We observed a fundamental flaw in the traditional approach to cellulite and skin texture: the industry treated it as a purely aesthetic fat issue, masking it with restrictive compression rather than addressing the physiological root cause.",
-        "paragraph_2": "Through years of research, we isolated the true mechanism — stagnant microcirculation and lymphatic fluid. This realisation catalysed the development of our proprietary Velo-Lymph™ technology, shifting the paradigm from passive shapewear to active, therapeutic apparel.",
+        "paragraph_1": "Veloura was born at the intersection of <strong>rigorous clinical dermatology</strong> and high-performance textile engineering. We observed a fundamental flaw in the traditional approach to cellulite and skin texture: the industry treated it as a purely aesthetic fat issue, <strong>masking it rather than addressing the physiological root cause</strong>.",
+        "paragraph_2": "Through years of research, we isolated the true mechanism — <strong>stagnant microcirculation and lymphatic fluid</strong>. This realisation catalysed the development of our proprietary Velo-Lymph™ technology, shifting the paradigm from passive shapewear to <strong>active, therapeutic apparel</strong>.",
         "pill_label": "Clinically Designed"
       }
     },
@@ -42,7 +42,7 @@
       "settings": {
         "eyebrow": "Velo-Lymph™ Technology",
         "heading": "The Science of Stimulation",
-        "body": "Our proprietary fabric maps over 47+ micro-pressure points directly into the textile structure. Each point is meticulously calculated to trigger a specific lymphatic pathway with every step you take."
+        "body": "Our proprietary fabric maps over <strong>47+ micro-pressure points</strong> directly into the textile structure. Each point is meticulously calculated to <strong>trigger a specific lymphatic pathway with every step you take</strong>."
       }
     },
     "founder": {

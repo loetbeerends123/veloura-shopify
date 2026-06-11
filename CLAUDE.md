@@ -77,11 +77,21 @@ shows pricing, but `BOGO-VELO` (2nd 100% off) and `3PACK-VELO` (fixed £65) must
 }
 ```
 
-- **Type:** Cormorant Garamond (serif, headings: H1 52–72, H2 36–44, H3 700) + DM Sans (body 15–16,
-  eyebrows/labels ALL CAPS 10–14 with letter-spacing). Google Fonts — Cormorant 400/700 (+italics),
-  DM Sans 400/500/600. *(Stitch exports use EB Garamond — ignore; PRD says Cormorant.)*
+- **Type (current, supersedes PRD §2):** **Playfair Display** (serif headings) + **Inter**
+  (body) — user-approved readability swap on 2026-06-11, replacing the PRD's Cormorant + DM Sans.
+  Google Fonts in `layout/theme.liquid`: Playfair Display 400–800 (+italics), Inter 400/500/600/700.
+  Tokens live in `--v-font-display` / `--v-font-body` (`assets/veloura.css`).
+- **Readability & emphasis (current):** body reading copy darkened (`--v-muted` is now `#5F4A3B`,
+  not the PRD `#8A7060`) for contrast; base `.v-body` is 1.125rem. Important phrases are wrapped
+  in inline `<strong>` in section copy / `*.json` template settings — CSS renders
+  `p strong, li strong, .v-em` as **bold + rust** (Font.png look). Liquid does not escape
+  `{{ setting }}`, so `<strong>` in settings renders as markup.
+- **Urgency cues (current):** stronger conversion push — hero `.v-urgency` (scarcity, red),
+  PDP scarcity + `.v-guarantee` (60-day money-back), cart-upsell reassurance line. Classes
+  `.v-urgency` / `.v-guarantee` in `veloura.css`; uses `--v-scarcity` / `--v-green`.
 - **Breakpoints:** mobile <640, tablet 640–1023, desktop ≥1024.
-- **Palette rule:** no yellow/orange/bright anywhere. Green = primary CTAs only; rust = accents.
+- **Palette rule:** no yellow/orange/bright anywhere. Green = primary CTAs only; rust = accents
+  (now also used for bold inline emphasis on body copy).
 
 ## Key JS behaviors (PRD §10, §12)
 

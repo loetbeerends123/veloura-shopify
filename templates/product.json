@@ -13,13 +13,14 @@
       "type": "veloura-product",
       "settings": {
         "overline": "",
-        "hero_claim": "Reclaim your confidence. Smooth, sculpted legs in 8 weeks.",
-        "body": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to transform your skin while you live your life.",
-        "bullet_1": "Not shapewear. Not compression.",
-        "bullet_2": "Works while you live. Zero effort.",
+        "hero_claim": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>",
+        "body": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to <strong>transform your skin while you live your life</strong>.",
+        "bullet_1": "<strong>Not shapewear. Not compression.</strong>",
+        "bullet_2": "<strong>Works while you live.</strong> Zero effort.",
         "bundle_label": "Bundle & Save",
         "atc_label": "Add to Cart",
         "scarcity": "Only 34 left in stock now",
+        "guarantee": "60-day money-back guarantee — feel the difference or your money back",
         "colors": "Slate,Black,Espresso",
         "sizes": "XS,S,M,L,XL",
         "t1_label": "1 Legging",
@@ -49,8 +50,8 @@
         "blush": true,
         "eyebrow": "",
         "heading": "You Didn't Fail. You Were Treating the Wrong Problem.",
-        "paragraph_1": "Cellulite is a circulation issue, not a fat issue. The proprietary weave stimulates micro-circulation to smooth skin from within.",
-        "paragraph_2": "Your body has a remarkable self-repair system — but it needs movement to activate it. Veloura's 47+ mapped micro-pressure points keep that system running every hour you wear them.",
+        "paragraph_1": "Cellulite is a <strong>circulation issue, not a fat issue</strong>. The proprietary weave stimulates micro-circulation to smooth skin from within.",
+        "paragraph_2": "Your body has a remarkable self-repair system — but it needs movement to activate it. Veloura's <strong>47+ mapped micro-pressure points</strong> keep that system running <strong>every hour you wear them</strong>.",
         "quote": "Micro-compression aids lymphatic drainage more effectively than any topical treatment I've reviewed. The effect is structural, not cosmetic.",
         "quote_attr": "— Dr. Vanessa Cole, MD · Dermatology & Clinical Research"
       }
@@ -122,7 +123,7 @@
         "blush": true,
         "eyebrow": "",
         "heading": "The Transformation You've Been Waiting For.",
-        "body": "Your transformation is structural. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura mechanically restructures the skin's surface from within.",
+        "body": "Your transformation is <strong>structural</strong>. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura <strong>mechanically restructures the skin's surface</strong> from within.",
         "quote": "I cried when I saw these photos side by side.",
         "quote_attr": "Verified Purchase"
       }

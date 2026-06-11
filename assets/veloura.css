@@ -11,7 +11,7 @@
   --v-canvas-secondary: #F5EDE8;
   --v-canvas-dark: #2B1E17;
   --v-text: #1C1009;
-  --v-muted: #8A7060;
+  --v-muted: #5F4A3B;
   --v-rust: #A65B45;
   --v-rust-light: #C97A5A;
   --v-green: #3A7D44;
@@ -25,8 +25,8 @@
   --v-scarcity: #C0392B;
 
   /* ---- Type ---- */
-  --v-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --v-font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --v-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --v-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* ---- Spacing / layout (PRD §2.4) ---- */
   --v-space-xs: 8px;
@@ -73,8 +73,8 @@ body {
   font-family: var(--v-font-display);
   font-weight: 400;
   font-size: clamp(2.75rem, 6vw, 4.5rem);     /* 44 → 72 */
-  line-height: 1.06;
-  letter-spacing: -0.01em;
+  line-height: 1.08;
+  letter-spacing: 0;
   color: var(--v-text);
   margin: 0;
 }
@@ -114,12 +114,30 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.v-body { font-family: var(--v-font-body); font-size: 1.0625rem; line-height: 1.7; }
+.v-body { font-family: var(--v-font-body); font-size: 1.125rem; line-height: 1.7; }
 .v-body-lg { font-size: 1.1875rem; line-height: 1.7; }
 .v-body-sm { font-size: 0.9375rem; line-height: 1.6; }
 .v-muted { color: var(--v-muted); }
 .v-rust-text { color: var(--v-rust); }
 .v-price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.25rem; }
+
+/* Inline emphasis on body copy — bold + rust pull (Font.png style) */
+.v-rich strong, p strong, li strong, .v-em { font-weight: 700; color: var(--v-rust); }
+.v-em--ink { color: var(--v-text); }   /* opt-out: bold but keep ink color */
+/* Don't tint structural <strong> used as labels (e.g. review author names) */
+.v-reviews__who strong { color: inherit; font-weight: 600; }
+
+/* Urgency / risk-reversal microcopy */
+.v-urgency {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--v-font-body); font-weight: 600; font-size: 0.875rem;
+  letter-spacing: 0.01em; color: var(--v-scarcity);
+}
+.v-guarantee {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--v-font-body); font-weight: 600; font-size: 0.875rem;
+  color: var(--v-green);
+}
 
 /* ============================================================
    Layout primitives

@@ -26,6 +26,9 @@
           {{ section.settings.button_label }} {% render 'veloura-icon', name: 'arrow-right', size: 16 %}
         </a>
       {%- endif -%}
+      {%- if section.settings.urgency != blank -%}
+        <p class="v-hero__urgency v-urgency v-reveal" data-delay="5">{{ section.settings.urgency }}</p>
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -44,24 +47,26 @@
   position: absolute; inset: 0; z-index: -2;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 60% 40%;
+  object-position: 65% 40%;
 }
 /* Left -> right fade into the canvas colour for strong text contrast */
 .v-hero__fade {
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(
     to right,
-    rgba(250, 246, 244, 0.95) 0%,
-    rgba(250, 246, 244, 0.85) 25%,
-    rgba(250, 246, 244, 0.40) 50%,
-    rgba(250, 246, 244, 0) 75%
+    rgba(250, 246, 244, 0.98) 0%,
+    rgba(250, 246, 244, 0.95) 22%,
+    rgba(250, 246, 244, 0.70) 45%,
+    rgba(250, 246, 244, 0.15) 70%,
+    rgba(250, 246, 244, 0) 88%
   );
 }
 .v-hero__inner { display: flex; align-items: center; min-height: min(78vh, 660px); }
 .v-hero__copy { max-width: 440px; padding-block: 64px; }
-.v-hero__title { margin: 0 0 20px; }
-.v-hero__sub { color: var(--v-muted); font-size: 1.0625rem; line-height: 1.7; max-width: 340px; margin: 0 0 28px; }
+.v-hero__title { margin: 0 0 20px; text-shadow: 0 1px 0 rgba(250, 246, 244, 0.6); }
+.v-hero__sub { color: var(--v-text); font-size: 1.125rem; line-height: 1.7; max-width: 360px; margin: 0 0 28px; }
 .v-hero__cta { align-self: flex-start; }
+.v-hero__urgency { margin: 16px 0 0; }
 
 /* Tablet */
 @media (max-width: 989px) {
@@ -93,9 +98,10 @@
     { "type": "paragraph", "content": "Leave the image empty to use the built-in product photo (assets/veloura-hero.png)." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Velo-Lymph™ Technology" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Stop hiding your legs." },
-    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "The only legging engineered to treat cellulite at the root through clinical micro-compression." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop The Veloura Legging" },
     { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "urgency", "label": "Urgency line (red)", "default": "⚡ Selling fast — limited stock this week" },
     { "type": "image_picker", "id": "image", "label": "Hero image (optional override)" }
   ],
   "presets": [{ "name": "Veloura Hero" }]

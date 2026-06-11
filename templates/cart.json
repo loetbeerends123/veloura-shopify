@@ -12,7 +12,8 @@
       "type": "veloura-cart-upsell",
       "settings": {
         "heading": "Complete Your Protocol",
-        "body": "Essential for 24/7 lymphatic support and targeted compression."
+        "body": "Essential for <strong>24/7 lymphatic support</strong> and targeted compression.",
+        "reassurance": "Free shipping & 60-day money-back guarantee"
       }
     },
     "cart-footer": {

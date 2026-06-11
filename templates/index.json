@@ -5,9 +5,10 @@
       "settings": {
         "eyebrow": "Velo-Lymph™ Technology",
         "heading": "Stop hiding your legs.",
-        "subheading": "The only legging engineered to treat cellulite at the root through clinical micro-compression.",
+        "subheading": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>.",
         "button_label": "Shop The Veloura Legging",
-        "button_link": "shopify://products/veloura-cellulite-legging"
+        "button_link": "shopify://products/veloura-cellulite-legging",
+        "urgency": "⚡ Selling fast — limited stock this week"
       }
     },
     "before_after": {
@@ -16,7 +17,7 @@
         "layout": "card",
         "blush": false,
         "heading": "See the structural change",
-        "body": "Visible reduction in dimpling after 30 days of consistent Velo-Lymph™ therapy."
+        "body": "<strong>Visible reduction in dimpling</strong> after just 30 days of consistent Velo-Lymph™ therapy."
       }
     },
     "timeline": {
@@ -31,14 +32,14 @@
       "settings": {
         "style": "icon",
         "heading": "The path to smoother skin",
-        "subheading": "Micro-compression works continuously. Here is what to expect."
+        "subheading": "Micro-compression <strong>works continuously</strong>. Here is what to expect."
       }
     },
     "bundle": {
       "type": "veloura-bundle",
       "settings": {
         "heading": "Commit to your results",
-        "subheading": "Choose your protocol. Consistent daily wear is the key to structural remodelling.",
+        "subheading": "Choose your protocol. <strong>Consistent daily wear</strong> is the key to structural remodelling.",
         "cta_link": "shopify://products/veloura-cellulite-legging",
         "cta_label": "Secure Checkout"
       }
@@ -54,7 +55,7 @@
       "block_order": ["r1", "e1", "r2", "r3"],
       "settings": {
         "heading": "Real structural change",
-        "subheading": "Join thousands of women who stopped treating the symptom and started treating the cause.",
+        "subheading": "Join <strong>thousands of women</strong> who stopped treating the symptom and started <strong>treating the cause</strong>.",
         "rating_text": "4.9/5 from 2,400+ reviews",
         "link_label": "Read all reviews",
         "link_url": "shopify://products/veloura-cellulite-legging"

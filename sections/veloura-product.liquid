@@ -74,6 +74,9 @@
           {%- if s.scarcity != blank -%}
             <p class="v-pdp__scarcity"><span class="v-pdp__dot"></span>{{ s.scarcity }}</p>
           {%- endif -%}
+          {%- if s.guarantee != blank -%}
+            <p class="v-pdp__guarantee v-guarantee">{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.guarantee }}</p>
+          {%- endif -%}
         </div>
       </div>
     </div>
@@ -99,8 +102,9 @@
 .v-pdp__bullets li { display: flex; align-items: center; gap: 10px; font-size: 1.0625rem; }
 .v-pdp__bullets svg { color: var(--v-green); flex: none; }
 .v-pdp__atc { margin-top: 22px; }
-.v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 500; color: var(--v-scarcity); }
+.v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 600; color: var(--v-scarcity); }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
+.v-pdp__guarantee { justify-content: center; margin: 10px 0 0; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 .v-pdp__form { margin: 0; }
 @media (max-width: 989px) {
@@ -116,14 +120,15 @@
   "class": "veloura-section",
   "settings": [
     { "type": "text", "id": "overline", "label": "Overline", "default": "Velo-Lymph™ Enhanced" },
-    { "type": "text", "id": "hero_claim", "label": "Hero claim", "default": "Reclaim your confidence. Smooth, sculpted legs in 8 weeks." },
-    { "type": "textarea", "id": "body", "label": "Body", "default": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to transform your skin while you live your life." },
-    { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "Not shapewear. Not compression." },
-    { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "Works while you live. Zero effort." },
+    { "type": "text", "id": "hero_claim", "label": "Hero claim", "default": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to <strong>transform your skin while you live your life</strong>." },
+    { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "<strong>Not shapewear. Not compression.</strong>" },
+    { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "<strong>Works while you live.</strong> Zero effort." },
     { "type": "text", "id": "offer_banner", "label": "Offer banner (red)", "default": "Limited offer — Buy 1 Get 1 Free + Free Shipping" },
     { "type": "text", "id": "bundle_label", "label": "Bundle label", "default": "Bundle & Save" },
     { "type": "text", "id": "atc_label", "label": "Add to cart label", "default": "Add to Cart" },
     { "type": "text", "id": "scarcity", "label": "Scarcity text", "default": "Only 34 left in stock now" },
+    { "type": "text", "id": "guarantee", "label": "Guarantee text (green)", "default": "60-day money-back guarantee — feel the difference or your money back" },
     { "type": "header", "content": "Variant options" },
     { "type": "text", "id": "colors", "label": "Colours (comma separated)", "default": "Slate,Black,Espresso" },
     { "type": "text", "id": "sizes", "label": "Sizes (comma separated)", "default": "XS,S,M,L,XL" },

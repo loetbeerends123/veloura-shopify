@@ -41,6 +41,9 @@
         <h3 class="v-h3" style="font-size:1.375rem;">{{ up.title | default: 'Veloura Bloom Shorts' }}</h3>
         <p class="v-muted v-body-sm">{{ section.settings.body }}</p>
         <span class="v-badge v-badge--clinical">Clinical Results</span>
+        {%- if section.settings.reassurance != blank -%}
+          <p class="v-cart-upsell__reassure v-guarantee">{% render 'veloura-icon', name: 'check', size: 14 %}{{ section.settings.reassurance }}</p>
+        {%- endif -%}
       </div>
       <div class="v-cart-upsell__action">
         <span class="v-price">{{ up.price | money | default: '£24.99' }}</span>
@@ -82,7 +85,8 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Complete Your Protocol" },
     { "type": "product", "id": "product", "label": "Upsell product (Bloom Shorts)" },
-    { "type": "textarea", "id": "body", "label": "Body", "default": "Essential for 24/7 lymphatic support and targeted compression." }
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Essential for <strong>24/7 lymphatic support</strong> and targeted compression." },
+    { "type": "text", "id": "reassurance", "label": "Reassurance line (green)", "default": "Free shipping & 60-day money-back guarantee" }
   ],
   "presets": [{ "name": "Veloura Cart Upsell" }]
 }
