@@ -516,7 +516,7 @@ body {
 /* Transparent, trimmed PNG lockup — sized by height (wide ~5.3:1 aspect) */
 .veloura-logo__img {
   display: block;
-  height: 64px;
+  height: 52px;
   width: auto;
 }
 .header__heading { margin: 0; }
@@ -532,10 +532,10 @@ body {
   .header.header--middle-center .header__icons { justify-self: end; }
 }
 @media (max-width: 749px) {
-  .veloura-logo__img { height: 40px; }
+  .veloura-logo__img { height: 36px; }
 }
 @media (max-width: 480px) {
-  .veloura-logo__img { height: 34px; }
+  .veloura-logo__img { height: 31px; }
 }
 
 /* Remove account + search icons (PRD store has no accounts/search in use) */
