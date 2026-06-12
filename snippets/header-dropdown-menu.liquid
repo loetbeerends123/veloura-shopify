@@ -101,5 +101,12 @@
         {%- endif -%}
       </li>
     {%- endfor -%}
+    {%- comment -%} Extra nav item not in the admin menu {%- endcomment -%}
+    {%- assign our_story_page = pages['our-story'] -%}
+    <li>
+      <a href="{{ our_story_page.url | default: '/pages/our-story' }}" class="header__menu-item list-menu__item link link--text focus-inset">
+        <span>Our Story</span>
+      </a>
+    </li>
   </ul>
 </nav>
