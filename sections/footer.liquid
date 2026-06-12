@@ -50,6 +50,9 @@
   -%}
     {%- unless only_empty_brand -%}
       <div class="footer__content-top page-width">
+        <div class="footer__veloura-brand">
+          <img class="footer__veloura-logo" src="{{ 'veloura-logo.png' | asset_url }}" alt="{{ shop.name | default: 'Veloura' | escape }}" width="1283" height="242" loading="lazy">
+        </div>
         {%- if section.blocks.size > 0 -%}
           {%- liquid
             if section.blocks.size == 9

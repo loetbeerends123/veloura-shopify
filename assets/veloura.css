@@ -544,6 +544,10 @@ body {
     z-index: 1;
   }
 }
+/* Small Veloura logo top-left of the footer */
+.footer__veloura-brand { width: 100%; margin-bottom: 28px; }
+.footer__veloura-logo { display: block; height: 40px; width: auto; }
+
 /* Mobile: keep the footer opaque (cream) so the menu text is readable
    (the Dawn `gradient` class can render it see-through). */
 @media (max-width: 749px) {
