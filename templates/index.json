@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -16,21 +25,63 @@
       "settings": {
         "layout": "card",
         "blush": false,
+        "eyebrow": "",
         "heading": "See the structural change",
-        "body": "<strong>Visible reduction in dimpling</strong> after just 30 days of consistent Velo-Lymph™ therapy."
+        "body": "<strong>Visible reduction in dimpling</strong> after just 30 days of consistent Velo-Lymph™ therapy.",
+        "quote": "",
+        "quote_attr": ""
       }
     },
     "timeline": {
       "type": "veloura-timeline",
       "blocks": {
-        "s1": { "type": "step", "settings": { "icon": "droplet", "label": "Day 1", "title": "Fluid Activation", "body": "Immediate sensation of lightness as stagnant lymphatic fluid begins to drain." } },
-        "s2": { "type": "step", "settings": { "icon": "wave", "label": "Day 14", "title": "Surface Smoothing", "body": "Skin texture starts feeling softer. Micro-circulation increases, bringing nutrients to the dermis." } },
-        "s3": { "type": "step", "settings": { "icon": "diamond", "label": "Day 30", "title": "Structural Release", "body": "Fibrous bands begin to relax. Visible reduction in deeper dimpling starts to occur." } },
-        "s4": { "type": "step", "settings": { "icon": "sparkle", "label": "Day 90+", "title": "Lasting Remodelling", "body": "Significant structural improvement. Continuous wear prevents new stagnation from forming." } }
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "droplet",
+            "label": "Day 1",
+            "title": "Fluid Activation",
+            "body": "Immediate sensation of lightness as stagnant lymphatic fluid begins to drain."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "wave",
+            "label": "Day 14",
+            "title": "Surface Smoothing",
+            "body": "Skin texture starts feeling softer. Micro-circulation increases, bringing nutrients to the dermis."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "icon": "diamond",
+            "label": "Day 30",
+            "title": "Structural Release",
+            "body": "Fibrous bands begin to relax. Visible reduction in deeper dimpling starts to occur."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "icon": "sparkle",
+            "label": "Day 90+",
+            "title": "Lasting Remodelling",
+            "body": "Significant structural improvement. Continuous wear prevents new stagnation from forming."
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
       "settings": {
+        "blush": false,
         "style": "icon",
+        "eyebrow": "",
         "heading": "The path to smoother skin",
         "subheading": "Micro-compression <strong>works continuously</strong>. Here is what to expect."
       }
@@ -40,27 +91,89 @@
       "settings": {
         "heading": "Commit to your results",
         "subheading": "Choose your protocol. <strong>Consistent daily wear</strong> is the key to structural remodelling.",
+        "product": "",
         "cta_link": "shopify://products/veloura-cellulite-legging",
-        "cta_label": "Secure Checkout"
+        "cta_label": "Secure Checkout",
+        "guarantee": "30-Day Clinical Trial Guarantee + Free Returns",
+        "colors": "Slate,Black,Espresso",
+        "sizes": "XS,S,M,L,XL",
+        "t1_label": "1 Pair — Starter Protocol",
+        "t1_sub": "Good for occasional use. Try the technology.",
+        "t1_price": "£44.99",
+        "t1_qty": "1",
+        "t2_badge": "Most Popular",
+        "t2_label": "2 Pairs — Free Shipping",
+        "t2_price": "£44.99",
+        "t2_qty": "2",
+        "t2_save": "Save £44 + Free Shipping",
+        "feature_1": "Full cellular update",
+        "feature_2": "Consistent daily therapy",
+        "feature_3": "Never miss a day. Maximum clinical results.",
+        "t3_badge": "Best Value",
+        "t3_label": "3 Pairs — Best Value",
+        "t3_sub": "Never miss a day. Maximum clinical results.",
+        "t3_price": "£64.99",
+        "t3_qty": "3",
+        "t3_save": "Save £69.98 + Free Shipping"
       }
     },
     "social_proof": {
       "type": "veloura-social-proof",
       "blocks": {
-        "r1": { "type": "review", "settings": { "text": "I've spent thousands on creams that did nothing. After finding the science behind Veloura and wearing them for 6 weeks, the back of my thighs are noticeably smoother. The fabric is thick and compressive but surprisingly comfortable.", "name": "Sarah M." } },
-        "e1": { "type": "expert", "settings": { "text": "I recommend these to patients as an adjunct to professional treatments. The continuous micro-compression aids lymphatic drainage effectively between clinic visits.", "name": "— Dr J. Chen, MD" } },
-        "r2": { "type": "review", "settings": { "text": "My daily uniform. I bought the 3-pack because I wanted to wear them every day so I wouldn't miss it. My legs feel incredibly light at the end of the day, no more heavy feeling. The dimpling is definitely fading.", "name": "Elena F." } },
-        "r3": { "type": "review", "settings": { "text": "Loving this compression — comfortable enough to wear close-up, all day.", "name": "Tiff" } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "text": "I've spent thousands on creams that did nothing. After finding the science behind Veloura and wearing them for 6 weeks, the back of my thighs are noticeably smoother. The fabric is thick and compressive but surprisingly comfortable.",
+            "name": "Sarah M.",
+            "badge": "Verified Buyer"
+          }
+        },
+        "e1": {
+          "type": "expert",
+          "settings": {
+            "text": "I recommend these to patients as an adjunct to professional treatments. The continuous micro-compression aids lymphatic drainage effectively between clinic visits.",
+            "name": "— Dr J. Chen, MD"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "text": "My daily uniform. I bought the 3-pack because I wanted to wear them every day so I wouldn't miss it. My legs feel incredibly light at the end of the day, no more heavy feeling. The dimpling is definitely fading.",
+            "name": "Elena F.",
+            "badge": "Verified Buyer"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "text": "Loving this compression — comfortable enough to wear close-up, all day.",
+            "name": "Tiff",
+            "badge": "Verified Buyer"
+          }
+        }
       },
-      "block_order": ["r1", "e1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "e1",
+        "r2",
+        "r3"
+      ],
       "settings": {
+        "blush": false,
+        "eyebrow": "",
         "heading": "Real structural change",
         "subheading": "Join <strong>thousands of women</strong> who stopped treating the symptom and started <strong>treating the cause</strong>.",
-        "rating_text": "4.9/5 from 2,400+ reviews",
+        "rating_text": "4.8/5 from 2,400+ reviews",
         "link_label": "Read all reviews",
         "link_url": "shopify://products/veloura-cellulite-legging"
       }
     }
   },
-  "order": ["hero", "before_after", "timeline", "bundle", "social_proof"]
+  "order": [
+    "hero",
+    "before_after",
+    "timeline",
+    "bundle",
+    "social_proof"
+  ]
 }
