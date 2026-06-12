@@ -550,6 +550,18 @@ body {
   .footer.gradient,
   .footer { background: var(--v-canvas); }
 }
+
+/* Mobile hamburger menu drawer — force a solid white panel so the menu
+   links aren't see-through over the page behind them. */
+@media (max-width: 989px) {
+  .menu-drawer.gradient,
+  .menu-drawer,
+  .menu-drawer__inner-container,
+  .menu-drawer__navigation-container {
+    background-color: #ffffff;
+    background-image: none;
+  }
+}
 @media (max-width: 749px) {
   .veloura-logo__img { height: 36px; }
 }
