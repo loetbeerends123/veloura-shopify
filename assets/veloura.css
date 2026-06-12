@@ -544,6 +544,12 @@ body {
     z-index: 1;
   }
 }
+/* Mobile: keep the footer opaque (cream) so the menu text is readable
+   (the Dawn `gradient` class can render it see-through). */
+@media (max-width: 749px) {
+  .footer.gradient,
+  .footer { background: var(--v-canvas); }
+}
 @media (max-width: 749px) {
   .veloura-logo__img { height: 36px; }
 }
