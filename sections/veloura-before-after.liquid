@@ -19,7 +19,7 @@
           {%- endif -%}
         </div>
         <div class="v-ba-section__media v-reveal" data-delay="1">
-          {% render 'veloura-before-after', before_img: section.settings.before_image, after_img: section.settings.after_image, ratio: '3 / 4' %}
+          {% render 'veloura-before-after', before_img: section.settings.before_image, after_img: section.settings.after_image, ratio: '2 / 3' %}
         </div>
       </div>
     {%- else -%}
@@ -29,7 +29,7 @@
           <h2 class="v-h2">{{ section.settings.heading }}</h2>
           {%- if section.settings.body != blank -%}<p>{{ section.settings.body }}</p>{%- endif -%}
         </div>
-        {% render 'veloura-before-after', before_img: section.settings.before_image, after_img: section.settings.after_image, ratio: '3 / 2' %}
+        {% render 'veloura-before-after', before_img: section.settings.before_image, after_img: section.settings.after_image, ratio: '2 / 3' %}
       </div>
     {%- endif -%}
   </div>
@@ -38,6 +38,7 @@
 {% stylesheet %}
 .v-ba-section { padding-block: clamp(48px, 8vw, 80px); }
 .v-ba-section__card { max-width: 820px; margin-inline: auto; padding: clamp(24px, 4vw, 48px); }
+.v-ba-section__card .v-ba { max-width: 400px; margin-inline: auto; }
 .v-ba-section__split { display: grid; grid-template-columns: 45% 55%; gap: clamp(32px, 5vw, 64px); align-items: center; }
 .v-ba-section__copy .v-h2 { margin-bottom: 0; }
 .v-ba-section__quote { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--v-border); display: grid; gap: 8px; }
