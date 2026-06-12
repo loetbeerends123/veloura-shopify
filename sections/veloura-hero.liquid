@@ -76,16 +76,24 @@
   .v-hero__copy { max-width: 60%; }
 }
 
-/* Mobile: copy overlaid lower-left; add a bottom fade so text stays readable */
+/* Mobile: stack so the whole landscape photo is visible (full-width on top),
+   with the copy below it on the canvas instead of cropped behind the text. */
 @media (max-width: 749px) {
-  .v-hero__img { object-position: 64% 38%; }
-  .v-hero__fade {
-    background:
-      linear-gradient(to top, var(--v-canvas) 4%, rgba(250, 246, 244, 0.6) 28%, transparent 56%),
-      linear-gradient(to right, rgba(250, 246, 244, 0.95) 0%, rgba(250, 246, 244, 0.5) 45%, rgba(250, 246, 244, 0) 80%);
+  .v-hero { display: flex; flex-direction: column; }
+  .v-hero__img {
+    position: static;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
-  .v-hero__inner { align-items: flex-end; min-height: 72vh; }
-  .v-hero__copy { max-width: none; padding-block: 32px 40px; }
+  .v-hero__fade { display: none; }
+  .v-hero__inner {
+    position: static;
+    min-height: 0;
+    align-items: flex-start;
+    padding-block: 0;
+  }
+  .v-hero__copy { max-width: none; padding-block: 28px 36px; }
   .v-hero__sub { max-width: none; }
 }
 {% endstylesheet %}
