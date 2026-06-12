@@ -62,7 +62,7 @@
   );
 }
 .v-hero__inner { display: flex; align-items: center; min-height: min(78vh, 660px); }
-.v-hero__copy { max-width: 600px; padding-block: 64px; }
+.v-hero__copy { max-width: 600px; padding-block: 64px; margin-left: clamp(16px, 9vw, 130px); }
 /* Scoped under .v-hero to outrank veloura.css's .v-h1 / .v-btn / .v-urgency font-sizes */
 .v-hero .v-hero__title { font-size: clamp(3.75rem, 8vw, 6.5rem); font-weight: 700; margin: 0 0 24px; text-shadow: 0 1px 0 rgba(250, 246, 244, 0.6); }
 .v-hero .v-hero__sub { color: var(--v-text); font-size: 1.625rem; line-height: 1.55; max-width: 460px; margin: 0 0 36px; }
@@ -87,7 +87,7 @@
       linear-gradient(to right, rgba(250, 246, 244, 0.6) 0%, rgba(250, 246, 244, 0) 75%);
   }
   .v-hero__inner { align-items: flex-end; min-height: 74vh; min-height: 74svh; }
-  .v-hero__copy { max-width: none; padding-block: 24px 34px; }
+  .v-hero__copy { max-width: none; padding-block: 24px 34px; margin-left: 0; }
   .v-hero .v-hero__title { font-size: clamp(2.5rem, 10vw, 3.25rem); margin: 0 0 12px; }
   .v-hero .v-hero__sub { font-size: 1.25rem; line-height: 1.5; max-width: none; margin: 0 0 22px; }
   .v-hero .v-hero__cta { font-size: 1.125rem; padding: 16px 36px; }
