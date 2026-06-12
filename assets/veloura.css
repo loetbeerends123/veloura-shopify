@@ -529,6 +529,8 @@ body {
   .header.header--middle-center .header__inline-menu,
   .header.header--middle-center .header__icons { min-width: 0; }
   .header.header--middle-center .header__icons { justify-self: end; }
+  /* Nudge the nav further left so it isn't crowding the centred logo. */
+  .header.header--middle-center .header__inline-menu { margin-left: -3rem; }
   .header.header--middle-center .header__heading {
     position: absolute;
     left: 50%;
