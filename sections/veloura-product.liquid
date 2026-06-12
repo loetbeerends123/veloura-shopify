@@ -39,6 +39,12 @@
       <div class="v-pdp__buybox">
         {%- if s.overline != blank -%}<span class="v-eyebrow">{{ s.overline }}</span>{%- endif -%}
         <h1 class="v-h2 v-pdp__name">{{ product.title | default: 'Veloura Cellulite Legging' }}</h1>
+        {%- if s.rating_text != blank -%}
+          <div class="v-pdp__rating">
+            <span class="v-stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}</span>
+            <span class="v-pdp__rating-text">{{ s.rating_text }}</span>
+          </div>
+        {%- endif -%}
         {%- if s.hero_claim != blank -%}<p class="v-pdp__claim v-serif">{{ s.hero_claim }}</p>{%- endif -%}
         {%- if s.body != blank -%}<p class="v-pdp__body v-muted">{{ s.body }}</p>{%- endif -%}
 
@@ -95,7 +101,10 @@
 .v-pdp__thumb.is-active { border-color: var(--v-text); }
 .v-pdp__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .v-pdp__buybox { padding-top: 8px; }
-.v-pdp__name { margin: 0 0 14px; }
+.v-pdp__name { margin: 0 0 10px; }
+.v-pdp__rating { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; }
+.v-pdp__rating .v-stars { font-size: 1rem; }
+.v-pdp__rating-text { font-size: 0.9375rem; font-weight: 500; color: var(--v-muted); }
 .v-pdp__claim { font-size: 1.75rem; line-height: 1.25; margin: 0 0 16px; }
 .v-pdp__body { font-size: 1.0625rem; line-height: 1.7; margin: 0 0 20px; }
 .v-pdp__bullets { display: grid; gap: 10px; margin-bottom: 8px; }
@@ -120,6 +129,7 @@
   "class": "veloura-section",
   "settings": [
     { "type": "text", "id": "overline", "label": "Overline", "default": "Velo-Lymph™ Enhanced" },
+    { "type": "text", "id": "rating_text", "label": "Rating text (next to stars)", "default": "4.8 based on 471 Reviews" },
     { "type": "text", "id": "hero_claim", "label": "Hero claim", "default": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>" },
     { "type": "textarea", "id": "body", "label": "Body", "default": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to <strong>transform your skin while you live your life</strong>." },
     { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "<strong>Not shapewear. Not compression.</strong>" },
