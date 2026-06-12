@@ -20,8 +20,8 @@
         "separator": "◆",
         "repeats": 4,
         "speed": 50,
-        "bg_color": "#5E8C4E",
-        "text_color": "#FFFFFF"
+        "bg_color": "#5e8c4e",
+        "text_color": "#ffffff"
       }
     },
     "header": {
