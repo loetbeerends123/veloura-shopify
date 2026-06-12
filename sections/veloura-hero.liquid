@@ -76,25 +76,20 @@
   .v-hero__copy { max-width: 60%; }
 }
 
-/* Mobile: stack so the whole landscape photo is visible (full-width on top),
-   with the copy below it on the canvas instead of cropped behind the text. */
+/* Mobile: photo as background with copy overlaid lower-left. Text is scaled
+   down to sit in proportion to the photo, with a cream scrim for readability. */
 @media (max-width: 749px) {
-  .v-hero { display: flex; flex-direction: column; }
-  .v-hero__img {
-    position: static;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+  .v-hero__img { object-position: 58% 28%; }
+  .v-hero__fade {
+    background:
+      linear-gradient(to top, var(--v-canvas) 8%, rgba(250, 246, 244, 0.8) 32%, rgba(250, 246, 244, 0) 62%),
+      linear-gradient(to right, rgba(250, 246, 244, 0.82) 0%, rgba(250, 246, 244, 0.25) 55%, rgba(250, 246, 244, 0) 85%);
   }
-  .v-hero__fade { display: none; }
-  .v-hero__inner {
-    position: static;
-    min-height: 0;
-    align-items: flex-start;
-    padding-block: 0;
-  }
-  .v-hero__copy { max-width: none; padding-block: 28px 36px; }
-  .v-hero__sub { max-width: none; }
+  .v-hero__inner { align-items: flex-end; min-height: 84vh; }
+  .v-hero__copy { max-width: none; padding-block: 24px 40px; }
+  .v-hero .v-hero__title { font-size: clamp(2rem, 8.5vw, 2.75rem); margin: 0 0 12px; }
+  .v-hero .v-hero__sub { font-size: 1.0625rem; line-height: 1.5; max-width: none; margin: 0 0 22px; }
+  .v-hero .v-hero__cta { font-size: 0.9375rem; padding: 14px 30px; }
 }
 {% endstylesheet %}
 
