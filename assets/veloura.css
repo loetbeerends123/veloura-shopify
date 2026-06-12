@@ -561,6 +561,24 @@ body {
 .header__inline-menu .header__menu-item:hover span,
 .header__inline-menu .header__menu-item:hover .header__active-menu-item { color: #5f4a3b; }
 
+/* Mobile menu-drawer links — match the desktop nav (taupe, bold, uppercase),
+   a little bigger with more space between items. The drawer is mobile-only;
+   component-menu-drawer.css loads after veloura.css, so scope under
+   .menu-drawer to win the cascade. */
+@media (max-width: 989px) {
+  .menu-drawer .menu-drawer__menu-item {
+    font-family: var(--v-font-body);
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #7e6858;
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
+  .menu-drawer .menu-drawer__navigation .menu-drawer__menu li { margin-bottom: 1.2rem; }
+}
+
 /* Remove account + search icons (PRD store has no accounts/search in use) */
 .header__icon--account,
 .header__icon--search,
