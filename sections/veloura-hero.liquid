@@ -76,30 +76,26 @@
   .v-hero__copy { max-width: 60%; }
 }
 
-/* Mobile: split layout — photo pinned to the right half (model), copy on its
-   own cream area on the left so it's always readable. */
+/* Mobile: full-bleed photo so the room sits behind the copy (it has a
+   background), with the model kept to the right via object-position + a strong
+   left cream fade, so the leggings are not behind the text. */
 @media (max-width: 749px) {
-  .v-hero { background: var(--v-canvas); }
-  .v-hero__img {
-    top: 0; bottom: 0; right: 0; left: auto;
-    width: 47%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 52% 32%;
-  }
+  .v-hero__img { object-position: 64% 32%; }
   .v-hero__fade {
     background: linear-gradient(
       to right,
-      var(--v-canvas) 50%,
-      rgba(250, 246, 244, 0.55) 58%,
-      rgba(250, 246, 244, 0) 70%
+      rgba(250, 246, 244, 0.97) 0%,
+      rgba(250, 246, 244, 0.92) 38%,
+      rgba(250, 246, 244, 0.55) 56%,
+      rgba(250, 246, 244, 0.12) 76%,
+      rgba(250, 246, 244, 0) 92%
     );
   }
-  .v-hero__inner { align-items: center; min-height: 80vh; min-height: 80svh; }
-  .v-hero__copy { max-width: 50%; padding-block: 28px; margin-left: 0; }
-  .v-hero .v-hero__title { font-size: clamp(1.7rem, 7.4vw, 2.4rem); line-height: 1.1; margin: 0 0 12px; }
-  .v-hero .v-hero__sub { font-size: 0.9375rem; line-height: 1.5; max-width: none; margin: 0 0 18px; }
-  .v-hero .v-hero__cta { font-size: 0.8125rem; padding: 12px 18px; letter-spacing: 0.05em; }
+  .v-hero__inner { align-items: center; min-height: 82vh; min-height: 82svh; }
+  .v-hero__copy { max-width: 58%; padding-block: 30px; margin-left: 0; }
+  .v-hero .v-hero__title { font-size: clamp(2rem, 8.5vw, 2.9rem); line-height: 1.1; margin: 0 0 14px; }
+  .v-hero .v-hero__sub { font-size: 1.0625rem; line-height: 1.5; max-width: none; margin: 0 0 20px; }
+  .v-hero .v-hero__cta { font-size: 0.9375rem; padding: 14px 24px; }
 }
 {% endstylesheet %}
 
