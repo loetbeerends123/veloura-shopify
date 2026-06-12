@@ -76,25 +76,30 @@
   .v-hero__copy { max-width: 60%; }
 }
 
-/* Mobile: match the desktop look — copy on the left over a left->right cream
-   fade, with the model revealed on the right. */
+/* Mobile: split layout — photo pinned to the right half (model), copy on its
+   own cream area on the left so it's always readable. */
 @media (max-width: 749px) {
-  .v-hero__img { object-position: 72% 36%; }
+  .v-hero { background: var(--v-canvas); }
+  .v-hero__img {
+    top: 0; bottom: 0; right: 0; left: auto;
+    width: 47%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 52% 32%;
+  }
   .v-hero__fade {
     background: linear-gradient(
       to right,
-      rgba(250, 246, 244, 0.98) 0%,
-      rgba(250, 246, 244, 0.95) 42%,
-      rgba(250, 246, 244, 0.60) 62%,
-      rgba(250, 246, 244, 0.10) 82%,
-      rgba(250, 246, 244, 0) 96%
+      var(--v-canvas) 50%,
+      rgba(250, 246, 244, 0.55) 58%,
+      rgba(250, 246, 244, 0) 70%
     );
   }
-  .v-hero__inner { align-items: center; min-height: 86vh; min-height: 86svh; }
-  .v-hero__copy { max-width: 74%; padding-block: 32px; margin-left: 0; }
-  .v-hero .v-hero__title { font-size: clamp(2.1rem, 9.5vw, 3rem); margin: 0 0 14px; }
-  .v-hero .v-hero__sub { font-size: 1.125rem; line-height: 1.55; max-width: none; margin: 0 0 22px; }
-  .v-hero .v-hero__cta { font-size: 1rem; padding: 15px 32px; }
+  .v-hero__inner { align-items: center; min-height: 80vh; min-height: 80svh; }
+  .v-hero__copy { max-width: 50%; padding-block: 28px; margin-left: 0; }
+  .v-hero .v-hero__title { font-size: clamp(1.7rem, 7.4vw, 2.4rem); line-height: 1.1; margin: 0 0 12px; }
+  .v-hero .v-hero__sub { font-size: 0.9375rem; line-height: 1.5; max-width: none; margin: 0 0 18px; }
+  .v-hero .v-hero__cta { font-size: 0.8125rem; padding: 12px 18px; letter-spacing: 0.05em; }
 }
 {% endstylesheet %}
 
