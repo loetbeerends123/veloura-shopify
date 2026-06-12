@@ -17,6 +17,7 @@
         "body": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to <strong>transform your skin while you live your life</strong>.",
         "bullet_1": "<strong>Not shapewear. Not compression.</strong>",
         "bullet_2": "<strong>Works while you live.</strong> Zero effort.",
+        "offer_banner": "Limited offer — Buy 1 Get 1 Free + Free Shipping",
         "bundle_label": "Bundle & Save",
         "atc_label": "Add to Cart",
         "scarcity": "Only 34 left in stock now",
@@ -40,8 +41,7 @@
         "t3_sub": "Maximum clinical results",
         "t3_price": "£64.99",
         "t3_qty": "3",
-        "t3_save": "Save £69.98 + Free Shipping",
-        "offer_banner": "Limited offer — Buy 1 Get 1 Free + Free Shipping"
+        "t3_save": "Save £69.98 + Free Shipping"
       }
     },
     "mechanism": {
@@ -54,66 +54,6 @@
         "paragraph_2": "Your body has a remarkable self-repair system — but it needs movement to activate it. Veloura's <strong>47+ mapped micro-pressure points</strong> keep that system running <strong>every hour you wear them</strong>.",
         "quote": "Micro-compression aids lymphatic drainage more effectively than any topical treatment I've reviewed. The effect is structural, not cosmetic.",
         "quote_attr": "— Dr. Vanessa Cole, MD · Dermatology & Clinical Research"
-      }
-    },
-    "faq": {
-      "type": "veloura-faq",
-      "blocks": {
-        "q1": {
-          "type": "qa",
-          "settings": {
-            "question": "How quickly will I see results?",
-            "answer": "Most customers notice a feeling of lightness within the first wear as stagnant fluid starts to move. Visible skin texture improvement typically begins around week 2–3 of daily wear. Structural changes — the real reduction in dimpling — are most visible at 6–8 weeks of consistent use."
-          }
-        },
-        "q2": {
-          "type": "qa",
-          "settings": {
-            "question": "I've tried leggings before. Why is this different?",
-            "answer": "Standard compression leggings squeeze superficially, which can actually restrict circulation and worsen the appearance of cellulite over time. Veloura's VELO-LYMPH™ fabric uses 47 mapped micro-pressure points engineered to stimulate lymphatic flow with every step — it works with your body's movement, not against it."
-          }
-        },
-        "q3": {
-          "type": "qa",
-          "settings": {
-            "question": "How do I find the right size?",
-            "answer": "We recommend sizing up if you're between sizes for maximum comfort during all-day wear. Our size guide is available on the product image gallery. When in doubt, the fabric has 4-way stretch to accommodate."
-          }
-        },
-        "q4": {
-          "type": "qa",
-          "settings": {
-            "question": "How long does shipping take?",
-            "answer": "UK standard shipping: 3–5 business days. UK express: 1–2 business days. EU: 5–8 days. International: 7–14 days. All orders over £65 include free standard UK shipping."
-          }
-        },
-        "q5": {
-          "type": "qa",
-          "settings": {
-            "question": "Can I wear them every day?",
-            "answer": "Absolutely — and we encourage it. The clinical results are cumulative: the more consistently you wear them, the better the structural improvement. Machine wash cold, hang dry. They maintain their therapeutic properties for 80+ washes."
-          }
-        },
-        "q6": {
-          "type": "qa",
-          "settings": {
-            "question": "What if they don't work for me?",
-            "answer": "We offer a 30-day Clinical Trial Guarantee. If you don't see measurable improvement in skin texture within 30 days of daily wear, contact us for a full refund — no returns required, no questions asked."
-          }
-        }
-      },
-      "block_order": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5",
-        "q6"
-      ],
-      "settings": {
-        "blush": false,
-        "eyebrow": "",
-        "heading": "Frequently Asked Questions"
       }
     },
     "transformation": {
@@ -216,6 +156,66 @@
         "write_url": ""
       }
     },
+    "faq": {
+      "type": "veloura-faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "How quickly will I see results?",
+            "answer": "Most customers notice a feeling of lightness within the first wear as stagnant fluid starts to move. Visible skin texture improvement typically begins around week 2–3 of daily wear. Structural changes — the real reduction in dimpling — are most visible at 6–8 weeks of consistent use."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "I've tried leggings before. Why is this different?",
+            "answer": "Standard compression leggings squeeze superficially, which can actually restrict circulation and worsen the appearance of cellulite over time. Veloura's VELO-LYMPH™ fabric uses 47 mapped micro-pressure points engineered to stimulate lymphatic flow with every step — it works with your body's movement, not against it."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "How do I find the right size?",
+            "answer": "We recommend sizing up if you're between sizes for maximum comfort during all-day wear. Our size guide is available on the product image gallery. When in doubt, the fabric has 4-way stretch to accommodate."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "UK standard shipping: 3–5 business days. UK express: 1–2 business days. EU: 5–8 days. International: 7–14 days. All orders over £65 include free standard UK shipping."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I wear them every day?",
+            "answer": "Absolutely — and we encourage it. The clinical results are cumulative: the more consistently you wear them, the better the structural improvement. Machine wash cold, hang dry. They maintain their therapeutic properties for 80+ washes."
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "question": "What if they don't work for me?",
+            "answer": "We offer a 30-day Clinical Trial Guarantee. If you don't see measurable improvement in skin texture within 30 days of daily wear, contact us for a full refund — no returns required, no questions asked."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "blush": false,
+        "eyebrow": "",
+        "heading": "Frequently Asked Questions"
+      }
+    },
     "sticky": {
       "type": "veloura-sticky-bar",
       "settings": {
@@ -227,10 +227,10 @@
   "order": [
     "main",
     "mechanism",
-    "faq",
-    "transformation",
     "journey",
     "reviews",
+    "transformation",
+    "faq",
     "sticky"
   ]
 }
