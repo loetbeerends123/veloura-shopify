@@ -579,6 +579,12 @@ body {
   .menu-drawer .menu-drawer__navigation .menu-drawer__menu li { margin-bottom: 1.2rem; }
 }
 
+/* Keep the scrolling announcement bar pinned at the top, with the sticky
+   header docking just beneath it, so the offer stays visible while scrolling.
+   --v-announce-h is measured in veloura.js. */
+.veloura-announcement-section { position: sticky; top: 0; z-index: 5; }
+.shopify-section-header-sticky { top: var(--v-announce-h, 46px); }
+
 /* Remove account + search icons (PRD store has no accounts/search in use) */
 .header__icon--account,
 .header__icon--search,

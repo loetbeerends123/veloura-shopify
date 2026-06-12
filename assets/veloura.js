@@ -195,6 +195,9 @@
   function setHeaderHeight() {
     var header = document.querySelector('.header-wrapper, .shopify-section-group-header-group, sticky-header, header');
     if (header) document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    // Expose the sticky announcement bar height so the sticky header can dock beneath it.
+    var ann = document.querySelector('.v-announce');
+    document.documentElement.style.setProperty('--v-announce-h', ann ? ann.offsetHeight + 'px' : '0px');
   }
 
   /* ========================================================================
