@@ -544,9 +544,14 @@ body {
     z-index: 1;
   }
 }
-/* Small Veloura logo top-left of the footer */
-.footer__veloura-brand { width: 100%; margin-bottom: 28px; }
+/* Footer brand logo (left) + Quick Links (right) */
+.footer__veloura-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px; margin-bottom: 40px; }
 .footer__veloura-logo { display: block; height: 40px; width: auto; }
+.footer__veloura-links .footer-block__heading { margin: 0 0 14px; }
+.footer__veloura-links ul { display: grid; gap: 11px; margin: 0; }
+.footer__veloura-links a { color: var(--v-text); font-size: 0.9375rem; }
+.footer__veloura-links a:hover { color: var(--v-rust); }
+@media (max-width: 749px) { .footer__veloura-top { flex-direction: column; gap: 28px; } }
 
 /* Mobile: keep the footer opaque (cream) so the menu text is readable
    (the Dawn `gradient` class can render it see-through). */
