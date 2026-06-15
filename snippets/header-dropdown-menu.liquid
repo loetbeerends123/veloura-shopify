@@ -9,7 +9,11 @@
   <ul class="list-menu list-menu--inline" role="list">
     {%- for link in section.settings.menu.links -%}
       {%- assign nav_title = link.title -%}
-      {%- if link.title == 'Catalog' -%}{%- assign nav_title = 'Cellulite Leggings' -%}{%- endif -%}
+      {%- assign nav_url = link.url -%}
+      {%- if link.title == 'Catalog' -%}
+        {%- assign nav_title = 'Cellulite Leggings' -%}
+        {%- assign nav_url = '/products/veloura-cellulite-legging' -%}
+      {%- endif -%}
       <li>
         {%- if link.links != blank -%}
           <header-menu>
@@ -84,7 +88,7 @@
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{{ link.url }}"
+            href="{{ nav_url }}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
