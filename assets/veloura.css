@@ -586,6 +586,14 @@ body {
     background-image: none;
   }
 }
+
+/* Cart drawer — force an opaque panel (the Dawn `gradient` class made it
+   see-through). */
+.drawer__inner.gradient,
+.drawer__inner {
+  background-color: var(--v-canvas);
+  background-image: none;
+}
 @media (max-width: 749px) {
   .veloura-logo__img { height: 36px; }
 }
