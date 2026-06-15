@@ -553,6 +553,8 @@ body {
 .footer .footer__content-top .footer-block--newsletter { order: 2; margin: 0; width: 100%; }
 .footer .footer__content-top .footer__veloura-links { order: 3; width: 100%; }
 .footer__veloura-logo { display: block; height: 48px; width: auto; margin: 0 auto; }
+/* Remove the divider line above the copyright/payment bar; match footer spacing. */
+.footer .footer__content-bottom { border-top: 0; padding-top: 30px; }
 .footer__veloura-links ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 40px; margin: 0; }
 .footer__veloura-links a {
   color: var(--v-text);
