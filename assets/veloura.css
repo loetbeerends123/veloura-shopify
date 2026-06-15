@@ -546,10 +546,12 @@ body {
 }
 /* Footer top centred & stacked: logo, then newsletter (+ social), then a
    single centred row of page links. */
-.footer__content-top { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 52px; padding-block: 16px 12px; }
-.footer__veloura-brand { order: 1; }
-.footer__content-top .footer-block--newsletter { order: 2; margin: 0; width: 100%; }
-.footer__veloura-links { order: 3; width: 100%; }
+/* High specificity (.footer …) to beat section-footer.css which loads after
+   veloura.css and sets .footer__content-top { display: block }. */
+.footer .footer__content-top { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 60px; padding-block: 16px 12px; }
+.footer .footer__content-top .footer__veloura-brand { order: 1; }
+.footer .footer__content-top .footer-block--newsletter { order: 2; margin: 0; width: 100%; }
+.footer .footer__content-top .footer__veloura-links { order: 3; width: 100%; }
 .footer__veloura-logo { display: block; height: 48px; width: auto; margin: 0 auto; }
 .footer__veloura-links ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 40px; margin: 0; }
 .footer__veloura-links a {
