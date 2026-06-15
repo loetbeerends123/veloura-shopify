@@ -9,8 +9,6 @@
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
-  assign colors = s.colors | default: 'Slate,Black,Espresso' | split: ','
-  assign sizes = s.sizes | default: 'XS,S,M,L,XL' | split: ','
   assign group = 'bundle-' | append: section.id
 -%}
 <div class="v-tiers" data-bundle>
@@ -36,25 +34,6 @@
         {%- if s.feature_2 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 14 %}{{ s.feature_2 }}</li>{%- endif -%}
         {%- if s.feature_3 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 14 %}{{ s.feature_3 }}</li>{%- endif -%}
       </ul>
-      <span class="v-tier__reveal">
-        <span class="v-tier__reveal-inner">
-          {%- for n in (1..2) -%}
-            <span class="v-tier__pair">
-              <span class="v-tier__pair-label">Pair {{ n }}</span>
-              <span class="v-tier__pair-fields">
-                <select class="v-select" aria-label="Pair {{ n }} colour">
-                  <option value="" disabled selected>Select colour</option>
-                  {%- for c in colors -%}<option>{{ c | strip }}</option>{%- endfor -%}
-                </select>
-                <select class="v-select" aria-label="Pair {{ n }} size">
-                  <option value="" disabled selected>Select size</option>
-                  {%- for sz in sizes -%}<option>{{ sz | strip }}</option>{%- endfor -%}
-                </select>
-              </span>
-            </span>
-          {%- endfor -%}
-        </span>
-      </span>
     </span>
     <span class="v-tier__price">{{ s.t2_price }}</span>
   </label>

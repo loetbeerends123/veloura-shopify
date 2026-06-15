@@ -138,6 +138,42 @@
   }
 
   /* ========================================================================
+     3b. Variant picker — maps the colour/size selects to the real variant id
+     so add-to-cart adds the chosen variant (any bundle quantity).
+     ======================================================================== */
+  function initVariantPicker(root) {
+    var dataEl = root.querySelector('[data-pdp-variants]');
+    var idInput = root.querySelector('[data-variant-id]');
+    if (!dataEl || !idInput) return;
+    var variants;
+    try { variants = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    var selects = Array.prototype.slice.call(root.querySelectorAll('[data-pdp-option]'));
+    if (!selects.length) return;
+    var addBtn = root.querySelector('[data-atc-form] [name="add"]');
+    var addLabel = addBtn ? addBtn.querySelector('span') : null;
+    var availableText = addLabel ? addLabel.textContent : '';
+
+    function update() {
+      var chosen = selects.map(function (s) { return s.value; });
+      var match = null;
+      for (var i = 0; i < variants.length; i++) {
+        var v = variants[i], ok = true;
+        for (var j = 0; j < chosen.length; j++) {
+          if (String(v.options[j]) !== String(chosen[j])) { ok = false; break; }
+        }
+        if (ok) { match = v; break; }
+      }
+      if (!match) return;
+      idInput.value = match.id;
+      if (addBtn) addBtn.disabled = !match.available;
+      if (addLabel) addLabel.textContent = match.available ? availableText : 'Sold out';
+    }
+
+    selects.forEach(function (s) { s.addEventListener('change', update); });
+    update();
+  }
+
+  /* ========================================================================
      4. Sticky bottom cart bar (PRD §2.7, §10.3)
      Visible once the in-page ATC scrolls out of view.
      ======================================================================== */
@@ -227,6 +263,7 @@
     document.querySelectorAll('[data-before-after]').forEach(initBeforeAfter);
     document.querySelectorAll('[data-faq]').forEach(initFaq);
     document.querySelectorAll('[data-bundle]').forEach(initBundle);
+    document.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     document.querySelectorAll('[data-gallery]').forEach(initGallery);
     initStickyBar();
   });
@@ -239,6 +276,8 @@
     s.querySelectorAll('[data-before-after]').forEach(initBeforeAfter);
     s.querySelectorAll('[data-faq]').forEach(initFaq);
     s.querySelectorAll('[data-bundle]').forEach(initBundle);
+    if (s.matches && s.matches('.v-pdp')) initVariantPicker(s);
+    s.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     s.querySelectorAll('[data-gallery]').forEach(initGallery);
     initStickyBar();
   });

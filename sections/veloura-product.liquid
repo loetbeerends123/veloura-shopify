@@ -61,6 +61,22 @@
         <span class="v-eyebrow" {% if s.offer_banner == blank %}style="margin-top:24px;"{% endif %}>{{ s.bundle_label | default: 'Bundle & Save' }}</span>
         {% render 'veloura-bundle-tiers', section: section %}
 
+        {%- unless product.has_only_default_variant -%}
+          <div class="v-pdp__variants" data-pdp-variants-ui>
+            {%- for option in product.options_with_values -%}
+              <label class="v-pdp__option">
+                <span class="v-pdp__option-name">{{ option.name }}</span>
+                <select class="v-select" data-pdp-option="{{ forloop.index0 }}" aria-label="{{ option.name | escape }}">
+                  {%- for value in option.values -%}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                  {%- endfor -%}
+                </select>
+              </label>
+            {%- endfor -%}
+          </div>
+          <script type="application/json" data-pdp-variants>{{ product.variants | json }}</script>
+        {%- endunless -%}
+
         <div class="v-pdp__atc" data-atc-anchor>
           {%- if product != blank -%}
             <product-form class="product-form" data-section-id="{{ section.id }}">
@@ -110,6 +126,9 @@
 .v-pdp__bullets { display: grid; gap: 10px; margin-bottom: 8px; }
 .v-pdp__bullets li { display: flex; align-items: center; gap: 10px; font-size: 1.0625rem; }
 .v-pdp__bullets svg { color: var(--v-green); flex: none; }
+.v-pdp__variants { display: flex; flex-wrap: wrap; gap: 16px; margin: 22px 0 4px; }
+.v-pdp__option { display: grid; gap: 6px; flex: 1 1 160px; }
+.v-pdp__option-name { font-family: var(--v-font-body); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
 .v-pdp__atc { margin-top: 22px; }
 .v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 600; color: var(--v-scarcity); }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
