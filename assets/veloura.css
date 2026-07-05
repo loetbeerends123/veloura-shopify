@@ -608,7 +608,7 @@ body {
 .header__inline-menu .header__active-menu-item {
   font-family: var(--v-font-body);
   font-weight: 700;
-  font-size: 1.1875rem;
+  font-size: 1.0625rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
   color: #7e6858;   /* sampled from the logo lettering */
