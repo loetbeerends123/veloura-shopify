@@ -86,6 +86,9 @@
                 <button type="submit" name="add" class="v-btn v-btn--green v-btn--full v-btn--lg" {% unless current_variant.available %}disabled{% endunless %}>
                   {% render 'veloura-icon', name: 'bag', size: 18 %}
                   <span>{% if current_variant.available %}{{ s.atc_label | default: 'Add to Cart' }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+                  <span class="loading__spinner hidden" aria-hidden="true">
+                    <svg focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg>
+                  </span>
                 </button>
               {%- endform -%}
             </product-form>
@@ -168,7 +171,7 @@
     { "type": "text", "id": "t1_qty", "label": "Quantity", "default": "1" },
     { "type": "header", "content": "Tier 2 (default)" },
     { "type": "text", "id": "t2_badge", "label": "Badge", "default": "Most Popular" },
-    { "type": "text", "id": "t2_label", "label": "Label", "default": "2 Leggings" },
+    { "type": "text", "id": "t2_label", "label": "Label", "default": "2 Leggings (Buy 1 Get 1 Free)" },
     { "type": "text", "id": "t2_price", "label": "Price", "default": "£44.99" },
     { "type": "text", "id": "t2_qty", "label": "Quantity", "default": "2" },
     { "type": "text", "id": "t2_save", "label": "Save badge", "default": "Save £44 + Free Shipping" },
@@ -177,7 +180,7 @@
     { "type": "text", "id": "feature_3", "label": "Feature 3", "default": "Never miss a day. Maximum clinical results." },
     { "type": "header", "content": "Tier 3" },
     { "type": "text", "id": "t3_badge", "label": "Badge", "default": "Best Value" },
-    { "type": "text", "id": "t3_label", "label": "Label", "default": "3 Leggings" },
+    { "type": "text", "id": "t3_label", "label": "Label", "default": "3 Leggings (Best Value)" },
     { "type": "text", "id": "t3_sub", "label": "Sub-copy", "default": "Maximum clinical results" },
     { "type": "text", "id": "t3_price", "label": "Price", "default": "£64.99" },
     { "type": "text", "id": "t3_qty", "label": "Quantity", "default": "3" },

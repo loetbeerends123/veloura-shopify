@@ -199,6 +199,17 @@ body {
 .v-btn--lg { padding: 18px 36px; font-size: 0.875rem; }
 .v-btn[disabled], .v-btn.is-disabled { opacity: 0.5; cursor: not-allowed; }
 
+/* Loading state — Dawn's product-form toggles .loading + shows .loading__spinner */
+.v-btn { position: relative; }
+.v-btn.loading { cursor: wait; }
+.v-btn.loading > svg,
+.v-btn.loading > span:not(.loading__spinner) { visibility: hidden; }
+.v-btn .loading__spinner { position: absolute; inset: 0; display: inline-flex; align-items: center; justify-content: center; }
+.v-btn .loading__spinner.hidden { display: none; }
+.v-btn .loading__spinner .spinner { width: 22px; height: 22px; animation: v-rotator 0.9s linear infinite; }
+.v-btn .loading__spinner .path { stroke: currentColor; stroke-dasharray: 44 188; stroke-linecap: round; }
+@keyframes v-rotator { to { transform: rotate(360deg); } }
+
 /* Text / link CTA */
 .v-link-cta {
   font-family: var(--v-font-body);
@@ -430,10 +441,19 @@ body {
   border-radius: var(--v-radius-md);
   background: var(--v-white);
   cursor: pointer;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.2s var(--v-ease), border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.v-tier:hover { border-color: var(--v-rust-light); }
-.v-tier.is-selected { border-color: var(--v-green); box-shadow: 0 0 0 1px var(--v-green); }
+.v-tier:hover { border-color: var(--v-rust-light); transform: translateY(-2px); box-shadow: var(--v-shadow-card); }
+.v-tier.is-selected {
+  border-color: var(--v-green);
+  box-shadow: 0 8px 22px rgba(58, 125, 68, 0.18), 0 0 0 1px var(--v-green);
+  transform: translateY(-3px) scale(1.012);
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .v-tier, .v-tier:hover, .v-tier.is-selected { transform: none; }
+  .v-btn .loading__spinner .spinner { animation-duration: 2s; }
+}
 .v-tier__radio { padding-top: 2px; }
 .v-tier__radio input { appearance: none; width: 18px; height: 18px; border: 1.5px solid var(--v-border-strong); border-radius: 50%; display: grid; place-items: center; cursor: pointer; }
 .v-tier.is-selected .v-tier__radio input { border-color: var(--v-green); }
