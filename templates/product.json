@@ -14,15 +14,15 @@
       "settings": {
         "overline": "",
         "rating_text": "4.8 based on 471 Reviews",
-        "hero_claim": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>",
+        "hero_claim": "Reclaim your confidence. Smooth, sculpted legs in 8 weeks.",
         "body": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to <strong>transform your skin while you live your life</strong>.",
-        "bullet_1": "<strong>Not shapewear. Not compression.</strong>",
-        "bullet_2": "<strong>Works while you live.</strong> Zero effort.",
+        "bullet_1": "Not shapewear. Not compression.",
+        "bullet_2": "Works while you live. Zero effort.",
         "offer_banner": "Limited offer — Buy 1 Get 1 Free + Free Shipping",
         "bundle_label": "Bundle & Save",
         "atc_label": "Add to Cart",
         "scarcity": "Only 34 left in stock now",
-        "guarantee": "60-day money-back guarantee — feel the difference or your money back",
+        "guarantee": "30-day money-back guarantee — feel the difference or your money back",
         "colors": "Slate,Black,Espresso",
         "sizes": "XS,S,M,L,XL",
         "t1_label": "1 Legging",
@@ -226,22 +226,6 @@
     },
     "178367453436454fe2": {
       "type": "apps",
-      "blocks": {
-        "simple_bundles_kits_infinite_options_selector_MENKkz": {
-          "type": "shopify://apps/simple-bundles-kits/blocks/infinite-options-selector/e553276b-36b2-446d-b80a-aa47fe5f96ac",
-          "settings": {
-            "select_placeholder": "Please select an option",
-            "disable_oos_options": true,
-            "show_price_variance": true,
-            "rank_options_by_price_diff": true,
-            "custom_css": "",
-            "custom_js": ""
-          }
-        }
-      },
-      "block_order": [
-        "simple_bundles_kits_infinite_options_selector_MENKkz"
-      ],
       "settings": {
         "include_margins": true
       }
