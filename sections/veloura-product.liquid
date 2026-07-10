@@ -70,7 +70,7 @@
                 <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
                 <input type="hidden" name="quantity" value="1" min="1">
                 <button type="submit" name="add" class="v-btn v-btn--green v-btn--full v-btn--lg" {% unless current_variant.available %}disabled{% endunless %}>
-                  {% render 'veloura-icon', name: 'bag', size: 18 %}
+                  {% render 'veloura-icon', name: 'bag', size: 22 %}
                   <span>{% if current_variant.available %}{{ s.atc_label | default: 'Add to Cart' }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
                   <span class="loading__spinner hidden" aria-hidden="true">
                     <svg focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg>
@@ -127,6 +127,7 @@
 .v-pdp__option { display: grid; gap: 6px; flex: 1 1 160px; }
 .v-pdp__option-name { font-family: var(--v-font-body); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
 .v-pdp__atc { margin-top: 22px; }
+.v-pdp__atc .v-btn { font-size: 1.0625rem; padding-block: 16px; gap: 10px; }
 .v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 600; color: var(--v-scarcity); }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
 .v-pdp__guarantee { justify-content: center; margin: 10px 0 0; }
