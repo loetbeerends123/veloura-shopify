@@ -142,25 +142,10 @@
     },
     "content_for_index": [],
     "blocks": {
-      "16022891438198749303": {
-        "type": "shopify://apps/simple-bundles-kits/blocks/byob/e553276b-36b2-446d-b80a-aa47fe5f96ac",
+      "15557474716127144420": {
+        "type": "shopify://apps/kaching-bundles/blocks/app-embed-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
         "disabled": false,
-        "settings": {
-          "image_ratio": "adapt",
-          "cart_position": "right",
-          "horizontal_margins": 15,
-          "picker_columns": "3",
-          "button_style": "filled",
-          "hide_product_section": true,
-          "show_mini_cart_description": true,
-          "accent_color": "#000000",
-          "text_color": "#000000",
-          "surface_color": "#ffffff",
-          "muted_color": "#808080",
-          "border_color": "#d1d1d1",
-          "border_radius": 2,
-          "custom_css": ""
-        }
+        "settings": {}
       }
     },
     "color_schemes": {
