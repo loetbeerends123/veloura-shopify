@@ -55,12 +55,6 @@
 
         <hr class="v-hairline">
 
-        {%- if s.offer_banner != blank -%}
-          <p class="v-offer-banner" style="margin-top:24px;">{% render 'veloura-icon', name: 'sparkle', size: 14 %}{{ s.offer_banner }}</p>
-        {%- endif -%}
-        <span class="v-eyebrow" {% if s.offer_banner == blank %}style="margin-top:24px;"{% endif %}>{{ s.bundle_label | default: 'Bundle & Save' }}</span>
-        {% render 'veloura-bundle-tiers', section: section %}
-
         {%- unless product.has_only_default_variant -%}
           <div class="v-pdp__variants" data-pdp-variants-ui>
             {%- for option in product.options_with_values -%}
@@ -82,7 +76,7 @@
             <product-form class="product-form" data-section-id="{{ section.id }}">
               {%- form 'product', product, id: product_form_id, class: 'v-pdp__form', data-atc-form: 'true', novalidate: 'novalidate' -%}
                 <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
-                <input type="hidden" name="quantity" value="2" data-bundle-qty min="1">
+                <input type="hidden" name="quantity" value="1" min="1">
                 <button type="submit" name="add" class="v-btn v-btn--green v-btn--full v-btn--lg" {% unless current_variant.available %}disabled{% endunless %}>
                   {% render 'veloura-icon', name: 'bag', size: 18 %}
                   <span>{% if current_variant.available %}{{ s.atc_label | default: 'Add to Cart' }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
