@@ -53,8 +53,6 @@
           {%- if s.bullet_2 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.bullet_2 }}</li>{%- endif -%}
         </ul>
 
-        <hr class="v-hairline">
-
         {%- unless product.has_only_default_variant -%}
           <div class="v-pdp__variants" data-pdp-variants-ui>
             {%- for option in product.options_with_values -%}
