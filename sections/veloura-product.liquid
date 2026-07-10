@@ -46,12 +46,6 @@
           </div>
         {%- endif -%}
         {%- if s.hero_claim != blank -%}<p class="v-pdp__claim v-serif">{{ s.hero_claim }}</p>{%- endif -%}
-        {%- if s.body != blank -%}<p class="v-pdp__body v-muted">{{ s.body }}</p>{%- endif -%}
-
-        <ul class="v-pdp__bullets">
-          {%- if s.bullet_1 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.bullet_1 }}</li>{%- endif -%}
-          {%- if s.bullet_2 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.bullet_2 }}</li>{%- endif -%}
-        </ul>
 
         {%- unless product.has_only_default_variant -%}
           <div class="v-pdp__variants" data-pdp-variants-ui>
@@ -95,6 +89,14 @@
             <p class="v-pdp__guarantee v-guarantee">{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.guarantee }}</p>
           {%- endif -%}
         </div>
+
+        {%- if s.body != blank -%}<p class="v-pdp__body v-muted" style="margin-top:28px;">{{ s.body }}</p>{%- endif -%}
+        {%- if s.bullet_1 != blank or s.bullet_2 != blank -%}
+          <ul class="v-pdp__bullets">
+            {%- if s.bullet_1 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.bullet_1 }}</li>{%- endif -%}
+            {%- if s.bullet_2 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.bullet_2 }}</li>{%- endif -%}
+          </ul>
+        {%- endif -%}
       </div>
     </div>
   </div>
