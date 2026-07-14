@@ -234,9 +234,9 @@
   "order": [
     "main",
     "mechanism",
+    "transformation",
     "journey",
     "reviews",
-    "transformation",
     "faq",
     "sticky",
     "178367453436454fe2"
