@@ -9,6 +9,10 @@
  */
 {
   "current": {
+    "veloura_upsell_product": "veloura-cellulite-shorts",
+    "veloura_upsell_handle": "veloura-cellulite-shorts",
+    "veloura_hero_product": "veloura-cellulite-legging",
+    "veloura_hero_handle": "veloura-cellulite-legging",
     "logo_width": 90,
     "type_header_font": "assistant_n4",
     "heading_scale": 100,

@@ -17,15 +17,15 @@
       {
         "type": "product",
         "id": "veloura_upsell_product",
-        "label": "Cart upsell product (Bloom Shorts)",
-        "info": "Pick the Bloom Shorts product so the cart drawer + cart page upsell appear."
+        "label": "Cart upsell product (Cellulite Shorts)",
+        "info": "Pick the shorts product so the cart drawer + cart page upsell appear."
       },
       {
         "type": "text",
         "id": "veloura_upsell_handle",
         "label": "Cart upsell product handle (fallback)",
-        "default": "bloom-shorts",
-        "info": "Used only if no product is picked above. Set to your Bloom Shorts product handle."
+        "default": "veloura-cellulite-shorts",
+        "info": "Used only if no product is picked above. Set to your shorts product handle."
       },
       {
         "type": "text",
