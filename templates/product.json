@@ -48,7 +48,7 @@
     "mechanism": {
       "type": "veloura-mechanism",
       "settings": {
-        "blush": true,
+        "blush": false,
         "eyebrow": "",
         "heading": "You Didn't Fail. You Were Treating the Wrong Problem.",
         "paragraph_1": "Cellulite is a <strong>circulation issue, not a fat issue</strong>. The proprietary weave stimulates micro-circulation to smooth skin from within.",
@@ -149,7 +149,7 @@
       "type": "veloura-before-after",
       "settings": {
         "layout": "split",
-        "blush": true,
+        "blush": false,
         "eyebrow": "",
         "heading": "The Transformation You've Been Waiting For.",
         "body": "Your transformation is <strong>structural</strong>. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura <strong>mechanically restructures the skin's surface</strong> from within.",
