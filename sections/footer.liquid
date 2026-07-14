@@ -34,21 +34,11 @@
       assign has_social_icons = false
     endif
 
-    if settings.brand_image == blank and settings.brand_headline == blank and settings.brand_description == blank
-      assign brand_empty = true
-    endif
-
-    if section.blocks.size == 1 and section.blocks[0].type == 'brand_information' and brand_empty and has_social_icons == false and section.settings.newsletter_enable == false and section.settings.enable_follow_on_shop == false
-      assign only_empty_brand = true
-    endif
   -%}
-  {%- if section.blocks.size > 0
-    or section.settings.newsletter_enable
-    or section.settings.show_social
-    and has_social_icons == true
-    or section.settings.enable_follow_on_shop
-  -%}
-    {%- unless only_empty_brand -%}
+  {%- comment -%}
+    Dawn's "only empty brand" gate removed: the Veloura footer always renders
+    its own brand block + link rows, independent of newsletter/social settings.
+  {%- endcomment -%}
       <div class="footer__content-top page-width">
         <div class="footer__veloura-brand">
           <img class="footer__veloura-logo" src="{{ 'veloura-logo.png' | asset_url }}" alt="{{ shop.name | default: 'Veloura' | escape }}" width="1283" height="242" loading="lazy">
@@ -266,8 +256,6 @@
           {%- endif -%}
         </div>
       </div>
-    {%- endunless -%}
-  {%- endif -%}
 
   <div
     class="footer__content-bottom{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
