@@ -101,7 +101,7 @@
           </ul>
         {%- endif -%}
         {%- if s.guarantee != blank -%}
-          <p class="v-pdp__guarantee v-guarantee">{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.guarantee }}</p>
+          <p class="v-pdp__guarantee v-guarantee">{% render 'veloura-icon', name: 'check', size: 19 %}{{ s.guarantee }}</p>
         {%- endif -%}
       </div>
     </div>
@@ -145,7 +145,7 @@
 .v-pdp__atc .v-btn { font-size: 1.1875rem; padding-block: 15px; gap: 11px; }
 .v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 600; color: var(--v-scarcity); }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
-.v-pdp__guarantee { margin: 22px 0 0; }
+.v-pdp .v-pdp__guarantee { margin: 22px 0 0; font-size: 1.0625rem; font-weight: 700; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 .v-pdp__form { margin: 0; }
 @media (max-width: 989px) {
