@@ -11,6 +11,9 @@
   assign s = section.settings
 -%}
 <section class="v-pdp" data-section-id="{{ section.id }}">
+  <div class="v-pdp-community">
+    <p>Join <strong>20,800+</strong> women who chose Veloura</p>
+  </div>
   <div class="v-container">
     <div class="v-pdp__grid">
 
@@ -104,6 +107,9 @@
 
 {% stylesheet %}
 .v-pdp { padding-block: 32px clamp(48px, 6vw, 72px); }
+.v-pdp-community { text-align: center; padding: 15px 24px; border-bottom: 1px solid var(--v-border); margin: -32px 0 30px; }
+.v-pdp-community p { margin: 0; font-family: var(--v-font-body); font-size: 1.0625rem; letter-spacing: 0.02em; color: var(--v-muted); }
+.v-pdp-community strong { color: var(--v-text); font-weight: 700; }
 .v-pdp__grid { display: grid; grid-template-columns: 55% 45%; gap: 48px; align-items: start; }
 .v-pdp__gallery { position: sticky; top: calc(var(--header-height, 64px) + 24px); }
 .v-pdp__main { border-radius: var(--v-radius-md); overflow: hidden; aspect-ratio: 4 / 5; background: #cdb6a8; }
