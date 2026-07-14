@@ -93,11 +93,13 @@
           {%- endif -%}
         </div>
 
-        {%- if s.body != blank -%}<p class="v-pdp__body v-muted" style="margin-top:28px;">{{ s.body }}</p>{%- endif -%}
-        {%- if s.bullet_1 != blank or s.bullet_2 != blank -%}
-          <ul class="v-pdp__bullets">
-            {%- if s.bullet_1 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.bullet_1 }}</li>{%- endif -%}
-            {%- if s.bullet_2 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.bullet_2 }}</li>{%- endif -%}
+        {%- if s.tagline != blank -%}<p class="v-pdp__tagline v-serif v-italic">{{ s.tagline }}</p>{%- endif -%}
+        {%- if s.body != blank -%}<p class="v-pdp__body v-muted">{{ s.body }}</p>{%- endif -%}
+        {%- if s.bullet_1 != blank or s.bullet_2 != blank or s.bullet_3 != blank -%}
+          <ul class="v-pdp__benefits">
+            {%- if s.bullet_1 != blank -%}<li>{{ s.bullet_1 }}</li>{%- endif -%}
+            {%- if s.bullet_2 != blank -%}<li>{{ s.bullet_2 }}</li>{%- endif -%}
+            {%- if s.bullet_3 != blank -%}<li>{{ s.bullet_3 }}</li>{%- endif -%}
           </ul>
         {%- endif -%}
       </div>
@@ -129,6 +131,10 @@
 .v-pdp__bullets { display: grid; gap: 10px; margin-bottom: 8px; }
 .v-pdp__bullets li { display: flex; align-items: center; gap: 10px; font-size: 1.0625rem; }
 .v-pdp__bullets svg { color: var(--v-green); flex: none; }
+.v-pdp__tagline { font-family: var(--v-font-display); font-style: italic; font-weight: 400; font-size: clamp(1.3rem, 2.2vw, 1.55rem); line-height: 1.35; color: var(--v-text); margin: 30px 0 14px; }
+.v-pdp__body { font-size: 1.0625rem; line-height: 1.7; margin: 0 0 4px; }
+.v-pdp__benefits { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
+.v-pdp__benefits li { font-size: 1.0625rem; line-height: 1.5; color: var(--v-text); padding-left: 2em; text-indent: -2em; }
 .v-pdp__variants { display: flex; flex-wrap: wrap; gap: 16px; margin: 22px 0 4px; }
 .v-pdp__option { display: grid; gap: 6px; flex: 1 1 160px; }
 .v-pdp__option-name { font-family: var(--v-font-body); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
@@ -154,9 +160,11 @@
     { "type": "text", "id": "overline", "label": "Overline", "default": "Velo-Lymph™ Enhanced" },
     { "type": "text", "id": "rating_text", "label": "Rating text (next to stars)", "default": "4.8 based on 471 Reviews" },
     { "type": "text", "id": "hero_claim", "label": "Hero claim", "default": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>" },
-    { "type": "textarea", "id": "body", "label": "Body", "default": "Experience the freedom of wearing what you love. Our Velo-Lymph™ technology works with your body's natural rhythms to <strong>transform your skin while you live your life</strong>." },
-    { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "<strong>Not shapewear. Not compression.</strong>" },
-    { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "<strong>Works while you live.</strong> Zero effort." },
+    { "type": "textarea", "id": "tagline", "label": "Tagline (italic)", "default": "The last legging you'll ever wish you'd found sooner." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "<strong>Not shapewear. Not compression.</strong> The only legging with a micro-massage weave, engineered to <strong>target cellulite</strong> while you live your life." },
+    { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "👖 Wear the shorts again — no more avoiding the mirror, the pool, or summer" },
+    { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "🔄 Works automatically — no rollers, no creams, no extra routine" },
+    { "type": "text", "id": "bullet_3", "label": "Bullet 3", "default": "📈 Visible results in a few weeks — smoother-looking skin, just from wearing what you already wear" },
     { "type": "text", "id": "offer_banner", "label": "Offer banner (red)", "default": "Limited offer — Buy 1 Get 1 Free + Free Shipping" },
     { "type": "text", "id": "bundle_label", "label": "Bundle label", "default": "Bundle & Save" },
     { "type": "text", "id": "atc_label", "label": "Add to cart label", "default": "Add to Cart" },
