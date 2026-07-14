@@ -523,13 +523,16 @@ body {
 .cart-drawer__overline { display: block; font-family: var(--v-font-body); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--v-rust); margin-top: 4px; }
 .cart-drawer .cart-item__name { font-size: 1.25rem; }
 
-/* Veloura "Complete your protocol" upsell block inside the Dawn drawer */
-.v-drawer-upsell { margin: 12px 16px; padding: 14px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
-.v-drawer-upsell__head { display: flex; align-items: center; gap: 8px; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 12px; }
-.v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 14px; box-shadow: var(--v-shadow-card); }
-.v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 64px; height: 64px; object-fit: cover; border-radius: var(--v-radius-sm); }
+/* Veloura "Complete your protocol" upsell block inside the Dawn drawer.
+   Kept compact so it never squeezes the item rows (incl. the quantity
+   stepper) out of view; the item list also keeps a minimum height. */
+.cart-drawer cart-drawer-items { min-height: 250px; }
+.v-drawer-upsell { margin: 10px 16px; padding: 10px 12px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
+.v-drawer-upsell__head { display: flex; align-items: center; gap: 8px; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 8px; }
+.v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 10px; box-shadow: var(--v-shadow-card); }
+.v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 48px; height: 48px; object-fit: cover; border-radius: var(--v-radius-sm); }
 .v-drawer-upsell__name { font-weight: 600; font-size: 0.875rem; }
-.v-drawer-upsell__desc { font-size: 0.75rem; color: var(--v-muted); margin: 2px 0 8px; }
+.v-drawer-upsell__desc { font-size: 0.75rem; color: var(--v-muted); margin: 2px 0 6px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 .v-drawer-upsell__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
 .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; }
