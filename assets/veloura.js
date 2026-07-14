@@ -133,7 +133,8 @@
 
       var data = new FormData(form);
       data.append('sections', targets.map(function (t) { return t.section; }).join(','));
-      data.append('sections_url', window.location.pathname);
+      // NOTE: no sections_url — this store's /cart/add rejects it with a 400
+      // ("sections_url must be a relative path"); sections render fine without it.
 
       var sectionsHtml = {};
       function patchSection(sections, id) {
@@ -152,9 +153,12 @@
         headers: { Accept: 'application/javascript', 'X-Requested-With': 'XMLHttpRequest' },
         body: data
       })
-        .then(function (res) { return res.json(); })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Add to cart failed: HTTP ' + res.status);
+          return res.json();
+        })
         .then(function (state) {
-          if (state.status) throw new Error(state.description || 'Add to cart failed');
+          if (state.status || state.errors) throw new Error(state.description || state.errors || 'Add to cart failed');
           sectionsHtml = state.sections || {};
           targets.forEach(function (t) { t.apply(sectionsHtml); });
           // Re-bind any freshly rendered upsell section (now shows the added state).
