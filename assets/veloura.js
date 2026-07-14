@@ -126,7 +126,9 @@
       if (items) targets.push({ section: items.dataset.id, apply: function (doc) { patchInner(doc, items.dataset.id, '#main-cart-items .js-contents', '#main-cart-items .js-contents'); } });
       if (footer) targets.push({ section: footer.dataset.id, apply: function (doc) { patchInner(doc, footer.dataset.id, '#main-cart-footer .js-contents', '#main-cart-footer .js-contents'); } });
       if (sectionId) targets.push({ section: sectionId, apply: function (doc) { patchSection(doc, sectionId); } });
-      targets.push({ section: 'cart-icon-bubble', apply: function (doc) { patchSection(doc, 'cart-icon-bubble'); } });
+      // Header cart badge: the element is #cart-icon-bubble inside the header
+      // (there is no #shopify-section-cart-icon-bubble wrapper on the page).
+      targets.push({ section: 'cart-icon-bubble', apply: function (doc) { patchInner(doc, 'cart-icon-bubble', '.shopify-section', '#cart-icon-bubble'); } });
       if (document.querySelector('cart-drawer')) {
         targets.push({ section: 'cart-drawer', apply: function (doc) { patchInner(doc, 'cart-drawer', '#CartDrawer', '#CartDrawer'); } });
       }
