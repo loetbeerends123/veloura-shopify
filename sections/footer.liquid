@@ -52,7 +52,15 @@
       <div class="footer__content-top page-width">
         <div class="footer__veloura-brand">
           <img class="footer__veloura-logo" src="{{ 'veloura-logo.png' | asset_url }}" alt="{{ shop.name | default: 'Veloura' | escape }}" width="1283" height="242" loading="lazy">
+          <p class="footer__veloura-tagline">Clinically engineered for real, structural change.</p>
         </div>
+        <nav class="footer__veloura-links" aria-label="Explore">
+          <ul class="list-unstyled">
+            <li><a class="link link--text" href="/products/veloura-cellulite-legging">Cellulite Legging</a></li>
+            <li><a class="link link--text" href="/pages/our-story">Our Story</a></li>
+            <li><a class="link link--text" href="/pages/contact">Contact</a></li>
+          </ul>
+        </nav>
         <nav class="footer__veloura-links" aria-label="Quick Links">
           <ul class="list-unstyled">
             <li><a class="link link--text" href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}">Terms and conditions of sale</a></li>
@@ -312,7 +320,7 @@
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
         <small class="copyright__content"
-          >&copy; {{ 'now' | date: '%Y' }} Veloura</small
+          >&copy; {{ 'now' | date: '%Y' }} Veloura Clinical. Formulated for results.</small
         >
       </div>
     </div>

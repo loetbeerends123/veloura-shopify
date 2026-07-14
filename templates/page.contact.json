@@ -3,11 +3,11 @@
     "contact": {
       "type": "veloura-contact",
       "settings": {
-        "heading": "Contact",
-        "subheading": "",
-        "button_label": "Send",
-        "email": "",
-        "hours": ""
+        "heading": "Get in Touch",
+        "subheading": "We're here to support your journey.",
+        "button_label": "Send Message",
+        "email": "hello@veloura.com",
+        "hours": "Customer Support: Monday–Friday, 9am–6pm GMT"
       }
     }
   },

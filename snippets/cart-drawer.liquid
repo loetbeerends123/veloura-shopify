@@ -44,7 +44,7 @@
                   {{- 'icon-close.svg' | inline_asset_content -}}
                 </span>
               </button>
-              <a href="{{ routes.all_products_collection_url }}" class="button">
+              <a href="/products/veloura-cellulite-legging" class="button">
                 {{ 'general.continue_shopping' | t }}
               </a>
             </div>
@@ -559,6 +559,8 @@
               </ul>
             {%- endif -%}
           </div>
+
+          {% render 'veloura-cart-offer' %}
 
           <div class="v-drawer-totals">
             <div class="v-drawer-totals__row">

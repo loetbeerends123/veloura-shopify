@@ -1,7 +1,8 @@
 {%- comment -%}
   Veloura — "Complete Your Protocol" cart-page upsell (PRD §7, §10.2).
-  Adds the Bloom Shorts via Dawn's product form. Shows an "added" state
-  when the upsell product is already in the cart.
+  Uses its own AJAX form (initCartUpsell in veloura.js) so adding updates
+  the cart page in place via the Section Rendering API instead of opening
+  the drawer over the page. Falls back to a normal POST without JS.
 {%- endcomment -%}
 {%- liquid
   assign up = section.settings.product
@@ -22,23 +23,22 @@
   endif
   assign up_variant = up.selected_or_first_available_variant
 -%}
-{%- if cart != empty -%}
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-<section class="v-section v-cart-upsell">
-  <div class="v-container" style="max-width:1100px;">
-    <h2 class="v-h3" style="font-size:1.75rem;margin-bottom:18px;">{{ section.settings.heading }}</h2>
-    <hr class="v-hairline" style="margin-bottom:24px;">
+{%- if cart != empty and up != blank -%}
+<section class="v-section v-cart-upsell" data-v-upsell data-section-id="{{ section.id }}">
+  <div class="v-container v-cart-upsell__container">
+    <h2 class="v-h3 v-cart-upsell__heading">{{ section.settings.heading }}</h2>
+    <hr class="v-hairline v-cart-upsell__rule">
 
     <div class="v-card v-cart-upsell__card {% if in_cart %}is-added{% endif %}">
       <div class="v-cart-upsell__media">
         {%- if up.featured_image -%}
-          <img src="{{ up.featured_image | image_url: width: 240 }}" alt="{{ up.featured_image.alt | escape }}" width="100" height="120">
+          <img src="{{ up.featured_image | image_url: width: 240 }}" alt="{{ up.featured_image.alt | default: up.title | escape }}" width="100" height="120">
         {%- else -%}
           <span class="v-placeholder" data-label="Bloom Shorts"></span>
         {%- endif -%}
       </div>
       <div class="v-cart-upsell__body">
-        <h3 class="v-h3" style="font-size:1.375rem;">{{ up.title | default: 'Veloura Bloom Shorts' }}</h3>
+        <h3 class="v-h3 v-cart-upsell__title">{{ up.title }}</h3>
         <p class="v-muted v-body-sm">{{ section.settings.body }}</p>
         <span class="v-badge v-badge--clinical">Clinical Results</span>
         {%- if section.settings.reassurance != blank -%}
@@ -46,16 +46,17 @@
         {%- endif -%}
       </div>
       <div class="v-cart-upsell__action">
-        <span class="v-price">{{ up.price | money | default: '£24.99' }}</span>
+        <span class="v-price">{{ up.price | money }}</span>
         {%- if in_cart -%}
           <span class="v-cart-upsell__added">{% render 'veloura-icon', name: 'check', size: 16 %} Added to your protocol</span>
-        {%- elsif up != blank -%}
-          <product-form class="product-form">
-            {%- form 'product', up, id: 'upsell-form', novalidate: 'novalidate' -%}
-              <input type="hidden" name="id" value="{{ up_variant.id }}">
-              <button type="submit" name="add" class="v-btn v-btn--rust-outline">Add to Order</button>
-            {%- endform -%}
-          </product-form>
+        {%- else -%}
+          <form action="{{ routes.cart_add_url }}" method="post" data-v-upsell-form>
+            <input type="hidden" name="id" value="{{ up_variant.id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="v-btn v-btn--rust-outline" {% unless up_variant.available %}disabled{% endunless %}>
+              {%- if up_variant.available %}Add to Order{% else %}Sold out{% endif -%}
+            </button>
+          </form>
         {%- endif -%}
       </div>
     </div>
@@ -64,6 +65,10 @@
 {%- endif -%}
 
 {% stylesheet %}
+.v-cart-upsell__container { max-width: 1100px; }
+.v-cart-upsell__heading { font-size: 1.75rem; margin-bottom: 18px; }
+.v-cart-upsell__rule { margin-bottom: 24px; }
+.v-cart-upsell__title { font-size: 1.375rem; }
 .v-cart-upsell__card { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; padding: 24px; }
 .v-cart-upsell__card.is-added { opacity: 0.75; }
 .v-cart-upsell__media img, .v-cart-upsell__media .v-placeholder { width: 100px; height: 120px; object-fit: cover; border-radius: var(--v-radius-md); display: block; }
@@ -86,7 +91,7 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "Complete Your Protocol" },
     { "type": "product", "id": "product", "label": "Upsell product (Bloom Shorts)" },
     { "type": "textarea", "id": "body", "label": "Body", "default": "Essential for <strong>24/7 lymphatic support</strong> and targeted compression." },
-    { "type": "text", "id": "reassurance", "label": "Reassurance line (green)", "default": "Free shipping & 60-day money-back guarantee" }
+    { "type": "text", "id": "reassurance", "label": "Reassurance line (green)", "default": "Free shipping & 30-day money-back guarantee" }
   ],
   "presets": [{ "name": "Veloura Cart Upsell" }]
 }

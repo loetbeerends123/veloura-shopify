@@ -8,12 +8,13 @@
 
     <div class="v-faq v-reveal" data-faq data-delay="1">
       {%- for block in section.blocks -%}
+        {%- assign panel_id = section.id | append: '-faq-' | append: forloop.index -%}
         <div class="v-faq__item" {{ block.shopify_attributes }}>
-          <button type="button" class="v-faq__q">
+          <button type="button" class="v-faq__q" aria-expanded="false" aria-controls="{{ panel_id }}">
             <span>{{ block.settings.question }}</span>
             <span class="v-faq__icon" aria-hidden="true"></span>
           </button>
-          <div class="v-faq__a">
+          <div class="v-faq__a" id="{{ panel_id }}" role="region" hidden>
             <div class="v-faq__a-inner">{{ block.settings.answer }}</div>
           </div>
         </div>

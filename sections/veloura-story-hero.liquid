@@ -7,8 +7,8 @@
   {%- endif -%}
   <div class="v-story-hero__overlay">
     <div class="v-container">
-      <h1 class="v-story-hero__title v-serif">{{ section.settings.line_1 }}</h1>
-      <h1 class="v-story-hero__title v-italic v-rust-text">{{ section.settings.line_2 }}</h1>
+      <h1 class="v-story-hero__title v-serif">{{ section.settings.line_1 }}
+        <span class="v-story-hero__line2 v-italic v-rust-text">{{ section.settings.line_2 }}</span></h1>
     </div>
   </div>
 </section>
@@ -17,8 +17,8 @@
 .v-story-hero { position: relative; }
 .v-story-hero__img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
 .v-story-hero__overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; padding-bottom: clamp(28px, 5vw, 56px); background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%); }
-.v-story-hero__title { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin: 0; }
-.v-story-hero__title:first-child { color: #fff; }
+.v-story-hero__title { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin: 0; color: #fff; }
+.v-story-hero__line2 { display: block; font-weight: inherit; }
 @media (max-width: 749px) { .v-story-hero__img { aspect-ratio: 16 / 11; } }
 {% endstylesheet %}
 

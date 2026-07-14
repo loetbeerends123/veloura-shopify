@@ -7,7 +7,7 @@
       {%- if section.settings.subheading != blank -%}<p class="v-muted v-body" style="max-width:46ch;margin-top:14px;">{{ section.settings.subheading }}</p>{%- endif -%}
       {%- if section.settings.rating_text != blank -%}
         <div class="v-social__rating">
-          <span class="v-stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}</span>
+          <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 16 %}</span>
           <span class="v-label" style="font-size:0.75rem;color:var(--v-text);">{{ section.settings.rating_text }}</span>
         </div>
       {%- endif -%}
@@ -63,7 +63,7 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Real structural change" },
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Join thousands of women who stopped treating the symptom and started treating the cause." },
-    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.9/5 from 2,400+ reviews" },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.8/5 from 471 reviews" },
     { "type": "text", "id": "link_label", "label": "Link label", "default": "Read all reviews" },
     { "type": "url", "id": "link_url", "label": "Link URL" }
   ],

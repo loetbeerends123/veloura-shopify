@@ -3,13 +3,17 @@
   if section.settings.image != blank
     assign hero_src = section.settings.image | image_url: width: 2400
     assign hero_alt = section.settings.image.alt | default: 'Model wearing Veloura leggings'
+    assign hero_w = section.settings.image.width
+    assign hero_h = section.settings.image.height
   else
     assign hero_src = 'veloura-hero.png' | asset_url
     assign hero_alt = 'Model wearing Veloura anti-cellulite leggings'
+    assign hero_w = 2400
+    assign hero_h = 1350
   endif
 -%}
 <section class="v-hero">
-  <img class="v-hero__img" src="{{ hero_src }}" alt="{{ hero_alt | escape }}" fetchpriority="high">
+  <img class="v-hero__img" src="{{ hero_src }}" alt="{{ hero_alt | escape }}" width="{{ hero_w }}" height="{{ hero_h }}" fetchpriority="high">
   <div class="v-hero__fade"></div>
 
   <div class="v-hero__inner v-container">

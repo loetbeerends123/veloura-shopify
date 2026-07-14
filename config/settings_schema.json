@@ -32,6 +32,19 @@
         "id": "veloura_upsell_text",
         "label": "Cart upsell description",
         "default": "Essential for 24/7 lymphatic support and targeted compression."
+      },
+      {
+        "type": "product",
+        "id": "veloura_hero_product",
+        "label": "Hero product (Cellulite Legging)",
+        "info": "Used for the automatic BOGO / 3-pack offer message in the cart."
+      },
+      {
+        "type": "text",
+        "id": "veloura_hero_handle",
+        "label": "Hero product handle (fallback)",
+        "default": "veloura-cellulite-legging",
+        "info": "Used only if no product is picked above."
       }
     ]
   },

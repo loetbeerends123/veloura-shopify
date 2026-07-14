@@ -2,7 +2,7 @@
    VELOURA — veloura.js
    Vanilla interactions layered on Dawn. No dependencies.
    Covers PRD §10 & §12: reveal, before/after slider, FAQ accordion,
-   bundle selector, sticky cart bar, product gallery.
+   sticky cart bar, product gallery, cart-page upsell sync.
    Cart add-to-cart + drawer is handled by Dawn (product-form.js /
    cart-drawer.js); this file only drives bespoke UI.
    ============================================================ */
@@ -21,8 +21,6 @@
     else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  var money = (window.Shopify && Shopify.formatMoney) ? null : null; // Dawn provides formatting server-side; we use pre-rendered strings.
-
   /* ========================================================================
      1. Before / After comparison slider (PRD §1.2, §2.4, §10.4)
      ======================================================================== */
@@ -34,8 +32,7 @@
 
     function setPos(pct) {
       pct = Math.max(0, Math.min(100, pct));
-      beforeWrap.style.width = pct + '%';
-      handle.style.left = pct + '%';
+      root.style.setProperty('--v-ba-pos', pct + '%');
       range.value = pct;
     }
 
@@ -76,6 +73,9 @@
       var btn = item.querySelector('.v-faq__q');
       var panel = item.querySelector('.v-faq__a');
       if (!btn || !panel) return;
+      // The static `hidden` keeps panels out of AT/tab order without JS;
+      // once JS drives the accordion, visibility is handled via CSS (.is-open).
+      panel.removeAttribute('hidden');
       btn.setAttribute('aria-expanded', 'false');
       btn.addEventListener('click', function () {
         var isOpen = item.classList.contains('is-open');
@@ -93,48 +93,77 @@
         }
       });
     });
+    // Keep the open panel un-clipped when text reflows (resize, font swap).
+    window.addEventListener('resize', function () {
+      var open = root.querySelector('.v-faq__item.is-open .v-faq__a');
+      if (open) open.style.maxHeight = open.scrollHeight + 'px';
+    });
   }
 
   /* ========================================================================
-     3. Bundle selector (PRD §1.4, §2.1) — radio tiers + tier-2 reveal
-     Updates the displayed price, the hidden quantity for add-to-cart,
-     and broadcasts the price to the sticky bar.
+     3. Cart-page upsell (PRD §7, §10.2) — adds the upsell product via the
+     Cart API + Section Rendering API so the /cart page updates in place
+     (items, totals, upsell state, header bubble, drawer) without opening
+     the drawer over the page.
      ======================================================================== */
-  function initBundle(root) {
-    var tiers = Array.prototype.slice.call(root.querySelectorAll('.v-tier'));
-    // The add-to-cart quantity input lives in the buy box, outside [data-bundle],
-    // so search the enclosing section/page rather than just this element.
-    var scope = root.closest('.v-pdp, .shopify-section') || document;
-    var qtyInput = scope.querySelector('[data-bundle-qty]');
-    var priceOut = document.querySelectorAll('[data-bundle-price]');
+  function initCartUpsell(root) {
+    var form = root.querySelector('[data-v-upsell-form]');
+    if (!form) return;
+    var sectionId = root.getAttribute('data-section-id');
 
-    function select(tier) {
-      tiers.forEach(function (t) {
-        var on = t === tier;
-        t.classList.toggle('is-selected', on);
-        var radio = t.querySelector('input[type="radio"]');
-        if (radio) radio.checked = on;
-        var reveal = t.querySelector('.v-tier__reveal');
-        if (reveal) reveal.style.maxHeight = on ? reveal.scrollHeight + 'px' : null;
-      });
-      var qty = tier.getAttribute('data-qty') || '1';
-      var price = tier.getAttribute('data-price') || '';
-      if (qtyInput) qtyInput.value = qty;
-      priceOut.forEach(function (el) { el.textContent = price; });
-      root.dispatchEvent(new CustomEvent('veloura:bundlechange', { bubbles: true, detail: { qty: qty, price: price } }));
-    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn && btn.disabled) return;
+      var originalLabel = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Adding…'; }
 
-    tiers.forEach(function (tier) {
-      tier.addEventListener('click', function (e) {
-        if (e.target.closest('select')) return; // don't re-select when using dropdowns
-        select(tier);
-      });
-      var radio = tier.querySelector('input[type="radio"]');
-      if (radio) radio.addEventListener('change', function () { if (radio.checked) select(tier); });
+      // Mirror Dawn cart.js getSectionsToRender(): page sections via their
+      // data-id, plus the upsell section itself, header bubble and drawer.
+      var targets = [];
+      var items = document.getElementById('main-cart-items');
+      var footer = document.getElementById('main-cart-footer');
+      if (items) targets.push({ section: items.dataset.id, apply: function (doc) { patchInner(doc, items.dataset.id, '#main-cart-items .js-contents', '#main-cart-items .js-contents'); } });
+      if (footer) targets.push({ section: footer.dataset.id, apply: function (doc) { patchInner(doc, footer.dataset.id, '#main-cart-footer .js-contents', '#main-cart-footer .js-contents'); } });
+      if (sectionId) targets.push({ section: sectionId, apply: function (doc) { patchSection(doc, sectionId); } });
+      targets.push({ section: 'cart-icon-bubble', apply: function (doc) { patchSection(doc, 'cart-icon-bubble'); } });
+      if (document.querySelector('cart-drawer')) {
+        targets.push({ section: 'cart-drawer', apply: function (doc) { patchInner(doc, 'cart-drawer', '#CartDrawer', '#CartDrawer'); } });
+      }
+
+      var data = new FormData(form);
+      data.append('sections', targets.map(function (t) { return t.section; }).join(','));
+      data.append('sections_url', window.location.pathname);
+
+      var sectionsHtml = {};
+      function patchSection(sections, id) {
+        var target = document.getElementById('shopify-section-' + id);
+        if (target && sections[id]) target.innerHTML = new DOMParser().parseFromString(sections[id], 'text/html').querySelector('.shopify-section').innerHTML;
+      }
+      function patchInner(sections, id, sourceSel, targetSel) {
+        var target = document.querySelector(targetSel);
+        if (!target || !sections[id]) return;
+        var source = new DOMParser().parseFromString(sections[id], 'text/html').querySelector(sourceSel);
+        if (source) target.innerHTML = source.innerHTML;
+      }
+
+      fetch(window.routes && routes.cart_add_url ? routes.cart_add_url : '/cart/add', {
+        method: 'POST',
+        headers: { Accept: 'application/javascript', 'X-Requested-With': 'XMLHttpRequest' },
+        body: data
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (state) {
+          if (state.status) throw new Error(state.description || 'Add to cart failed');
+          sectionsHtml = state.sections || {};
+          targets.forEach(function (t) { t.apply(sectionsHtml); });
+          // Re-bind any freshly rendered upsell section (now shows the added state).
+          document.querySelectorAll('[data-v-upsell]').forEach(initCartUpsell);
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = originalLabel; }
+        });
     });
-
-    var preselected = root.querySelector('.v-tier[data-default]') || tiers[0];
-    if (preselected) select(preselected);
   }
 
   /* ========================================================================
@@ -151,7 +180,10 @@
     if (!selects.length) return;
     var addBtn = root.querySelector('[data-atc-form] [name="add"]');
     var addLabel = addBtn ? addBtn.querySelector('span') : null;
-    var availableText = addLabel ? addLabel.textContent : '';
+    // Don't capture the rendered label: if the first variant is sold out it
+    // would poison every available variant with "Sold out".
+    var availableText = (window.variantStrings && window.variantStrings.addToCart) || 'Add to Cart';
+    if (addLabel && addBtn && !addBtn.disabled) availableText = addLabel.textContent;
 
     function update() {
       var chosen = selects.map(function (s) { return s.value; });
@@ -181,12 +213,20 @@
     var bar = document.querySelector('[data-sticky-bar]');
     var anchor = document.querySelector('[data-atc-anchor]');
     if (!bar || !anchor || !('IntersectionObserver' in window)) return;
+    // Theme editor re-runs this on section reloads; drop the old observer.
+    if (bar._vIo) bar._vIo.disconnect();
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        bar.classList.toggle('is-visible', !e.isIntersecting && e.boundingClientRect.top < 0);
+        var show = !e.isIntersecting && e.boundingClientRect.top < 0;
+        bar.classList.toggle('is-visible', show);
+        bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+        bar.toggleAttribute('inert', !show);
+        // Reserve space so the fixed bar never covers the footer/last CTA.
+        document.body.style.paddingBottom = show ? bar.offsetHeight + 'px' : '';
       });
     }, { threshold: 0, rootMargin: '0px 0px -100% 0px' });
     io.observe(anchor);
+    bar._vIo = io;
   }
 
   /* ========================================================================
@@ -207,7 +247,11 @@
           main.src = src;
           var alt = thumb.getAttribute('data-alt');
           if (alt) main.alt = alt;
-          main.style.opacity = '1';
+          // Wait for the new image to decode so the fade-in never shows a blank frame.
+          var show = function () { main.style.opacity = '1'; };
+          if (main.decode) main.decode().then(show, show);
+          else if (main.complete) show();
+          else main.onload = show;
         }, 150);
       });
     });
@@ -262,7 +306,7 @@
     initStickyAtc();
     document.querySelectorAll('[data-before-after]').forEach(initBeforeAfter);
     document.querySelectorAll('[data-faq]').forEach(initFaq);
-    document.querySelectorAll('[data-bundle]').forEach(initBundle);
+    document.querySelectorAll('[data-v-upsell]').forEach(initCartUpsell);
     document.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     document.querySelectorAll('[data-gallery]').forEach(initGallery);
     initStickyBar();
@@ -273,9 +317,10 @@
   // Re-init within the Shopify theme editor when sections are re-rendered.
   document.addEventListener('shopify:section:load', function (e) {
     var s = e.target;
+    relabelNav();
     s.querySelectorAll('[data-before-after]').forEach(initBeforeAfter);
     s.querySelectorAll('[data-faq]').forEach(initFaq);
-    s.querySelectorAll('[data-bundle]').forEach(initBundle);
+    s.querySelectorAll('[data-v-upsell]').forEach(initCartUpsell);
     if (s.matches && s.matches('.v-pdp')) initVariantPicker(s);
     s.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     s.querySelectorAll('[data-gallery]').forEach(initGallery);

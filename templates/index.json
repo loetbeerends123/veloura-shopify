@@ -12,12 +12,12 @@
     "hero": {
       "type": "veloura-hero",
       "settings": {
-        "eyebrow": "",
+        "eyebrow": "Velo-Lymph™ Technology",
         "heading": "Stop hiding your legs!",
         "subheading": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>.",
         "button_label": "Shop the Veloura Leggings now!",
         "button_link": "shopify://products/veloura-cellulite-legging",
-        "urgency": ""
+        "urgency": "Buy 1 Get 1 Free — applied automatically at checkout"
       }
     },
     "before_after": {
@@ -93,19 +93,16 @@
         "subheading": "Choose your protocol. <strong>Consistent daily wear</strong> is the key to structural remodelling.",
         "product": "",
         "cta_link": "shopify://products/veloura-cellulite-legging",
-        "cta_label": "Secure Checkout",
+        "cta_label": "Choose My Protocol",
         "guarantee": "30-Day Clinical Trial Guarantee + Free Returns",
-        "colors": "Slate,Black,Espresso",
-        "sizes": "XS,S,M,L,XL",
         "t1_label": "1 Pair — Starter Protocol",
         "t1_sub": "Good for occasional use. Try the technology.",
         "t1_price": "£44.99",
-        "t1_qty": "1",
         "t2_badge": "Most Popular",
-        "t2_label": "2 Pairs — Free Shipping",
+        "t2_label": "2 Pairs — Buy 1 Get 1 Free",
         "t2_price": "£44.99",
-        "t2_qty": "2",
-        "t2_save": "Save £44 + Free Shipping",
+        "t2_compare": "£89.98",
+        "t2_save": "Save £44.99 + Free Shipping",
         "feature_1": "Full cellular update",
         "feature_2": "Consistent daily therapy",
         "feature_3": "Never miss a day. Maximum clinical results.",
@@ -113,7 +110,7 @@
         "t3_label": "3 Pairs — Best Value",
         "t3_sub": "Never miss a day. Maximum clinical results.",
         "t3_price": "£64.99",
-        "t3_qty": "3",
+        "t3_compare": "£134.97",
         "t3_save": "Save £69.98 + Free Shipping"
       }
     },
@@ -181,7 +178,7 @@
         "eyebrow": "",
         "heading": "Real structural change",
         "subheading": "Join <strong>thousands of women</strong> who stopped treating the symptom and started <strong>treating the cause</strong>.",
-        "rating_text": "4.8/5 from 2,400+ reviews",
+        "rating_text": "4.8/5 from 471 reviews",
         "link_label": "",
         "link_url": "shopify://products/veloura-cellulite-legging"
       }

@@ -15,12 +15,12 @@
       "type": "veloura-announcement",
       "settings": {
         "message_1": "Trusted by customers – Rated 4.8/5",
-        "message_2": "Risk-Free with Our 30-Day Money-Back Guarantee!",
-        "message_3": "Buy 1, Get 1 Free – Limited Time Only!",
+        "message_2": "Risk-Free with Our 30-Day Money-Back Guarantee",
+        "message_3": "Buy 1, Get 1 Free – Applied Automatically at Checkout",
         "separator": "◆",
         "repeats": 4,
         "speed": 50,
-        "bg_color": "#5e8c4e",
+        "bg_color": "#3a7d44",
         "text_color": "#ffffff"
       }
     },
@@ -31,13 +31,13 @@
         "mobile_logo_position": "center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
-        "sticky_header_type": "none",
+        "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "scheme-1",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "enable_customer_avatar": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": false,
         "margin_bottom": 0,
         "padding_top": 20,
         "padding_bottom": 20

@@ -27,7 +27,7 @@
         <div class="v-section-head" style="margin-bottom:32px;">
           {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
           <h2 class="v-h2">{{ section.settings.heading }}</h2>
-          {%- if section.settings.body != blank -%}<p>{{ section.settings.body }}</p>{%- endif -%}
+          {%- if section.settings.body != blank -%}<p class="v-muted v-body">{{ section.settings.body }}</p>{%- endif -%}
         </div>
         {% render 'veloura-before-after', before_img: section.settings.before_image, after_img: section.settings.after_image, ratio: '2 / 3' %}
       </div>

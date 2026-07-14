@@ -16,7 +16,7 @@
     <div class="v-card v-bundle__card v-reveal" data-delay="1">
       {% render 'veloura-bundle-tiers', section: section %}
 
-      <a href="{{ cta_link | default: '#' }}" class="v-btn v-btn--green v-btn--full v-btn--lg v-bundle__cta">
+      <a href="{{ cta_link | default: '#' }}#v-buybox" class="v-btn v-btn--green v-btn--full v-btn--lg v-bundle__cta">
         {% render 'veloura-icon', name: 'bag', size: 18 %} {{ section.settings.cta_label }}
       </a>
       {%- if section.settings.guarantee != blank -%}
@@ -29,7 +29,7 @@
 {% stylesheet %}
 .v-bundle__card { max-width: 680px; margin-inline: auto; padding: clamp(24px, 4vw, 40px); }
 .v-bundle__cta { margin-top: 24px; }
-.v-bundle__guarantee { text-align: center; font-size: 0.6875rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-muted); margin: 14px 0 0; }
+.v-bundle__guarantee { display: flex; align-items: center; justify-content: center; gap: 7px; text-align: center; font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.02em; color: var(--v-green); margin: 16px 0 0; }
 {% endstylesheet %}
 
 {% schema %}
@@ -42,21 +42,18 @@
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Choose your protocol. Consistent daily wear is the key to structural remodelling." },
     { "type": "product", "id": "product", "label": "Linked product" },
     { "type": "url", "id": "cta_link", "label": "CTA link (overrides product)" },
-    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Secure Checkout" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Choose My Protocol" },
     { "type": "text", "id": "guarantee", "label": "Guarantee line", "default": "30-Day Clinical Trial Guarantee + Free Returns" },
-    { "type": "header", "content": "Variant options" },
-    { "type": "text", "id": "colors", "label": "Colours (comma separated)", "default": "Slate,Black,Espresso" },
-    { "type": "text", "id": "sizes", "label": "Sizes (comma separated)", "default": "XS,S,M,L,XL" },
     { "type": "header", "content": "Tier 1" },
     { "type": "text", "id": "t1_label", "label": "Label", "default": "1 Pair — Starter Protocol" },
     { "type": "text", "id": "t1_sub", "label": "Sub-copy", "default": "Good for occasional use. Try the technology." },
     { "type": "text", "id": "t1_price", "label": "Price", "default": "£44.99" },
-    { "type": "text", "id": "t1_qty", "label": "Quantity", "default": "1" },
-    { "type": "header", "content": "Tier 2 (default)" },
+    { "type": "text", "id": "t1_compare", "label": "Compare-at price (strikethrough)" },
+    { "type": "header", "content": "Tier 2 (highlighted)" },
     { "type": "text", "id": "t2_badge", "label": "Badge", "default": "Most Popular" },
     { "type": "text", "id": "t2_label", "label": "Label", "default": "2 Pairs — Free Shipping" },
     { "type": "text", "id": "t2_price", "label": "Price", "default": "£44.99" },
-    { "type": "text", "id": "t2_qty", "label": "Quantity", "default": "2" },
+    { "type": "text", "id": "t2_compare", "label": "Compare-at price (strikethrough)", "default": "£89.98" },
     { "type": "text", "id": "t2_save", "label": "Save badge", "default": "Save £44 + Free Shipping" },
     { "type": "text", "id": "feature_1", "label": "Feature 1", "default": "Full cellular update" },
     { "type": "text", "id": "feature_2", "label": "Feature 2", "default": "Consistent daily therapy" },
@@ -66,7 +63,7 @@
     { "type": "text", "id": "t3_label", "label": "Label", "default": "3 Pairs — Best Value" },
     { "type": "text", "id": "t3_sub", "label": "Sub-copy", "default": "Never miss a day. Maximum clinical results." },
     { "type": "text", "id": "t3_price", "label": "Price", "default": "£64.99" },
-    { "type": "text", "id": "t3_qty", "label": "Quantity", "default": "3" },
+    { "type": "text", "id": "t3_compare", "label": "Compare-at price (strikethrough)", "default": "£134.97" },
     { "type": "text", "id": "t3_save", "label": "Save badge", "default": "Save £69.98 + Free Shipping" }
   ],
   "presets": [{ "name": "Veloura Bundle" }]

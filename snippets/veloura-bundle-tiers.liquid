@@ -1,31 +1,30 @@
 {%- comment -%}
-  Shared bundle tier rows (PRD §1.4 / §2.1).
+  Shared bundle tier cards (PRD §1.4 / §2.1) — display-only.
+  Pricing/selection is enforced by the Kaching Bundles widget on the PDP;
+  these cards communicate the offer and funnel to the buy box.
   Params: section (object). Reads these settings:
-    t1_label,t1_sub,t1_price,t1_qty
-    t2_label,t2_sub,t2_price,t2_qty,t2_save,t2_badge
-    t3_label,t3_sub,t3_price,t3_qty,t3_save,t3_badge
-    colors (comma list), sizes (comma list)
+    t1_label,t1_sub,t1_price
+    t2_label,t2_price,t2_save,t2_badge
+    t3_label,t3_sub,t3_price,t3_save,t3_badge
+    t1_compare,t2_compare,t3_compare (optional strikethrough anchors)
     feature_1, feature_2, feature_3
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
-  assign group = 'bundle-' | append: section.id
 -%}
-<div class="v-tiers" data-bundle>
+<div class="v-tiers">
   {%- comment -%} Tier 1 {%- endcomment -%}
-  <label class="v-tier" data-qty="{{ s.t1_qty | default: 1 }}" data-price="{{ s.t1_price }}">
-    <span class="v-tier__radio"><input type="radio" name="{{ group }}" value="1"></span>
+  <div class="v-tier">
     <span class="v-tier__main">
       <span class="v-tier__label">{{ s.t1_label }}</span>
       <span class="v-tier__sub">{{ s.t1_sub }}</span>
     </span>
-    <span class="v-tier__price">{{ s.t1_price }}</span>
-  </label>
+    <span class="v-tier__price">{%- if s.t1_compare != blank -%}<s class="v-tier__compare">{{ s.t1_compare }}</s> {% endif -%}{{ s.t1_price }}</span>
+  </div>
 
-  {%- comment -%} Tier 2 — default selected {%- endcomment -%}
-  <label class="v-tier v-tier--popular" data-default data-qty="{{ s.t2_qty | default: 2 }}" data-price="{{ s.t2_price }}">
+  {%- comment -%} Tier 2 — highlighted offer {%- endcomment -%}
+  <div class="v-tier v-tier--popular is-selected">
     {%- if s.t2_badge != blank -%}<span class="v-badge v-badge--popular v-tier__badge">{{ s.t2_badge }}</span>{%- endif -%}
-    <span class="v-tier__radio"><input type="radio" name="{{ group }}" value="2" checked></span>
     <span class="v-tier__main">
       <span class="v-tier__label">{{ s.t2_label }}</span>
       {%- if s.t2_save != blank -%}<span class="v-badge v-badge--save">{{ s.t2_save }}</span>{%- endif -%}
@@ -35,18 +34,17 @@
         {%- if s.feature_3 != blank -%}<li>{% render 'veloura-icon', name: 'check', size: 14 %}{{ s.feature_3 }}</li>{%- endif -%}
       </ul>
     </span>
-    <span class="v-tier__price">{{ s.t2_price }}</span>
-  </label>
+    <span class="v-tier__price">{%- if s.t2_compare != blank -%}<s class="v-tier__compare">{{ s.t2_compare }}</s> {% endif -%}{{ s.t2_price }}</span>
+  </div>
 
   {%- comment -%} Tier 3 {%- endcomment -%}
-  <label class="v-tier" data-qty="{{ s.t3_qty | default: 3 }}" data-price="{{ s.t3_price }}">
+  <div class="v-tier">
     {%- if s.t3_badge != blank -%}<span class="v-badge v-badge--value v-tier__badge">{{ s.t3_badge }}</span>{%- endif -%}
-    <span class="v-tier__radio"><input type="radio" name="{{ group }}" value="3"></span>
     <span class="v-tier__main">
       <span class="v-tier__label">{{ s.t3_label }}</span>
       <span class="v-tier__sub">{{ s.t3_sub }}</span>
       {%- if s.t3_save != blank -%}<span class="v-badge v-badge--save">{{ s.t3_save }}</span>{%- endif -%}
     </span>
-    <span class="v-tier__price">{{ s.t3_price }}</span>
-  </label>
+    <span class="v-tier__price">{%- if s.t3_compare != blank -%}<s class="v-tier__compare">{{ s.t3_compare }}</s> {% endif -%}{{ s.t3_price }}</span>
+  </div>
 </div>

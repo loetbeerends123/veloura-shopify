@@ -1,0 +1,35 @@
+{%- comment -%}
+  Veloura — proactive bundle-offer nudge for the cart (PRD §10.1).
+  Tells the shopper the automatic BOGO / 3-pack pricing exists and where
+  they stand, based on the hero legging quantity in the cart. Pricing
+  itself is enforced by the Kaching Bundles app / automatic discounts.
+  Renders nothing when the hero product is not in the cart.
+{%- endcomment -%}
+{%- liquid
+  assign hero = settings.veloura_hero_product
+  if hero == blank and settings.veloura_hero_handle != blank
+    assign hero = all_products[settings.veloura_hero_handle]
+  endif
+  assign hero_qty = 0
+  if hero != blank
+    for line in cart.items
+      if line.product.id == hero.id
+        assign hero_qty = hero_qty | plus: line.quantity
+      endif
+    endfor
+  endif
+-%}
+{%- if hero_qty > 0 -%}
+  <div class="v-cart-offer {% if hero_qty > 1 %}v-cart-offer--applied{% endif %}" role="status">
+    {%- if hero_qty == 1 -%}
+      {% render 'veloura-icon', name: 'sparkle', size: 15 %}
+      <span>Add 1 more legging — your <strong>second pair is FREE</strong>, applied automatically at checkout.</span>
+    {%- elsif hero_qty == 2 -%}
+      {% render 'veloura-icon', name: 'check', size: 15 %}
+      <span><strong>Buy 1 Get 1 Free applied</strong> — you save {{ hero.price | money }} automatically at checkout.</span>
+    {%- else -%}
+      {% render 'veloura-icon', name: 'check', size: 15 %}
+      <span><strong>3-Pack rate applied</strong> — maximum savings, applied automatically at checkout.</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

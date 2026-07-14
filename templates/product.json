@@ -21,30 +21,9 @@
         "bullet_2": "Works automatically — no rollers, no creams, no extra routine",
         "bullet_3": "Visible results in a few weeks — smoother-looking skin, just from wearing what you already wear",
         "offer_banner": "Limited offer — Buy 1 Get 1 Free + Free Shipping",
-        "bundle_label": "Bundle & Save",
         "atc_label": "Add to Cart",
         "scarcity": "Only 34 left in stock now",
-        "guarantee": "30-day money-back guarantee — feel the difference or your money back",
-        "colors": "Slate,Black,Espresso",
-        "sizes": "XS,S,M,L,XL",
-        "t1_label": "1 Legging",
-        "t1_sub": "Starter Protocol",
-        "t1_price": "£44.99",
-        "t1_qty": "1",
-        "t2_badge": "Most Popular",
-        "t2_label": "2 Leggings (Buy 1 Get 1 Free)",
-        "t2_price": "£44.99",
-        "t2_qty": "2",
-        "t2_save": "Save £44 + Free Shipping",
-        "feature_1": "Full cellular update",
-        "feature_2": "Consistent daily therapy",
-        "feature_3": "Never miss a day. Maximum clinical results.",
-        "t3_badge": "Best Value",
-        "t3_label": "3 Leggings (Best Value)",
-        "t3_sub": "Maximum clinical results",
-        "t3_price": "£64.99",
-        "t3_qty": "3",
-        "t3_save": "Save £69.98 + Free Shipping"
+        "guarantee": "30-day money-back guarantee — feel the difference or your money back"
       }
     },
     "mechanism": {
@@ -110,6 +89,7 @@
           "type": "review",
           "settings": {
             "name": "Faith B.",
+            "verified": true,
             "variant": "Size: S · Colour: Slate",
             "title": "I've tried everything. These work.",
             "body": "I have had cellulite since I was 16. I am now 34. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments and actually something I can wear out."
@@ -119,6 +99,7 @@
           "type": "review",
           "settings": {
             "name": "Eva S.",
+            "verified": true,
             "variant": "Size: M · Colour: Black",
             "title": "Day one results are real.",
             "body": "I'm sceptical by nature but I just bought them because I kept seeing them. This is different. My thighs feel more taut than they've felt from clean eating alone."
@@ -128,6 +109,7 @@
           "type": "review",
           "settings": {
             "name": "Hannah W.",
+            "verified": true,
             "variant": "Size: L · Colour: Espresso",
             "title": "The lightness in my legs is unreal.",
             "body": "By the end of a normal day my legs used to feel heavy and tired. Within a week of wearing these daily that heavy feeling was just gone. Two months in and the texture on the backs of my thighs is visibly smoother. I've already ordered a second pair so I never have a day without them."
@@ -180,7 +162,7 @@
           "type": "qa",
           "settings": {
             "question": "How do I find the right size?",
-            "answer": "We recommend sizing up if you're between sizes for maximum comfort during all-day wear. Our size guide is available on the product image gallery. When in doubt, the fabric has 4-way stretch to accommodate."
+            "answer": "We recommend sizing up if you're between sizes for maximum comfort during all-day wear. XS fits UK 4–6, S fits UK 8–10, M fits UK 12–14, L fits UK 16–18, XL fits UK 20–22. When in doubt, the fabric has 4-way stretch to accommodate."
           }
         },
         "q4": {

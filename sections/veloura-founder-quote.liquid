@@ -7,6 +7,14 @@
       <span class="v-founder__name">{{ section.settings.attribution }}</span>
       {%- if section.settings.sub != blank -%}<span class="v-founder__sub">{{ section.settings.sub }}</span>{%- endif -%}
     </p>
+    {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+      <div class="v-founder__cta v-reveal" data-delay="2">
+        <a href="{{ section.settings.cta_link }}" class="v-btn v-btn--green v-btn--lg">
+          {% render 'veloura-icon', name: 'bag', size: 18 %} {{ section.settings.cta_label }}
+        </a>
+        {%- if section.settings.cta_note != blank -%}<p class="v-founder__cta-note">{{ section.settings.cta_note }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -17,6 +25,8 @@
 .v-founder__attr { display: grid; gap: 6px; margin: 0; }
 .v-founder__name { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--v-rust); }
 .v-founder__sub { font-size: 0.8125rem; color: rgba(255,255,255,0.65); }
+.v-founder__cta { margin-top: 32px; }
+.v-founder__cta-note { margin: 12px 0 0; font-size: 0.8125rem; color: rgba(255,255,255,0.65); }
 {% endstylesheet %}
 
 {% schema %}
@@ -27,7 +37,11 @@
   "settings": [
     { "type": "textarea", "id": "quote", "label": "Quote", "default": "We didn't set out to make another legging. We set out to engineer a solution that respects the biological reality of women's bodies. Veloura is where scientific rigour meets daily wear." },
     { "type": "text", "id": "attribution", "label": "Attribution", "default": "The Founders" },
-    { "type": "text", "id": "sub", "label": "Sub-attribution", "default": "Veloura Clinical Innovations" }
+    { "type": "text", "id": "sub", "label": "Sub-attribution", "default": "Veloura Clinical Innovations" },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Start My Protocol" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "text", "id": "cta_note", "label": "Note under CTA", "default": "30-Day Clinical Trial Guarantee + Free Returns" }
   ],
   "presets": [{ "name": "Veloura Founder Quote" }]
 }

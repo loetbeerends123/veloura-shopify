@@ -11,7 +11,7 @@
       {%- for block in section.blocks -%}
         <li class="v-timeline__step v-reveal" data-delay="{{ forloop.index }}" {{ block.shopify_attributes }}>
           {%- if section.settings.style == 'numbered' -%}
-            <span class="v-timeline__icon v-timeline__icon--lg">{% render 'veloura-icon', name: 'calendar-clock', size: 44 %}</span>
+            <span class="v-timeline__num" aria-hidden="true">{{ forloop.index }}</span>
           {%- else -%}
             <span class="v-timeline__icon">{% render 'veloura-icon', name: block.settings.icon, size: 26 %}</span>
           {%- endif -%}
@@ -39,7 +39,7 @@
 .v-timeline__label { display: block; font-size: 1.125rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 8px; }
 .v-timeline__title { font-family: var(--v-font-body); font-weight: 700; font-size: 1.375rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--v-text); margin: 0 0 10px; }
 .v-timeline--numbered .v-timeline__title { font-size: 1.5rem; letter-spacing: 0.02em; }
-.v-timeline__body { font-size: 1.375rem; line-height: 1.55; color: var(--v-muted); margin: 0 auto; max-width: 26ch; }
+.v-timeline__body { font-size: 1.125rem; line-height: 1.6; color: var(--v-muted); margin: 0 auto; max-width: 30ch; }
 
 @media (max-width: 749px) {
   .v-timeline__grid { grid-template-columns: 1fr; gap: 32px; }

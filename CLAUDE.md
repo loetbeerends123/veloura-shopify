@@ -87,8 +87,16 @@ shows pricing, but `BOGO-VELO` (2nd 100% off) and `3PACK-VELO` (fixed £65) must
   `p strong, li strong, .v-em` as **bold + rust** (Font.png look). Liquid does not escape
   `{{ setting }}`, so `<strong>` in settings renders as markup.
 - **Urgency cues (current):** stronger conversion push — hero `.v-urgency` (scarcity, red),
-  PDP scarcity + `.v-guarantee` (60-day money-back), cart-upsell reassurance line. Classes
-  `.v-urgency` / `.v-guarantee` in `veloura.css`; uses `--v-scarcity` / `--v-green`.
+  PDP offer banner (`.v-pdp__offer`, red) + scarcity + `.v-guarantee`, cart-upsell reassurance
+  line, `veloura-cart-offer` BOGO nudge in drawer/cart. Classes `.v-urgency` / `.v-guarantee`
+  in `veloura.css`; uses `--v-scarcity` / `--v-green`.
+- **Trust copy (user-confirmed 2026-07-14):** guarantee is **30 days** everywhere ("30-day
+  money-back guarantee" / "30-Day Clinical Trial Guarantee"); review count is **471** (4.8);
+  "5,400+ women" = orders, not reviews — keep it.
+- **Bundles (user-confirmed 2026-07-14):** the **Kaching Bundles app embed owns bundle
+  selection/pricing on the PDP**. Theme tier cards (`veloura-bundle-tiers` snippet, home bundle
+  section) are display-only marketing that funnels to the PDP `#v-buybox` anchor — do NOT wire
+  them to cart quantity.
 - **Breakpoints:** mobile <640, tablet 640–1023, desktop ≥1024.
 - **Palette rule:** no yellow/orange/bright anywhere. Green = primary CTAs only; rust = accents
   (now also used for bold inline emphasis on body copy).
@@ -100,8 +108,9 @@ shows pricing, but `BOGO-VELO` (2nd 100% off) and `3PACK-VELO` (fixed £65) must
 - **Before/After slider** — touch-friendly drag handle, default 50%; one-time hint animation
   50→30→50% over 1.5s on load. CSS clip-path or vanilla JS.
 - **FAQ accordion** — single-open; `max-height` 200ms ease-out; `+` rotates 45°→`×`.
-- **Bundle tier reveal** — selecting Tier 2 slide-downs the per-pair colour/size dropdowns
-  (max-height + opacity, 300ms).
+- **Cart-page upsell sync** — `initCartUpsell` (veloura.js) posts to the Cart API with a
+  `sections` list and patches `main-cart-items`/`main-cart-footer` `.js-contents`, the upsell
+  section, `cart-icon-bubble` and `#CartDrawer` in place — the drawer must NOT open from /cart.
 - **Sticky cart bar (product page)** — hidden by default; IntersectionObserver on the in-page ATC
   button toggles it (slide-up 300ms in / 200ms out).
 - **Upsell state** — Bloom Shorts add/remove syncs both drawer & cart-page blocks: button → `✓

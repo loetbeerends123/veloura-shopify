@@ -50,7 +50,10 @@
       "settings": {
         "quote": "We didn't set out to make another legging. We set out to engineer a solution that respects the biological reality of women's bodies. Veloura is where scientific rigour meets daily wear.",
         "attribution": "The Founders",
-        "sub": "Veloura Clinical Innovations"
+        "sub": "Veloura Clinical Innovations",
+        "cta_label": "Start My Protocol",
+        "cta_link": "shopify://products/veloura-cellulite-legging",
+        "cta_note": "30-Day Clinical Trial Guarantee + Free Returns"
       }
     }
   },

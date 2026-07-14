@@ -1,6 +1,7 @@
 {%- comment -%}
   Veloura — Product buy box (PRD §2.0–2.1).
-  Sticky image gallery + buy box with bundle selector.
+  Sticky image gallery + buy box. Bundle pricing/selection is handled by the
+  Kaching Bundles app widget (app embed); the theme renders the offer banner.
   Add-to-cart uses Dawn's <product-form> so the cart drawer works.
 {%- endcomment -%}
 {%- comment -%} Dawn's product-form custom element powers AJAX add-to-cart + drawer open {%- endcomment -%}
@@ -11,10 +12,12 @@
   assign s = section.settings
 -%}
 <section class="v-pdp" data-section-id="{{ section.id }}">
-  <div class="v-pdp-community">
-    {% render 'veloura-icon', name: 'heart', size: 16 %}
-    <p>Join <strong>5,400+</strong> women who chose Veloura</p>
-  </div>
+  {%- if s.community_text != blank -%}
+    <div class="v-pdp-community">
+      {% render 'veloura-icon', name: 'heart', size: 16 %}
+      <p>{{ s.community_text }}</p>
+    </div>
+  {%- endif -%}
   <div class="v-container">
     <div class="v-pdp__grid">
 
@@ -22,7 +25,7 @@
       <div class="v-pdp__gallery" data-gallery>
         <div class="v-pdp__main">
           {%- if product.images.size > 0 -%}
-            <img data-gallery-main src="{{ product.featured_image | image_url: width: 1100 }}" alt="{{ product.featured_image.alt | escape }}" width="1100" height="1375" fetchpriority="high">
+            <img data-gallery-main src="{{ product.featured_image | image_url: width: 1100 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="1100" height="1375" fetchpriority="high">
           {%- else -%}
             <div class="v-pdp__ph v-placeholder" data-label="Veloura Legging — Front"></div>
           {%- endif -%}
@@ -40,12 +43,15 @@
       </div>
 
       {%- comment -%} ---- Right: buy box ---- {%- endcomment -%}
-      <div class="v-pdp__buybox">
+      <div class="v-pdp__buybox" id="v-buybox">
+        {%- if s.offer_banner != blank -%}
+          <p class="v-pdp__offer">{% render 'veloura-icon', name: 'sparkle', size: 16 %}{{ s.offer_banner }}</p>
+        {%- endif -%}
         {%- if s.overline != blank -%}<span class="v-eyebrow">{{ s.overline }}</span>{%- endif -%}
         <h1 class="v-h2 v-pdp__name">{{ product.title | default: 'Veloura Cellulite Legging' }}</h1>
         {%- if s.rating_text != blank -%}
           <div class="v-pdp__rating">
-            <span class="v-stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}</span>
+            <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 16 %}</span>
             <span class="v-pdp__rating-text">{{ s.rating_text }}</span>
           </div>
         {%- endif -%}
@@ -89,6 +95,7 @@
           {%- if s.scarcity != blank -%}
             <p class="v-pdp__scarcity"><span class="v-pdp__dot"></span>{{ s.scarcity }}</p>
           {%- endif -%}
+          {% render 'veloura-trust-badges' %}
         </div>
 
         {%- if s.tagline != blank -%}<p class="v-pdp__tagline v-serif v-italic">{{ s.tagline }}</p>{%- endif -%}
@@ -123,16 +130,14 @@
 .v-pdp__thumb { width: 80px; height: 100px; border-radius: var(--v-radius-sm); overflow: hidden; border: 2px solid transparent; padding: 0; cursor: pointer; }
 .v-pdp__thumb.is-active { border-color: var(--v-text); }
 .v-pdp__thumb img { width: 100%; height: 100%; object-fit: cover; }
-.v-pdp__buybox { padding-top: 8px; }
+.v-pdp__buybox { padding-top: 8px; scroll-margin-top: calc(var(--header-height, 64px) + 16px); }
+.v-pdp__offer { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 18px; padding: 10px 16px; background: var(--v-badge-popular); color: #fff; font-family: var(--v-font-body); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-align: center; border-radius: var(--v-radius-sm); }
+.v-pdp__offer svg { flex: none; }
 .v-pdp .v-pdp__name { font-size: clamp(2.25rem, 4.8vw, 3.15rem); margin: 0 0 10px; }
 .v-pdp__rating { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; }
 .v-pdp__rating .v-stars { font-size: 1rem; }
 .v-pdp__rating-text { font-size: 0.9375rem; font-weight: 500; color: var(--v-muted); }
 .v-pdp .v-pdp__claim { font-size: clamp(1.95rem, 3.3vw, 2.4rem); line-height: 1.18; letter-spacing: -0.01em; margin: 0 0 18px; }
-.v-pdp__body { font-size: 1.0625rem; line-height: 1.7; margin: 0 0 20px; }
-.v-pdp__bullets { display: grid; gap: 10px; margin-bottom: 8px; }
-.v-pdp__bullets li { display: flex; align-items: center; gap: 10px; font-size: 1.0625rem; }
-.v-pdp__bullets svg { color: var(--v-green); flex: none; }
 .v-pdp__tagline { font-family: var(--v-font-display); font-style: italic; font-weight: 500; font-size: clamp(1.55rem, 2.7vw, 1.9rem); line-height: 1.3; color: var(--v-text); margin: 16px 0 14px; }
 .v-pdp__body { font-size: 1.125rem; line-height: 1.65; margin: 0 0 6px; }
 .v-pdp__benefits { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
@@ -144,6 +149,7 @@
 .v-pdp__atc { margin-top: 22px; }
 .v-pdp__atc .v-btn { font-size: 1.1875rem; padding-block: 15px; gap: 11px; }
 .v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 600; color: var(--v-scarcity); }
+.v-pdp__atc .v-trust-badges { margin-top: 16px; }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
 .v-pdp .v-pdp__guarantee { margin: 22px 0 0; font-size: 1.125rem; font-weight: 700; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
@@ -160,6 +166,7 @@
   "tag": "section",
   "class": "veloura-section",
   "settings": [
+    { "type": "text", "id": "community_text", "label": "Community bar text", "default": "Join <strong>5,400+</strong> women who chose Veloura" },
     { "type": "text", "id": "overline", "label": "Overline", "default": "Velo-Lymph™ Enhanced" },
     { "type": "text", "id": "rating_text", "label": "Rating text (next to stars)", "default": "4.8 based on 471 Reviews" },
     { "type": "text", "id": "hero_claim", "label": "Hero claim", "default": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>" },
@@ -169,34 +176,9 @@
     { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "Works automatically — no rollers, no creams, no extra routine" },
     { "type": "text", "id": "bullet_3", "label": "Bullet 3", "default": "Visible results in a few weeks — smoother-looking skin, just from wearing what you already wear" },
     { "type": "text", "id": "offer_banner", "label": "Offer banner (red)", "default": "Limited offer — Buy 1 Get 1 Free + Free Shipping" },
-    { "type": "text", "id": "bundle_label", "label": "Bundle label", "default": "Bundle & Save" },
     { "type": "text", "id": "atc_label", "label": "Add to cart label", "default": "Add to Cart" },
     { "type": "text", "id": "scarcity", "label": "Scarcity text", "default": "Only 34 left in stock now" },
-    { "type": "text", "id": "guarantee", "label": "Guarantee text (green)", "default": "60-day money-back guarantee — feel the difference or your money back" },
-    { "type": "header", "content": "Variant options" },
-    { "type": "text", "id": "colors", "label": "Colours (comma separated)", "default": "Slate,Black,Espresso" },
-    { "type": "text", "id": "sizes", "label": "Sizes (comma separated)", "default": "XS,S,M,L,XL" },
-    { "type": "header", "content": "Tier 1" },
-    { "type": "text", "id": "t1_label", "label": "Label", "default": "1 Legging" },
-    { "type": "text", "id": "t1_sub", "label": "Sub-copy", "default": "Starter Protocol" },
-    { "type": "text", "id": "t1_price", "label": "Price", "default": "£44.99" },
-    { "type": "text", "id": "t1_qty", "label": "Quantity", "default": "1" },
-    { "type": "header", "content": "Tier 2 (default)" },
-    { "type": "text", "id": "t2_badge", "label": "Badge", "default": "Most Popular" },
-    { "type": "text", "id": "t2_label", "label": "Label", "default": "2 Leggings (Buy 1 Get 1 Free)" },
-    { "type": "text", "id": "t2_price", "label": "Price", "default": "£44.99" },
-    { "type": "text", "id": "t2_qty", "label": "Quantity", "default": "2" },
-    { "type": "text", "id": "t2_save", "label": "Save badge", "default": "Save £44 + Free Shipping" },
-    { "type": "text", "id": "feature_1", "label": "Feature 1", "default": "Full cellular update" },
-    { "type": "text", "id": "feature_2", "label": "Feature 2", "default": "Consistent daily therapy" },
-    { "type": "text", "id": "feature_3", "label": "Feature 3", "default": "Never miss a day. Maximum clinical results." },
-    { "type": "header", "content": "Tier 3" },
-    { "type": "text", "id": "t3_badge", "label": "Badge", "default": "Best Value" },
-    { "type": "text", "id": "t3_label", "label": "Label", "default": "3 Leggings (Best Value)" },
-    { "type": "text", "id": "t3_sub", "label": "Sub-copy", "default": "Maximum clinical results" },
-    { "type": "text", "id": "t3_price", "label": "Price", "default": "£64.99" },
-    { "type": "text", "id": "t3_qty", "label": "Quantity", "default": "3" },
-    { "type": "text", "id": "t3_save", "label": "Save badge", "default": "Save £69.98 + Free Shipping" }
+    { "type": "text", "id": "guarantee", "label": "Guarantee text (green)", "default": "30-day money-back guarantee — feel the difference or your money back" }
   ],
   "presets": [{ "name": "Veloura Product" }]
 }
