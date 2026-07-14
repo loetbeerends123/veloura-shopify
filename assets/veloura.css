@@ -17,7 +17,7 @@
   --v-green: #3A7D44;
   --v-green-hover: #2E6435;
   --v-badge-popular: #8B1A1A;
-  --v-badge-value: #8A7060;
+  --v-badge-value: #5F4A3B; /* darkened for AA contrast on white badge text */
   --v-border: rgba(28, 16, 9, 0.08);
   --v-border-strong: rgba(28, 16, 9, 0.16);
   --v-star: #C97A5A;
@@ -197,7 +197,7 @@ body {
 }
 .v-btn--rust-outline:hover { background: var(--v-rust); color: var(--v-white); }
 .v-btn--full { width: 100%; padding-inline: 0; }
-.v-btn--lg { padding: 18px 36px; font-size: 0.875rem; }
+.v-btn--lg { padding: 18px 36px; font-size: 1.0625rem; }
 .v-btn[disabled], .v-btn.is-disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Loading state — Dawn's product-form toggles .loading + shows .loading__spinner */
@@ -246,7 +246,7 @@ body {
   line-height: 1.4;
 }
 .v-badge--popular { background: var(--v-badge-popular); color: var(--v-white); }
-.v-badge--value { background: var(--v-muted); color: var(--v-white); }
+.v-badge--value { background: var(--v-badge-value); color: var(--v-white); }
 .v-badge--verified { background: transparent; border: 1px solid var(--v-green); color: var(--v-green); }
 .v-badge--clinical { background: transparent; border: 1px solid var(--v-rust); color: var(--v-rust); }
 .v-badge--save { background: var(--v-badge-popular); color: var(--v-white); font-weight: 600; }
@@ -356,6 +356,7 @@ body {
    FAQ accordion (PRD §2.3, §10.5)
    ============================================================ */
 .v-faq__item { border-bottom: 1px solid var(--v-border); }
+.v-faq__item:last-child { border-bottom: 0; }
 .v-faq__q {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 22px 0; text-align: left;
@@ -451,7 +452,7 @@ body {
 /* ============================================================
    Bundle tiers (PRD §1.4, §2.1)
    ============================================================ */
-.v-tiers { display: grid; gap: 14px; }
+.v-tiers { display: grid; gap: 20px; }
 .v-tier {
   position: relative;
   display: grid;
@@ -523,7 +524,7 @@ body {
 .cart-drawer .cart-item__name { font-size: 1.25rem; }
 
 /* Veloura "Complete your protocol" upsell block inside the Dawn drawer */
-.v-drawer-upsell { margin: 16px; padding: 16px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
+.v-drawer-upsell { margin: 12px 16px; padding: 14px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
 .v-drawer-upsell__head { display: flex; align-items: center; gap: 8px; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 12px; }
 .v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 14px; box-shadow: var(--v-shadow-card); }
 .v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 64px; height: 64px; object-fit: cover; border-radius: var(--v-radius-sm); }
@@ -542,13 +543,16 @@ body {
 .v-drawer-totals__row--total span:first-child { font-family: var(--v-font-display); font-size: 1.375rem; }
 .v-drawer-totals__row--total .v-drawer-totals__val { font-family: var(--v-font-display); font-size: 1.375rem; }
 .v-drawer-totals__val { font-weight: 600; }
-.v-drawer-trust { margin-top: 14px; }
+.v-drawer-trust { margin-top: 10px; }
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
 .v-cart-offer { display: flex; align-items: flex-start; gap: 9px; margin: 0 0 14px; padding: 11px 14px; background: var(--v-canvas-secondary); border: 1px solid var(--v-border); border-radius: var(--v-radius-sm); font-family: var(--v-font-body); font-size: 0.875rem; line-height: 1.45; color: var(--v-text); }
 .v-cart-offer svg { flex: none; margin-top: 2px; color: var(--v-rust); }
 .v-cart-offer strong { color: var(--v-rust); }
 .v-cart-offer--applied svg, .v-cart-offer--applied strong { color: var(--v-green); }
+/* Cart page: the summary card is canvas-secondary, so the nudge needs white to stand out */
+#main-cart-footer .v-cart-offer { background: var(--v-white); }
+.cart-drawer .v-cart-offer { margin-bottom: 10px; }
 /* Empty drawer: hide the "Your Selection" header and the £0.00 totals/footer */
 .cart-drawer.is-empty .drawer__header,
 .cart-drawer.is-empty .drawer__footer,
@@ -606,6 +610,10 @@ body {
 .footer__veloura-tagline { margin: 14px 0 0; font-family: var(--v-font-display); font-style: italic; font-size: 1rem; color: var(--v-muted); }
 /* Remove the divider line above the copyright/payment bar; match footer spacing. */
 .footer .footer__content-bottom { border-top: 0; padding-top: 30px; }
+/* Localization selectors are disabled; hide the empty flex column so the
+   payment icons + copyright sit page-centered. */
+.footer .footer__localization:empty { display: none; }
+.footer .footer__content-bottom-wrapper { justify-content: center; }
 .footer__veloura-links ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 40px; margin: 0; }
 .footer__veloura-links a {
   color: var(--v-text);
@@ -705,7 +713,6 @@ header-drawer .menu-drawer__account,
   margin-bottom: 16px; text-align: center;
 }
 .v-offer-banner svg { color: #fff; flex: none; }
-.v-pdp__savings { display: inline-flex; align-items: center; gap: 6px; color: var(--v-badge-popular); font-weight: 600; font-size: 0.9375rem; }
 
 .v-tier--popular { border-color: var(--v-rust-light); }
 

@@ -11,7 +11,7 @@
   <div class="v-story-hero__overlay">
     <div class="v-container">
       <h1 class="v-story-hero__title v-serif">{{ section.settings.line_1 }}
-        <span class="v-story-hero__line2 v-italic v-rust-text">{{ section.settings.line_2 }}</span></h1>
+        <span class="v-story-hero__line2 v-italic">{{ section.settings.line_2 }}</span></h1>
     </div>
   </div>
 </section>
@@ -25,7 +25,7 @@
 
 /* No image: warm dark editorial banner instead of a photo */
 .v-story-hero--noimg { background: linear-gradient(150deg, #3a2a1f 0%, var(--v-canvas-dark, #2B1E17) 55%, #201610 100%); }
-.v-story-hero--noimg .v-story-hero__overlay { position: static; background: none; padding-block: clamp(40px, 5vw, 64px); align-items: center; }
+.v-story-hero--noimg .v-story-hero__overlay { position: static; background: none; padding-block: clamp(64px, 8vw, 104px); align-items: center; }
 .v-story-hero--noimg .v-story-hero__title { text-shadow: none; }
 
 @media (max-width: 749px) { .v-story-hero__img { aspect-ratio: 16 / 11; } }

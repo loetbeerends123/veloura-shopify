@@ -29,8 +29,8 @@
     "mechanism": {
       "type": "veloura-mechanism",
       "settings": {
-        "blush": false,
-        "eyebrow": "",
+        "blush": true,
+        "eyebrow": "The Science",
         "heading": "You Didn't Fail. You Were Treating the Wrong Problem.",
         "paragraph_1": "Cellulite is a <strong>circulation issue, not a fat issue</strong>. The proprietary weave stimulates micro-circulation to smooth skin from within.",
         "paragraph_2": "Your body has a remarkable self-repair system — but it needs movement to activate it. Veloura's <strong>47+ mapped micro-pressure points</strong> keep that system running <strong>every hour you wear them</strong>.",

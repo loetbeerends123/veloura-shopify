@@ -15,7 +15,7 @@
         "eyebrow": "Velo-Lymph™ Technology",
         "heading": "Stop hiding your legs!",
         "subheading": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>.",
-        "button_label": "Shop the Veloura Leggings now!",
+        "button_label": "Shop The Veloura Legging",
         "button_link": "shopify://products/veloura-cellulite-legging",
         "urgency": "Buy 1 Get 1 Free — applied automatically at checkout"
       }
@@ -79,7 +79,7 @@
         "s4"
       ],
       "settings": {
-        "blush": false,
+        "blush": true,
         "style": "icon",
         "eyebrow": "",
         "heading": "The path to smoother skin",
@@ -175,7 +175,7 @@
       ],
       "settings": {
         "blush": false,
-        "eyebrow": "",
+        "eyebrow": "Real Results",
         "heading": "Real structural change",
         "subheading": "Join <strong>thousands of women</strong> who stopped treating the symptom and started <strong>treating the cause</strong>.",
         "rating_text": "4.8/5 from 471 reviews",

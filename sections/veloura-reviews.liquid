@@ -39,9 +39,12 @@
 .v-reviews__heading { text-align: center; margin-bottom: 28px; }
 .v-reviews__summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 32px; margin-bottom: 28px; }
 .v-reviews__score { display: flex; flex-direction: column; gap: 8px; }
+/* No "Write a Review" button: center the score instead of leaving dead space */
+.v-reviews__score:only-child { margin-inline: auto; align-items: center; text-align: center; }
 .v-reviews__num { font-size: 3.5rem; line-height: 1; }
 .v-reviews__list { display: grid; gap: 0; }
 .v-reviews__item { padding: 26px 0; border-bottom: 1px solid var(--v-border); }
+.v-reviews__item:last-child { border-bottom: 0; }
 .v-reviews__top { display: flex; align-items: center; gap: 12px; }
 .v-reviews__who { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .v-reviews__who strong { font-size: 0.8125rem; font-weight: 600; }

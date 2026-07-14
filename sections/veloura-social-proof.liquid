@@ -43,9 +43,10 @@
 </section>
 
 {% stylesheet %}
-.v-social__head { max-width: 640px; margin-bottom: 40px; }
+.v-social__head { max-width: 640px; margin-inline: auto; margin-bottom: 40px; text-align: center; }
 .v-social__head .v-h2 { margin: 0; }
-.v-social__rating { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+.v-social__head p { margin-inline: auto; }
+.v-social__rating { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 18px; }
 .v-social__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
 .v-review--expert { border-left: 3px solid var(--v-rust); background: var(--v-canvas-secondary); }
 .v-social__expert-icon { color: var(--v-rust); display: inline-flex; margin-bottom: 6px; }
