@@ -1,9 +1,12 @@
-{%- comment -%} Veloura — Our Story hero (PRD §5.1) {%- endcomment -%}
-<section class="v-story-hero">
+{%- comment -%}
+  Veloura — Our Story hero (PRD §5.1).
+  With an image: full-bleed photo + dark gradient overlay for text legibility.
+  Without an image: warm dark editorial banner (no photo overlay — a gradient
+  over the empty placeholder rendered as an ugly grey band).
+{%- endcomment -%}
+<section class="v-story-hero {% unless section.settings.image != blank %}v-story-hero--noimg{% endunless %}">
   {%- if section.settings.image != blank -%}
     <img class="v-story-hero__img" src="{{ section.settings.image | image_url: width: 2000 }}" alt="{{ section.settings.image.alt | escape }}" width="2000" height="875" fetchpriority="high">
-  {%- else -%}
-    <div class="v-story-hero__img v-placeholder" data-label="Editorial · Architectural light"></div>
   {%- endif -%}
   <div class="v-story-hero__overlay">
     <div class="v-container">
@@ -15,10 +18,16 @@
 
 {% stylesheet %}
 .v-story-hero { position: relative; }
-.v-story-hero__img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; }
+.v-story-hero__img { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; display: block; }
 .v-story-hero__overlay { position: absolute; inset: 0; display: flex; align-items: flex-end; padding-bottom: clamp(32px, 5vw, 64px); background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 45%, transparent 70%); }
 .v-story-hero__title { font-size: clamp(2.25rem, 5.5vw, 3.75rem); line-height: 1.12; margin: 0; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,0.35); }
 .v-story-hero__title .v-story-hero__line2 { display: block; font-weight: inherit; margin-top: 4px; color: var(--v-rust-light); }
+
+/* No image: warm dark editorial banner instead of a photo */
+.v-story-hero--noimg { background: linear-gradient(150deg, #3a2a1f 0%, var(--v-canvas-dark, #2B1E17) 55%, #201610 100%); }
+.v-story-hero--noimg .v-story-hero__overlay { position: static; background: none; padding-block: clamp(72px, 11vw, 140px) clamp(64px, 9vw, 120px); align-items: center; }
+.v-story-hero--noimg .v-story-hero__title { text-shadow: none; }
+
 @media (max-width: 749px) { .v-story-hero__img { aspect-ratio: 16 / 11; } }
 {% endstylesheet %}
 
