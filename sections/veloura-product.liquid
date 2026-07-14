@@ -88,19 +88,19 @@
           {%- if s.scarcity != blank -%}
             <p class="v-pdp__scarcity"><span class="v-pdp__dot"></span>{{ s.scarcity }}</p>
           {%- endif -%}
-          {%- if s.guarantee != blank -%}
-            <p class="v-pdp__guarantee v-guarantee">{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.guarantee }}</p>
-          {%- endif -%}
         </div>
 
         {%- if s.tagline != blank -%}<p class="v-pdp__tagline v-serif v-italic">{{ s.tagline }}</p>{%- endif -%}
         {%- if s.body != blank -%}<p class="v-pdp__body v-muted">{{ s.body }}</p>{%- endif -%}
         {%- if s.bullet_1 != blank or s.bullet_2 != blank or s.bullet_3 != blank -%}
           <ul class="v-pdp__benefits">
-            {%- if s.bullet_1 != blank -%}<li>{{ s.bullet_1 }}</li>{%- endif -%}
-            {%- if s.bullet_2 != blank -%}<li>{{ s.bullet_2 }}</li>{%- endif -%}
-            {%- if s.bullet_3 != blank -%}<li>{{ s.bullet_3 }}</li>{%- endif -%}
+            {%- if s.bullet_1 != blank -%}{%- assign b1 = s.bullet_1 | split: ' — ' -%}<li>{% render 'veloura-icon', name: 'sparkle', size: 19 %}<span><strong>{{ b1[0] }}</strong>{%- if b1.size > 1 %} — {{ b1[1] }}{% endif -%}</span></li>{%- endif -%}
+            {%- if s.bullet_2 != blank -%}{%- assign b2 = s.bullet_2 | split: ' — ' -%}<li>{% render 'veloura-icon', name: 'pulse', size: 19 %}<span><strong>{{ b2[0] }}</strong>{%- if b2.size > 1 %} — {{ b2[1] }}{% endif -%}</span></li>{%- endif -%}
+            {%- if s.bullet_3 != blank -%}{%- assign b3 = s.bullet_3 | split: ' — ' -%}<li>{% render 'veloura-icon', name: 'calendar-clock', size: 19 %}<span><strong>{{ b3[0] }}</strong>{%- if b3.size > 1 %} — {{ b3[1] }}{% endif -%}</span></li>{%- endif -%}
           </ul>
+        {%- endif -%}
+        {%- if s.guarantee != blank -%}
+          <p class="v-pdp__guarantee v-guarantee">{% render 'veloura-icon', name: 'check', size: 16 %}{{ s.guarantee }}</p>
         {%- endif -%}
       </div>
     </div>
@@ -131,10 +131,11 @@
 .v-pdp__bullets { display: grid; gap: 10px; margin-bottom: 8px; }
 .v-pdp__bullets li { display: flex; align-items: center; gap: 10px; font-size: 1.0625rem; }
 .v-pdp__bullets svg { color: var(--v-green); flex: none; }
-.v-pdp__tagline { font-family: var(--v-font-display); font-style: italic; font-weight: 400; font-size: clamp(1.3rem, 2.2vw, 1.55rem); line-height: 1.35; color: var(--v-text); margin: 30px 0 14px; }
-.v-pdp__body { font-size: 1.0625rem; line-height: 1.7; margin: 0 0 4px; }
-.v-pdp__benefits { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
-.v-pdp__benefits li { font-size: 1.0625rem; line-height: 1.5; color: var(--v-text); padding-left: 2em; text-indent: -2em; }
+.v-pdp__tagline { font-family: var(--v-font-display); font-style: italic; font-weight: 400; font-size: clamp(1.3rem, 2.2vw, 1.55rem); line-height: 1.35; color: var(--v-text); margin: 16px 0 12px; }
+.v-pdp__body { font-size: 1.0625rem; line-height: 1.7; margin: 0 0 6px; }
+.v-pdp__benefits { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 13px; }
+.v-pdp__benefits li { display: flex; gap: 11px; align-items: flex-start; font-size: 1.0625rem; line-height: 1.45; color: var(--v-text); }
+.v-pdp__benefits svg { color: var(--v-rust); flex: none; margin-top: 2px; }
 .v-pdp__variants { display: flex; flex-wrap: wrap; gap: 16px; margin: 22px 0 4px; }
 .v-pdp__option { display: grid; gap: 6px; flex: 1 1 160px; }
 .v-pdp__option-name { font-family: var(--v-font-body); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
@@ -142,7 +143,7 @@
 .v-pdp__atc .v-btn { font-size: 1.1875rem; padding-block: 15px; gap: 11px; }
 .v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 600; color: var(--v-scarcity); }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
-.v-pdp__guarantee { justify-content: center; margin: 10px 0 0; }
+.v-pdp__guarantee { margin: 22px 0 0; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 .v-pdp__form { margin: 0; }
 @media (max-width: 989px) {
@@ -162,9 +163,9 @@
     { "type": "text", "id": "hero_claim", "label": "Hero claim", "default": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>" },
     { "type": "textarea", "id": "tagline", "label": "Tagline (italic)", "default": "The last legging you'll ever wish you'd found sooner." },
     { "type": "textarea", "id": "body", "label": "Body", "default": "<strong>Not shapewear. Not compression.</strong> The only legging with a micro-massage weave, engineered to <strong>target cellulite</strong> while you live your life." },
-    { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "👖 Wear the shorts again — no more avoiding the mirror, the pool, or summer" },
-    { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "🔄 Works automatically — no rollers, no creams, no extra routine" },
-    { "type": "text", "id": "bullet_3", "label": "Bullet 3", "default": "📈 Visible results in a few weeks — smoother-looking skin, just from wearing what you already wear" },
+    { "type": "text", "id": "bullet_1", "label": "Bullet 1", "default": "Wear the shorts again — no more avoiding the mirror, the pool, or summer" },
+    { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "Works automatically — no rollers, no creams, no extra routine" },
+    { "type": "text", "id": "bullet_3", "label": "Bullet 3", "default": "Visible results in a few weeks — smoother-looking skin, just from wearing what you already wear" },
     { "type": "text", "id": "offer_banner", "label": "Offer banner (red)", "default": "Limited offer — Buy 1 Get 1 Free + Free Shipping" },
     { "type": "text", "id": "bundle_label", "label": "Bundle label", "default": "Bundle & Save" },
     { "type": "text", "id": "atc_label", "label": "Add to cart label", "default": "Add to Cart" },
