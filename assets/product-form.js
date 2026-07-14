@@ -37,7 +37,9 @@ if (!customElements.get('product-form')) {
             'sections',
             this.cart.getSectionsToRender().map((section) => section.id)
           );
-          formData.append('sections_url', window.location.pathname);
+          // Veloura: no sections_url — this store's /cart/add rejects it with
+          // HTTP 400 ("sections_url must be a relative path"), which silently
+          // broke every Dawn add-to-cart. Sections render fine without it.
           this.cart.setActiveElement(document.activeElement);
         }
         config.body = formData;

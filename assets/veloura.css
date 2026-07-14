@@ -533,6 +533,9 @@ body {
 .v-drawer-upsell__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
 .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; }
+.v-drawer-upsell .v-link-cta > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+.v-drawer-upsell .v-link-cta .loading__spinner { width: 14px; height: 14px; }
+.v-drawer-upsell .v-link-cta.loading > span:first-child { visibility: hidden; }
 .v-drawer-upsell__added { display: inline-flex; align-items: center; gap: 6px; color: var(--v-green); font-size: 0.75rem; font-weight: 500; }
 
 /* Drawer totals (Subtotal / Shipping / Total) + trust row */

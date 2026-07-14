@@ -511,7 +511,13 @@
                   <product-form class="product-form">
                     {%- form 'product', up, id: 'CartDrawer-Upsell', novalidate: 'novalidate' -%}
                       <input type="hidden" name="id" value="{{ up.selected_or_first_available_variant.id }}">
-                      <button type="submit" name="add" class="v-link-cta">Add to Order {% render 'veloura-icon', name: 'plus', size: 14 %}</button>
+                      {%- comment -%} product-form.js requires a <span> label + .loading__spinner inside the button {%- endcomment -%}
+                      <button type="submit" name="add" class="v-link-cta">
+                        <span>Add to Order {% render 'veloura-icon', name: 'plus', size: 14 %}</span>
+                        <span class="loading__spinner hidden" aria-hidden="true">
+                          <svg focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg>
+                        </span>
+                      </button>
                     {%- endform -%}
                   </product-form>
                 </div>
