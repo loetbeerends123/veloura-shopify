@@ -10,25 +10,63 @@
     "genesis": {
       "type": "veloura-feature-split",
       "settings": {
+        "blush": false,
+        "image_first": false,
         "heading_rust": true,
+        "eyebrow": "Where It Began",
         "heading": "The Genesis",
-        "paragraph_1": "Veloura was born at the intersection of <strong>rigorous clinical dermatology</strong> and high-performance textile engineering. We observed a fundamental flaw in the traditional approach to cellulite and skin texture: the industry treated it as a purely aesthetic fat issue, <strong>masking it rather than addressing the physiological root cause</strong>.",
-        "paragraph_2": "Through years of research, we isolated the true mechanism — <strong>stagnant microcirculation and lymphatic fluid</strong>. This realisation catalysed the development of our proprietary Velo-Lymph™ technology, shifting the paradigm from passive shapewear to <strong>active, therapeutic apparel</strong>.",
+        "paragraph_1": "Veloura was born at the intersection of <strong>rigorous clinical dermatology</strong> and high-performance textile engineering. We watched an entire industry treat cellulite as a purely aesthetic fat issue — <strong>masking it rather than addressing the physiological root cause</strong>. Creams that promised miracles. Shapewear that squeezed and suffocated. Women told, again and again, to simply hide.",
+        "paragraph_2": "Through years of research we isolated the true mechanism: <strong>stagnant micro-circulation and lymphatic fluid</strong>. That single realisation catalysed the development of our proprietary Velo-Lymph™ technology — and shifted the paradigm from passive shapewear to <strong>active, therapeutic apparel</strong>.",
         "pill_label": "Clinically Designed"
       }
     },
     "philosophy": {
       "type": "veloura-philosophy",
       "blocks": {
-        "c1": { "type": "col", "settings": { "icon": "droplet", "title": "Not a Fat Issue", "body": "Dermatologists have established that cellulite is fundamentally a circulation problem — a localised lymphatic drainage failure rather than excess lipid storage." } },
-        "c2": { "type": "col", "settings": { "icon": "cross", "title": "The Flaw in Compression", "body": "Traditional shapewear merely compresses superficially, masking the texture while often exacerbating the underlying circulatory stagnation by restricting blood flow." } },
-        "c3": { "type": "col", "settings": { "icon": "pulse", "title": "Active Stimulation", "body": "We engineered garments that work dynamically with your body's movement, providing continuous micro-massage to stimulate lymphatic flow for the hours you wear them." } }
+        "c1": {
+          "type": "col",
+          "settings": {
+            "icon": "droplet",
+            "title": "Not a Fat Issue",
+            "body": "Dermatologists have established that cellulite is fundamentally a <strong>circulation problem</strong> — a localised lymphatic drainage failure rather than excess lipid storage. We treat the cause, not the symptom."
+          }
+        },
+        "c2": {
+          "type": "col",
+          "settings": {
+            "icon": "cross",
+            "title": "The Flaw in Compression",
+            "body": "Traditional shapewear merely compresses superficially, masking the texture while often <strong>worsening the underlying stagnation</strong> by restricting blood flow. Hiding is not healing."
+          }
+        },
+        "c3": {
+          "type": "col",
+          "settings": {
+            "icon": "pulse",
+            "title": "Active Stimulation",
+            "body": "We engineered garments that work dynamically with your body's movement, delivering <strong>continuous micro-massage</strong> that stimulates lymphatic flow for every hour you wear them."
+          }
+        }
       },
       "block_order": ["c1", "c2", "c3"],
       "settings": {
+        "blush": true,
         "eyebrow": "Our Philosophy",
         "heading": "Beauty through Circulation. Treating the",
         "heading_italic": "Wrong Problem."
+      }
+    },
+    "standard": {
+      "type": "veloura-feature-split",
+      "settings": {
+        "blush": false,
+        "image_first": true,
+        "heading_rust": true,
+        "eyebrow": "The Veloura Standard",
+        "heading": "Engineered Like a Treatment. Worn Like a Legging.",
+        "paragraph_1": "Every pair is knitted around <strong>47+ mapped micro-pressure points</strong>, each one positioned to trigger a specific lymphatic pathway with every step. The fabric holds its therapeutic structure for <strong>80+ washes</strong> — because a treatment you can't live in is a treatment you'll abandon.",
+        "paragraph_2": "No rollers. No creams. No extra routine. Just <strong>structural change that happens while you live your life</strong> — on the school run, at your desk, in the studio. That is our standard, and we refuse to ship anything less.",
+        "pill_label": "Velo-Lymph™ Certified"
       }
     },
     "science": {
@@ -45,6 +83,55 @@
         "body": "Our proprietary fabric maps over <strong>47+ micro-pressure points</strong> directly into the textile structure. Each point is meticulously calculated to <strong>trigger a specific lymphatic pathway with every step you take</strong>."
       }
     },
+    "journey": {
+      "type": "veloura-timeline",
+      "blocks": {
+        "j1": {
+          "type": "step",
+          "settings": {
+            "icon": "droplet",
+            "label": "The Question",
+            "title": "Why Does Nothing Work?",
+            "body": "It started with one question we couldn't let go of: why do creams, wraps and compression consistently fail the women who trust them?"
+          }
+        },
+        "j2": {
+          "type": "step",
+          "settings": {
+            "icon": "wave",
+            "label": "The Research",
+            "title": "Back to the Dermis",
+            "body": "Years spent with dermatologists and textile engineers led us away from quick fixes and down to the true mechanism: circulation."
+          }
+        },
+        "j3": {
+          "type": "step",
+          "settings": {
+            "icon": "diamond",
+            "label": "The Breakthrough",
+            "title": "Velo-Lymph™ Is Born",
+            "body": "A weave that massages as you move. The first prototypes confirmed it: consistent wear produces real, structural change."
+          }
+        },
+        "j4": {
+          "type": "step",
+          "settings": {
+            "icon": "sparkle",
+            "label": "Today",
+            "title": "Thousands of Women Strong",
+            "body": "Veloura is now a daily protocol for a growing community of women who chose to treat the cause — not hide the symptom."
+          }
+        }
+      },
+      "block_order": ["j1", "j2", "j3", "j4"],
+      "settings": {
+        "blush": true,
+        "style": "icon",
+        "eyebrow": "Our Journey",
+        "heading": "From One Question to a Movement",
+        "subheading": ""
+      }
+    },
     "founder": {
       "type": "veloura-founder-quote",
       "settings": {
@@ -57,5 +144,5 @@
       }
     }
   },
-  "order": ["hero", "genesis", "philosophy", "science", "founder"]
+  "order": ["hero", "genesis", "philosophy", "standard", "science", "journey", "founder"]
 }
