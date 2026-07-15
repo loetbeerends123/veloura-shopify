@@ -84,22 +84,24 @@
    background), with the model kept to the right via object-position + a strong
    left cream fade, so the leggings are not behind the text. */
 @media (max-width: 749px) {
-  .v-hero__img { object-position: 54% 32%; }
+  .v-hero__img { object-position: 60% 32%; }
   .v-hero__fade {
     background: linear-gradient(
       to right,
       rgba(250, 246, 244, 0.97) 0%,
-      rgba(250, 246, 244, 0.92) 40%,
-      rgba(250, 246, 244, 0.5) 56%,
-      rgba(250, 246, 244, 0.1) 76%,
-      rgba(250, 246, 244, 0) 92%
+      rgba(250, 246, 244, 0.94) 45%,
+      rgba(250, 246, 244, 0.6) 65%,
+      rgba(250, 246, 244, 0.15) 82%,
+      rgba(250, 246, 244, 0) 95%
     );
   }
-  .v-hero__inner { align-items: flex-start; min-height: 82vh; min-height: 82svh; }
-  .v-hero__copy { max-width: 56%; padding-block: clamp(96px, 17vh, 150px) 30px; margin-left: 0; }
+  .v-hero__inner { align-items: flex-start; min-height: 78vh; min-height: 78svh; }
+  .v-hero__copy { max-width: 76%; padding-block: clamp(72px, 12vh, 110px) 30px; margin-left: 0; }
   .v-hero .v-hero__title { font-size: clamp(2.4rem, 9.5vw, 3.4rem); line-height: 1.08; margin: 0 0 14px; }
-  .v-hero .v-hero__sub { font-size: 1.1875rem; line-height: 1.5; max-width: none; margin: 0 0 20px; }
-  .v-hero .v-hero__cta { font-size: 1.0625rem; padding: 15px 28px; }
+  .v-hero .v-hero__sub { font-size: 1.1875rem; line-height: 1.5; max-width: 30ch; margin: 0 0 20px; }
+  /* Full-width single-line CTA — the label wrapped to three lines before */
+  .v-hero .v-hero__cta { width: 100%; justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 16px 14px; white-space: nowrap; }
+  .v-hero .v-hero__urgency { font-size: 1.0625rem; }
 }
 {% endstylesheet %}
 

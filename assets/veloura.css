@@ -150,7 +150,7 @@ body {
 .v-section--dark { background: var(--v-canvas-dark); color: var(--v-white); }
 .v-section-head { text-align: center; max-width: 640px; margin: 0 auto clamp(32px, 5vw, 56px); }
 .v-section-head .v-h2 { margin-bottom: 12px; }
-.v-section-head p { color: var(--v-muted); font-size: 1.0625rem; line-height: 1.6; margin: 0; }
+.v-section-head p { color: var(--v-muted); font-size: 1.125rem; line-height: 1.6; margin: 0; }
 .v-hairline { border: 0; border-top: 1px solid var(--v-border); margin: 0; }
 
 /* ============================================================
@@ -660,10 +660,10 @@ body {
   background-image: none;
 }
 @media (max-width: 749px) {
-  .veloura-logo__img { height: 36px; }
+  .veloura-logo__img { height: 48px; max-width: 64vw; object-fit: contain; }
 }
 @media (max-width: 480px) {
-  .veloura-logo__img { height: 31px; }
+  .veloura-logo__img { height: 44px; }
 }
 
 /* Nav links — bold, premium uppercase labels in the logo's taupe ink.
