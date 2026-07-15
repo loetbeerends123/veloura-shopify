@@ -91,34 +91,51 @@
 /* Proof chip is a mobile-only element */
 .v-hero__proof { display: none; }
 
-/* Mobile: "editorial stack" — clean centred copy on canvas, then the photo as
-   a framed card with a floating review chip. No text-over-photo contrast
-   fights; the first view reads instantly. */
+/* Mobile: "magazine cover" — the whole hero is one framed photo card with a
+   warm espresso gradient and ivory copy over it (same visual language as the
+   Story hero / founder section), plus a floating review chip straddling the
+   card's bottom edge. */
 @media (max-width: 749px) {
-  .v-hero { display: flex; flex-direction: column; }
-  .v-hero__fade { display: none; }
-
-  .v-hero__inner { order: 1; align-items: stretch; min-height: 0; }
-  .v-hero__copy { max-width: none; width: 100%; padding: clamp(36px, 6vh, 56px) 2px 26px; margin-left: 0; text-align: center; }
-  .v-hero .v-hero__title { font-size: clamp(2.6rem, 11vw, 3.5rem); line-height: 1.06; margin: 0 0 14px; }
-  .v-hero .v-hero__sub { font-size: 1.1875rem; line-height: 1.55; max-width: 30ch; margin: 0 auto 22px; }
-  .v-hero .v-hero__cta { width: 100%; justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 17px 14px; white-space: nowrap; }
-  .v-hero .v-hero__urgency { font-size: 1rem; margin: 14px 0 0; }
-
+  .v-hero {
+    position: relative;
+    display: flex; flex-direction: column;
+    margin: 12px 16px 0;
+    min-height: 82vh; min-height: 82svh;
+    overflow: visible;
+    border-bottom: 0;
+    background: transparent;
+  }
   .v-hero__img {
-    position: relative; inset: auto; z-index: 0; order: 2;
-    width: calc(100% - 40px); height: min(62vh, 540px);
-    margin: 2px auto 0;
-    object-fit: cover; object-position: 64% 24%;
     border-radius: var(--v-radius-md);
     box-shadow: var(--v-shadow-card);
+    object-position: 62% 26%;
   }
+  .v-hero__fade {
+    border-radius: var(--v-radius-md);
+    background: linear-gradient(
+      to top,
+      rgba(28, 16, 9, 0.82) 0%,
+      rgba(28, 16, 9, 0.55) 30%,
+      rgba(28, 16, 9, 0.18) 55%,
+      rgba(28, 16, 9, 0) 75%
+    );
+  }
+
+  .v-hero__inner { flex: 1; order: 1; display: flex; align-items: flex-end; min-height: 0; }
+  .v-hero__copy { max-width: none; width: 100%; padding: 120px 6px 34px; margin-left: 0; text-align: left; }
+  .v-hero__copy .v-eyebrow { color: var(--v-rust-light); }
+  .v-hero .v-hero__title { font-size: clamp(2.5rem, 10.5vw, 3.4rem); line-height: 1.07; margin: 0 0 14px; color: #FAF6F4; text-shadow: 0 2px 16px rgba(28, 16, 9, 0.35); }
+  .v-hero .v-hero__sub { font-size: 1.125rem; line-height: 1.55; max-width: 30ch; margin: 0 0 22px; color: rgba(250, 246, 244, 0.92); }
+  .v-hero .v-hero__sub strong { color: var(--v-rust-light); }
+  .v-hero .v-hero__cta { width: 100%; justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 17px 14px; white-space: nowrap; box-shadow: 0 6px 20px rgba(28, 16, 9, 0.35); }
+  .v-hero .v-hero__urgency { font-size: 0.9375rem; font-weight: 600; margin: 14px 0 0; color: rgba(250, 246, 244, 0.85); text-align: center; }
+
   .v-hero__proof {
-    order: 3;
     display: inline-flex; align-items: center; gap: 9px;
     align-self: center;
+    order: 2;
     position: relative; z-index: 2;
-    margin: -25px auto 30px;
+    margin-bottom: -22px;
     background: var(--v-white);
     border: 1px solid var(--v-border);
     border-radius: var(--v-radius-lg);
