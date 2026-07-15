@@ -91,10 +91,9 @@
 /* Proof chip is a mobile-only element */
 .v-hero__proof { display: none; }
 
-/* Mobile: "magazine cover" — the whole hero is one framed photo card with a
-   warm espresso gradient and ivory copy over it (same visual language as the
-   Story hero / founder section), plus a floating review chip straddling the
-   card's bottom edge. */
+/* Mobile: framed photo card with a cream fade rising from the bottom and the
+   same espresso-on-canvas copy colours as desktop, plus a floating review chip
+   straddling the card's bottom edge. */
 @media (max-width: 749px) {
   .v-hero {
     position: relative;
@@ -114,21 +113,19 @@
     border-radius: var(--v-radius-md);
     background: linear-gradient(
       to top,
-      rgba(28, 16, 9, 0.82) 0%,
-      rgba(28, 16, 9, 0.55) 30%,
-      rgba(28, 16, 9, 0.18) 55%,
-      rgba(28, 16, 9, 0) 75%
+      rgba(250, 246, 244, 0.97) 0%,
+      rgba(250, 246, 244, 0.92) 28%,
+      rgba(250, 246, 244, 0.60) 52%,
+      rgba(250, 246, 244, 0) 76%
     );
   }
 
   .v-hero__inner { flex: 1; order: 1; display: flex; align-items: flex-end; min-height: 0; }
   .v-hero__copy { max-width: none; width: 100%; padding: 120px 6px 34px; margin-left: 0; text-align: left; }
-  .v-hero__copy .v-eyebrow { color: var(--v-rust-light); }
-  .v-hero .v-hero__title { font-size: clamp(2.5rem, 10.5vw, 3.4rem); line-height: 1.07; margin: 0 0 14px; color: #FAF6F4; text-shadow: 0 2px 16px rgba(28, 16, 9, 0.35); }
-  .v-hero .v-hero__sub { font-size: 1.125rem; line-height: 1.55; max-width: 30ch; margin: 0 0 22px; color: rgba(250, 246, 244, 0.92); }
-  .v-hero .v-hero__sub strong { color: var(--v-rust-light); }
-  .v-hero .v-hero__cta { width: 100%; justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 17px 14px; white-space: nowrap; box-shadow: 0 6px 20px rgba(28, 16, 9, 0.35); }
-  .v-hero .v-hero__urgency { font-size: 0.9375rem; font-weight: 600; margin: 14px 0 0; color: rgba(250, 246, 244, 0.85); text-align: center; }
+  .v-hero .v-hero__title { font-size: clamp(2.5rem, 10.5vw, 3.4rem); line-height: 1.07; margin: 0 0 14px; text-shadow: 0 1px 0 rgba(250, 246, 244, 0.6); }
+  .v-hero .v-hero__sub { font-size: 1.125rem; line-height: 1.55; max-width: 30ch; margin: 0 0 22px; }
+  .v-hero .v-hero__cta { width: 100%; justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 17px 14px; white-space: nowrap; box-shadow: 0 6px 20px rgba(28, 16, 9, 0.18); }
+  .v-hero .v-hero__urgency { font-size: 0.9375rem; font-weight: 600; margin: 14px 0 0; text-align: center; }
 
   .v-hero__proof {
     display: inline-flex; align-items: center; gap: 9px;
