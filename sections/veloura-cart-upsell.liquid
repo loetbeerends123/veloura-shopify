@@ -77,8 +77,12 @@
 .v-cart-upsell__action { display: grid; gap: 12px; justify-items: end; text-align: right; }
 .v-cart-upsell__added { display: inline-flex; align-items: center; gap: 6px; color: var(--v-green); font-size: 0.8125rem; font-weight: 500; }
 @media (max-width: 749px) {
-  .v-cart-upsell__card { grid-template-columns: auto 1fr; }
-  .v-cart-upsell__action { grid-column: 1 / -1; justify-items: stretch; }
+  .v-cart-upsell__card { grid-template-columns: auto 1fr; gap: 14px; padding: 18px; }
+  /* One tidy row: price left, a full-size pill button filling the rest */
+  .v-cart-upsell__action { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 14px; text-align: left; border-top: 1px solid var(--v-border); padding-top: 14px; }
+  .v-cart-upsell__action .v-price { font-size: 1.1875rem; font-weight: 700; }
+  .v-cart-upsell__action form { flex: 1; }
+  .v-cart-upsell__action .v-btn { width: 100%; min-height: 48px; font-size: 0.875rem; border-width: 1.5px; }
 }
 {% endstylesheet %}
 
