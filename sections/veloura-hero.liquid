@@ -1,4 +1,4 @@
-{%- comment -%} Veloura — Home Hero (PRD §1.1): product photo contained in-section, left→right fade {%- endcomment -%}
+{%- comment -%} Veloura — Home Hero (PRD §1.1): editorial split — copy on solid canvas, photo beside it. No text over the photo. {%- endcomment -%}
 {%- liquid
   if section.settings.image != blank
     assign hero_src = section.settings.image | image_url: width: 2400
@@ -13,18 +13,7 @@
   endif
 -%}
 <section class="v-hero">
-  <img class="v-hero__img" src="{{ hero_src }}" alt="{{ hero_alt | escape }}" width="{{ hero_w }}" height="{{ hero_h }}" fetchpriority="high">
-  <div class="v-hero__fade"></div>
-
-  {%- comment -%} Mobile-only floating proof chip over the photo card {%- endcomment -%}
-  {%- if section.settings.proof_text != blank -%}
-    <div class="v-hero__proof">
-      <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 14 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 14 %}</span>
-      <span>{{ section.settings.proof_text }}</span>
-    </div>
-  {%- endif -%}
-
-  <div class="v-hero__inner v-container">
+  <div class="v-hero__grid">
     <div class="v-hero__copy">
       {%- if section.settings.eyebrow != blank -%}
         <span class="v-eyebrow v-reveal" data-delay="1">{{ section.settings.eyebrow }}</span>
@@ -41,110 +30,92 @@
       {%- if section.settings.urgency != blank -%}
         <p class="v-hero__urgency v-urgency v-reveal" data-delay="5">{{ section.settings.urgency }}</p>
       {%- endif -%}
+      {%- if section.settings.proof_text != blank -%}
+        <div class="v-hero__proof v-reveal" data-delay="5">
+          <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 14 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 14 %}</span>
+          <span>{{ section.settings.proof_text }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="v-hero__media">
+      <img class="v-hero__img" src="{{ hero_src }}" alt="{{ hero_alt | escape }}" width="{{ hero_w }}" height="{{ hero_h }}" fetchpriority="high">
     </div>
   </div>
 </section>
 
 {% stylesheet %}
-/* Image is clipped strictly to the hero; the section defines its own height.
-   The hero is a normal flow section, so it sits below the header (no overlap). */
+/* Editorial split hero: copy sits on solid canvas, so type never fights the
+   photo for contrast. The photo's left edge dissolves into the canvas with a
+   narrow blend so the two halves read as one composition. */
 .v-hero {
-  position: relative;
-  overflow: hidden;
   background: var(--v-canvas);
   border-bottom: 1px solid var(--v-border);
-  isolation: isolate;
 }
+.v-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(400px, 44%) 1fr;
+  min-height: min(76vh, 680px);
+}
+.v-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 72px clamp(28px, 4vw, 56px) 72px clamp(24px, 6vw, 96px);
+}
+/* Scoped under .v-hero to outrank veloura.css component font-sizes */
+.v-hero .v-hero__title { font-size: clamp(2.875rem, 4.8vw, 4.5rem); line-height: 1.06; margin: 0 0 24px; }
+.v-hero .v-hero__sub { color: var(--v-text); font-size: 1.3125rem; line-height: 1.6; max-width: 42ch; margin: 0 0 32px; }
+.v-hero .v-hero__cta { font-size: 1.0625rem; padding: 16px 40px; }
+.v-hero .v-hero__urgency { margin: 18px 0 0; font-size: 1rem; }
+.v-hero__proof {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 22px;
+  font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 500; color: var(--v-muted);
+}
+.v-hero__proof .v-stars { display: inline-flex; color: var(--v-star); }
+.v-hero__media { position: relative; }
 .v-hero__img {
-  position: absolute; inset: 0; z-index: -2;
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: 72% 40%;
 }
-/* Left -> right fade into the canvas colour for strong text contrast */
-.v-hero__fade {
-  position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(
-    to right,
-    rgba(250, 246, 244, 1) 0%,
-    rgba(250, 246, 244, 0.99) 48%,
-    rgba(250, 246, 244, 0.95) 64%,
-    rgba(250, 246, 244, 0.55) 82%,
-    rgba(250, 246, 244, 0) 96%
-  );
-}
-.v-hero__inner { display: flex; align-items: center; min-height: min(78vh, 660px); }
-.v-hero__copy { max-width: 600px; padding-block: 64px; margin-left: clamp(12px, 6vw, 88px); }
-/* Scoped under .v-hero to outrank veloura.css's .v-h1 / .v-btn / .v-urgency font-sizes.
-   Over the photo, brand rust is too close to the beige wall — the hero uses a darker
-   rust for the eyebrow and <strong> emphasis, plus a soft cream glow behind the type. */
-.v-hero .v-eyebrow { color: #8C4331; font-weight: 600; }
-.v-hero .v-hero__title { font-size: clamp(3.75rem, 8vw, 6.5rem); font-weight: 700; margin: 0 0 24px; text-shadow: 0 2px 24px rgba(250, 246, 244, 0.9), 0 1px 0 rgba(250, 246, 244, 0.6); }
-.v-hero .v-hero__sub { color: var(--v-text); font-size: 1.625rem; line-height: 1.55; max-width: 460px; margin: 0 0 36px; text-shadow: 0 1px 12px rgba(250, 246, 244, 0.8); }
-.v-hero .v-hero__sub strong { color: #8C4331; }
-.v-hero .v-hero__cta { align-self: flex-start; font-size: 1.25rem; padding: 17px 44px; }
-.v-hero .v-hero__urgency { margin: 20px 0 0; font-size: 1.25rem; }
-
-/* Tablet */
-@media (max-width: 989px) {
-  .v-hero__img { object-position: 72% 40%; }
-  .v-hero__inner { min-height: 64vh; }
-  .v-hero__copy { max-width: 60%; }
+.v-hero__media::before {
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: 0;
+  width: clamp(60px, 8vw, 140px);
+  background: linear-gradient(to right, var(--v-canvas), rgba(250, 246, 244, 0));
+  z-index: 1;
+  pointer-events: none;
 }
 
-/* Proof chip is a mobile-only element */
-.v-hero__proof { display: none; }
+/* Tablet: keep the split but tighten proportions */
+@media (max-width: 989px) and (min-width: 750px) {
+  .v-hero__grid { grid-template-columns: minmax(340px, 48%) 1fr; min-height: 60vh; }
+  .v-hero__copy { padding: 56px 28px 56px 32px; }
+  .v-hero .v-hero__title { font-size: clamp(2.5rem, 5vw, 3.25rem); }
+  .v-hero .v-hero__sub { font-size: 1.125rem; }
+}
 
-/* Mobile: framed photo card with a cream fade rising from the bottom and the
-   same espresso-on-canvas copy colours as desktop, plus a floating review chip
-   straddling the card's bottom edge. */
+/* Mobile: copy block on canvas, framed photo card below — same order and
+   colours as desktop, nothing overlaid on the image. */
 @media (max-width: 749px) {
-  .v-hero {
-    position: relative;
-    display: flex; flex-direction: column;
-    margin: 12px 16px 0;
-    min-height: 82vh; min-height: 82svh;
-    overflow: visible;
-    border-bottom: 0;
-    background: transparent;
-  }
-  .v-hero__img {
+  .v-hero__grid { display: flex; flex-direction: column; min-height: 0; }
+  .v-hero__copy { padding: 44px 24px 32px; align-items: stretch; text-align: left; }
+  .v-hero .v-hero__title { font-size: clamp(2.375rem, 9.5vw, 3rem); margin: 0 0 16px; }
+  .v-hero .v-hero__sub { font-size: 1.125rem; line-height: 1.55; margin: 0 0 24px; }
+  .v-hero .v-hero__cta { justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 16px 14px; white-space: nowrap; }
+  .v-hero .v-hero__urgency { text-align: center; font-size: 0.9375rem; }
+  .v-hero__proof { align-self: center; margin-top: 18px; font-size: 0.875rem; }
+  .v-hero__media {
+    margin: 0 16px 28px;
+    aspect-ratio: 4 / 5;
     border-radius: var(--v-radius-md);
+    overflow: hidden;
     box-shadow: var(--v-shadow-card);
-    object-position: 72% 26%;
   }
-  .v-hero__fade {
-    border-radius: var(--v-radius-md);
-    background: linear-gradient(
-      to top,
-      rgba(250, 246, 244, 0.98) 0%,
-      rgba(250, 246, 244, 0.94) 30%,
-      rgba(250, 246, 244, 0.68) 55%,
-      rgba(250, 246, 244, 0) 78%
-    );
-  }
-
-  .v-hero__inner { flex: 1; order: 1; display: flex; align-items: flex-end; min-height: 0; }
-  .v-hero__copy { max-width: none; width: 100%; padding: 120px 6px 34px; margin-left: 0; text-align: left; }
-  .v-hero .v-hero__title { font-size: clamp(2.5rem, 10.5vw, 3.4rem); line-height: 1.07; margin: 0 0 14px; text-shadow: 0 1px 0 rgba(250, 246, 244, 0.6); }
-  .v-hero .v-hero__sub { font-size: 1.125rem; line-height: 1.55; max-width: 30ch; margin: 0 0 22px; }
-  .v-hero .v-hero__cta { width: 100%; justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 17px 14px; white-space: nowrap; box-shadow: 0 6px 20px rgba(28, 16, 9, 0.18); }
-  .v-hero .v-hero__urgency { font-size: 0.9375rem; font-weight: 600; margin: 14px 0 0; text-align: center; }
-
-  .v-hero__proof {
-    display: inline-flex; align-items: center; gap: 9px;
-    align-self: center;
-    order: 2;
-    position: relative; z-index: 2;
-    margin-bottom: -22px;
-    background: var(--v-white);
-    border: 1px solid var(--v-border);
-    border-radius: var(--v-radius-lg);
-    padding: 11px 20px;
-    box-shadow: var(--v-shadow-card);
-    font-family: var(--v-font-body); font-size: 0.875rem; font-weight: 600; color: var(--v-text);
-  }
-  .v-hero__proof .v-stars { display: inline-flex; color: var(--v-star); }
+  .v-hero__media::before { display: none; }
 }
 {% endstylesheet %}
 
@@ -160,8 +131,8 @@
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop The Veloura Legging" },
     { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "text", "id": "urgency", "label": "Urgency line (red)", "default": "⚡ Selling fast — limited stock this week" },
-    { "type": "text", "id": "proof_text", "label": "Proof chip (mobile, over photo)", "default": "4.8 · from 471 reviews" },
+    { "type": "text", "id": "urgency", "label": "Urgency line (red)", "default": "" },
+    { "type": "text", "id": "proof_text", "label": "Proof line (stars + text)", "default": "4.8 · from 471 reviews" },
     { "type": "image_picker", "id": "image", "label": "Hero image (optional override)" }
   ],
   "presets": [{ "name": "Veloura Hero" }]
