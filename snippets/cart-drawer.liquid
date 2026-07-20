@@ -496,17 +496,12 @@
         endif
         if up_compare <= up_variant.price
           assign up_compare = nil
-        else
-          assign up_save_percent = up_compare | minus: up_variant.price | times: 100 | divided_by: up_compare
         endif
       -%}
       {%- if up != blank and cart != empty -%}
         <div class="v-drawer-upsell">
           <div class="v-drawer-upsell__head">
             {% render 'veloura-icon', name: 'flask', size: 15 %} Complete Your Protocol
-            {%- if up_compare -%}
-              <span class="v-badge v-badge--save v-drawer-upsell__save">Save {{ up_save_percent }}%</span>
-            {%- endif -%}
           </div>
           {%- if up_in_cart -%}
             <span class="v-drawer-upsell__added">{% render 'veloura-icon', name: 'check', size: 15 %} {{ up.title }} — added to your protocol</span>

@@ -42,7 +42,7 @@
     <div class="v-card v-cart-upsell__card {% if in_cart %}is-added{% endif %}">
       <div class="v-cart-upsell__media">
         {%- if up.featured_image -%}
-          <img src="{{ up.featured_image | image_url: width: 240 }}" alt="{{ up.featured_image.alt | default: up.title | escape }}" width="100" height="120">
+          <img src="{{ up.featured_image | image_url: width: 280 }}" alt="{{ up.featured_image.alt | default: up.title | escape }}" width="140" height="168">
         {%- else -%}
           <span class="v-placeholder" data-label="Cellulite Shorts"></span>
         {%- endif -%}
@@ -91,13 +91,28 @@
 .v-cart-upsell__title { font-size: 1.375rem; }
 .v-cart-upsell__card { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; padding: 24px; }
 .v-cart-upsell__card.is-added { opacity: 0.75; }
-.v-cart-upsell__media img, .v-cart-upsell__media .v-placeholder { width: 100px; height: 120px; object-fit: cover; border-radius: var(--v-radius-md); display: block; }
+.v-cart-upsell__media img, .v-cart-upsell__media .v-placeholder { width: 140px; height: 168px; object-fit: cover; border-radius: var(--v-radius-md); display: block; }
 .v-cart-upsell__body { display: grid; gap: 8px; }
 .v-cart-upsell__body .v-badge { justify-self: start; }
 .v-cart-upsell__action { display: grid; gap: 12px; justify-items: end; text-align: right; }
 .v-cart-upsell__added { display: inline-flex; align-items: center; gap: 6px; color: var(--v-green); font-size: 0.8125rem; font-weight: 500; }
+/* Desktop: bigger card so the upsell reads clearly instead of hiding at the bottom of the cart */
+@media (min-width: 750px) {
+  .v-cart-upsell__heading { font-size: 2.125rem; }
+  .v-cart-upsell__card { gap: 32px; padding: 40px; }
+  .v-cart-upsell__title { font-size: 1.875rem; }
+  .v-cart-upsell__body { gap: 12px; }
+  .v-cart-upsell__body p.v-body-sm { font-size: 1.0625rem; line-height: 1.6; }
+  .v-cart-upsell__body .v-badge { font-size: 0.75rem; padding: 7px 16px; }
+  .v-cart-upsell__reassure { font-size: 0.9375rem; }
+  .v-cart-upsell__action { gap: 16px; }
+  .v-cart-upsell__action .v-price { font-size: 1.75rem; }
+  .v-cart-upsell__action .v-price__compare { font-size: 0.7em; }
+  .v-cart-upsell__action .v-btn { padding: 17px 34px; font-size: 0.875rem; min-width: 200px; }
+}
 @media (max-width: 749px) {
   .v-cart-upsell__card { grid-template-columns: auto 1fr; gap: 14px; padding: 18px; }
+  .v-cart-upsell__media img, .v-cart-upsell__media .v-placeholder { width: 100px; height: 120px; }
   /* One tidy row: price left, a full-size pill button filling the rest */
   .v-cart-upsell__action { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 14px; text-align: left; border-top: 1px solid var(--v-border); padding-top: 14px; }
   .v-cart-upsell__action .v-price { font-size: 1.1875rem; font-weight: 700; }
