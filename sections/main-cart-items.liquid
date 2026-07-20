@@ -79,6 +79,23 @@
 
               <tbody>
                 {%- for item in cart.items -%}
+                  {%- liquid
+                    assign v_up_compare = nil
+                    assign v_up = settings.veloura_upsell_product
+                    if v_up == blank and settings.veloura_upsell_handle != blank
+                      assign v_up = all_products[settings.veloura_upsell_handle]
+                    endif
+                    if v_up != blank and item.product.id == v_up.id
+                      assign v_compare = item.variant.compare_at_price
+                      assign v_fallback = settings.veloura_upsell_compare_price | times: 100
+                      if v_compare == blank or v_compare < v_fallback
+                        assign v_compare = v_fallback
+                      endif
+                      if v_compare > item.variant.price
+                        assign v_up_compare = v_compare
+                      endif
+                    endif
+                  -%}
                   <tr
                     class="cart-item {% if item.parent_relationship.parent != null %}cart-item__nested-line{% endif %}"
                     id="CartItem-{{ item.index | plus: 1 }}"
@@ -117,6 +134,21 @@
                           </span>
                           <s class="cart-item__old-price product-option">
                             {{- item.original_price | money -}}
+                          </s>
+                          <span class="visually-hidden">
+                            {{ 'products.product.price.sale_price' | t }}
+                          </span>
+                          <strong class="cart-item__final-price product-option">
+                            {{ item.final_price | money }}
+                          </strong>
+                        </div>
+                      {%- elsif v_up_compare -%}
+                        <div class="cart-item__discounted-prices">
+                          <span class="visually-hidden">
+                            {{ 'products.product.price.regular_price' | t }}
+                          </span>
+                          <s class="cart-item__old-price product-option">
+                            {{- v_up_compare | money -}}
                           </s>
                           <span class="visually-hidden">
                             {{ 'products.product.price.sale_price' | t }}
@@ -188,6 +220,23 @@
                             <dd>
                               <s class="cart-item__old-price price price--end">
                                 {{ item.original_line_price | money }}
+                              </s>
+                            </dd>
+                            <dt class="visually-hidden">
+                              {{ 'products.product.price.sale_price' | t }}
+                            </dt>
+                            <dd class="price price--end">
+                              {{ item.final_line_price | money }}
+                            </dd>
+                          </dl>
+                        {%- elsif v_up_compare -%}
+                          <dl class="cart-item__discounted-prices">
+                            <dt class="visually-hidden">
+                              {{ 'products.product.price.regular_price' | t }}
+                            </dt>
+                            <dd>
+                              <s class="cart-item__old-price price price--end">
+                                {{ v_up_compare | times: item.quantity | money }}
                               </s>
                             </dd>
                             <dt class="visually-hidden">
@@ -415,6 +464,23 @@
                             <dd>
                               <s class="cart-item__old-price price price--end">
                                 {{ item.original_line_price | money }}
+                              </s>
+                            </dd>
+                            <dt class="visually-hidden">
+                              {{ 'products.product.price.sale_price' | t }}
+                            </dt>
+                            <dd class="price price--end">
+                              {{ item.final_line_price | money }}
+                            </dd>
+                          </dl>
+                        {%- elsif v_up_compare -%}
+                          <dl class="cart-item__discounted-prices">
+                            <dt class="visually-hidden">
+                              {{ 'products.product.price.regular_price' | t }}
+                            </dt>
+                            <dd>
+                              <s class="cart-item__old-price price price--end">
+                                {{ v_up_compare | times: item.quantity | money }}
                               </s>
                             </dd>
                             <dt class="visually-hidden">
