@@ -213,6 +213,12 @@ body {
 
 /* Text / link CTA */
 .v-link-cta {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
   font-family: var(--v-font-body);
   font-weight: 500;
   font-size: 0.75rem;
@@ -225,8 +231,9 @@ body {
   align-items: center;
   gap: 6px;
   transition: color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.v-link-cta:hover { color: var(--v-text); }
+.v-link-cta:hover, .v-link-cta:focus-visible, .v-link-cta:active { color: var(--v-text); }
 
 /* ============================================================
    Badges / pills (PRD §13.5)
