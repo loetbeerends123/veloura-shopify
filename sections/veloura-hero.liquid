@@ -64,7 +64,27 @@
   padding: 72px clamp(28px, 4vw, 56px) 72px clamp(24px, 6vw, 96px);
 }
 /* Scoped under .v-hero to outrank veloura.css component font-sizes */
-.v-hero .v-hero__title { font-size: clamp(2.875rem, 4.8vw, 4.5rem); line-height: 1.06; margin: 0 0 24px; }
+.v-hero .v-eyebrow {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 20px;
+}
+.v-hero .v-hero__title {
+  font-size: clamp(2.875rem, 4.8vw, 4.5rem);
+  line-height: 1.06;
+  margin: 0 0 24px;
+  color: var(--v-text); /* fallback if background-clip: text isn't supported */
+}
+/* Warm espresso-to-rust gradient instead of flat ink - richer, on-brand editorial feel */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .v-hero .v-hero__title {
+    background: linear-gradient(115deg, var(--v-text) 40%, var(--v-rust) 115%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
 .v-hero .v-hero__sub { color: var(--v-text); font-size: 1.3125rem; line-height: 1.6; max-width: 42ch; margin: 0 0 32px; }
 .v-hero .v-hero__cta { font-size: 1.0625rem; padding: 16px 40px; }
 .v-hero .v-hero__urgency { margin: 18px 0 0; font-size: 1rem; }
