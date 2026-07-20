@@ -73,17 +73,22 @@
 .v-hero .v-hero__title {
   font-size: clamp(2.875rem, 4.8vw, 4.5rem);
   line-height: 1.06;
-  margin: 0 0 24px;
-  color: var(--v-text); /* fallback if background-clip: text isn't supported */
+  margin: 0 0 22px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--v-rust);
 }
-/* Warm espresso-to-rust gradient instead of flat ink - richer, on-brand editorial feel */
-@supports (background-clip: text) or (-webkit-background-clip: text) {
-  .v-hero .v-hero__title {
-    background: linear-gradient(115deg, var(--v-text) 40%, var(--v-rust) 115%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
+/* Hand-drawn underline swash beneath the headline - editorial accent instead of a flat rule */
+.v-hero .v-hero__title::after {
+  content: "";
+  display: block;
+  width: 64%;
+  height: 0.4em;
+  margin-top: 0.08em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M2 14C60 4 140 2 160 10C180 18 240 6 298 12' fill='none' stroke='%23A65B45' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.85;
 }
 .v-hero .v-hero__sub { color: var(--v-text); font-size: 1.3125rem; line-height: 1.6; max-width: 42ch; margin: 0 0 32px; }
 .v-hero .v-hero__cta { font-size: 1.0625rem; padding: 16px 40px; }
