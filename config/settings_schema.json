@@ -34,6 +34,13 @@
         "default": "Essential for 24/7 lymphatic support and targeted compression."
       },
       {
+        "type": "text",
+        "id": "veloura_upsell_compare_price",
+        "label": "Cart upsell 'was' price",
+        "default": "34.99",
+        "info": "Shown struck-through next to the real price to sell the discount. Ignored if the product's own Compare-at-price (set on the variant in Admin) is higher — that takes priority."
+      },
+      {
         "type": "product",
         "id": "veloura_hero_product",
         "label": "Hero product (Cellulite Legging)",

@@ -121,6 +121,9 @@ body {
 .v-muted { color: var(--v-muted); }
 .v-rust-text { color: var(--v-rust); }
 .v-price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.25rem; }
+.v-price--sale { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.v-price__compare { font-weight: 400; font-size: 0.875em; color: var(--v-muted); text-decoration: line-through; }
+.v-price__now { color: var(--v-rust); font-weight: 700; }
 
 /* Inline emphasis on body copy — bold + rust pull (Font.png style) */
 .v-rich strong, p strong, li strong, .v-em { font-weight: 700; color: var(--v-rust); }
@@ -536,12 +539,15 @@ body {
 .cart-drawer cart-drawer-items { min-height: 250px; }
 .v-drawer-upsell { margin: 10px 16px; padding: 10px 12px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
 .v-drawer-upsell__head { display: flex; align-items: center; gap: 8px; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 8px; }
+.v-drawer-upsell__save { margin-left: auto; font-size: 0.625rem; letter-spacing: 0.08em; padding: 3px 8px; }
 .v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 10px; box-shadow: var(--v-shadow-card); }
 .v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 48px; height: 48px; object-fit: cover; border-radius: var(--v-radius-sm); }
 .v-drawer-upsell__name { font-weight: 600; font-size: 0.875rem; }
 .v-drawer-upsell__desc { font-size: 0.75rem; color: var(--v-muted); margin: 2px 0 6px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 .v-drawer-upsell__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
+.v-drawer-upsell__price.v-price--sale .v-price__compare { font-size: 0.75rem; }
+.v-drawer-upsell__price.v-price--sale .v-price__now { font-size: 0.9375rem; }
 .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; }
 .v-drawer-upsell .v-link-cta > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
 .v-drawer-upsell .v-link-cta .loading__spinner { width: 14px; height: 14px; }

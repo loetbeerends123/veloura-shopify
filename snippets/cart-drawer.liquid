@@ -488,11 +488,25 @@
             endif
           endfor
         endif
+        assign up_variant = up.selected_or_first_available_variant
+        assign up_compare = up_variant.compare_at_price
+        assign up_compare_fallback = settings.veloura_upsell_compare_price | times: 100
+        if up_compare == blank or up_compare < up_compare_fallback
+          assign up_compare = up_compare_fallback
+        endif
+        if up_compare <= up_variant.price
+          assign up_compare = nil
+        else
+          assign up_save_percent = up_compare | minus: up_variant.price | times: 100 | divided_by: up_compare
+        endif
       -%}
       {%- if up != blank and cart != empty -%}
         <div class="v-drawer-upsell">
           <div class="v-drawer-upsell__head">
             {% render 'veloura-icon', name: 'flask', size: 15 %} Complete Your Protocol
+            {%- if up_compare -%}
+              <span class="v-badge v-badge--save v-drawer-upsell__save">Save {{ up_save_percent }}%</span>
+            {%- endif -%}
           </div>
           {%- if up_in_cart -%}
             <span class="v-drawer-upsell__added">{% render 'veloura-icon', name: 'check', size: 15 %} {{ up.title }} — added to your protocol</span>
@@ -507,7 +521,14 @@
                 <div class="v-drawer-upsell__name">{{ up.title }}</div>
                 <p class="v-drawer-upsell__desc">{{ settings.veloura_upsell_text | default: 'Essential for <strong>24/7 lymphatic support</strong> and targeted compression.' }}</p>
                 <div class="v-drawer-upsell__row">
-                  <span class="v-drawer-upsell__price">{{ up.price | money }}</span>
+                  {%- if up_compare -%}
+                    <span class="v-price v-price--sale v-drawer-upsell__price">
+                      <span class="v-price__compare">{{ up_compare | money }}</span>
+                      <span class="v-price__now">{{ up_variant.price | money }}</span>
+                    </span>
+                  {%- else -%}
+                    <span class="v-drawer-upsell__price">{{ up_variant.price | money }}</span>
+                  {%- endif -%}
                   <product-form class="product-form">
                     {%- form 'product', up, id: 'CartDrawer-Upsell', novalidate: 'novalidate' -%}
                       <input type="hidden" name="id" value="{{ up.selected_or_first_available_variant.id }}">
