@@ -52,6 +52,8 @@
    rust-toned scrim on the left that fades into clear photo on the right,
    so the image reads across the full width instead of a solid canvas panel. */
 .v-hero {
+  /* Deep red used for the eyebrow + "your legs." accent line (not the stars). */
+  --v-hero-accent: #8B3324;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -94,7 +96,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   margin-bottom: 20px;
-  color: var(--v-star); /* same red as the star rating + accent line */
+  color: var(--v-hero-accent);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 }
 /* Two-tone headline: both lines solid white, no rust anywhere in the text
@@ -112,7 +114,7 @@
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 .v-hero__title-accent {
-  color: var(--v-star); /* same red as the star rating */
+  color: var(--v-hero-accent);
   font-style: italic;
   font-weight: 500;
   margin-top: 0.08em;
