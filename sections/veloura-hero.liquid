@@ -97,8 +97,9 @@
   color: var(--v-rust-light);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
 }
-/* Two-tone headline: cream upright line, then an italic rust line - the
-   accent line carries the emotional payoff, set apart in weight and colour. */
+/* Two-tone headline, matching how the rest of the site uses rust: white for
+   the actual reading text, rust reserved for a small accent mark - not a
+   whole line of orange. Style (italic + weight), not colour, sets line 2 apart. */
 .v-hero .v-hero__title {
   font-size: clamp(2.875rem, 4.8vw, 4.5rem);
   line-height: 1.08;
@@ -108,14 +109,23 @@
 .v-hero__title-line,
 .v-hero__title-accent {
   display: block;
+  color: var(--v-white);
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
-.v-hero__title-line { color: var(--v-white); }
 .v-hero__title-accent {
-  color: var(--v-rust-light);
   font-style: italic;
   font-weight: 500;
-  margin-top: 0.05em;
+  margin-top: 0.08em;
+  position: relative;
+}
+.v-hero__title-accent::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 3px;
+  margin-top: 14px;
+  background: var(--v-rust-light);
+  border-radius: 2px;
 }
 .v-hero .v-hero__sub {
   color: var(--v-white);
@@ -172,8 +182,8 @@
   "settings": [
     { "type": "paragraph", "content": "Leave the image empty to use the built-in product photo (assets/veloura-hero.jpg)." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Velo-Lymph™ Technology" },
-    { "type": "text", "id": "heading", "label": "Heading — line 1 (cream)", "default": "Stop hiding" },
-    { "type": "text", "id": "heading_accent", "label": "Heading — line 2 (italic rust)", "default": "your legs." },
+    { "type": "text", "id": "heading", "label": "Heading — line 1", "default": "Stop hiding" },
+    { "type": "text", "id": "heading_accent", "label": "Heading — line 2 (italic, with rust underline)", "default": "your legs." },
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop The Veloura Legging" },
     { "type": "url", "id": "button_link", "label": "Button link" },
