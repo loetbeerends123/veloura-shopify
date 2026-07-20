@@ -8,7 +8,7 @@
 
     {%- form 'contact', class: 'v-contact__form' -%}
       {%- if form.posted_successfully? -%}
-        <p class="v-contact__success">{{ section.settings.success_text | default: 'Thank you — we\'ll be in touch shortly.' }}</p>
+        <p class="v-contact__success">{{ section.settings.success_text | default: "Thank you — we'll be in touch shortly." }}</p>
       {%- endif -%}
       {%- if form.errors -%}
         <p class="v-contact__error">{{ form.errors | default_errors }}</p>
