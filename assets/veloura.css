@@ -530,7 +530,7 @@ body {
    Dawn cart drawer — "Your Selection" editorial restyle (PRD §6 drawer)
    ============================================================ */
 .drawer__heading { font-family: var(--v-font-display) !important; font-weight: 400; font-size: 1.75rem; letter-spacing: -0.01em; }
-.cart-drawer__overline { display: block; font-family: var(--v-font-body); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--v-rust); margin-top: 4px; }
+.cart-drawer__overline { display: block; font-family: var(--v-font-body); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--v-rust); margin-top: 4px; }
 .cart-drawer .cart-item__name { font-size: 1.25rem; }
 
 /* Veloura "Complete your protocol" upsell block inside the Dawn drawer.
