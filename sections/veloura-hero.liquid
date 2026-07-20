@@ -1,4 +1,4 @@
-{%- comment -%} Veloura — Home Hero (PRD §1.1): editorial split — copy on solid canvas, photo beside it. No text over the photo. {%- endcomment -%}
+{%- comment -%} Veloura — Home Hero (PRD §1.1): full-bleed photo background with a dark rust-toned scrim behind the copy, so the photo shows edge-to-edge instead of sitting beside a solid canvas panel. {%- endcomment -%}
 {%- liquid
   if section.settings.image != blank
     assign hero_src = section.settings.image | image_url: width: 2400
@@ -13,60 +13,77 @@
   endif
 -%}
 <section class="v-hero">
-  <div class="v-hero__grid">
-    <div class="v-hero__copy">
-      {%- if section.settings.eyebrow != blank -%}
-        <span class="v-eyebrow v-reveal" data-delay="1">{{ section.settings.eyebrow }}</span>
+  <div class="v-hero__media">
+    <img class="v-hero__img" src="{{ hero_src }}" alt="{{ hero_alt | escape }}" width="{{ hero_w }}" height="{{ hero_h }}" fetchpriority="high">
+    <div class="v-hero__scrim" aria-hidden="true"></div>
+  </div>
+  <div class="v-hero__copy">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="v-eyebrow v-reveal" data-delay="1">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    <h1 class="v-h1 v-hero__title v-reveal" data-delay="2">
+      <span class="v-hero__title-line">{{ section.settings.heading }}</span>
+      {%- if section.settings.heading_accent != blank -%}
+        <span class="v-hero__title-accent">{{ section.settings.heading_accent }}</span>
       {%- endif -%}
-      <h1 class="v-h1 v-hero__title v-reveal" data-delay="2">
-        <span class="v-hero__title-line">{{ section.settings.heading }}</span>
-        {%- if section.settings.heading_accent != blank -%}
-          <span class="v-hero__title-accent">{{ section.settings.heading_accent }}</span>
-        {%- endif -%}
-      </h1>
-      {%- if section.settings.subheading != blank -%}
-        <p class="v-hero__sub v-reveal" data-delay="3">{{ section.settings.subheading }}</p>
-      {%- endif -%}
-      {%- if section.settings.button_label != blank -%}
-        <a href="{{ section.settings.button_link | default: '#' }}" class="v-btn v-btn--green v-hero__cta v-reveal" data-delay="4">
-          {{ section.settings.button_label }} {% render 'veloura-icon', name: 'arrow-right', size: 16 %}
-        </a>
-      {%- endif -%}
-      {%- if section.settings.urgency != blank -%}
-        <p class="v-hero__urgency v-urgency v-reveal" data-delay="5">{{ section.settings.urgency }}</p>
-      {%- endif -%}
-      {%- if section.settings.proof_text != blank -%}
-        <div class="v-hero__proof v-reveal" data-delay="5">
-          <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 14 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 14 %}</span>
-          <span>{{ section.settings.proof_text }}</span>
-        </div>
-      {%- endif -%}
-    </div>
-    <div class="v-hero__media">
-      <img class="v-hero__img" src="{{ hero_src }}" alt="{{ hero_alt | escape }}" width="{{ hero_w }}" height="{{ hero_h }}" fetchpriority="high">
-    </div>
+    </h1>
+    {%- if section.settings.subheading != blank -%}
+      <p class="v-hero__sub v-reveal" data-delay="3">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="v-btn v-btn--green v-hero__cta v-reveal" data-delay="4">
+        {{ section.settings.button_label }} {% render 'veloura-icon', name: 'arrow-right', size: 16 %}
+      </a>
+    {%- endif -%}
+    {%- if section.settings.urgency != blank -%}
+      <p class="v-hero__urgency v-urgency v-reveal" data-delay="5">{{ section.settings.urgency }}</p>
+    {%- endif -%}
+    {%- if section.settings.proof_text != blank -%}
+      <div class="v-hero__proof v-reveal" data-delay="5">
+        <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 14 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 14 %}</span>
+        <span>{{ section.settings.proof_text }}</span>
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
 {% stylesheet %}
-/* Editorial split hero: copy sits on solid canvas, so type never fights the
-   photo for contrast. The photo's left edge dissolves into the canvas with a
-   narrow blend so the two halves read as one composition. */
+/* Full-bleed hero: the photo covers the whole section; copy sits in a dark
+   rust-toned scrim on the left that fades into clear photo on the right,
+   so the image reads across the full width instead of a solid canvas panel. */
 .v-hero {
-  background: var(--v-canvas);
-  border-bottom: 1px solid var(--v-border);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  min-height: min(82vh, 720px);
 }
-.v-hero__grid {
-  display: grid;
-  grid-template-columns: minmax(400px, 44%) 1fr;
-  min-height: min(76vh, 680px);
+.v-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.v-hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 38%;
+  display: block;
+}
+.v-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg,
+    rgba(28, 16, 9, 0.72) 0%,
+    rgba(28, 16, 9, 0.52) 32%,
+    rgba(28, 16, 9, 0.18) 58%,
+    rgba(28, 16, 9, 0) 76%);
 }
 .v-hero__copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 72px clamp(28px, 4vw, 56px) 72px clamp(24px, 6vw, 96px);
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  padding: 96px clamp(28px, 6vw, 96px);
 }
 /* Scoped under .v-hero to outrank veloura.css component font-sizes */
 .v-hero .v-eyebrow {
@@ -74,8 +91,10 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   margin-bottom: 20px;
+  color: var(--v-rust-light);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
 }
-/* Two-tone headline: upright ink line, then an italic rust line - the
+/* Two-tone headline: cream upright line, then an italic rust line - the
    accent line carries the emotional payoff, set apart in weight and colour. */
 .v-hero .v-hero__title {
   font-size: clamp(2.875rem, 4.8vw, 4.5rem);
@@ -86,65 +105,59 @@
 .v-hero__title-line,
 .v-hero__title-accent {
   display: block;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
-.v-hero__title-line { color: var(--v-text); }
+.v-hero__title-line { color: var(--v-canvas); }
 .v-hero__title-accent {
-  color: var(--v-rust);
+  color: var(--v-rust-light);
   font-style: italic;
   font-weight: 500;
   margin-top: 0.05em;
 }
-.v-hero .v-hero__sub { color: var(--v-text); font-size: 1.3125rem; line-height: 1.6; max-width: 42ch; margin: 0 0 32px; }
+.v-hero .v-hero__sub {
+  color: rgba(250, 246, 244, 0.92);
+  font-size: 1.3125rem;
+  line-height: 1.6;
+  max-width: 42ch;
+  margin: 0 0 32px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+.v-hero .v-hero__sub strong { color: var(--v-rust-light); }
 .v-hero .v-hero__cta { font-size: 1.0625rem; padding: 16px 40px; }
 .v-hero .v-hero__urgency { margin: 18px 0 0; font-size: 1rem; }
 .v-hero__proof {
   display: inline-flex; align-items: center; gap: 10px;
   margin-top: 22px;
-  font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 500; color: var(--v-muted);
+  font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 500;
+  color: rgba(250, 246, 244, 0.88);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 .v-hero__proof .v-stars { display: inline-flex; color: var(--v-star); }
-.v-hero__media { position: relative; }
-.v-hero__img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: 72% 40%;
-}
-.v-hero__media::before {
-  content: "";
-  position: absolute; top: 0; bottom: 0; left: 0;
-  width: clamp(14px, 2vw, 32px);
-  background: linear-gradient(to right, var(--v-canvas), rgba(250, 246, 244, 0));
-  z-index: 1;
-  pointer-events: none;
-}
 
-/* Tablet: keep the split but tighten proportions */
+/* Tablet: tighten the copy column, keep the same full-bleed treatment */
 @media (max-width: 989px) and (min-width: 750px) {
-  .v-hero__grid { grid-template-columns: minmax(340px, 48%) 1fr; min-height: 60vh; }
-  .v-hero__copy { padding: 56px 28px 56px 32px; }
+  .v-hero { min-height: 64vh; }
+  .v-hero__copy { padding: 64px 40px; max-width: 520px; }
   .v-hero .v-hero__title { font-size: clamp(2.5rem, 5vw, 3.25rem); }
   .v-hero .v-hero__sub { font-size: 1.125rem; }
 }
 
-/* Mobile: copy block on canvas, framed photo card below — same order and
-   colours as desktop, nothing overlaid on the image. */
+/* Mobile: same full-bleed photo, scrim widened so type stays readable
+   over whatever part of the image sits behind it. */
 @media (max-width: 749px) {
-  .v-hero__grid { display: flex; flex-direction: column; min-height: 0; }
-  .v-hero__copy { padding: 44px 24px 32px; align-items: stretch; text-align: left; }
+  .v-hero { min-height: 88vh; align-items: flex-end; }
+  .v-hero__scrim {
+    background: linear-gradient(180deg,
+      rgba(28, 16, 9, 0.15) 0%,
+      rgba(28, 16, 9, 0.55) 55%,
+      rgba(28, 16, 9, 0.82) 100%);
+  }
+  .v-hero__copy { padding: 0 24px 48px; max-width: none; }
   .v-hero .v-hero__title { font-size: clamp(2.375rem, 9.5vw, 3rem); margin: 0 0 16px; }
   .v-hero .v-hero__sub { font-size: 1.125rem; line-height: 1.55; margin: 0 0 24px; }
   .v-hero .v-hero__cta { justify-content: center; font-size: 0.9375rem; letter-spacing: 0.08em; padding: 16px 14px; white-space: nowrap; }
   .v-hero .v-hero__urgency { text-align: center; font-size: 0.9375rem; }
-  .v-hero__proof { align-self: center; margin-top: 18px; font-size: 0.875rem; }
-  .v-hero__media {
-    margin: 0 16px 28px;
-    aspect-ratio: 4 / 5;
-    border-radius: var(--v-radius-md);
-    overflow: hidden;
-    box-shadow: var(--v-shadow-card);
-  }
-  .v-hero__media::before { display: none; }
+  .v-hero__proof { justify-content: center; margin-top: 18px; font-size: 0.875rem; }
 }
 {% endstylesheet %}
 
@@ -156,7 +169,7 @@
   "settings": [
     { "type": "paragraph", "content": "Leave the image empty to use the built-in product photo (assets/veloura-hero.jpg)." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Velo-Lymph™ Technology" },
-    { "type": "text", "id": "heading", "label": "Heading — line 1 (ink)", "default": "Stop hiding" },
+    { "type": "text", "id": "heading", "label": "Heading — line 1 (cream)", "default": "Stop hiding" },
     { "type": "text", "id": "heading_accent", "label": "Heading — line 2 (italic rust)", "default": "your legs." },
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop The Veloura Legging" },
