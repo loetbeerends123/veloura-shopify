@@ -18,7 +18,12 @@
       {%- if section.settings.eyebrow != blank -%}
         <span class="v-eyebrow v-reveal" data-delay="1">{{ section.settings.eyebrow }}</span>
       {%- endif -%}
-      <h1 class="v-h1 v-hero__title v-reveal" data-delay="2">{{ section.settings.heading }}</h1>
+      <h1 class="v-h1 v-hero__title v-reveal" data-delay="2">
+        <span class="v-hero__title-line">{{ section.settings.heading }}</span>
+        {%- if section.settings.heading_accent != blank -%}
+          <span class="v-hero__title-accent">{{ section.settings.heading_accent }}</span>
+        {%- endif -%}
+      </h1>
       {%- if section.settings.subheading != blank -%}
         <p class="v-hero__sub v-reveal" data-delay="3">{{ section.settings.subheading }}</p>
       {%- endif -%}
@@ -70,25 +75,24 @@
   letter-spacing: 0.14em;
   margin-bottom: 20px;
 }
+/* Two-tone headline: upright ink line, then an italic rust line - the
+   accent line carries the emotional payoff, set apart in weight and colour. */
 .v-hero .v-hero__title {
   font-size: clamp(2.875rem, 4.8vw, 4.5rem);
-  line-height: 1.06;
+  line-height: 1.08;
   margin: 0 0 22px;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--v-rust);
+  font-weight: 400;
 }
-/* Hand-drawn underline swash beneath the headline - editorial accent instead of a flat rule */
-.v-hero .v-hero__title::after {
-  content: "";
+.v-hero__title-line,
+.v-hero__title-accent {
   display: block;
-  width: 64%;
-  height: 0.4em;
-  margin-top: 0.08em;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M2 14C60 4 140 2 160 10C180 18 240 6 298 12' fill='none' stroke='%23A65B45' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  opacity: 0.85;
+}
+.v-hero__title-line { color: var(--v-text); }
+.v-hero__title-accent {
+  color: var(--v-rust);
+  font-style: italic;
+  font-weight: 500;
+  margin-top: 0.05em;
 }
 .v-hero .v-hero__sub { color: var(--v-text); font-size: 1.3125rem; line-height: 1.6; max-width: 42ch; margin: 0 0 32px; }
 .v-hero .v-hero__cta { font-size: 1.0625rem; padding: 16px 40px; }
@@ -152,7 +156,8 @@
   "settings": [
     { "type": "paragraph", "content": "Leave the image empty to use the built-in product photo (assets/veloura-hero.jpg)." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Velo-Lymph™ Technology" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Stop hiding your legs." },
+    { "type": "text", "id": "heading", "label": "Heading — line 1 (ink)", "default": "Stop hiding" },
+    { "type": "text", "id": "heading_accent", "label": "Heading — line 2 (italic rust)", "default": "your legs." },
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop The Veloura Legging" },
     { "type": "url", "id": "button_link", "label": "Button link" },
