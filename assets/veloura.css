@@ -564,7 +564,7 @@ body {
 .v-drawer-totals__row--total .v-drawer-totals__val { font-family: var(--v-font-display); font-size: 1.375rem; }
 .v-drawer-totals__val { font-weight: 600; }
 .v-drawer-totals__free { color: var(--v-green); font-weight: 700; }
-.v-drawer-trust { margin-top: 10px; }
+.v-drawer-trust { margin-top: 10px; font-weight: 700; }
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
 .v-cart-offer { display: flex; align-items: flex-start; gap: 9px; margin: 0 0 14px; padding: 11px 14px; background: var(--v-canvas-secondary); border: 1px solid var(--v-border); border-radius: var(--v-radius-sm); font-family: var(--v-font-body); font-size: 0.875rem; line-height: 1.45; color: var(--v-text); }
