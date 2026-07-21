@@ -563,6 +563,7 @@ body {
 .v-drawer-totals__row--total span:first-child { font-family: var(--v-font-display); font-size: 1.375rem; }
 .v-drawer-totals__row--total .v-drawer-totals__val { font-family: var(--v-font-display); font-size: 1.375rem; }
 .v-drawer-totals__val { font-weight: 600; }
+.v-drawer-totals__free { color: var(--v-green); font-weight: 600; }
 .v-drawer-trust { margin-top: 10px; }
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
