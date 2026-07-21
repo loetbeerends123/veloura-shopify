@@ -580,6 +580,9 @@ body {
 .cart-drawer .cart__checkout-button { display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--v-radius-lg); background: var(--v-green); color: #fff; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
 .cart-drawer .cart__checkout-button:hover { background: var(--v-green-hover); }
 .cart-drawer .cart__checkout-button svg { color: #fff; }
+/* Lift the checkout button clear of the very bottom edge so it isn't tucked
+   behind the browser / OS taskbar when the drawer runs full height. */
+.cart-drawer .drawer__footer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px)); }
 
 /* ============================================================
    Header — refined VELOURA wordmark + hide account/search (no account)
