@@ -40,6 +40,29 @@
             {%- endfor -%}
           </div>
         {%- endif -%}
+        {%- comment -%}
+          Colour → main-image map. The Kaching bundle app owns colour/size
+          selection; this lets the left gallery swap to the chosen colour's
+          photo when the shopper picks it in the bundle (see initColorImageSync).
+        {%- endcomment -%}
+        {%- liquid
+          assign color_index = -1
+          for opt in product.options_with_values
+            assign onm = opt.name | downcase
+            if onm == 'color' or onm == 'colour' or onm == 'kleur'
+              assign color_index = forloop.index0
+            endif
+          endfor
+        -%}
+        {%- if color_index >= 0 -%}
+          <script type="application/json" data-pdp-color-images>
+          [
+            {%- for v in product.variants -%}
+              {"color": {{ v.options[color_index] | json }}, "src": {% if v.featured_image %}{{ v.featured_image | image_url: width: 1100 | json }}{% else %}null{% endif %}, "alt": {% if v.featured_image %}{{ v.featured_image.alt | default: product.title | json }}{% else %}{{ product.title | json }}{% endif %}}{% unless forloop.last %},{% endunless %}
+            {%- endfor -%}
+          ]
+          </script>
+        {%- endif -%}
       </div>
 
       {%- comment -%} ---- Right: buy box ---- {%- endcomment -%}

@@ -264,6 +264,86 @@
   }
 
   /* ========================================================================
+     5b. Colour → main image sync with the Kaching bundle app.
+     The bundle app owns colour/size selection; when the shopper picks a
+     colour there, swap the left gallery image to that colour's photo.
+     App-agnostic: watches bubbling change events (selects/radios) and
+     clicks (swatch buttons) for any of our known colour names.
+     ======================================================================== */
+  function initColorImageSync(root) {
+    if (root._vColorSync) return;
+    var dataEl = root.querySelector('[data-pdp-color-images]');
+    var main = root.querySelector('[data-gallery-main]');
+    if (!dataEl || !main) return;
+    var list;
+    try { list = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    var map = {};
+    list.forEach(function (item) {
+      if (!item || !item.color || !item.src) return;
+      var key = String(item.color).trim().toLowerCase();
+      if (!map[key]) map[key] = { src: item.src, alt: item.alt || '' };
+    });
+    var colors = Object.keys(map);
+    if (!colors.length) return;
+    root._vColorSync = true;
+
+    var thumbs = Array.prototype.slice.call(root.querySelectorAll('[data-gallery-thumb]'));
+
+    function swapTo(entry) {
+      if (!entry || !entry.src || entry.src === main.getAttribute('src')) return;
+      main.style.opacity = '0';
+      setTimeout(function () {
+        main.src = entry.src;
+        if (entry.alt) main.alt = entry.alt;
+        var show = function () { main.style.opacity = '1'; };
+        if (main.decode) main.decode().then(show, show);
+        else if (main.complete) show();
+        else main.onload = show;
+      }, 150);
+      thumbs.forEach(function (t) {
+        t.classList.toggle('is-active', t.getAttribute('data-src') === entry.src);
+      });
+    }
+
+    // Return the colour entry named anywhere in a string (exact, then contains).
+    function matchColor(str) {
+      if (!str) return null;
+      var s = String(str).trim().toLowerCase();
+      if (!s) return null;
+      if (map[s]) return map[s];
+      for (var i = 0; i < colors.length; i++) {
+        if (s.indexOf(colors[i]) !== -1) return map[colors[i]];
+      }
+      return null;
+    }
+
+    // Form controls (selects/radios) inside the bundle app bubble 'change'.
+    document.addEventListener('change', function (e) {
+      var t = e.target;
+      if (!t || !t.getAttribute) return;
+      var entry = matchColor(t.value) ||
+                  matchColor(t.getAttribute('data-value')) ||
+                  matchColor(t.getAttribute('data-color')) ||
+                  matchColor(t.getAttribute('aria-label'));
+      if (entry) swapTo(entry);
+    }, true);
+
+    // Swatch-style buttons/divs: read attributes + short text on click.
+    document.addEventListener('click', function (e) {
+      var el = e.target;
+      for (var hops = 0; el && el.getAttribute && hops < 4; hops++, el = el.parentElement) {
+        var txt = el.textContent && el.textContent.length < 40 ? el.textContent : '';
+        var entry = matchColor(el.getAttribute('data-value')) ||
+                    matchColor(el.getAttribute('data-color')) ||
+                    matchColor(el.getAttribute('title')) ||
+                    matchColor(el.getAttribute('aria-label')) ||
+                    matchColor(txt);
+        if (entry) { swapTo(entry); return; }
+      }
+    }, true);
+  }
+
+  /* ========================================================================
      6. Sticky-bar "Start My Transformation" re-triggers in-page ATC (PRD §2.7)
      ======================================================================== */
   function initStickyAtc() {
@@ -315,6 +395,7 @@
     document.querySelectorAll('[data-v-upsell]').forEach(initCartUpsell);
     document.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     document.querySelectorAll('[data-gallery]').forEach(initGallery);
+    document.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
     initStickyBar();
   });
 
@@ -330,6 +411,7 @@
     if (s.matches && s.matches('.v-pdp')) initVariantPicker(s);
     s.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     s.querySelectorAll('[data-gallery]').forEach(initGallery);
+    s.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
     initStickyBar();
   });
 })();
