@@ -535,8 +535,10 @@ body {
 
 /* Veloura "Complete your protocol" upsell block inside the Dawn drawer.
    Kept compact so it never squeezes the item rows (incl. the quantity
-   stepper) out of view; the item list also keeps a minimum height. */
-.cart-drawer cart-drawer-items { min-height: 250px; }
+   stepper) out of view. The item list must be allowed to shrink (min-height:0)
+   so that on short viewports it scrolls internally and the footer + checkout
+   button stay fully visible instead of being pushed below the screen edge. */
+.cart-drawer cart-drawer-items { min-height: 0; }
 .v-drawer-upsell { margin: 10px 16px; padding: 10px 12px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
 .v-drawer-upsell__head { display: flex; align-items: center; gap: 8px; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 8px; }
 .v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 10px; box-shadow: var(--v-shadow-card); }
@@ -580,9 +582,13 @@ body {
 .cart-drawer .cart__checkout-button { display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--v-radius-lg); background: var(--v-green); color: #fff; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
 .cart-drawer .cart__checkout-button:hover { background: var(--v-green-hover); }
 .cart-drawer .cart__checkout-button svg { color: #fff; }
-/* Lift the checkout button clear of the very bottom edge so it isn't tucked
-   behind the browser / OS taskbar when the drawer runs full height. */
-.cart-drawer .drawer__footer { padding-bottom: calc(3rem + env(safe-area-inset-bottom, 0px)); }
+/* Small extra clearance below the checkout button (+ mobile safe-area inset). */
+.cart-drawer .drawer__footer { padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); }
+/* Match the drawer to the *visible* viewport so its bottom (and the checkout
+   button) never sits behind the mobile browser bar. Falls back to height:100%. */
+@supports (height: 100dvh) {
+  cart-drawer.drawer { height: 100dvh; }
+}
 
 /* ============================================================
    Header — refined VELOURA wordmark + hide account/search (no account)
