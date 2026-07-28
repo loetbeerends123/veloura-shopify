@@ -42,11 +42,11 @@
 </section>
 
 {% stylesheet %}
-.v-faq2__grid { display: grid; grid-template-columns: 380px 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.v-faq2__grid { display: grid; grid-template-columns: 400px 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
 .v-faq2__help { text-align: center; }
-.v-faq2__help-title { font-size: clamp(1.875rem, 3vw, 2.375rem); margin: 0 0 16px; }
-.v-faq2__help-text { color: var(--v-muted); font-size: 1.1875rem; line-height: 1.65; margin: 0 0 28px; }
-.v-faq2__help-btn { width: 100%; font-size: 0.875rem; padding-block: 18px; }
+.v-faq2__help-title { font-size: clamp(2.125rem, 3.4vw, 2.875rem); margin: 0 0 18px; }
+.v-faq2__help-text { color: var(--v-muted); font-size: 1.3125rem; line-height: 1.6; margin: 0 0 30px; }
+.v-faq2__help-btn { width: 100%; font-size: 0.9375rem; padding-block: 20px; }
 .v-faq2__head { margin-bottom: 20px; }
 /* Minimal divider rows with a chevron that flips up when open. */
 .v-faq2__main .v-faq { display: block; }
@@ -71,9 +71,6 @@
 }
 .v-faq2__main .v-faq__item.is-open .v-faq__icon { transform: rotate(270deg); }
 .v-faq2__main .v-faq__a-inner { padding: 0 2px 24px; }
-@media (min-width: 850px) {
-  .v-faq2__help { position: sticky; top: calc(var(--header-height, 64px) + 32px); }
-}
 @media (max-width: 849px) {
   .v-faq2__grid { grid-template-columns: 1fr; gap: 40px; }
 }
