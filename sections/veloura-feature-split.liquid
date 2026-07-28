@@ -23,7 +23,7 @@
         {%- elsif section.settings.image != blank -%}
           <img src="{{ section.settings.image | image_url: width: 1100 }}" alt="{{ section.settings.image.alt | escape }}" width="1100" height="1200" loading="lazy">
         {%- elsif section.settings.image_asset != blank -%}
-          <img src="{{ section.settings.image_asset | asset_url }}" alt="{{ section.settings.heading | escape }}" loading="lazy">
+          <img src="{{ section.settings.image_asset | asset_url }}" alt="{{ section.settings.heading | escape }}" width="1200" height="1200" loading="lazy">
         {%- else -%}
           <div class="v-fsplit__ph v-placeholder" data-label="Macro · Fabric structure" style="background:linear-gradient(160deg,#2f3a33,#1d2722);"></div>
         {%- endif -%}
