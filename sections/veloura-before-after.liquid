@@ -14,7 +14,19 @@
             <div class="v-ba-section__quote">
               <span class="v-stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 15 %}{% endfor %}</span>
               <p class="v-italic">“{{ section.settings.quote }}”</p>
-              <span class="v-body-sm v-muted">{{ section.settings.quote_attr }}</span>
+              <div class="v-ba-section__author">
+                <span class="v-ba-section__avatar">
+                  {%- if section.settings.author_image != blank -%}
+                    <img src="{{ section.settings.author_image | image_url: width: 120 }}" alt="{{ section.settings.author_name | default: 'Reviewer' | escape }}" width="52" height="52" loading="lazy">
+                  {%- else -%}
+                    <img src="{{ 'veloura-review-avatar.png' | asset_url }}" alt="{{ section.settings.author_name | default: 'Reviewer' | escape }}" width="52" height="52" loading="lazy">
+                  {%- endif -%}
+                </span>
+                <span class="v-ba-section__author-meta">
+                  {%- if section.settings.author_name != blank -%}<strong class="v-ba-section__name">{{ section.settings.author_name }}</strong>{%- endif -%}
+                  {%- if section.settings.quote_attr != blank -%}<span class="v-body-sm v-muted">{{ section.settings.quote_attr }}</span>{%- endif -%}
+                </span>
+              </div>
             </div>
           {%- endif -%}
         </div>
@@ -41,8 +53,13 @@
 .v-ba-section__card .v-ba { max-width: 400px; margin-inline: auto; }
 .v-ba-section__split { display: grid; grid-template-columns: 45% 55%; gap: clamp(32px, 5vw, 64px); align-items: center; }
 .v-ba-section__copy .v-h2 { margin-bottom: 0; }
-.v-ba-section__quote { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--v-border); display: grid; gap: 8px; }
+.v-ba-section__quote { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--v-border); display: grid; gap: 12px; }
 .v-ba-section__quote .v-italic { font-size: 1.25rem; line-height: 1.4; }
+.v-ba-section__author { display: flex; align-items: center; gap: 12px; margin-top: 2px; }
+.v-ba-section__avatar { flex: none; width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 2px solid var(--v-white); box-shadow: var(--v-shadow-card); }
+.v-ba-section__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
+.v-ba-section__author-meta { display: flex; flex-direction: column; gap: 2px; }
+.v-ba-section__name { font-family: var(--v-font-body); font-weight: 700; font-size: 0.9375rem; color: var(--v-text); }
 .v-ba-section__media { max-width: 460px; width: 100%; justify-self: center; }
 @media (max-width: 849px) {
   .v-ba-section__split { grid-template-columns: 1fr; }
@@ -67,7 +84,9 @@
     { "type": "image_picker", "id": "after_image", "label": "After image" },
     { "type": "header", "content": "Split layout extras" },
     { "type": "textarea", "id": "quote", "label": "Quote" },
-    { "type": "text", "id": "quote_attr", "label": "Quote attribution" }
+    { "type": "text", "id": "author_name", "label": "Reviewer name", "default": "Jessica M." },
+    { "type": "image_picker", "id": "author_image", "label": "Reviewer photo (round). Leave empty to use the built-in photo." },
+    { "type": "text", "id": "quote_attr", "label": "Quote attribution", "default": "Verified Purchase" }
   ],
   "presets": [{ "name": "Veloura Before / After" }]
 }
