@@ -161,12 +161,13 @@
 .v-pdp .v-pdp__guarantee { margin: 22px 0 0; font-size: 1.125rem; font-weight: 700; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 .v-pdp__form { margin: 0; }
-/* Desktop: wider hero with a balanced photo/buy-box split so the section
-   fills the screen (less white margin) and the square photo is large. */
+/* Desktop: square photo sized to the fold height (so it's fully visible on
+   one screen incl. thumbnails), buy box fills the rest. Wide container keeps
+   the side white margins small. */
 @media (min-width: 990px) {
   .v-pdp > .v-container { max-width: min(1440px, 92vw); }
-  .v-pdp__grid { grid-template-columns: 1fr 1fr; gap: clamp(32px, 3vw, 56px); }
-  .v-pdp__main { max-height: calc(100vh - var(--header-height, 64px) - 130px); }
+  .v-pdp__grid { grid-template-columns: auto 1fr; gap: clamp(32px, 3vw, 56px); }
+  .v-pdp__gallery { width: min(calc(100vh - var(--header-height, 64px) - 200px), 46vw, 780px); }
 }
 @media (max-width: 989px) {
   .v-pdp__gallery { position: static; }
