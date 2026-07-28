@@ -47,7 +47,23 @@
 .v-faq2__help-title { font-size: clamp(1.875rem, 3vw, 2.375rem); margin: 0 0 16px; }
 .v-faq2__help-text { color: var(--v-muted); font-size: 1.1875rem; line-height: 1.65; margin: 0 0 28px; }
 .v-faq2__help-btn { width: 100%; font-size: 0.875rem; padding-block: 18px; }
-.v-faq2__head { margin-bottom: 12px; }
+.v-faq2__head { margin-bottom: 20px; }
+/* Refined accordion: airy rounded cards instead of plain divider rows. */
+.v-faq2__main .v-faq { display: grid; gap: 12px; }
+.v-faq2__main .v-faq__item,
+.v-faq2__main .v-faq__item:last-child {
+  border: 1px solid var(--v-border);
+  border-radius: var(--v-radius-md);
+  background: var(--v-white);
+  padding: 2px 24px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.v-faq2__main .v-faq__item:hover { border-color: var(--v-border-strong); }
+.v-faq2__main .v-faq__item.is-open { border-color: var(--v-rust); box-shadow: var(--v-shadow-card); }
+.v-faq2__main .v-faq__q { padding: 22px 0; }
+.v-faq2__main .v-faq__icon::before,
+.v-faq2__main .v-faq__icon::after { background: var(--v-rust); }
+.v-faq2__main .v-faq__a-inner { padding: 0 0 22px; }
 @media (min-width: 850px) {
   .v-faq2__help { position: sticky; top: calc(var(--header-height, 64px) + 32px); }
 }
