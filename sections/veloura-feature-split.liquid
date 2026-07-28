@@ -22,6 +22,8 @@
           </video>
         {%- elsif section.settings.image != blank -%}
           <img src="{{ section.settings.image | image_url: width: 1100 }}" alt="{{ section.settings.image.alt | escape }}" width="1100" height="1200" loading="lazy">
+        {%- elsif section.settings.image_asset != blank -%}
+          <img src="{{ section.settings.image_asset | asset_url }}" alt="{{ section.settings.heading | escape }}" loading="lazy">
         {%- else -%}
           <div class="v-fsplit__ph v-placeholder" data-label="Macro · Fabric structure" style="background:linear-gradient(160deg,#2f3a33,#1d2722);"></div>
         {%- endif -%}
@@ -56,6 +58,7 @@
     { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "Through years of research, we isolated the true mechanism — stagnant microcirculation and lymphatic fluid. This catalysed the development of our proprietary Velo-Lymph™ technology, shifting the paradigm from passive shapewear to active, therapeutic apparel." },
     { "type": "text", "id": "pill_label", "label": "Pill label", "default": "Clinically Designed" },
     { "type": "image_picker", "id": "image", "label": "Image (also used as video poster)" },
+    { "type": "text", "id": "image_asset", "label": "…or a built-in image filename (in assets/)", "info": "e.g. veloura-genesis.png. Used only when no image is picked above." },
     { "type": "header", "content": "Video (optional, replaces the image)" },
     { "type": "checkbox", "id": "show_video", "label": "Show the built-in clip", "default": false, "info": "Uses assets/veloura-lymph-video.mp4 — autoplays muted and loops." },
     { "type": "video", "id": "video", "label": "…or a Shopify-hosted video" }
