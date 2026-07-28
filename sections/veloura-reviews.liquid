@@ -7,11 +7,25 @@
     <div class="v-reviews__summary v-card v-reveal">
       <div class="v-reviews__score">
         <span class="v-reviews__num v-serif">{{ section.settings.score | default: '4.8' }}</span>
-        <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 16 %}</span>
-        <span class="v-body-sm v-muted">{{ section.settings.count_text | default: 'Based on 471 reviews' }}</span>
+        <div class="v-reviews__score-meta">
+          <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 18 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 18 %}</span>
+          <span class="v-body-sm v-muted">{{ section.settings.count_text | default: 'Based on 471 reviews' }}</span>
+        </div>
       </div>
+
+      {%- if section.settings.highlight_1 != blank or section.settings.highlight_2 != blank -%}
+        <div class="v-reviews__trust">
+          {%- if section.settings.highlight_1 != blank -%}
+            <span class="v-reviews__trust-item">{% render 'veloura-icon', name: 'heart', size: 20 %} <span>{{ section.settings.highlight_1 }}</span></span>
+          {%- endif -%}
+          {%- if section.settings.highlight_2 != blank -%}
+            <span class="v-reviews__trust-item">{% render 'veloura-icon', name: 'shield', size: 20 %} <span>{{ section.settings.highlight_2 }}</span></span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
       {%- if section.settings.show_write -%}
-        <button type="button" class="v-btn v-btn--outline" data-review-toggle aria-expanded="false" aria-controls="v-review-form">{{ section.settings.write_label | default: 'Write a Review' }}</button>
+        <button type="button" class="v-btn v-btn--green v-reviews__write-btn" data-review-toggle aria-expanded="false" aria-controls="v-review-form">{% render 'veloura-icon', name: 'sparkle', size: 16 %} {{ section.settings.write_label | default: 'Write a Review' }}</button>
       {%- endif -%}
     </div>
 
@@ -72,11 +86,19 @@
 
 {% stylesheet %}
 .v-reviews__heading { text-align: center; margin-bottom: 28px; }
-.v-reviews__summary { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 32px; margin-bottom: 28px; }
-.v-reviews__score { display: flex; flex-direction: column; gap: 8px; }
+.v-reviews__summary { display: flex; align-items: center; justify-content: space-between; gap: clamp(20px, 4vw, 44px); padding: clamp(24px, 3vw, 36px) clamp(24px, 4vw, 44px); margin-bottom: 32px; background: var(--v-canvas-secondary); border: 1px solid var(--v-border); box-shadow: var(--v-shadow-card); }
+.v-reviews__score { display: flex; align-items: center; gap: 18px; flex: none; }
 /* No "Write a Review" button: center the score instead of leaving dead space */
-.v-reviews__score:only-child { margin-inline: auto; align-items: center; text-align: center; }
-.v-reviews__num { font-size: 3.5rem; line-height: 1; }
+.v-reviews__score:only-child { margin-inline: auto; }
+.v-reviews__num { font-size: clamp(3.25rem, 6vw, 4.25rem); line-height: 0.9; color: var(--v-rust); }
+.v-reviews__score-meta { display: flex; flex-direction: column; gap: 8px; }
+.v-reviews__score-meta .v-stars { font-size: 1.125rem; }
+/* Middle trust highlights */
+.v-reviews__trust { display: flex; flex-direction: column; gap: 14px; padding: 4px clamp(20px, 3vw, 40px); border-left: 1px solid var(--v-border-strong); border-right: 1px solid var(--v-border-strong); }
+.v-reviews__trust-item { display: flex; align-items: center; gap: 11px; font-family: var(--v-font-body); font-size: 1rem; color: var(--v-text); line-height: 1.3; }
+.v-reviews__trust-item svg { color: var(--v-rust); flex: none; }
+.v-reviews__trust-item strong { color: var(--v-rust); font-weight: 700; }
+.v-reviews__write-btn { flex: none; }
 .v-reviews__list { display: grid; gap: 0; }
 .v-reviews__item { padding: 26px 0; border-bottom: 1px solid var(--v-border); }
 .v-reviews__item:last-child { border-bottom: 0; }
@@ -99,9 +121,15 @@
 .v-reviews__input:focus { outline: none; border-color: var(--v-rust); }
 .v-reviews__textarea { min-height: 120px; resize: vertical; margin-bottom: 14px; }
 .v-reviews__submit { width: 100%; }
+@media (max-width: 849px) {
+  .v-reviews__summary { flex-direction: column; align-items: center; text-align: center; gap: 22px; }
+  .v-reviews__score { flex-direction: column; gap: 10px; text-align: center; }
+  .v-reviews__score-meta { align-items: center; }
+  .v-reviews__trust { border-left: 0; border-right: 0; border-top: 1px solid var(--v-border-strong); border-bottom: 1px solid var(--v-border-strong); padding: 18px 0; width: 100%; align-items: center; }
+  .v-reviews__write-btn { width: 100%; max-width: 320px; }
+}
 @media (max-width: 749px) {
-  .v-reviews__summary { flex-direction: column; align-items: flex-start; }
-  .v-reviews__stars { margin-left: 0; width: 100%; }
+  .v-reviews__item .v-reviews__stars { margin-left: auto; }
   .v-reviews__form-row { flex-direction: column; }
 }
 {% endstylesheet %}
@@ -115,6 +143,8 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "What Customers Are Saying" },
     { "type": "text", "id": "score", "label": "Score", "default": "4.8" },
     { "type": "text", "id": "count_text", "label": "Count text", "default": "Based on 471 reviews" },
+    { "type": "text", "id": "highlight_1", "label": "Highlight 1 (heart icon)", "default": "<strong>5,400+</strong> women treated", "info": "Use <strong> to accent part of the text." },
+    { "type": "text", "id": "highlight_2", "label": "Highlight 2 (shield icon)", "default": "<strong>30-day</strong> money-back guarantee" },
     { "type": "checkbox", "id": "show_write", "label": "Show 'Write a Review' button + form", "default": true, "info": "Opens a form that emails the review to your store contact address for approval." },
     { "type": "text", "id": "write_label", "label": "Write button label", "default": "Write a Review" }
   ],
