@@ -226,10 +226,10 @@
   },
   "order": [
     "main",
+    "journey",
     "video_split",
     "mechanism",
     "transformation",
-    "journey",
     "reviews",
     "faq",
     "sticky",
