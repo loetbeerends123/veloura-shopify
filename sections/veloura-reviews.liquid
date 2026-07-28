@@ -29,6 +29,12 @@
           {%- if block.settings.variant != blank -%}<p class="v-reviews__variant">{{ block.settings.variant }}</p>{%- endif -%}
           {%- if block.settings.title != blank -%}<h3 class="v-reviews__title">{{ block.settings.title }}</h3>{%- endif -%}
           <p class="v-reviews__body">{{ block.settings.body }}</p>
+          {%- if block.settings.photo_1 != blank or block.settings.photo_2 != blank -%}
+            <div class="v-review__photos v-reviews__photos">
+              {%- if block.settings.photo_1 != blank -%}<img src="{{ block.settings.photo_1 | image_url: width: 480 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="120" height="120" loading="lazy">{%- endif -%}
+              {%- if block.settings.photo_2 != blank -%}<img src="{{ block.settings.photo_2 | image_url: width: 480 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="120" height="120" loading="lazy">{%- endif -%}
+            </div>
+          {%- endif -%}
         </article>
       {%- endfor -%}
     </div>
@@ -52,6 +58,8 @@
 .v-reviews__variant { font-size: 0.75rem; color: var(--v-muted); margin: 10px 0 0; }
 .v-reviews__title { font-family: var(--v-font-body); font-weight: 600; font-size: 1.0625rem; margin: 8px 0 6px; }
 .v-reviews__body { font-size: 1.0625rem; line-height: 1.7; color: var(--v-muted); margin: 0; }
+.v-reviews__photos { display: flex; gap: 10px; margin: 14px 0 0; }
+.v-reviews__photos img { width: 112px; height: 112px; object-fit: cover; border-radius: var(--v-radius-sm); border: 1px solid var(--v-border); }
 @media (max-width: 749px) {
   .v-reviews__summary { flex-direction: column; align-items: flex-start; }
   .v-reviews__stars { margin-left: 0; width: 100%; }
@@ -80,7 +88,9 @@
         { "type": "checkbox", "id": "verified", "label": "Verified purchase", "default": true },
         { "type": "text", "id": "variant", "label": "Variant line", "default": "Size: S · Colour: Slate" },
         { "type": "text", "id": "title", "label": "Title", "default": "I've tried everything. These work." },
-        { "type": "textarea", "id": "body", "label": "Body", "default": "Far more comfortable than medical-grade garments and actually something I can wear out." }
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Far more comfortable than medical-grade garments and actually something I can wear out." },
+        { "type": "image_picker", "id": "photo_1", "label": "Customer photo 1" },
+        { "type": "image_picker", "id": "photo_2", "label": "Customer photo 2" }
       ]
     }
   ],

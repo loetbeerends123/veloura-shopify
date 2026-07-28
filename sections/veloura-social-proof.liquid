@@ -19,6 +19,12 @@
           <article class="v-review v-reveal" {{ block.shopify_attributes }}>
             <span class="v-stars">{% for i in (1..5) %}{% render 'veloura-icon', name: 'star', size: 15 %}{% endfor %}</span>
             <p class="v-review__text">“{{ block.settings.text }}”</p>
+            {%- if block.settings.photo_1 != blank or block.settings.photo_2 != blank -%}
+              <div class="v-review__photos">
+                {%- if block.settings.photo_1 != blank -%}<img src="{{ block.settings.photo_1 | image_url: width: 320 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="80" height="80" loading="lazy">{%- endif -%}
+                {%- if block.settings.photo_2 != blank -%}<img src="{{ block.settings.photo_2 | image_url: width: 320 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="80" height="80" loading="lazy">{%- endif -%}
+              </div>
+            {%- endif -%}
             <div class="v-review__meta">
               <span class="v-review__avatar">{{ block.settings.name | slice: 0 }}</span>
               <span><strong style="color:var(--v-text);font-weight:600;">{{ block.settings.name }}</strong> · {{ block.settings.badge | default: 'Verified Buyer' }}</span>
@@ -48,6 +54,8 @@
 .v-social__head p { margin-inline: auto; }
 .v-social__rating { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 18px; }
 .v-social__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+.v-review__photos { display: flex; gap: 8px; margin: 12px 0 2px; }
+.v-review__photos img { width: 84px; height: 84px; object-fit: cover; border-radius: var(--v-radius-sm); border: 1px solid var(--v-border); }
 .v-review--expert { border-left: 3px solid var(--v-rust); background: var(--v-canvas-secondary); }
 .v-social__expert-icon { color: var(--v-rust); display: inline-flex; margin-bottom: 6px; }
 .v-social__more { text-align: center; margin-top: 36px; }
@@ -75,7 +83,9 @@
       "settings": [
         { "type": "textarea", "id": "text", "label": "Review", "default": "I've spent thousands on creams that did nothing. After wearing these for 6 weeks, the back of my thighs are noticeably smoother." },
         { "type": "text", "id": "name", "label": "Name", "default": "Sarah M." },
-        { "type": "text", "id": "badge", "label": "Badge", "default": "Verified Buyer" }
+        { "type": "text", "id": "badge", "label": "Badge", "default": "Verified Buyer" },
+        { "type": "image_picker", "id": "photo_1", "label": "Customer photo 1" },
+        { "type": "image_picker", "id": "photo_2", "label": "Customer photo 2" }
       ]
     },
     {
