@@ -121,9 +121,11 @@
         "r1": {
           "type": "review",
           "settings": {
-            "text": "I've spent thousands on creams that did nothing. After finding the science behind Veloura and wearing them for 6 weeks, the back of my thighs are noticeably smoother. The fabric is thick and compressive but surprisingly comfortable.",
-            "name": "Sarah M.",
-            "badge": "Verified Buyer"
+            "text": "I have had cellulite since I was 16. I am now 46. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments and actually something I can wear out.",
+            "name": "Faith B.",
+            "badge": "Verified Buyer",
+            "photo_1": "shopify://shop_images/2309abfe-78ec-45ab-b68b-25195f2b275b.png",
+            "photo_2": "shopify://shop_images/H3aEZ3AcK2_1.webp"
           }
         },
         "e1": {
@@ -154,15 +156,17 @@
           "settings": {
             "text": "Gave these to my mother in law because she mentioned her legs always feel tired and heavy. She called me two weeks later to ask where I got them. She wants two more pairs.",
             "name": "Chelsea B.",
-            "badge": "Verified Buyer"
+            "badge": "Verified Buyer",
+            "photo_1": "shopify://shop_images/a3425eZYFm.webp"
           }
         },
         "r5": {
           "type": "review",
           "settings": {
-            "text": "I was today years old when I learned that cellulite is a circulation issue, not a fat issue. These leggings make total sense once you understand that.",
-            "name": "Brooke G.",
-            "badge": "Verified Buyer"
+            "text": "I’m skeptical by nature, but I bought them because I kept seeing them everywhere. It’s now day 45 of wearing them: my skin texture has improved, my legs feel lighter, and the waistband still hasn’t budged. I’m obsessed!",
+            "name": "Eva S.",
+            "badge": "Verified Buyer",
+            "photo_1": "shopify://shop_images/yaMhKynjCd.webp"
           }
         }
       },
