@@ -183,11 +183,19 @@
         "link_label": "",
         "link_url": "shopify://products/veloura-cellulite-legging"
       }
+    },
+    "video_split": {
+      "type": "veloura-video-split",
+      "settings": {
+        "blush": true,
+        "media_left": true
+      }
     }
   },
   "order": [
     "hero",
     "before_after",
+    "video_split",
     "timeline",
     "bundle",
     "social_proof"

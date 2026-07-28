@@ -213,11 +213,19 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "video_split": {
+      "type": "veloura-video-split",
+      "settings": {
+        "blush": false,
+        "media_left": true
+      }
     }
   },
   "order": [
     "main",
     "mechanism",
+    "video_split",
     "transformation",
     "journey",
     "reviews",

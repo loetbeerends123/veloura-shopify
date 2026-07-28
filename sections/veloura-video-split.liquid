@@ -1,0 +1,132 @@
+{%- comment -%}
+  Veloura — Video + copy split. Square (1:1) looping video beside brand copy,
+  in the site's editorial style (eyebrow, two-line heading, rust subheading,
+  body, spec pills). Video autoplays muted/looped like a silent product loop.
+{%- endcomment -%}
+{%- liquid
+  assign pill_list = section.settings.pills | split: ','
+-%}
+<section class="v-section v-vsplit {% if section.settings.blush %}v-section--blush{% endif %}">
+  <div class="v-container">
+    <div class="v-vsplit__grid {% if section.settings.media_left %}v-vsplit__grid--rev{% endif %}">
+
+      <div class="v-vsplit__media v-reveal">
+        <div class="v-vsplit__frame">
+          <video
+            class="v-vsplit__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            {% if section.settings.poster != blank %}poster="{{ section.settings.poster | image_url: width: 1200 }}"{% endif %}
+          >
+            {%- if section.settings.video != blank -%}
+              {%- for source in section.settings.video.sources -%}
+                <source src="{{ source.url }}" type="{{ source.mime_type }}">
+              {%- endfor -%}
+            {%- elsif section.settings.video_url != blank -%}
+              <source src="{{ section.settings.video_url }}" type="video/mp4">
+            {%- else -%}
+              <source src="{{ 'veloura-lymph-video.mp4' | asset_url }}" type="video/mp4">
+            {%- endif -%}
+          </video>
+        </div>
+      </div>
+
+      <div class="v-vsplit__copy v-reveal" data-delay="1">
+        {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2 class="v-h2 v-vsplit__title">
+          <span>{{ section.settings.heading }}</span>
+          {%- if section.settings.heading_accent != blank -%}<span class="v-vsplit__title-2">{{ section.settings.heading_accent }}</span>{%- endif -%}
+        </h2>
+        {%- if section.settings.subheading != blank -%}<p class="v-vsplit__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+        {%- if section.settings.body != blank -%}<div class="v-vsplit__body v-rich">{{ section.settings.body }}</div>{%- endif -%}
+
+        {%- if pill_list.size > 0 -%}
+          <div class="v-vsplit__pills">
+            {%- for p in pill_list -%}
+              {%- assign pt = p | strip -%}
+              {%- if pt != blank -%}<span class="v-vsplit__pill">{{ pt }}</span>{%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+          <a href="{{ section.settings.button_link }}" class="v-btn v-btn--green v-vsplit__cta">
+            {{ section.settings.button_label }} {% render 'veloura-icon', name: 'arrow-right', size: 16 %}
+          </a>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.v-vsplit__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
+.v-vsplit__grid--rev { direction: rtl; }
+.v-vsplit__grid--rev > * { direction: ltr; }
+.v-vsplit__frame {
+  border-radius: var(--v-radius-md);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #cdb6a8;
+  box-shadow: var(--v-shadow-card);
+}
+.v-vsplit__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.v-vsplit__copy .v-eyebrow { color: var(--v-rust); }
+.v-vsplit__title { margin: 0 0 16px; }
+.v-vsplit__title-2 { display: block; }
+.v-vsplit__sub { font-family: var(--v-font-body); font-size: 1.0625rem; font-weight: 700; color: var(--v-rust); letter-spacing: 0.01em; margin: 0 0 20px; }
+.v-vsplit__body { color: var(--v-muted); }
+.v-vsplit__body p { font-size: 1.1875rem; line-height: 1.7; margin: 0 0 16px; max-width: 54ch; }
+.v-vsplit__body p:last-child { margin-bottom: 0; }
+.v-vsplit__pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.v-vsplit__pill {
+  display: inline-flex; align-items: center;
+  padding: 9px 18px;
+  border: 1px solid var(--v-border-strong);
+  border-radius: 100px;
+  background: var(--v-white);
+  color: var(--v-rust);
+  font-family: var(--v-font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.v-vsplit__cta { margin-top: 28px; }
+@media (max-width: 849px) {
+  .v-vsplit__grid, .v-vsplit__grid--rev { grid-template-columns: 1fr; direction: ltr; }
+  .v-vsplit__media { max-width: 460px; margin: 0 auto; width: 100%; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura Video Split",
+  "tag": "section",
+  "class": "veloura-section",
+  "settings": [
+    { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
+    { "type": "checkbox", "id": "media_left", "label": "Video on left", "default": true },
+    { "type": "header", "content": "Video" },
+    { "type": "paragraph", "content": "Leave both empty to use the built-in clip (assets/veloura-lymph-video.mp4). The clip autoplays muted and loops." },
+    { "type": "video", "id": "video", "label": "Video (Shopify-hosted)" },
+    { "type": "text", "id": "video_url", "label": "…or external MP4 URL" },
+    { "type": "image_picker", "id": "poster", "label": "Poster image (optional)" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Velo-Lymph™ In Motion" },
+    { "type": "text", "id": "heading", "label": "Heading — line 1", "default": "Most leggings compress." },
+    { "type": "text", "id": "heading_accent", "label": "Heading — line 2", "default": "Veloura activates." },
+    { "type": "text", "id": "subheading", "label": "Subheading (rust)", "default": "Same fabric on your skin. A completely different mechanism underneath." },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>" },
+    { "type": "text", "id": "pills", "label": "Spec pills (comma-separated)", "default": "70% Polyamide, 30% Elastane, Squat-Proof, 100% Opaque, Feels Like A Second Skin" },
+    { "type": "header", "content": "Button (optional)" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Veloura Video Split" }]
+}
+{% endschema %}
