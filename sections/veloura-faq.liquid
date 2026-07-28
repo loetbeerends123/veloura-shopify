@@ -1,27 +1,60 @@
-{%- comment -%} Veloura — FAQ accordion (PRD §2.3, §10.5) {%- endcomment -%}
+{%- comment -%} Veloura — FAQ accordion with a "Need help?" contact rail (PRD §2.3, §10.5) {%- endcomment -%}
 <section class="v-section {% if section.settings.blush %}v-section--blush{% endif %} v-faq-section">
-  <div class="v-narrow" style="max-width:700px;">
-    <div class="v-section-head v-reveal">
-      {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
-      <h2 class="v-h2">{{ section.settings.heading }}</h2>
-    </div>
+  <div class="v-container">
+    <div class="v-faq2__grid">
 
-    <div class="v-faq v-reveal" data-faq data-delay="1">
-      {%- for block in section.blocks -%}
-        {%- assign panel_id = section.id | append: '-faq-' | append: forloop.index -%}
-        <div class="v-faq__item" {{ block.shopify_attributes }}>
-          <button type="button" class="v-faq__q" aria-expanded="false" aria-controls="{{ panel_id }}">
-            <span>{{ block.settings.question }}</span>
-            <span class="v-faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="v-faq__a" id="{{ panel_id }}" role="region" hidden>
-            <div class="v-faq__a-inner">{{ block.settings.answer }}</div>
-          </div>
+      <aside class="v-faq2__help v-reveal">
+        {%- if section.settings.help_heading != blank -%}
+          <h2 class="v-h3 v-faq2__help-title">{{ section.settings.help_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.help_text != blank -%}
+          <p class="v-faq2__help-text">{{ section.settings.help_text }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '/pages/contact' }}" class="v-btn v-btn--green v-faq2__help-btn">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+      </aside>
+
+      <div class="v-faq2__main v-reveal" data-delay="1">
+        <div class="v-section-head v-faq2__head">
+          {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+          <h2 class="v-h2">{{ section.settings.heading }}</h2>
         </div>
-      {%- endfor -%}
+
+        <div class="v-faq" data-faq>
+          {%- for block in section.blocks -%}
+            {%- assign panel_id = section.id | append: '-faq-' | append: forloop.index -%}
+            <div class="v-faq__item" {{ block.shopify_attributes }}>
+              <button type="button" class="v-faq__q" aria-expanded="false" aria-controls="{{ panel_id }}">
+                <span>{{ block.settings.question }}</span>
+                <span class="v-faq__icon" aria-hidden="true"></span>
+              </button>
+              <div class="v-faq__a" id="{{ panel_id }}" role="region" hidden>
+                <div class="v-faq__a-inner">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+{% stylesheet %}
+.v-faq2__grid { display: grid; grid-template-columns: 320px 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.v-faq2__help { text-align: center; }
+.v-faq2__help-title { margin: 0 0 14px; }
+.v-faq2__help-text { color: var(--v-muted); font-size: 1.0625rem; line-height: 1.6; margin: 0 0 26px; }
+.v-faq2__help-btn { width: 100%; }
+.v-faq2__head { margin-bottom: 12px; }
+@media (min-width: 850px) {
+  .v-faq2__help { position: sticky; top: calc(var(--header-height, 64px) + 32px); }
+}
+@media (max-width: 849px) {
+  .v-faq2__grid { grid-template-columns: 1fr; gap: 40px; }
+}
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -30,8 +63,14 @@
   "class": "veloura-section",
   "settings": [
     { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
+    { "type": "header", "content": "\"Need help?\" rail (left)" },
+    { "type": "text", "id": "help_heading", "label": "Help heading", "default": "Need help?" },
+    { "type": "textarea", "id": "help_text", "label": "Help text", "default": "Our team is here for you, Monday to Friday, 8:30 am–7:00 pm. Real people, real answers — no scripts." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Contact our support" },
+    { "type": "url", "id": "button_link", "label": "Button link", "default": "/pages/contact" },
+    { "type": "header", "content": "FAQ (right)" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" }
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked questions" }
   ],
   "blocks": [
     {
