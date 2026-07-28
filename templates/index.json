@@ -18,8 +18,7 @@
         "subheading": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>.",
         "button_label": "Shop The Veloura Legging",
         "button_link": "shopify://products/veloura-cellulite-legging",
-        "urgency": "",
-        "proof_text": "4.8 · from 471 reviews"
+        "urgency": ""
       }
     },
     "before_after": {
@@ -32,22 +31,6 @@
         "body": "<strong>Visible reduction in dimpling</strong> after just 30 days of consistent Velo-Lymph™ therapy.",
         "quote": "",
         "quote_attr": ""
-      }
-    },
-    "video_split": {
-      "type": "veloura-video-split",
-      "settings": {
-        "blush": true,
-        "media_left": true,
-        "video_url": "",
-        "eyebrow": "Velo-Lymph™ In Motion",
-        "heading": "Most leggings compress.",
-        "heading_accent": "Veloura activates.",
-        "subheading": "Same fabric on your skin. A completely different mechanism underneath.",
-        "body": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>",
-        "pills": "70% Polyamide, 30% Elastane, Squat-Proof, 100% Opaque, Feels Like A Second Skin",
-        "button_label": "",
-        "button_link": ""
       }
     },
     "timeline": {
@@ -111,12 +94,11 @@
         "subheading": "Choose your protocol. <strong>Consistent daily wear</strong> is the key to structural remodelling.",
         "product": "",
         "cta_link": "shopify://products/veloura-cellulite-legging",
-        "cta_label": "Start My Transformation",
+        "cta_label": "Choose My Protocol",
         "guarantee": "30-Day Clinical Trial Guarantee + Free Returns",
         "t1_label": "1 Pair — Starter Protocol",
         "t1_sub": "Good for occasional use. Try the technology.",
         "t1_price": "£44.99",
-        "t1_compare": "",
         "t2_badge": "Most Popular",
         "t2_label": "2 Pairs — Buy 1 Get 1 Free",
         "t2_price": "£44.99",
@@ -139,11 +121,9 @@
         "r1": {
           "type": "review",
           "settings": {
-            "text": "I have had cellulite since I was 16. I am now 46. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments and actually something I can wear out.",
-            "name": "Faith B.",
-            "badge": "Verified Buyer",
-            "photo_1": "shopify://shop_images/2309abfe-78ec-45ab-b68b-25195f2b275b.png",
-            "photo_2": "shopify://shop_images/H3aEZ3AcK2_1.webp"
+            "text": "I've spent thousands on creams that did nothing. After finding the science behind Veloura and wearing them for 6 weeks, the back of my thighs are noticeably smoother. The fabric is thick and compressive but surprisingly comfortable.",
+            "name": "Sarah M.",
+            "badge": "Verified Buyer"
           }
         },
         "e1": {
@@ -174,17 +154,15 @@
           "settings": {
             "text": "Gave these to my mother in law because she mentioned her legs always feel tired and heavy. She called me two weeks later to ask where I got them. She wants two more pairs.",
             "name": "Chelsea B.",
-            "badge": "Verified Buyer",
-            "photo_1": "shopify://shop_images/a3425eZYFm.webp"
+            "badge": "Verified Buyer"
           }
         },
         "r5": {
           "type": "review",
           "settings": {
-            "text": "I’m skeptical by nature, but I bought them because I kept seeing them everywhere. It’s now day 45 of wearing them: my skin texture has improved, my legs feel lighter, and the waistband still hasn’t budged. I’m obsessed!",
-            "name": "Eva S.",
-            "badge": "Verified Buyer",
-            "photo_1": "shopify://shop_images/yaMhKynjCd.webp"
+            "text": "I was today years old when I learned that cellulite is a circulation issue, not a fat issue. These leggings make total sense once you understand that.",
+            "name": "Brooke G.",
+            "badge": "Verified Buyer"
           }
         }
       },
@@ -197,13 +175,20 @@
         "r5"
       ],
       "settings": {
-        "blush": true,
+        "blush": false,
         "eyebrow": "Real Results",
         "heading": "Real structural change",
         "subheading": "Join <strong>thousands of women</strong> who stopped treating the symptom and started <strong>treating the cause</strong>.",
         "rating_text": "4.8/5 from 471 reviews",
         "link_label": "",
         "link_url": "shopify://products/veloura-cellulite-legging"
+      }
+    },
+    "video_split": {
+      "type": "veloura-video-split",
+      "settings": {
+        "blush": true,
+        "media_left": true
       }
     }
   },

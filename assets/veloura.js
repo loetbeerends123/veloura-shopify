@@ -264,6 +264,27 @@
   }
 
   /* ========================================================================
+     5a. Write-a-review form toggle. Reveals the contact-backed review form;
+     keeps it open after a successful submit (success message present).
+     ======================================================================== */
+  function initReviewForm(root) {
+    var scope = root || document;
+    var btn = scope.querySelector('[data-review-toggle]');
+    var form = scope.querySelector('[data-review-form]');
+    if (!btn || !form) return;
+    if (form.querySelector('.v-reviews__form-success')) {
+      form.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    btn.addEventListener('click', function () {
+      var willShow = form.hidden;
+      form.hidden = !willShow;
+      btn.setAttribute('aria-expanded', willShow ? 'true' : 'false');
+      if (willShow) { var f = form.querySelector('input, textarea'); if (f) f.focus(); }
+    });
+  }
+
+  /* ========================================================================
      5b. Colour → main image sync with the Kaching bundle app.
      The bundle app owns colour/size selection; when the shopper picks a
      colour there, swap the left gallery image to that colour's photo.
@@ -396,6 +417,7 @@
     document.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     document.querySelectorAll('[data-gallery]').forEach(initGallery);
     document.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
+    initReviewForm();
     initStickyBar();
   });
 
@@ -412,6 +434,7 @@
     s.querySelectorAll('.v-pdp').forEach(initVariantPicker);
     s.querySelectorAll('[data-gallery]').forEach(initGallery);
     s.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
+    initReviewForm(s);
     initStickyBar();
   });
 })();
