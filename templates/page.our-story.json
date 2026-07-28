@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -48,7 +57,11 @@
           }
         }
       },
-      "block_order": ["c1", "c2", "c3"],
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "settings": {
         "blush": true,
         "eyebrow": "Our Philosophy",
@@ -72,11 +85,33 @@
     "science": {
       "type": "veloura-science",
       "blocks": {
-        "st1": { "type": "stat", "settings": { "figure": "47+", "label": "Pressure Points" } },
-        "st2": { "type": "stat", "settings": { "figure": "8h", "label": "Passive Treatment" } },
-        "st3": { "type": "stat", "settings": { "figure": "30%", "label": "Circulation Boost" } }
+        "st1": {
+          "type": "stat",
+          "settings": {
+            "figure": "47+",
+            "label": "Pressure Points"
+          }
+        },
+        "st2": {
+          "type": "stat",
+          "settings": {
+            "figure": "8h",
+            "label": "Passive Treatment"
+          }
+        },
+        "st3": {
+          "type": "stat",
+          "settings": {
+            "figure": "30%",
+            "label": "Circulation Boost"
+          }
+        }
       },
-      "block_order": ["st1", "st2", "st3"],
+      "block_order": [
+        "st1",
+        "st2",
+        "st3"
+      ],
       "settings": {
         "eyebrow": "Velo-Lymph™ Technology",
         "heading": "The Science of Stimulation",
@@ -123,7 +158,12 @@
           }
         }
       },
-      "block_order": ["j1", "j2", "j3", "j4"],
+      "block_order": [
+        "j1",
+        "j2",
+        "j3",
+        "j4"
+      ],
       "settings": {
         "blush": true,
         "style": "icon",
@@ -144,5 +184,13 @@
       }
     }
   },
-  "order": ["hero", "genesis", "philosophy", "standard", "science", "journey", "founder"]
+  "order": [
+    "hero",
+    "genesis",
+    "philosophy",
+    "standard",
+    "science",
+    "journey",
+    "founder"
+  ]
 }

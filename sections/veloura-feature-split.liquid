@@ -12,7 +12,15 @@
         {%- endif -%}
       </div>
       <div class="v-fsplit__media v-reveal" data-delay="1">
-        {%- if section.settings.image != blank -%}
+        {%- if section.settings.show_video or section.settings.video != blank -%}
+          <video class="v-fsplit__video" autoplay muted loop playsinline preload="metadata"{% if section.settings.image != blank %} poster="{{ section.settings.image | image_url: width: 1100 }}"{% endif %}>
+            {%- if section.settings.video != blank -%}
+              {%- for source in section.settings.video.sources -%}<source src="{{ source.url }}" type="{{ source.mime_type }}">{%- endfor -%}
+            {%- else -%}
+              <source src="{{ 'veloura-lymph-video.mp4' | asset_url }}" type="video/mp4">
+            {%- endif -%}
+          </video>
+        {%- elsif section.settings.image != blank -%}
           <img src="{{ section.settings.image | image_url: width: 1100 }}" alt="{{ section.settings.image.alt | escape }}" width="1100" height="1200" loading="lazy">
         {%- else -%}
           <div class="v-fsplit__ph v-placeholder" data-label="Macro · Fabric structure" style="background:linear-gradient(160deg,#2f3a33,#1d2722);"></div>
@@ -29,7 +37,7 @@
 .v-fsplit__copy .v-h2 { margin-bottom: 24px; }
 .v-fsplit__copy p { color: var(--v-muted); font-size: 1.25rem; line-height: 1.75; margin-bottom: 20px; max-width: 58ch; }
 .v-fsplit__pill { display: inline-flex; align-items: center; gap: 8px; color: var(--v-rust); border-radius: var(--v-radius-lg); padding: 11px 20px; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px; }
-.v-fsplit__media img, .v-fsplit__ph { width: 100%; border-radius: var(--v-radius-md); aspect-ratio: 4 / 5; object-fit: cover; }
+.v-fsplit__media img, .v-fsplit__ph, .v-fsplit__video { width: 100%; border-radius: var(--v-radius-md); aspect-ratio: 4 / 5; object-fit: cover; display: block; }
 @media (max-width: 849px) { .v-fsplit__grid, .v-fsplit__grid--rev { grid-template-columns: 1fr; direction: ltr; } }
 {% endstylesheet %}
 
@@ -47,7 +55,10 @@
     { "type": "textarea", "id": "paragraph_1", "label": "Paragraph 1", "default": "Veloura was born at the intersection of rigorous clinical dermatology and high-performance textile engineering. We observed a fundamental flaw in the traditional approach to cellulite: the industry treated it as a purely aesthetic fat issue, masking it with restrictive compression rather than addressing the physiological root cause." },
     { "type": "textarea", "id": "paragraph_2", "label": "Paragraph 2", "default": "Through years of research, we isolated the true mechanism — stagnant microcirculation and lymphatic fluid. This catalysed the development of our proprietary Velo-Lymph™ technology, shifting the paradigm from passive shapewear to active, therapeutic apparel." },
     { "type": "text", "id": "pill_label", "label": "Pill label", "default": "Clinically Designed" },
-    { "type": "image_picker", "id": "image", "label": "Image" }
+    { "type": "image_picker", "id": "image", "label": "Image (also used as video poster)" },
+    { "type": "header", "content": "Video (optional, replaces the image)" },
+    { "type": "checkbox", "id": "show_video", "label": "Show the built-in clip", "default": false, "info": "Uses assets/veloura-lymph-video.mp4 — autoplays muted and loops." },
+    { "type": "video", "id": "video", "label": "…or a Shopify-hosted video" }
   ],
   "presets": [{ "name": "Veloura Feature Split" }]
 }
