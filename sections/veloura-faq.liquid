@@ -27,7 +27,7 @@
             <div class="v-faq__item" {{ block.shopify_attributes }}>
               <button type="button" class="v-faq__q" aria-expanded="false" aria-controls="{{ panel_id }}">
                 <span>{{ block.settings.question }}</span>
-                <span class="v-faq__icon" aria-hidden="true"></span>
+                <span class="v-faq__icon" aria-hidden="true">{% render 'veloura-icon', name: 'chevron', size: 18 %}</span>
               </button>
               <div class="v-faq__a" id="{{ panel_id }}" role="region" hidden>
                 <div class="v-faq__a-inner">{{ block.settings.answer }}</div>
@@ -48,22 +48,29 @@
 .v-faq2__help-text { color: var(--v-muted); font-size: 1.1875rem; line-height: 1.65; margin: 0 0 28px; }
 .v-faq2__help-btn { width: 100%; font-size: 0.875rem; padding-block: 18px; }
 .v-faq2__head { margin-bottom: 20px; }
-/* Refined accordion: airy rounded cards instead of plain divider rows. */
-.v-faq2__main .v-faq { display: grid; gap: 12px; }
-.v-faq2__main .v-faq__item,
-.v-faq2__main .v-faq__item:last-child {
-  border: 1px solid var(--v-border);
-  border-radius: var(--v-radius-md);
-  background: var(--v-white);
-  padding: 2px 24px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+/* Minimal divider rows with a chevron that flips up when open. */
+.v-faq2__main .v-faq { display: block; }
+.v-faq2__main .v-faq__item {
+  border: 0;
+  border-top: 1px solid var(--v-border);
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  box-shadow: none;
 }
-.v-faq2__main .v-faq__item:hover { border-color: var(--v-border-strong); }
-.v-faq2__main .v-faq__item.is-open { border-color: var(--v-rust); box-shadow: var(--v-shadow-card); }
-.v-faq2__main .v-faq__q { padding: 22px 0; }
+.v-faq2__main .v-faq__item:last-child { border-bottom: 1px solid var(--v-border); }
+.v-faq2__main .v-faq__q { padding: 20px 2px; font-weight: 700; color: var(--v-text); }
+/* Hide the base "+" pseudo-icon; use the chevron SVG instead. */
 .v-faq2__main .v-faq__icon::before,
-.v-faq2__main .v-faq__icon::after { background: var(--v-rust); }
-.v-faq2__main .v-faq__a-inner { padding: 0 0 22px; }
+.v-faq2__main .v-faq__icon::after { display: none; }
+.v-faq2__main .v-faq__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--v-text);
+  transform: rotate(90deg);
+  transition: transform 0.25s ease;
+}
+.v-faq2__main .v-faq__item.is-open .v-faq__icon { transform: rotate(270deg); }
+.v-faq2__main .v-faq__a-inner { padding: 0 2px 24px; }
 @media (min-width: 850px) {
   .v-faq2__help { position: sticky; top: calc(var(--header-height, 64px) + 32px); }
 }
