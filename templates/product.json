@@ -12,6 +12,7 @@
     "main": {
       "type": "veloura-product",
       "settings": {
+        "community_text": "Join <strong>5,400+</strong> women who chose Veloura",
         "overline": "",
         "rating_text": "4.8 based on 471 Reviews",
         "hero_claim": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>",
@@ -36,6 +37,34 @@
         "paragraph_2": "Your body has a remarkable self-repair system — but it needs movement to activate it. Veloura's <strong>47+ mapped micro-pressure points</strong> keep that system running <strong>every hour you wear them</strong>.",
         "quote": "Micro-compression aids lymphatic drainage more effectively than any topical treatment I've reviewed. The effect is structural, not cosmetic.",
         "quote_attr": "— Dr. Vanessa Cole, MD · Dermatology & Clinical Research"
+      }
+    },
+    "video_split": {
+      "type": "veloura-video-split",
+      "settings": {
+        "blush": false,
+        "media_left": true,
+        "video_url": "",
+        "eyebrow": "Velo-Lymph™ In Motion",
+        "heading": "Most leggings compress.",
+        "heading_accent": "Veloura activates.",
+        "subheading": "Same fabric on your skin. A completely different mechanism underneath.",
+        "body": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>",
+        "pills": "70% Polyamide, 30% Elastane, Squat-Proof, 100% Opaque, Feels Like A Second Skin",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "transformation": {
+      "type": "veloura-before-after",
+      "settings": {
+        "layout": "split",
+        "blush": true,
+        "eyebrow": "",
+        "heading": "The Transformation You've Been Waiting For.",
+        "body": "Your transformation is <strong>structural</strong>. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura <strong>mechanically restructures the skin's surface</strong> from within.",
+        "quote": "I cried when I saw these photos side by side.",
+        "quote_attr": "Verified Purchase"
       }
     },
     "journey": {
@@ -92,7 +121,9 @@
             "verified": true,
             "variant": "Size: S · Colour: Slate",
             "title": "I've tried everything. These work.",
-            "body": "I have had cellulite since I was 16. I am now 34. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments and actually something I can wear out."
+            "body": "I have had cellulite since I was 16. I am now 34. I have tried every cream, treatment, and piece of clothing on the market. Nothing moved the needle until these. After 5 weeks of wearing them almost every day I can genuinely see a difference in the dimpling on my thighs. Far more comfortable than medical-grade garments and actually something I can wear out.",
+            "photo_1": "shopify://shop_images/2309abfe-78ec-45ab-b68b-25195f2b275b.png",
+            "photo_2": "shopify://shop_images/H3aEZ3AcK2_1.webp"
           }
         },
         "rv2": {
@@ -122,23 +153,12 @@
         "rv3"
       ],
       "settings": {
+        "heading": "What Customers Are Saying",
         "score": "4.8",
         "count_text": "Based on 471 reviews",
         "show_write": false,
         "write_label": "Write a Review",
         "write_url": ""
-      }
-    },
-    "transformation": {
-      "type": "veloura-before-after",
-      "settings": {
-        "layout": "split",
-        "blush": true,
-        "eyebrow": "",
-        "heading": "The Transformation You've Been Waiting For.",
-        "body": "Your transformation is <strong>structural</strong>. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura <strong>mechanically restructures the skin's surface</strong> from within.",
-        "quote": "I cried when I saw these photos side by side.",
-        "quote_attr": "Verified Purchase"
       }
     },
     "faq": {
@@ -197,6 +217,10 @@
       ],
       "settings": {
         "blush": false,
+        "help_heading": "Need help?",
+        "help_text": "Our team is here for you, Monday to Friday, 8:30 am–7:00 pm.",
+        "button_label": "Contact our support",
+        "button_link": "",
         "eyebrow": "",
         "heading": "Frequently Asked Questions"
       }
@@ -212,13 +236,6 @@
       "type": "apps",
       "settings": {
         "include_margins": true
-      }
-    },
-    "video_split": {
-      "type": "veloura-video-split",
-      "settings": {
-        "blush": false,
-        "media_left": true
       }
     }
   },
