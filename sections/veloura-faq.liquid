@@ -42,11 +42,11 @@
 </section>
 
 {% stylesheet %}
-.v-faq2__grid { display: grid; grid-template-columns: 320px 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
+.v-faq2__grid { display: grid; grid-template-columns: 380px 1fr; gap: clamp(32px, 6vw, 88px); align-items: start; }
 .v-faq2__help { text-align: center; }
-.v-faq2__help-title { margin: 0 0 14px; }
-.v-faq2__help-text { color: var(--v-muted); font-size: 1.0625rem; line-height: 1.6; margin: 0 0 26px; }
-.v-faq2__help-btn { width: 100%; }
+.v-faq2__help-title { font-size: clamp(1.875rem, 3vw, 2.375rem); margin: 0 0 16px; }
+.v-faq2__help-text { color: var(--v-muted); font-size: 1.1875rem; line-height: 1.65; margin: 0 0 28px; }
+.v-faq2__help-btn { width: 100%; font-size: 0.875rem; padding-block: 18px; }
 .v-faq2__head { margin-bottom: 12px; }
 @media (min-width: 850px) {
   .v-faq2__help { position: sticky; top: calc(var(--header-height, 64px) + 32px); }
@@ -65,7 +65,7 @@
     { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
     { "type": "header", "content": "\"Need help?\" rail (left)" },
     { "type": "text", "id": "help_heading", "label": "Help heading", "default": "Need help?" },
-    { "type": "textarea", "id": "help_text", "label": "Help text", "default": "Our team is here for you, Monday to Friday, 8:30 am–7:00 pm. Real people, real answers — no scripts." },
+    { "type": "textarea", "id": "help_text", "label": "Help text", "default": "Our team is here for you, Monday to Friday, 8:30 am–7:00 pm." },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Contact our support" },
     { "type": "url", "id": "button_link", "label": "Button link (leave empty for /pages/contact)" },
     { "type": "header", "content": "FAQ (right)" },
