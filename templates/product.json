@@ -226,8 +226,8 @@
   },
   "order": [
     "main",
-    "mechanism",
     "video_split",
+    "mechanism",
     "transformation",
     "journey",
     "reviews",
