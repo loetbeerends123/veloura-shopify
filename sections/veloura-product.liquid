@@ -161,6 +161,11 @@
 .v-pdp .v-pdp__guarantee { margin: 22px 0 0; font-size: 1.125rem; font-weight: 700; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 .v-pdp__form { margin: 0; }
+/* Desktop: cap the main image to the viewport so the gallery fits one fold
+   (header offset + thumbnails + breathing room accounted for). */
+@media (min-width: 990px) {
+  .v-pdp__main { aspect-ratio: auto; height: calc(100vh - var(--header-height, 64px) - 168px); max-height: 620px; min-height: 400px; }
+}
 @media (max-width: 989px) {
   .v-pdp__grid { grid-template-columns: 1fr; gap: 28px; }
   .v-pdp__gallery { position: static; }
