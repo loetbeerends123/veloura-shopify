@@ -229,6 +229,13 @@
 @media (max-width: 989px) {
   .v-pdp__gallery { position: static; }
 }
+/* Mobile: let the title use the full width (size chart drops below) and
+   shrink it so "Veloura Cellulite Legging" fits on one line. */
+@media (max-width: 749px) {
+  .v-pdp__titlerow { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .v-pdp .v-pdp__name { font-size: clamp(1.375rem, 6vw, 1.95rem); line-height: 1.15; }
+  .v-pdp__sizeguide { margin-top: 0; }
+}
 {% endstylesheet %}
 
 {% schema %}
