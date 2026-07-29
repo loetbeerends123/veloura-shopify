@@ -81,13 +81,13 @@
         {%- if s.hero_claim != blank -%}<p class="v-pdp__claim v-serif">{{ s.hero_claim }}</p>{%- endif -%}
 
         <button type="button" class="v-pdp__sizeguide" data-sizeguide-open>
-          {% render 'veloura-icon', name: 'arrows', size: 16 %} Size Guide
+          {% render 'veloura-icon', name: 'arrows', size: 16 %} Size Chart
         </button>
-        <dialog class="v-sizeguide" data-sizeguide aria-label="Size guide">
+        <dialog class="v-sizeguide" data-sizeguide aria-label="Size chart">
           <div class="v-sizeguide__panel">
             <button type="button" class="v-sizeguide__close" data-sizeguide-close aria-label="Close">{% render 'veloura-icon', name: 'close', size: 18 %}</button>
             <span class="v-eyebrow">Find Your Fit</span>
-            <h3 class="v-h3 v-sizeguide__title">Size Guide</h3>
+            <h3 class="v-h3 v-sizeguide__title">Size Chart</h3>
             <p class="v-sizeguide__note">Measurements in inches. The fabric has 4-way stretch — if you're between sizes, we recommend sizing up for all-day comfort.</p>
             <div class="v-sizeguide__scroll">
               <table class="v-sizeguide__table">
@@ -190,7 +190,7 @@
 .v-pdp__atc { margin-top: 22px; }
 .v-pdp__atc .v-btn { font-size: 1.125rem; padding-block: 15px; gap: 10px; }
 /* Size guide button + modal */
-.v-pdp__sizeguide { display: inline-flex; align-items: center; gap: 7px; margin: 4px 0 18px; padding: 9px 18px; background: var(--v-white); border: 1px solid var(--v-border-strong); border-radius: 100px; font-family: var(--v-font-body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--v-text); cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease; }
+.v-pdp__sizeguide { display: flex; width: fit-content; margin: 0 0 8px auto; align-items: center; gap: 7px; padding: 9px 18px; background: var(--v-white); border: 1px solid var(--v-border-strong); border-radius: 100px; font-family: var(--v-font-body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--v-text); cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease; }
 .v-pdp__sizeguide:hover { border-color: var(--v-rust); color: var(--v-rust); }
 .v-pdp__sizeguide svg { color: var(--v-rust); }
 .v-sizeguide { border: none; padding: 0; background: transparent; max-width: 520px; width: 92vw; margin: auto; }
