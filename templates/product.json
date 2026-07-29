@@ -75,7 +75,7 @@
         "w3"
       ],
       "settings": {
-        "blush": false,
+        "blush": true,
         "style": "numbered",
         "eyebrow": "",
         "heading": "Your 8-Week Journey to Smooth",
