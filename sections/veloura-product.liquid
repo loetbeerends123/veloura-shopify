@@ -162,7 +162,7 @@
    grid (and the page) wider than the viewport. */
 .v-pdp__gallery, .v-pdp__buybox { min-width: 0; }
 .v-pdp__buybox { overflow-wrap: break-word; }
-.v-pdp__gallery { position: sticky; top: calc(var(--header-height, 64px) + 24px); }
+.v-pdp__gallery { position: sticky; top: calc(var(--header-height, 64px) + 24px); scroll-margin-top: calc(var(--header-height, 64px) + 12px); }
 .v-pdp__main { border-radius: var(--v-radius-md); overflow: hidden; aspect-ratio: 1 / 1; background: #cdb6a8; }
 .v-pdp__main img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.15s ease; }
 .v-pdp__ph { width: 100%; height: 100%; }

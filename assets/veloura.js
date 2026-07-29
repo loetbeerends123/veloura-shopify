@@ -342,6 +342,16 @@
       thumbs.forEach(function (t) {
         t.classList.toggle('is-active', t.getAttribute('data-src') === entry.src);
       });
+      // On phones the photo sits above the fold, so a colour change isn't
+      // visible from the selector. Bring the gallery into view when it's
+      // scrolled out of sight, so the shopper actually sees the swap.
+      if (window.matchMedia && window.matchMedia('(max-width: 749px)').matches) {
+        var r = root.getBoundingClientRect();
+        if (r.bottom < 120 || r.top > window.innerHeight) {
+          try { root.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+          catch (e) { root.scrollIntoView(); }
+        }
+      }
     }
 
     // Return the colour entry named anywhere in a string (exact, then contains).
