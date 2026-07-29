@@ -80,6 +80,35 @@
         {%- endif -%}
         {%- if s.hero_claim != blank -%}<p class="v-pdp__claim v-serif">{{ s.hero_claim }}</p>{%- endif -%}
 
+        <button type="button" class="v-pdp__sizeguide" data-sizeguide-open>
+          {% render 'veloura-icon', name: 'arrows', size: 16 %} Size Guide
+        </button>
+        <dialog class="v-sizeguide" data-sizeguide aria-label="Size guide">
+          <div class="v-sizeguide__panel">
+            <button type="button" class="v-sizeguide__close" data-sizeguide-close aria-label="Close">{% render 'veloura-icon', name: 'close', size: 18 %}</button>
+            <span class="v-eyebrow">Find Your Fit</span>
+            <h3 class="v-h3 v-sizeguide__title">Size Guide</h3>
+            <p class="v-sizeguide__note">Measurements in inches. The fabric has 4-way stretch — if you're between sizes, we recommend sizing up for all-day comfort.</p>
+            <div class="v-sizeguide__scroll">
+              <table class="v-sizeguide__table">
+                <thead>
+                  <tr><th>Size</th><th>Waist</th><th>Hip</th><th>Length</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>S</td><td>22.8</td><td>26.7</td><td>31.4</td></tr>
+                  <tr><td>M</td><td>24.4</td><td>28.7</td><td>32.3</td></tr>
+                  <tr><td>L</td><td>25.9</td><td>30.7</td><td>33.1</td></tr>
+                  <tr><td>XL</td><td>27.5</td><td>32.6</td><td>33.8</td></tr>
+                  <tr><td>2XL</td><td>29.1</td><td>34.2</td><td>34.6</td></tr>
+                  <tr><td>3XL</td><td>30.7</td><td>36.9</td><td>35.4</td></tr>
+                  <tr><td>4XL</td><td>32.3</td><td>38.9</td><td>36.2</td></tr>
+                  <tr><td>5XL</td><td>33.8</td><td>40.9</td><td>37.1</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </dialog>
+
         <div class="v-pdp__atc" data-atc-anchor>
           {%- if product != blank -%}
             <product-form class="product-form" data-section-id="{{ section.id }}">
@@ -160,6 +189,24 @@
 .v-pdp__option-name { font-family: var(--v-font-body); font-weight: 600; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
 .v-pdp__atc { margin-top: 22px; }
 .v-pdp__atc .v-btn { font-size: 1.125rem; padding-block: 15px; gap: 10px; }
+/* Size guide button + modal */
+.v-pdp__sizeguide { display: inline-flex; align-items: center; gap: 7px; margin: 4px 0 18px; padding: 9px 18px; background: var(--v-white); border: 1px solid var(--v-border-strong); border-radius: 100px; font-family: var(--v-font-body); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--v-text); cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease; }
+.v-pdp__sizeguide:hover { border-color: var(--v-rust); color: var(--v-rust); }
+.v-pdp__sizeguide svg { color: var(--v-rust); }
+.v-sizeguide { border: none; padding: 0; background: transparent; max-width: 520px; width: 92vw; margin: auto; }
+.v-sizeguide::backdrop { background: rgba(28, 16, 9, 0.5); }
+.v-sizeguide__panel { position: relative; background: var(--v-canvas); border: 1px solid var(--v-border); border-radius: var(--v-radius-md); box-shadow: 0 24px 64px rgba(28, 16, 9, 0.28); padding: clamp(24px, 4vw, 40px); }
+.v-sizeguide__close { position: absolute; top: 14px; right: 14px; background: none; border: none; padding: 6px; cursor: pointer; color: var(--v-muted); display: inline-flex; }
+.v-sizeguide__close:hover { color: var(--v-text); }
+.v-sizeguide__title { margin: 6px 0 12px; }
+.v-sizeguide__note { font-size: 0.9375rem; color: var(--v-muted); line-height: 1.55; margin: 0 0 22px; }
+.v-sizeguide__scroll { overflow-x: auto; }
+.v-sizeguide__table { width: 100%; border-collapse: collapse; font-family: var(--v-font-body); }
+.v-sizeguide__table th, .v-sizeguide__table td { padding: 12px 10px; text-align: center; border-bottom: 1px solid var(--v-border); font-size: 0.9375rem; color: var(--v-text); }
+.v-sizeguide__table thead th { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--v-rust); border-bottom: 1.5px solid var(--v-border-strong); }
+.v-sizeguide__table tbody tr:last-child td { border-bottom: none; }
+.v-sizeguide__table tbody td:first-child { font-weight: 700; }
+.v-sizeguide__table tbody tr:nth-child(even) { background: var(--v-canvas-secondary); }
 .v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 0.9375rem; font-weight: 600; color: var(--v-scarcity); }
 .v-pdp__atc .v-trust-badges { margin-top: 16px; }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }

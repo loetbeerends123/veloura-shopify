@@ -285,6 +285,24 @@
   }
 
   /* ========================================================================
+     5c. Size-guide modal (native <dialog>). Opens from the buy box button.
+     ======================================================================== */
+  function initSizeGuide(root) {
+    var scope = root || document;
+    var dlg = scope.querySelector('[data-sizeguide]');
+    var openBtn = scope.querySelector('[data-sizeguide-open]');
+    if (!dlg || !openBtn || dlg._vInit) return;
+    dlg._vInit = true;
+    openBtn.addEventListener('click', function () {
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    });
+    dlg.querySelectorAll('[data-sizeguide-close]').forEach(function (b) {
+      b.addEventListener('click', function () { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); });
+    });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
+  }
+
+  /* ========================================================================
      5b. Colour → main image sync with the Kaching bundle app.
      The bundle app owns colour/size selection; when the shopper picks a
      colour there, swap the left gallery image to that colour's photo.
@@ -418,6 +436,7 @@
     document.querySelectorAll('[data-gallery]').forEach(initGallery);
     document.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
     initReviewForm();
+    initSizeGuide();
     initStickyBar();
   });
 
@@ -435,6 +454,7 @@
     s.querySelectorAll('[data-gallery]').forEach(initGallery);
     s.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
     initReviewForm(s);
+    initSizeGuide(s);
     initStickyBar();
   });
 })();
