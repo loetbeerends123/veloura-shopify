@@ -589,7 +589,7 @@ body {
 .cart-drawer .v-cart-offer { margin-bottom: 10px; }
 /* Offer nudge pinned at the top of the drawer: a full-width celebratory
    banner with a filled round check badge — feels like a reward, not a box. */
-.v-cart-offer-top { margin: 8px -1.5rem 0; }
+.v-cart-offer-top { margin: 8px -1.5rem 16px; }
 .v-cart-offer-top .v-cart-offer {
   margin: 0;
   border: 0;
@@ -597,7 +597,7 @@ body {
   border-bottom: 1px solid var(--v-border);
   border-radius: 0;
   background: var(--v-canvas-secondary);
-  padding: 13px 20px;
+  padding: 9px 20px;
   gap: 11px;
   align-items: center;
   justify-content: center;
