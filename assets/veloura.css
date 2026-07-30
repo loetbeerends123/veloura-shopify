@@ -599,8 +599,8 @@ body {
   align-items: center;
   justify-content: center;
   text-align: left;
-  font-size: 0.8125rem;
-  line-height: 1.35;
+  font-size: 0.9375rem;
+  line-height: 1.4;
 }
 .v-cart-offer-top .v-cart-offer svg {
   flex: none;
