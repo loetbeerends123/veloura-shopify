@@ -584,9 +584,24 @@ body {
 /* Cart page: the summary card is canvas-secondary, so the nudge needs white to stand out */
 #main-cart-footer .v-cart-offer { background: var(--v-white); }
 .cart-drawer .v-cart-offer { margin-bottom: 10px; }
-/* Offer nudge pinned at the top of the drawer, just under the header line */
-.v-cart-offer-top { padding: 12px 16px 0; }
-.v-cart-offer-top .v-cart-offer { margin-bottom: 0; }
+/* Offer nudge pinned at the top of the drawer: a clean full-width banner
+   (edge to edge, thin hairlines) instead of a floating boxed card. */
+.v-cart-offer-top { margin: 6px -1.5rem 0; }
+.v-cart-offer-top .v-cart-offer {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--v-border);
+  border-bottom: 1px solid var(--v-border);
+  border-radius: 0;
+  background: var(--v-canvas-secondary);
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+.v-cart-offer-top .v-cart-offer svg { margin-top: 0; }
 /* Empty drawer: hide the "Your Selection" header and the £0.00 totals/footer */
 .cart-drawer.is-empty .drawer__header,
 .cart-drawer.is-empty .drawer__footer,
