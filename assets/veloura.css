@@ -570,11 +570,10 @@ body {
 .v-drawer-trust { margin-top: 10px; font-weight: 700; color: var(--v-rust); }
 .v-drawer-trust svg { color: var(--v-rust); }
 /* Cart drawer trust-badge row (icon over label) */
-.v-cart-badges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0 2px; }
-.v-cart-badges__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
-.v-cart-badges__item svg { width: 22px; height: 22px; color: var(--v-rust); flex: none; }
-.v-cart-badges__item span { font-family: var(--v-font-body); font-size: 0.625rem; font-weight: 600; line-height: 1.25; letter-spacing: 0.01em; color: var(--v-muted); }
-@media (max-width: 400px) { .v-cart-badges { grid-template-columns: repeat(2, 1fr); gap: 12px 8px; } }
+.v-cart-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 4px; }
+.v-cart-badges__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; }
+.v-cart-badges__item svg { width: 30px; height: 30px; color: var(--v-rust); flex: none; }
+.v-cart-badges__item span { font-family: var(--v-font-body); font-size: 0.75rem; font-weight: 600; line-height: 1.3; letter-spacing: 0.01em; color: var(--v-text); }
 /* Cart drawer column headers (PRODUCT / TOTAL): bolder + more room above the line */
 .cart-drawer .cart-items thead th { padding-bottom: 14px; }
 .cart-drawer .cart-items thead th.caption-with-letter-spacing { font-weight: 700; color: var(--v-text); }
