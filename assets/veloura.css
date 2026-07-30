@@ -595,6 +595,15 @@ body {
   .cart-drawer .v-drawer-upsell__card { padding: 12px; }
   .cart-drawer .drawer__footer { position: relative; z-index: 3; background: var(--v-canvas); }
   .cart-drawer .cart-item { position: relative; z-index: 1; }
+  /* Make the item list scrollable so every product is reachable */
+  .cart-drawer cart-drawer-items { overflow-y: auto; -webkit-overflow-scrolling: touch; min-height: 0; }
+  /* Compact cart items so both products fit / read cleanly */
+  .cart-drawer .cart-item { gap: 0.65rem; padding: 4px 0; }
+  .cart-drawer .cart-item__media { max-width: 78px; }
+  .cart-drawer .cart-item__image { width: 78px; height: auto; }
+  .cart-drawer .cart-item__name { font-size: 1.0625rem; line-height: 1.25; }
+  .cart-drawer .cart-item__details .product-option { font-size: 0.8125rem; }
+  .cart-drawer .cart-item .price { font-size: 0.9375rem; }
 }
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
