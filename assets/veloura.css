@@ -584,9 +584,9 @@ body {
 /* Cart page: the summary card is canvas-secondary, so the nudge needs white to stand out */
 #main-cart-footer .v-cart-offer { background: var(--v-white); }
 .cart-drawer .v-cart-offer { margin-bottom: 10px; }
-/* Offer nudge pinned at the top of the drawer: a clean full-width banner
-   (edge to edge, thin hairlines) instead of a floating boxed card. */
-.v-cart-offer-top { margin: 6px -1.5rem 0; }
+/* Offer nudge pinned at the top of the drawer: a full-width celebratory
+   banner with a filled round check badge — feels like a reward, not a box. */
+.v-cart-offer-top { margin: 8px -1.5rem 0; }
 .v-cart-offer-top .v-cart-offer {
   margin: 0;
   border: 0;
@@ -594,14 +594,34 @@ body {
   border-bottom: 1px solid var(--v-border);
   border-radius: 0;
   background: var(--v-canvas-secondary);
-  padding: 12px 20px;
+  padding: 13px 20px;
+  gap: 11px;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
   font-size: 0.8125rem;
-  line-height: 1.4;
+  line-height: 1.35;
 }
-.v-cart-offer-top .v-cart-offer svg { margin-top: 0; }
+.v-cart-offer-top .v-cart-offer svg {
+  flex: none;
+  margin: 0;
+  width: 14px;
+  height: 14px;
+  color: #fff;
+  background: var(--v-rust);
+  border-radius: 50%;
+  padding: 5px;
+  box-sizing: content-box;
+}
+.v-cart-offer-top .v-cart-offer--applied {
+  background: linear-gradient(180deg, rgba(58, 125, 68, 0.12), rgba(58, 125, 68, 0.04));
+  border-top-color: rgba(58, 125, 68, 0.22);
+  border-bottom-color: rgba(58, 125, 68, 0.22);
+}
+.v-cart-offer-top .v-cart-offer--applied svg {
+  background: var(--v-green);
+  box-shadow: 0 2px 8px rgba(58, 125, 68, 0.3);
+}
 /* Empty drawer: hide the "Your Selection" header and the £0.00 totals/footer */
 .cart-drawer.is-empty .drawer__header,
 .cart-drawer.is-empty .drawer__footer,
