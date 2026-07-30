@@ -72,6 +72,9 @@
           </span>
         </button>
       </div>
+      {%- if cart != empty -%}
+        <div class="v-cart-offer-top">{% render 'veloura-cart-offer' %}</div>
+      {%- endif -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
@@ -628,8 +631,6 @@
               </ul>
             {%- endif -%}
           </div>
-
-          {% render 'veloura-cart-offer' %}
 
           <div class="v-drawer-totals">
             <div class="v-drawer-totals__row v-drawer-totals__row--total" role="status">
