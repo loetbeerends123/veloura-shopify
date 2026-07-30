@@ -558,7 +558,7 @@ body {
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
 .v-drawer-upsell__price.v-price--sale .v-price__compare { font-size: 0.75rem; }
 .v-drawer-upsell__price.v-price--sale .v-price__now { font-size: 0.9375rem; }
-.v-drawer-upsell .v-link-cta { font-size: 0.6875rem; }
+.v-drawer-upsell .v-link-cta { font-size: 0.8125rem; color: var(--v-badge-popular); }
 .v-drawer-upsell .v-link-cta > span:first-child { display: inline-flex; align-items: center; gap: 6px; }
 .v-drawer-upsell .v-link-cta .loading__spinner { width: 14px; height: 14px; }
 .v-drawer-upsell .v-link-cta.loading > span:first-child { visibility: hidden; }
