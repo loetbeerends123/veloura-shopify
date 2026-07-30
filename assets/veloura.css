@@ -513,6 +513,8 @@ body {
 .cart-item__name { font-family: var(--v-font-display) !important; font-weight: 400; font-size: 1.4rem; }
 .cart-items th { font-family: var(--v-font-body); font-size: 1rem; letter-spacing: 0.1em; color: var(--v-muted); }
 .cart-item__details .product-option { color: var(--v-muted); }
+.cart-drawer .cart-item__qty-note { margin: 6px 0 0; font-family: var(--v-font-body); font-size: 0.8125rem; color: var(--v-muted); }
+.cart-drawer .cart-item__qty-note strong { color: var(--v-text); font-weight: 700; }
 #main-cart-footer .totals__total,
 #main-cart-footer .totals__total-value { font-family: var(--v-font-display); }
 #cart-icon-bubble .cart-count-bubble,
