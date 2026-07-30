@@ -632,14 +632,6 @@
           {% render 'veloura-cart-offer' %}
 
           <div class="v-drawer-totals">
-            <div class="v-drawer-totals__row">
-              <span>Subtotal</span>
-              <span class="v-drawer-totals__val">{{ cart.items_subtotal_price | money }}</span>
-            </div>
-            <div class="v-drawer-totals__row v-drawer-totals__row--muted">
-              <span>Shipping</span>
-              <span class="v-drawer-totals__free">Free Shipping</span>
-            </div>
             <div class="v-drawer-totals__row v-drawer-totals__row--total" role="status">
               <span>Total</span>
               <span class="v-drawer-totals__val">{{ cart.total_price | money_with_currency }}</span>
