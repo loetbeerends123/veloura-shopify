@@ -567,6 +567,8 @@ body {
 .v-drawer-totals__row--total .v-drawer-totals__val { font-family: var(--v-font-display); font-size: 1.375rem; }
 .v-drawer-totals__val { font-weight: 600; }
 .v-drawer-totals__free { color: var(--v-green); font-weight: 700; }
+/* Remove the lone divider line + empty gap above the cart footer */
+.cart-drawer .drawer__footer { border-top: 0; padding-top: 4px; }
 .v-drawer-trust { margin-top: 10px; font-weight: 700; color: var(--v-rust); }
 .v-drawer-trust svg { color: var(--v-rust); }
 /* Cart drawer trust-badge row (icon over label) */
