@@ -577,6 +577,15 @@ body {
 /* Cart drawer column headers (PRODUCT / TOTAL): bolder + more room above the line */
 .cart-drawer .cart-items thead th { padding-bottom: 14px; }
 .cart-drawer .cart-items thead th.caption-with-letter-spacing { font-weight: 700; color: var(--v-text); }
+/* Mobile: hide the Kaching in-cart bundle widget inside the drawer — on phones
+   it injects steppers/swatches that overlap the layout. The bundle discount is
+   automatic (prices already reflect it), so this only removes the extra UI.
+   Scoped to the cart drawer so the PDP bundle widget is untouched. */
+@media (max-width: 749px) {
+  cart-drawer [class*="kaching"],
+  #CartDrawer [class*="kaching"],
+  .cart-drawer [class*="kaching"] { display: none !important; }
+}
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
 .v-cart-offer { display: flex; align-items: flex-start; gap: 9px; margin: 0 0 14px; padding: 11px 14px; background: var(--v-canvas-secondary); border: 1px solid var(--v-border); border-radius: var(--v-radius-sm); font-family: var(--v-font-body); font-size: 0.875rem; line-height: 1.45; color: var(--v-text); }
