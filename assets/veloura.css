@@ -604,6 +604,10 @@ body {
   .cart-drawer .cart-item__name { font-size: 1.0625rem; line-height: 1.25; }
   .cart-drawer .cart-item__details .product-option { font-size: 0.8125rem; }
   .cart-drawer .cart-item .price { font-size: 0.9375rem; }
+  /* Smaller quantity stepper (default ~140x45px is too big on phones) */
+  .cart-drawer .quantity { width: calc(9rem / var(--font-body-scale)); min-height: 3.2rem; }
+  .cart-drawer .quantity__input { font-size: 0.875rem; padding: 0; }
+  .cart-drawer .quantity__button svg { width: 1rem; height: 1rem; }
 }
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
