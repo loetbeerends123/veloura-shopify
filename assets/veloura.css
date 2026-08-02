@@ -552,7 +552,9 @@ body {
 .v-drawer-upsell__head svg { color: var(--v-badge-popular); }
 .v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 10px; box-shadow: var(--v-shadow-card); }
 .v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 48px; height: 48px; object-fit: cover; border-radius: var(--v-radius-sm); }
-.v-drawer-upsell__name { font-weight: 600; font-size: 0.875rem; }
+.v-drawer-upsell__media { display: block; }
+.v-drawer-upsell__name { display: inline-block; font-weight: 600; font-size: 0.875rem; color: var(--v-text); text-decoration: none; transition: color 0.15s ease; }
+.v-drawer-upsell__name:hover { color: var(--v-badge-popular); }
 .v-drawer-upsell__desc { font-size: 0.75rem; color: var(--v-muted); margin: 2px 0 6px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 .v-drawer-upsell__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }

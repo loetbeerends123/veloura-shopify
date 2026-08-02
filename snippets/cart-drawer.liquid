@@ -557,13 +557,15 @@
             <span class="v-drawer-upsell__added">{% render 'veloura-icon', name: 'check', size: 15 %} {{ up.title }} — added to your protocol</span>
           {%- else -%}
             <div class="v-drawer-upsell__card">
-              {%- if up.featured_image -%}
-                <img src="{{ up.featured_image | image_url: width: 144 }}" alt="{{ up.featured_image.alt | escape }}" width="72" height="72">
-              {%- else -%}
-                <span class="v-placeholder" data-label=""></span>
-              {%- endif -%}
+              <a href="{{ up.url }}" class="v-drawer-upsell__media" aria-label="{{ up.title | escape }}">
+                {%- if up.featured_image -%}
+                  <img src="{{ up.featured_image | image_url: width: 144 }}" alt="{{ up.featured_image.alt | escape }}" width="72" height="72">
+                {%- else -%}
+                  <span class="v-placeholder" data-label=""></span>
+                {%- endif -%}
+              </a>
               <div>
-                <div class="v-drawer-upsell__name">{{ up.title }}</div>
+                <a href="{{ up.url }}" class="v-drawer-upsell__name">{{ up.title }}</a>
                 <p class="v-drawer-upsell__desc">{{ settings.veloura_upsell_text | default: 'Essential for <strong>24/7 lymphatic support</strong> and targeted compression.' }}</p>
                 <div class="v-drawer-upsell__row">
                   {%- if up_compare -%}
