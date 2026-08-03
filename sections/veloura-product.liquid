@@ -135,7 +135,7 @@
                 <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
                 <input type="hidden" name="quantity" value="1" min="1">
                 <button type="submit" name="add" class="v-btn v-btn--green v-btn--full v-btn--lg" {% unless current_variant.available %}disabled{% endunless %}>
-                  {% render 'veloura-icon', name: 'bag', size: 20 %}
+                  <span class="v-lock-anim">{% render 'veloura-icon', name: 'bag', size: 20 %}</span>
                   <span>{% if current_variant.available %}{{ s.atc_label | default: 'Add to Cart' }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
                   <span class="loading__spinner hidden" aria-hidden="true">
                     <svg focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle></svg>
@@ -144,7 +144,7 @@
               {%- endform -%}
             </product-form>
           {%- else -%}
-            <button type="button" class="v-btn v-btn--green v-btn--full v-btn--lg">{% render 'veloura-icon', name: 'bag', size: 20 %} {{ s.atc_label | default: 'Add to Cart' }}</button>
+            <button type="button" class="v-btn v-btn--green v-btn--full v-btn--lg"><span class="v-lock-anim">{% render 'veloura-icon', name: 'bag', size: 20 %}</span> {{ s.atc_label | default: 'Add to Cart' }}</button>
           {%- endif -%}
 
           {%- if s.scarcity != blank -%}
