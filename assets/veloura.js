@@ -552,6 +552,42 @@
     });
   }
 
+  /* ---- Autoplay videos on mobile -----------------------------------------
+     iOS/Android often ignore the autoplay attribute until JS forces a muted
+     play — and only reliably while the video is on screen. Set muted +
+     playsinline as properties and play/pause via IntersectionObserver. */
+  function initAutoplayVideos(root) {
+    var vids = (root || document).querySelectorAll('.v-vsplit__video, .v-fsplit__video, video[autoplay]');
+    if (!vids.length) return;
+    var tryPlay = function (v) {
+      v.muted = true;
+      v.defaultMuted = true;
+      v.setAttribute('muted', '');
+      v.setAttribute('playsinline', '');
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { /* blocked (e.g. Low Power Mode) — ignore */ });
+    };
+    vids.forEach(function (v) {
+      if (v._vAutoplay) return;
+      v._vAutoplay = true;
+      tryPlay(v);
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) tryPlay(v);
+            else if (!v.paused) v.pause();
+          });
+        }, { threshold: 0.25 });
+        io.observe(v);
+      }
+      // Also retry on first touch, which satisfies stricter autoplay policies.
+      document.addEventListener('touchstart', function once() {
+        tryPlay(v);
+        document.removeEventListener('touchstart', once);
+      }, { passive: true });
+    });
+  }
+
   /* ---- Boot --------------------------------------------------------------- */
   ready(function () {
     setHeaderHeight();
@@ -567,6 +603,7 @@
     initReviewLightbox();
     initSizeGuide();
     initUpsellPicker();
+    initAutoplayVideos();
     initStickyBar();
   });
 
@@ -586,6 +623,7 @@
     initReviewForm(s);
     initReviewLightbox();
     initSizeGuide(s);
+    initAutoplayVideos(s);
     initStickyBar();
   });
 })();
