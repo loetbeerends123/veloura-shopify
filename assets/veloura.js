@@ -472,7 +472,7 @@
      The drawer/cart upsell (Bloom Shorts) has colour + size options. Match the
      selected option values to a variant and feed its id into the add-to-cart
      form. Delegated on document so it survives Dawn re-rendering the drawer. */
-  function syncUpsellPicker(picker) {
+  function syncUpsellPicker(picker, swapImage) {
     var dataEl = picker.querySelector('[data-upsell-variants]');
     var idInput = picker.parentNode
       ? picker.parentNode.querySelector('[data-upsell-variant-id]')
@@ -499,8 +499,11 @@
     if (match) {
       idInput.value = match.id;
       // Swap the thumbnail to the chosen variant's image so the shopper sees
-      // the colour they picked. Fall back to another variant sharing the same
-      // colour when this exact size has no image of its own.
+      // the colour they picked — only on an actual selection, so the default
+      // stays the product's first image until they choose a colour. Fall back
+      // to another variant sharing the same colour when this exact size has no
+      // image of its own.
+      if (swapImage) {
       var img = (picker.closest('.v-drawer-upsell__card, .v-cart-upsell__card') || document)
         .querySelector('[data-upsell-image]');
       var newSrc = match.image;
@@ -521,6 +524,7 @@
           else img.onload = show;
         }, 150);
       }
+      }
       if (btn) {
         btn.disabled = !match.available;
         var lbl = btn.querySelector('span:first-child');
@@ -536,11 +540,13 @@
     var sel = e.target.closest && e.target.closest('[data-upsell-option]');
     if (!sel) return;
     var picker = sel.closest('[data-upsell-picker]');
-    if (picker) syncUpsellPicker(picker);
+    if (picker) syncUpsellPicker(picker, true);
   });
 
   function initUpsellPicker(root) {
-    (root || document).querySelectorAll('[data-upsell-picker]').forEach(syncUpsellPicker);
+    (root || document).querySelectorAll('[data-upsell-picker]').forEach(function (p) {
+      syncUpsellPicker(p, false);
+    });
   }
 
   /* ---- Boot --------------------------------------------------------------- */
