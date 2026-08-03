@@ -516,9 +516,16 @@ body {
    ============================================================ */
 #main-cart-items .title--primary,
 .cart__warnings .cart__empty-text { font-family: var(--v-font-display); font-weight: 400; letter-spacing: -0.01em; }
-.cart-item__name { font-family: var(--v-font-display) !important; font-weight: 400; font-size: 1.4rem; }
+.cart-item__name { font-family: var(--v-font-body) !important; font-weight: 700; font-size: 0.9375rem; line-height: 1.3; letter-spacing: 0; color: var(--v-text); }
 .cart-items th { font-family: var(--v-font-body); font-size: 1rem; letter-spacing: 0.1em; color: var(--v-muted); }
 .cart-item__details .product-option { color: var(--v-muted); }
+/* Cart line: Title → Colour/Size → price, matching the reference layout */
+.cart-item__options { margin: 4px 0 0; }
+.cart-item__options .product-option { display: flex; gap: 5px; color: var(--v-muted); font-size: 0.8125rem; line-height: 1.4; }
+.cart-item__options .product-option dt, .cart-item__options .product-option dd { margin: 0; }
+.cart-item__unitprice { display: flex; align-items: baseline; gap: 8px; margin-top: 7px; }
+.cart-item__unitprice .cart-item__old-price { color: var(--v-muted); text-decoration: line-through; font-weight: 400; font-size: 0.875rem; opacity: 0.85; }
+.cart-item__unitprice .cart-item__final-price { color: var(--v-text); font-weight: 800; font-size: 0.9375rem; }
 /* Quantity stepper: identical compact size on phone and desktop */
 .cart-drawer .quantity { width: calc(10.5rem / var(--font-body-scale)); min-height: 3.2rem; }
 .cart-drawer .quantity__button { width: 3.2rem; min-width: 3.2rem; padding: 0; }
@@ -545,7 +552,7 @@ body {
    ============================================================ */
 .drawer__heading { font-family: var(--v-font-display) !important; font-weight: 400; font-size: 1.75rem; letter-spacing: -0.01em; }
 .cart-drawer__overline { display: block; font-family: var(--v-font-body); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--v-rust); margin-top: 4px; }
-.cart-drawer .cart-item__name { font-size: 1.25rem; }
+.cart-drawer .cart-item__name { font-size: 0.9375rem; }
 
 /* Veloura "Complete your protocol" upsell block inside the Dawn drawer.
    Kept compact so it never squeezes the item rows (incl. the quantity
@@ -640,7 +647,7 @@ cart-items .cart-items thead { display: none; }
   .cart-drawer .cart-item { gap: 0.65rem; padding: 4px 0; }
   .cart-drawer .cart-item__media { max-width: 78px; }
   .cart-drawer .cart-item__image { width: 78px; height: auto; }
-  .cart-drawer .cart-item__name { font-size: 1.0625rem; line-height: 1.25; }
+  .cart-drawer .cart-item__name { font-size: 0.9375rem; line-height: 1.3; }
   .cart-drawer .cart-item__details .product-option { font-size: 0.8125rem; }
   .cart-drawer .cart-item .price { font-size: 0.9375rem; }
 }
