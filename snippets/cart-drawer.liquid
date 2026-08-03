@@ -553,6 +553,9 @@
           <div class="v-drawer-upsell__head">
             {% render 'veloura-icon', name: 'flask', size: 15 %} Complete Your Full Transformation
           </div>
+          {%- unless up_in_cart -%}
+            <p class="v-drawer-upsell__urgency">{% render 'veloura-icon', name: 'flame', size: 13 %} Add-on price — <strong>only in your cart, this order</strong></p>
+          {%- endunless -%}
           {%- if up_in_cart -%}
             <span class="v-drawer-upsell__added">{% render 'veloura-icon', name: 'check', size: 15 %} {{ up.title }} — added to your protocol</span>
           {%- else -%}
@@ -566,7 +569,6 @@
               </a>
               <div>
                 <a href="{{ up.url }}" class="v-drawer-upsell__name">{{ up.title }}</a>
-                <p class="v-drawer-upsell__desc">{{ settings.veloura_upsell_text | default: 'Essential for <strong>24/7 lymphatic support</strong> and targeted compression.' }}</p>
                 {%- unless up.has_only_default_variant -%}
                   <div class="v-drawer-upsell__opts" data-upsell-picker>
                     {%- for option in up.options_with_values -%}

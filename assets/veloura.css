@@ -553,11 +553,14 @@ body {
    so that on short viewports it scrolls internally and the footer + checkout
    button stay fully visible instead of being pushed below the screen edge. */
 .cart-drawer cart-drawer-items { min-height: 0; }
-.v-drawer-upsell { margin: 10px 16px; padding: 10px 12px; background: var(--v-canvas-secondary); border-radius: var(--v-radius-md); }
-.v-drawer-upsell__head { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--v-badge-popular); margin-bottom: 10px; }
+.v-drawer-upsell { margin: 8px 16px; padding: 9px 11px; background: var(--v-canvas-secondary); border: 1px solid rgba(139,26,26,0.18); border-radius: var(--v-radius-md); }
+.v-drawer-upsell__head { display: flex; align-items: center; gap: 7px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--v-badge-popular); margin-bottom: 4px; }
 .v-drawer-upsell__head svg { color: var(--v-badge-popular); }
-.v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 10px; box-shadow: var(--v-shadow-card); }
-.v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 48px; height: 48px; object-fit: cover; border-radius: var(--v-radius-sm); }
+.v-drawer-upsell__urgency { display: flex; align-items: center; gap: 6px; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.02em; color: #fff; background: var(--v-badge-popular); border-radius: 100px; padding: 4px 10px; margin: 0 0 9px; width: fit-content; }
+.v-drawer-upsell__urgency strong { font-weight: 800; }
+.v-drawer-upsell__urgency svg { color: #fff; flex: none; }
+.v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 9px; box-shadow: var(--v-shadow-card); }
+.v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 44px; height: 44px; object-fit: cover; border-radius: var(--v-radius-sm); }
 .v-drawer-upsell__media { display: block; }
 .v-drawer-upsell__name { display: inline-block; font-weight: 600; font-size: 0.875rem; color: var(--v-text); text-decoration: none; transition: color 0.15s ease; }
 .v-drawer-upsell__name:hover { color: var(--v-badge-popular); }
@@ -570,7 +573,7 @@ body {
 .v-drawer-upsell__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
 .v-drawer-upsell__price.v-price--sale .v-price__compare { font-size: 0.75rem; }
-.v-drawer-upsell__price.v-price--sale .v-price__now { font-size: 0.9375rem; }
+.v-drawer-upsell__price.v-price--sale .v-price__now { font-size: 1rem; font-weight: 800; color: var(--v-badge-popular); }
 .v-drawer-upsell .v-link-cta { font-size: 0.8125rem; color: var(--v-badge-popular); text-decoration: none; border: 1.5px solid var(--v-badge-popular); border-radius: 100px; padding: 7px 16px; transition: background-color 0.15s ease, color 0.15s ease; }
 .v-drawer-upsell .v-link-cta:hover { background: var(--v-badge-popular); color: #fff; }
 .v-drawer-upsell .v-link-cta:hover svg { color: #fff; }
@@ -612,10 +615,17 @@ body {
   .cart-drawer .v-cart-offer-top { position: relative; z-index: 2; }
   .cart-drawer .v-drawer-upsell {
     position: relative; z-index: 2;
-    margin: 14px 16px;
-    border: 1px solid var(--v-border);
+    margin: 10px 16px;
+    padding: 8px 10px;
+    border: 1px solid rgba(139,26,26,0.22);
   }
-  .cart-drawer .v-drawer-upsell__card { padding: 12px; }
+  .cart-drawer .v-drawer-upsell__head { font-size: 0.6875rem; margin-bottom: 4px; }
+  .cart-drawer .v-drawer-upsell__urgency { font-size: 0.625rem; padding: 3px 9px; margin-bottom: 7px; }
+  .cart-drawer .v-drawer-upsell__card { padding: 8px; gap: 8px; }
+  .cart-drawer .v-drawer-upsell__card img, .cart-drawer .v-drawer-upsell__card .v-placeholder { width: 40px; height: 40px; }
+  .cart-drawer .v-drawer-upsell__name { font-size: 0.8125rem; }
+  .cart-drawer .v-drawer-upsell__opts { gap: 6px; margin: 2px 0 7px; }
+  .cart-drawer .v-drawer-upsell__select { font-size: 0.75rem; padding: 5px 22px 5px 8px; }
   .cart-drawer .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; padding: 5px 12px; }
   .cart-drawer .drawer__footer { position: relative; z-index: 3; background: var(--v-canvas); }
   .cart-drawer .cart-item { position: relative; z-index: 1; }
