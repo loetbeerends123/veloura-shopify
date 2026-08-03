@@ -600,9 +600,11 @@ body {
 .v-cart-badges__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; }
 .v-cart-badges__item svg { width: 30px; height: 30px; color: var(--v-rust); flex: none; }
 .v-cart-badges__item span { font-family: var(--v-font-body); font-size: 0.75rem; font-weight: 600; line-height: 1.3; letter-spacing: 0.01em; color: var(--v-text); }
-/* Cart drawer column headers (PRODUCT / TOTAL): bolder + more room above the line */
-.cart-drawer .cart-items thead th { padding-bottom: 14px; }
-.cart-drawer .cart-items thead th.caption-with-letter-spacing { font-weight: 700; color: var(--v-text); }
+/* Hide the PRODUCT / TOTAL column headers in the cart (drawer + full cart) —
+   not needed, the rows read clearly on their own. */
+.cart-drawer .cart-items thead,
+.cart-items thead,
+cart-items .cart-items thead { display: none; }
 /* Mobile cart drawer clean-up. On phones the Kaching in-cart bundle widget
    injects steppers/swatches that overlap the layout, and app overlays show
    through. Hide that widget (bundle discount is automatic, prices already
