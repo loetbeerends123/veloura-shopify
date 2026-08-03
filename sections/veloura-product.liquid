@@ -67,9 +67,12 @@
 
       {%- comment -%} ---- Right: buy box ---- {%- endcomment -%}
       <div class="v-pdp__buybox" id="v-buybox">
-        {%- if s.offer_banner != blank -%}
-          <p class="v-pdp__offer">{% render 'veloura-icon', name: 'sparkle', size: 16 %}{{ s.offer_banner }}</p>
-        {%- endif -%}
+        {%- comment -%} No BOGO on the Bloom/Cellulite Shorts — hide the offer banner there {%- endcomment -%}
+        {%- unless product.handle contains 'shorts' -%}
+          {%- if s.offer_banner != blank -%}
+            <p class="v-pdp__offer">{% render 'veloura-icon', name: 'sparkle', size: 16 %}{{ s.offer_banner }}</p>
+          {%- endif -%}
+        {%- endunless -%}
         {%- if s.overline != blank -%}<span class="v-eyebrow">{{ s.overline }}</span>{%- endif -%}
         <div class="v-pdp__titlerow">
           <h1 class="v-h2 v-pdp__name">{{ product.title | default: 'Veloura Cellulite Legging' }}</h1>
