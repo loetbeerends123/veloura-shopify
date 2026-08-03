@@ -285,6 +285,40 @@
   }
 
   /* ========================================================================
+     5d. Review photo lightbox. Click a review thumbnail to view it enlarged.
+     ======================================================================== */
+  function initReviewLightbox() {
+    var imgs = document.querySelectorAll('.v-review__photos img, .v-reviews__photos img');
+    if (!imgs.length) return;
+    var dlg = document.querySelector('[data-review-lightbox]');
+    if (!dlg) {
+      dlg = document.createElement('dialog');
+      dlg.className = 'v-lightbox';
+      dlg.setAttribute('data-review-lightbox', '');
+      dlg.innerHTML = '<button type="button" class="v-lightbox__close" aria-label="Close">×</button><img class="v-lightbox__img" alt="">';
+      document.body.appendChild(dlg);
+      dlg.querySelector('.v-lightbox__close').addEventListener('click', function () { if (dlg.close) dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
+    }
+    var lbImg = dlg.querySelector('.v-lightbox__img');
+    function open(img) {
+      var full = (img.currentSrc || img.src || '').replace(/width=\d+/, 'width=1400');
+      lbImg.src = full;
+      lbImg.alt = img.alt || '';
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    }
+    imgs.forEach(function (img) {
+      if (img._vLb) return;
+      img._vLb = true;
+      img.style.cursor = 'zoom-in';
+      img.setAttribute('role', 'button');
+      img.setAttribute('tabindex', '0');
+      img.addEventListener('click', function () { open(img); });
+      img.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img); } });
+    });
+  }
+
+  /* ========================================================================
      5c. Size-guide modal (native <dialog>). Opens from the buy box button.
      ======================================================================== */
   function initSizeGuide(root) {
@@ -446,6 +480,7 @@
     document.querySelectorAll('[data-gallery]').forEach(initGallery);
     document.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
     initReviewForm();
+    initReviewLightbox();
     initSizeGuide();
     initStickyBar();
   });
@@ -464,6 +499,7 @@
     s.querySelectorAll('[data-gallery]').forEach(initGallery);
     s.querySelectorAll('[data-gallery]').forEach(initColorImageSync);
     initReviewForm(s);
+    initReviewLightbox();
     initSizeGuide(s);
     initStickyBar();
   });
