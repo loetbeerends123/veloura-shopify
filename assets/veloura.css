@@ -562,6 +562,11 @@ body {
 .v-drawer-upsell__name { display: inline-block; font-weight: 600; font-size: 0.875rem; color: var(--v-text); text-decoration: none; transition: color 0.15s ease; }
 .v-drawer-upsell__name:hover { color: var(--v-badge-popular); }
 .v-drawer-upsell__desc { font-size: 0.75rem; color: var(--v-muted); margin: 2px 0 6px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.v-drawer-upsell__opts { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 10px; }
+.v-drawer-upsell__opt { display: flex; flex-direction: column; gap: 3px; flex: 1 1 46%; min-width: 0; }
+.v-drawer-upsell__opt-label { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--v-muted); }
+.v-drawer-upsell__select { -webkit-appearance: none; appearance: none; width: 100%; font: inherit; font-size: 0.8125rem; color: var(--v-text); background: var(--v-white); border: 1px solid var(--v-border); border-radius: var(--v-radius-sm); padding: 7px 26px 7px 10px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238A7060' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 9px center; }
+.v-drawer-upsell__select:focus-visible { outline: none; border-color: var(--v-badge-popular); }
 .v-drawer-upsell__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .v-drawer-upsell__price { font-weight: 600; font-size: 0.875rem; }
 .v-drawer-upsell__price.v-price--sale .v-price__compare { font-size: 0.75rem; }

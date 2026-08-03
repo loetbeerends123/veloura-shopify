@@ -468,6 +468,58 @@
     });
   }
 
+  /* ---- Cart upsell variant picker ----------------------------------------
+     The drawer/cart upsell (Bloom Shorts) has colour + size options. Match the
+     selected option values to a variant and feed its id into the add-to-cart
+     form. Delegated on document so it survives Dawn re-rendering the drawer. */
+  function syncUpsellPicker(picker) {
+    var dataEl = picker.querySelector('[data-upsell-variants]');
+    var idInput = picker.parentNode
+      ? picker.parentNode.querySelector('[data-upsell-variant-id]')
+      : null;
+    if (!idInput) {
+      // Fall back to searching the enclosing card.
+      var card = picker.closest('.v-drawer-upsell__card') || picker.closest('.v-drawer-upsell');
+      if (card) idInput = card.querySelector('[data-upsell-variant-id]');
+    }
+    if (!dataEl || !idInput) return;
+    var variants;
+    try { variants = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    var chosen = Array.prototype.map.call(
+      picker.querySelectorAll('[data-upsell-option]'),
+      function (sel) { return sel.value; }
+    );
+    var match = variants.find(function (v) {
+      return v.options.length === chosen.length && v.options.every(function (o, i) {
+        return String(o) === String(chosen[i]);
+      });
+    });
+    var scope = picker.closest('.v-drawer-upsell__card, .v-drawer-upsell, .v-cart-upsell__action, .v-cart-upsell__card') || picker.parentNode;
+    var btn = scope ? scope.querySelector('button[name="add"], button[type="submit"]') : null;
+    if (match) {
+      idInput.value = match.id;
+      if (btn) {
+        btn.disabled = !match.available;
+        var lbl = btn.querySelector('span:first-child');
+        if (lbl && !btn._vDefaultLbl) btn._vDefaultLbl = lbl.innerHTML;
+        if (lbl) lbl.innerHTML = match.available ? btn._vDefaultLbl : 'Sold Out';
+      }
+    } else if (btn) {
+      btn.disabled = true;
+    }
+  }
+
+  document.addEventListener('change', function (e) {
+    var sel = e.target.closest && e.target.closest('[data-upsell-option]');
+    if (!sel) return;
+    var picker = sel.closest('[data-upsell-picker]');
+    if (picker) syncUpsellPicker(picker);
+  });
+
+  function initUpsellPicker(root) {
+    (root || document).querySelectorAll('[data-upsell-picker]').forEach(syncUpsellPicker);
+  }
+
   /* ---- Boot --------------------------------------------------------------- */
   ready(function () {
     setHeaderHeight();
@@ -482,6 +534,7 @@
     initReviewForm();
     initReviewLightbox();
     initSizeGuide();
+    initUpsellPicker();
     initStickyBar();
   });
 

@@ -70,8 +70,29 @@
         {%- if in_cart -%}
           <span class="v-cart-upsell__added">{% render 'veloura-icon', name: 'check', size: 16 %} Added to your protocol</span>
         {%- else -%}
+          {%- unless up.has_only_default_variant -%}
+            <div class="v-cart-upsell__opts" data-upsell-picker>
+              {%- for option in up.options_with_values -%}
+                <label class="v-drawer-upsell__opt">
+                  <span class="v-drawer-upsell__opt-label">{{ option.name }}</span>
+                  <select class="v-drawer-upsell__select" data-upsell-option="{{ forloop.index0 }}" aria-label="{{ option.name | escape }}">
+                    {%- for value in option.values -%}
+                      <option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
+                    {%- endfor -%}
+                  </select>
+                </label>
+              {%- endfor -%}
+              <script type="application/json" data-upsell-variants>
+                [
+                  {%- for variant in up.variants -%}
+                    {"id": {{ variant.id }}, "options": {{ variant.options | json }}, "available": {{ variant.available }}}{%- unless forloop.last -%},{%- endunless -%}
+                  {%- endfor -%}
+                ]
+              </script>
+            </div>
+          {%- endunless -%}
           <form action="{{ routes.cart_add_url }}" method="post" data-v-upsell-form>
-            <input type="hidden" name="id" value="{{ up_variant.id }}">
+            <input type="hidden" name="id" value="{{ up_variant.id }}" data-upsell-variant-id>
             <input type="hidden" name="quantity" value="1">
             <button type="submit" class="v-btn v-btn--rust-outline" {% unless up_variant.available %}disabled{% endunless %}>
               {%- if up_variant.available %}Add to Order{% else %}Sold out{% endif -%}
@@ -91,6 +112,8 @@
 .v-cart-upsell__title { font-size: 1.375rem; }
 .v-cart-upsell__card { display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; padding: 24px; }
 .v-cart-upsell__card.is-added { opacity: 0.75; }
+.v-cart-upsell__opts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; width: 100%; }
+.v-cart-upsell__opts .v-drawer-upsell__opt { flex: 1 1 120px; }
 .v-cart-upsell__media img, .v-cart-upsell__media .v-placeholder { width: 140px; height: 168px; object-fit: cover; border-radius: var(--v-radius-md); display: block; }
 .v-cart-upsell__body { display: grid; gap: 8px; }
 .v-cart-upsell__body .v-badge { justify-self: start; }

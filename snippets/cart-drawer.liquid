@@ -567,6 +567,27 @@
               <div>
                 <a href="{{ up.url }}" class="v-drawer-upsell__name">{{ up.title }}</a>
                 <p class="v-drawer-upsell__desc">{{ settings.veloura_upsell_text | default: 'Essential for <strong>24/7 lymphatic support</strong> and targeted compression.' }}</p>
+                {%- unless up.has_only_default_variant -%}
+                  <div class="v-drawer-upsell__opts" data-upsell-picker>
+                    {%- for option in up.options_with_values -%}
+                      <label class="v-drawer-upsell__opt">
+                        <span class="v-drawer-upsell__opt-label">{{ option.name }}</span>
+                        <select class="v-drawer-upsell__select" data-upsell-option="{{ forloop.index0 }}" aria-label="{{ option.name | escape }}">
+                          {%- for value in option.values -%}
+                            <option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>
+                          {%- endfor -%}
+                        </select>
+                      </label>
+                    {%- endfor -%}
+                    <script type="application/json" data-upsell-variants>
+                      [
+                        {%- for variant in up.variants -%}
+                          {"id": {{ variant.id }}, "options": {{ variant.options | json }}, "available": {{ variant.available }}}{%- unless forloop.last -%},{%- endunless -%}
+                        {%- endfor -%}
+                      ]
+                    </script>
+                  </div>
+                {%- endunless -%}
                 <div class="v-drawer-upsell__row">
                   {%- if up_compare -%}
                     <span class="v-price v-price--sale v-drawer-upsell__price">
@@ -578,7 +599,7 @@
                   {%- endif -%}
                   <product-form class="product-form">
                     {%- form 'product', up, id: 'CartDrawer-Upsell', novalidate: 'novalidate' -%}
-                      <input type="hidden" name="id" value="{{ up.selected_or_first_available_variant.id }}">
+                      <input type="hidden" name="id" value="{{ up.selected_or_first_available_variant.id }}" data-upsell-variant-id>
                       {%- comment -%} product-form.js requires a <span> label + .loading__spinner inside the button {%- endcomment -%}
                       <button type="submit" name="add" class="v-link-cta">
                         <span>Add to Order {% render 'veloura-icon', name: 'plus', size: 14 %}</span>
