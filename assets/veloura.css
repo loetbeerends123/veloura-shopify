@@ -653,6 +653,11 @@ cart-items .cart-items thead { display: none; }
 }
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
+/* Hide the automatic-discount label pill under cart items ("Buy 1 + Get 1 Free")
+   — too much info; the pricing still applies at checkout. */
+.cart-item .discounts,
+.cart-items .discounts,
+.cart-item__discounts { display: none !important; }
 .v-cart-offer { display: flex; align-items: flex-start; gap: 9px; margin: 0 0 14px; padding: 11px 14px; background: var(--v-canvas-secondary); border: 1px solid var(--v-border); border-radius: var(--v-radius-sm); font-family: var(--v-font-body); font-size: 0.875rem; line-height: 1.45; color: var(--v-text); }
 .v-cart-offer svg { flex: none; margin-top: 2px; color: var(--v-rust); }
 .v-cart-offer strong { color: var(--v-rust); }
