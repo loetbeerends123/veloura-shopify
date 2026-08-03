@@ -664,7 +664,9 @@ cart-items .cart-items thead { display: none; }
   94% { transform: translateY(0) rotate(-4deg); }
   97% { transform: translateY(0) rotate(0); }
 }
-@media (prefers-reduced-motion: reduce) { .v-lock-anim { animation: none; } }
+/* Header cart icon: same wiggle every 2s to pull shoppers toward the cart */
+#cart-icon-bubble .svg-wrapper { display: inline-flex; transform-origin: 50% 70%; animation: v-lock-nudge 2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .v-lock-anim, #cart-icon-bubble .svg-wrapper { animation: none; } }
 
 /* Hide the automatic-discount label pill under cart items ("Buy 1 + Get 1 Free")
    — too much info; the pricing still applies at checkout. */
