@@ -664,7 +664,17 @@ cart-items .cart-items thead { display: none; }
   94% { transform: translateY(0) rotate(-4deg); }
   97% { transform: translateY(0) rotate(0); }
 }
-@media (prefers-reduced-motion: reduce) { .v-lock-anim { animation: none; } }
+/* Add-to-cart bag: more attention-grabbing pop + wiggle every 2.5s */
+.v-atc-anim { display: inline-flex; transform-origin: 50% 70%; animation: v-atc-pop 2.5s ease-in-out infinite; }
+.v-atc-anim svg { display: block; }
+@keyframes v-atc-pop {
+  0%, 66%, 100% { transform: translateY(0) rotate(0) scale(1); }
+  72% { transform: translateY(-4px) rotate(-14deg) scale(1.22); }
+  79% { transform: translateY(0) rotate(11deg) scale(1.16); }
+  86% { transform: translateY(-2px) rotate(-7deg) scale(1.12); }
+  93% { transform: translateY(0) rotate(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .v-lock-anim, .v-atc-anim { animation: none; } }
 
 /* Hide the automatic-discount label pill under cart items ("Buy 1 + Get 1 Free")
    — too much info; the pricing still applies at checkout. */
