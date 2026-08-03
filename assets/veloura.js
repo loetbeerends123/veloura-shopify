@@ -545,10 +545,10 @@
 
   function initUpsellPicker(root) {
     (root || document).querySelectorAll('[data-upsell-picker]').forEach(function (p) {
-      // Sync image on load too, so the thumbnail matches the pre-selected
-      // colour (e.g. Navy). The swap is a no-op when the product's first image
-      // already is that colour, so it stays the default photo in that case.
-      syncUpsellPicker(p, true);
+      // Keep the product's first image as the default thumbnail (sets the
+      // variant id only). The photo swaps to a colour once the shopper picks
+      // one — see the change handler above.
+      syncUpsellPicker(p, false);
     });
   }
 
