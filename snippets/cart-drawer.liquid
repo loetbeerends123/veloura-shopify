@@ -562,7 +562,7 @@
             <div class="v-drawer-upsell__card">
               <a href="{{ up.url }}" class="v-drawer-upsell__media" aria-label="{{ up.title | escape }}">
                 {%- if up.featured_image -%}
-                  <img src="{{ up.featured_image | image_url: width: 240 }}" alt="{{ up.featured_image.alt | escape }}" width="84" height="100">
+                  <img src="{{ up.featured_image | image_url: width: 240 }}" alt="{{ up.featured_image.alt | escape }}" width="84" height="100" data-upsell-image>
                 {%- else -%}
                   <span class="v-placeholder" data-label=""></span>
                 {%- endif -%}
@@ -584,7 +584,7 @@
                     <script type="application/json" data-upsell-variants>
                       [
                         {%- for variant in up.variants -%}
-                          {"id": {{ variant.id }}, "options": {{ variant.options | json }}, "available": {{ variant.available }}}{%- unless forloop.last -%},{%- endunless -%}
+                          {"id": {{ variant.id }}, "options": {{ variant.options | json }}, "available": {{ variant.available }}, "image": {% if variant.image %}{{ variant.image | image_url: width: 240 | json }}{% else %}null{% endif %}}{%- unless forloop.last -%},{%- endunless -%}
                         {%- endfor -%}
                       ]
                     </script>

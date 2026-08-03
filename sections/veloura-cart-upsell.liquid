@@ -42,7 +42,7 @@
     <div class="v-card v-cart-upsell__card {% if in_cart %}is-added{% endif %}">
       <div class="v-cart-upsell__media">
         {%- if up.featured_image -%}
-          <img src="{{ up.featured_image | image_url: width: 280 }}" alt="{{ up.featured_image.alt | default: up.title | escape }}" width="140" height="168">
+          <img src="{{ up.featured_image | image_url: width: 280 }}" alt="{{ up.featured_image.alt | default: up.title | escape }}" width="140" height="168" data-upsell-image>
         {%- else -%}
           <span class="v-placeholder" data-label="Cellulite Shorts"></span>
         {%- endif -%}
@@ -85,7 +85,7 @@
               <script type="application/json" data-upsell-variants>
                 [
                   {%- for variant in up.variants -%}
-                    {"id": {{ variant.id }}, "options": {{ variant.options | json }}, "available": {{ variant.available }}}{%- unless forloop.last -%},{%- endunless -%}
+                    {"id": {{ variant.id }}, "options": {{ variant.options | json }}, "available": {{ variant.available }}, "image": {% if variant.image %}{{ variant.image | image_url: width: 280 | json }}{% else %}null{% endif %}}{%- unless forloop.last -%},{%- endunless -%}
                   {%- endfor -%}
                 ]
               </script>

@@ -498,6 +498,29 @@
     var btn = scope ? scope.querySelector('button[name="add"], button[type="submit"]') : null;
     if (match) {
       idInput.value = match.id;
+      // Swap the thumbnail to the chosen variant's image so the shopper sees
+      // the colour they picked. Fall back to another variant sharing the same
+      // colour when this exact size has no image of its own.
+      var img = (picker.closest('.v-drawer-upsell__card, .v-cart-upsell__card') || document)
+        .querySelector('[data-upsell-image]');
+      var newSrc = match.image;
+      if (!newSrc) {
+        var sameColour = variants.find(function (v) {
+          return v.image && String(v.options[0]) === String(match.options[0]);
+        });
+        if (sameColour) newSrc = sameColour.image;
+      }
+      if (img && newSrc && img.getAttribute('src') !== newSrc) {
+        img.style.transition = 'opacity 0.15s ease';
+        img.style.opacity = '0';
+        setTimeout(function () {
+          img.src = newSrc;
+          var show = function () { img.style.opacity = '1'; };
+          if (img.decode) img.decode().then(show, show);
+          else if (img.complete) show();
+          else img.onload = show;
+        }, 150);
+      }
       if (btn) {
         btn.disabled = !match.available;
         var lbl = btn.querySelector('span:first-child');
