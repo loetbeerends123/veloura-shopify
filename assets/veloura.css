@@ -655,7 +655,7 @@ cart-items .cart-items thead { display: none; }
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
 /* Secure-checkout padlock: a little "lock click" wiggle every few seconds to
    draw the eye toward the checkout button. */
-.v-lock-anim { display: inline-flex; transform-origin: 50% 70%; animation: v-lock-nudge 4s ease-in-out infinite; }
+.v-lock-anim { display: inline-flex; transform-origin: 50% 70%; animation: v-lock-nudge 2s ease-in-out infinite; }
 .v-lock-anim svg { display: block; }
 @keyframes v-lock-nudge {
   0%, 82%, 100% { transform: translateY(0) rotate(0); }
