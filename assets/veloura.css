@@ -557,7 +557,7 @@ body {
 .v-drawer-upsell__head { display: flex; align-items: center; gap: 7px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--v-badge-popular); margin-bottom: 4px; }
 .v-drawer-upsell__head svg { color: var(--v-badge-popular); }
 .v-drawer-upsell__urgency { display: flex; align-items: center; gap: 6px; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.02em; color: #fff; background: var(--v-badge-popular); border-radius: 100px; padding: 4px 10px; margin: 0 0 9px; width: fit-content; }
-.v-drawer-upsell__urgency strong { font-weight: 800; }
+.v-drawer-upsell__urgency strong { font-weight: 800; color: #fff; }
 .v-drawer-upsell__urgency svg { color: #fff; flex: none; }
 .v-drawer-upsell__card { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; background: var(--v-white); border-radius: var(--v-radius-md); padding: 9px; box-shadow: var(--v-shadow-card); }
 .v-drawer-upsell__card img, .v-drawer-upsell__card .v-placeholder { width: 44px; height: 44px; object-fit: cover; border-radius: var(--v-radius-sm); }
