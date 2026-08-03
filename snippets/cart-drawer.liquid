@@ -562,7 +562,7 @@
             <div class="v-drawer-upsell__card">
               <a href="{{ up.url }}" class="v-drawer-upsell__media" aria-label="{{ up.title | escape }}">
                 {%- if up.featured_image -%}
-                  <img src="{{ up.featured_image | image_url: width: 144 }}" alt="{{ up.featured_image.alt | escape }}" width="72" height="72">
+                  <img src="{{ up.featured_image | image_url: width: 240 }}" alt="{{ up.featured_image.alt | escape }}" width="84" height="100">
                 {%- else -%}
                   <span class="v-placeholder" data-label=""></span>
                 {%- endif -%}
