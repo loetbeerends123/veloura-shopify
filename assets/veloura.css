@@ -615,18 +615,21 @@ body {
   .cart-drawer .v-cart-offer-top { position: relative; z-index: 2; }
   .cart-drawer .v-drawer-upsell {
     position: relative; z-index: 2;
-    margin: 10px 16px;
-    padding: 8px 10px;
+    margin: 8px 14px;
+    padding: 7px 9px;
     border: 1px solid rgba(139,26,26,0.22);
   }
-  .cart-drawer .v-drawer-upsell__head { font-size: 0.6875rem; margin-bottom: 4px; }
-  .cart-drawer .v-drawer-upsell__urgency { font-size: 0.625rem; padding: 3px 9px; margin-bottom: 7px; }
-  .cart-drawer .v-drawer-upsell__card { padding: 8px; gap: 10px; }
-  .cart-drawer .v-drawer-upsell__card img, .cart-drawer .v-drawer-upsell__card .v-placeholder { width: 62px; height: 74px; }
-  .cart-drawer .v-drawer-upsell__name { font-size: 0.8125rem; }
-  .cart-drawer .v-drawer-upsell__opts { gap: 6px; margin: 2px 0 7px; }
-  .cart-drawer .v-drawer-upsell__select { font-size: 0.75rem; padding: 5px 22px 5px 8px; }
-  .cart-drawer .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; padding: 5px 12px; }
+  .cart-drawer .v-drawer-upsell__head { font-size: 0.625rem; letter-spacing: 0.06em; gap: 6px; margin-bottom: 3px; }
+  .cart-drawer .v-drawer-upsell__head svg { width: 13px; height: 13px; }
+  .cart-drawer .v-drawer-upsell__urgency { font-size: 0.5625rem; padding: 3px 8px; margin-bottom: 6px; gap: 5px; }
+  .cart-drawer .v-drawer-upsell__card { padding: 7px; gap: 9px; }
+  .cart-drawer .v-drawer-upsell__card img, .cart-drawer .v-drawer-upsell__card .v-placeholder { width: 54px; height: 66px; }
+  .cart-drawer .v-drawer-upsell__name { font-size: 0.75rem; }
+  .cart-drawer .v-drawer-upsell__opts { gap: 5px; margin: 3px 0 6px; }
+  .cart-drawer .v-drawer-upsell__opt-label { font-size: 0.5625rem; }
+  .cart-drawer .v-drawer-upsell__select { font-size: 0.6875rem; padding: 4px 20px 4px 7px; }
+  .cart-drawer .v-drawer-upsell__price.v-price--sale .v-price__now { font-size: 0.9375rem; }
+  .cart-drawer .v-drawer-upsell .v-link-cta { font-size: 0.6875rem; padding: 5px 11px; }
   .cart-drawer .drawer__footer { position: relative; z-index: 3; background: var(--v-canvas); }
   .cart-drawer .cart-item { position: relative; z-index: 1; }
   /* Make the item list scrollable so every product is reachable */
