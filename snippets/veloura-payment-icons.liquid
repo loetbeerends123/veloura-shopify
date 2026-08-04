@@ -1,0 +1,13 @@
+{%- comment -%}
+  Veloura — small accepted-payment icons under the checkout button.
+  Fixed list on purpose (Visa, Mastercard, Apple Pay, Google Pay, Shop Pay);
+  PayPal intentionally excluded. Uses Shopify's built-in payment SVGs.
+{%- endcomment -%}
+{%- assign v_pay_types = 'visa,master,apple_pay,google_pay,shopify_pay' | split: ',' -%}
+<div class="v-payicons" role="list" aria-label="Accepted payment methods">
+  {%- for type in v_pay_types -%}
+    <span class="v-payicons__item" role="listitem">
+      {{ type | payment_type_svg_tag: class: 'v-payicons__svg' }}
+    </span>
+  {%- endfor -%}
+</div>

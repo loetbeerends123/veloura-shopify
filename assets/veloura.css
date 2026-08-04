@@ -653,6 +653,11 @@ cart-items .cart-items thead { display: none; }
 }
 
 /* Proactive bundle-offer nudge (cart drawer + cart page) */
+/* Accepted-payment icons under the checkout button (small, centered) */
+.v-payicons { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; align-items: center; margin-top: 12px; }
+.v-payicons__item { display: inline-flex; line-height: 0; }
+.v-payicons__svg { height: 22px; width: auto; border-radius: 4px; box-shadow: 0 0 0 1px rgba(28,16,9,0.06); }
+
 /* Secure-checkout padlock: a little "lock click" wiggle every few seconds to
    draw the eye toward the checkout button. */
 .v-lock-anim { display: inline-flex; transform-origin: 50% 70%; animation: v-lock-nudge 3s ease-in-out infinite; }
