@@ -287,7 +287,7 @@
           <div class="footer__payment">
             <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
             <ul class="list list-payment" role="list">
-              {%- assign veloura_payments = 'visa,master,apple_pay,google_pay,paypal,shopify_pay' | split: ',' -%}
+              {%- assign veloura_payments = 'visa,master,apple_pay,google_pay,shopify_pay' | split: ',' -%}
               {%- for type in veloura_payments -%}
                 <li class="list-payment__item">
                   {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
