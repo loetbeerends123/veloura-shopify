@@ -464,9 +464,9 @@ body {
 .v-trust svg { width: 14px; height: 14px; }
 
 /* PDP/cart trust badges row — bolder + darker for legibility */
-.v-trust-badges { font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.06em; color: var(--v-text); gap: 10px 22px; }
-.v-trust-badges span { gap: 7px; }
-.v-trust-badges svg { width: 17px; height: 17px; color: var(--v-green); }
+.v-trust-badges { font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.06em; color: var(--v-text); gap: 10px 22px; }
+.v-trust-badges span { gap: 8px; }
+.v-trust-badges svg { width: 19px; height: 19px; color: var(--v-green); }
 
 /* ============================================================
    Bundle tiers (PRD §1.4, §2.1)
