@@ -221,7 +221,7 @@
 .v-pdp__buybox { padding-top: 8px; scroll-margin-top: calc(var(--header-height, 64px) + 16px); }
 .v-pdp__offer { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; padding: 10px 16px; background: var(--v-badge-popular); color: #fff; font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-align: center; border-radius: var(--v-radius-sm); }
 .v-pdp__offer svg { flex: none; }
-.v-pdp .v-pdp__name { font-size: clamp(2.25rem, 4.8vw, 3.15rem); font-weight: 800; letter-spacing: -0.015em; margin: 0 0 10px; }
+.v-pdp .v-pdp__name { font-size: clamp(2.25rem, 4.8vw, 3.15rem); font-weight: 600; letter-spacing: -0.008em; margin: 0 0 10px; }
 .v-pdp__rating { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; }
 .v-pdp__rating .v-stars { font-size: 1rem; }
 .v-pdp__rating-text { font-size: 1.0625rem; font-weight: 500; color: var(--v-muted); }
@@ -290,9 +290,9 @@
    with a slightly smaller title. */
 @media (max-width: 749px) {
   .v-pdp__titlerow { align-items: flex-start; gap: 12px; }
-  /* Extra-bold Playfair sets ~5% wider, so the mobile size steps back a touch to
-     keep the title/size-chart row on one line and inside the viewport. */
-  .v-pdp .v-pdp__name { font-size: clamp(1.375rem, 5.5vw, 1.875rem); line-height: 1.18; }
+  /* Semibold Playfair sets slightly wider than regular, so the mobile size stays
+     a touch back to keep the title/size-chart row on one line. */
+  .v-pdp .v-pdp__name { font-size: clamp(1.4375rem, 5.7vw, 1.9375rem); line-height: 1.18; }
   .v-pdp__sizeguide { margin-top: 4px; }
 }
 {% endstylesheet %}
