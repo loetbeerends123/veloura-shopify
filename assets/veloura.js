@@ -242,25 +242,65 @@
     var main = root.querySelector('[data-gallery-main]');
     var thumbs = Array.prototype.slice.call(root.querySelectorAll('[data-gallery-thumb]'));
     if (!main || !thumbs.length) return;
+
+    function select(thumb) {
+      var src = thumb.getAttribute('data-src');
+      if (!src) return;
+      // Mark active first: with repeated photos the src can already match, and
+      // the active thumb still has to follow the swipe.
+      thumbs.forEach(function (t) { t.classList.remove('is-active'); });
+      thumb.classList.add('is-active');
+      if (src === main.getAttribute('src')) return;
+      main.style.opacity = '0';
+      setTimeout(function () {
+        main.src = src;
+        var alt = thumb.getAttribute('data-alt');
+        if (alt) main.alt = alt;
+        // Wait for the new image to decode so the fade-in never shows a blank frame.
+        var show = function () { main.style.opacity = '1'; };
+        if (main.decode) main.decode().then(show, show);
+        else if (main.complete) show();
+        else main.onload = show;
+      }, 150);
+    }
+
     thumbs.forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        var src = thumb.getAttribute('data-src');
-        if (!src || src === main.getAttribute('src')) return;
-        thumbs.forEach(function (t) { t.classList.remove('is-active'); });
-        thumb.classList.add('is-active');
-        main.style.opacity = '0';
-        setTimeout(function () {
-          main.src = src;
-          var alt = thumb.getAttribute('data-alt');
-          if (alt) main.alt = alt;
-          // Wait for the new image to decode so the fade-in never shows a blank frame.
-          var show = function () { main.style.opacity = '1'; };
-          if (main.decode) main.decode().then(show, show);
-          else if (main.complete) show();
-          else main.onload = show;
-        }, 150);
-      });
+      thumb.addEventListener('click', function () { select(thumb); });
     });
+
+    /* Touch: swipe the main photo left/right to step through the gallery, so
+       phone shoppers aren't forced to hit the small thumbnails. Nothing is
+       preventDefault-ed and the listeners are passive, so vertical page
+       scrolling stays native — a swipe only counts when it is clearly
+       horizontal and long enough not to be a tap. */
+    var stage = main.parentNode || main;
+    var x0 = 0, y0 = 0, tracking = false;
+
+    stage.addEventListener('touchstart', function (e) {
+      tracking = e.touches.length === 1;
+      if (!tracking) return;
+      x0 = e.touches[0].clientX;
+      y0 = e.touches[0].clientY;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - x0;
+      var dy = t.clientY - y0;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      var current = 0;
+      thumbs.forEach(function (th, i) { if (th.classList.contains('is-active')) current = i; });
+      var next = current + (dx < 0 ? 1 : -1);
+      if (next < 0 || next >= thumbs.length) return;   // no wrap: the ends feel like ends
+      select(thumbs[next]);
+      // Keep the thumbnail strip in sync; block:'nearest' so the page itself
+      // never jumps vertically.
+      if (thumbs[next].scrollIntoView) {
+        thumbs[next].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      }
+    }, { passive: true });
   }
 
   /* ========================================================================
