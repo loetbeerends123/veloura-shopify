@@ -23,7 +23,9 @@
                   {%- endif -%}
                 </span>
                 <span class="v-ba-section__author-meta">
-                  {%- if section.settings.author_name != blank -%}<strong class="v-ba-section__name">{{ section.settings.author_name }}</strong>{%- endif -%}
+                  {%- if section.settings.author_name != blank -%}
+                    <strong class="v-ba-section__name">{{ section.settings.author_name }}{%- if section.settings.author_age != blank -%}<span class="v-ba-section__age">, {{ section.settings.author_age }}</span>{%- endif -%}</strong>
+                  {%- endif -%}
                   {%- if section.settings.quote_attr != blank -%}<span class="v-body-sm v-muted">{{ section.settings.quote_attr }}</span>{%- endif -%}
                 </span>
               </div>
@@ -61,6 +63,9 @@
 .v-ba-section__avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
 .v-ba-section__author-meta { display: flex; flex-direction: column; gap: 2px; }
 .v-ba-section__name { font-family: var(--v-font-body); font-weight: 700; font-size: 1.0625rem; color: var(--v-text); }
+/* Age rides on the name line in a lighter weight, so the name still leads and
+   the two-line author block keeps its height. */
+.v-ba-section__age { font-weight: 500; color: var(--v-muted); }
 .v-ba-section__media { max-width: 460px; width: 100%; justify-self: center; }
 @media (max-width: 849px) {
   .v-ba-section__split { grid-template-columns: 1fr; }
@@ -86,6 +91,7 @@
     { "type": "header", "content": "Split layout extras" },
     { "type": "textarea", "id": "quote", "label": "Quote" },
     { "type": "text", "id": "author_name", "label": "Reviewer name", "default": "Jessica M." },
+    { "type": "text", "id": "author_age", "label": "Reviewer age (shown after the name)", "default": "38 years old" },
     { "type": "image_picker", "id": "author_image", "label": "Reviewer photo (round). Leave empty to use the built-in photo." },
     { "type": "text", "id": "quote_attr", "label": "Quote attribution", "default": "Verified Purchase" }
   ],
