@@ -111,7 +111,7 @@ body {
   display: block;
   font-family: var(--v-font-body);
   font-weight: 500;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--v-rust);
@@ -120,16 +120,16 @@ body {
 .v-label {
   font-family: var(--v-font-body);
   font-weight: 500;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.v-body { font-family: var(--v-font-body); font-size: 1.125rem; line-height: 1.7; }
-.v-body-lg { font-size: 1.1875rem; line-height: 1.7; }
-.v-body-sm { font-size: 0.9375rem; line-height: 1.6; }
+.v-body { font-family: var(--v-font-body); font-size: 1.25rem; line-height: 1.7; }
+.v-body-lg { font-size: 1.3125rem; line-height: 1.7; }
+.v-body-sm { font-size: 1.0625rem; line-height: 1.6; }
 .v-muted { color: var(--v-muted); }
 .v-rust-text { color: var(--v-rust); }
-.v-price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.25rem; }
+.v-price { font-family: var(--v-font-body); font-weight: 600; font-size: 1.375rem; }
 .v-price--sale { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
 .v-price__compare { font-weight: 400; font-size: 0.875em; color: var(--v-muted); text-decoration: line-through; }
 .v-price__now { color: var(--v-rust); font-weight: 700; }
@@ -143,12 +143,12 @@ body {
 /* Urgency / risk-reversal microcopy */
 .v-urgency {
   display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--v-font-body); font-weight: 600; font-size: 0.875rem;
+  font-family: var(--v-font-body); font-weight: 600; font-size: 0.9375rem;
   letter-spacing: 0.01em; color: var(--v-scarcity);
 }
 .v-guarantee {
   display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--v-font-body); font-weight: 600; font-size: 0.875rem;
+  font-family: var(--v-font-body); font-weight: 600; font-size: 0.9375rem;
   color: var(--v-green);
 }
 
@@ -162,7 +162,7 @@ body {
 .v-section--dark { background: var(--v-canvas-dark); color: var(--v-white); }
 .v-section-head { text-align: center; max-width: 640px; margin: 0 auto clamp(32px, 5vw, 56px); }
 .v-section-head .v-h2 { margin-bottom: 12px; }
-.v-section-head p { color: var(--v-muted); font-size: 1.125rem; line-height: 1.6; margin: 0; }
+.v-section-head p { color: var(--v-muted); font-size: 1.25rem; line-height: 1.6; margin: 0; }
 .v-hairline { border: 0; border-top: 1px solid var(--v-border); margin: 0; }
 
 /* ============================================================
@@ -175,7 +175,7 @@ body {
   gap: 8px;
   font-family: var(--v-font-body);
   font-weight: 500;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1;
@@ -196,7 +196,7 @@ body {
   background: transparent;
   border-color: var(--v-text);
   color: var(--v-text);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   padding: 12px 24px;
 }
 .v-btn--outline:hover { background: var(--v-text); color: var(--v-white); }
@@ -204,12 +204,12 @@ body {
   background: transparent;
   border-color: var(--v-rust);
   color: var(--v-rust);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   padding: 11px 22px;
 }
 .v-btn--rust-outline:hover { background: var(--v-rust); color: var(--v-white); }
 .v-btn--full { width: 100%; padding-inline: 0; }
-.v-btn--lg { padding: 18px 36px; font-size: 1.0625rem; }
+.v-btn--lg { padding: 18px 36px; font-size: 1.125rem; }
 .v-btn[disabled], .v-btn.is-disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Loading state — Dawn's product-form toggles .loading + shows .loading__spinner */
@@ -379,7 +379,7 @@ body {
 .v-faq__q {
   width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 22px 0; text-align: left;
-  font-family: var(--v-font-body); font-weight: 500; font-size: 1.0625rem; color: var(--v-text);
+  font-family: var(--v-font-body); font-weight: 500; font-size: 1.1875rem; color: var(--v-text);
 }
 .v-faq__icon { position: relative; width: 18px; height: 18px; flex: none; }
 .v-faq__icon::before, .v-faq__icon::after {
@@ -392,7 +392,7 @@ body {
 .v-faq__item.is-open .v-faq__icon::before { transform: translate(-50%, -50%) rotate(45deg); }
 .v-faq__a { overflow: hidden; max-height: 0; visibility: hidden; transition: max-height 0.2s ease-out, visibility 0.2s; }
 .v-faq__item.is-open .v-faq__a { visibility: visible; }
-.v-faq__a-inner { padding: 0 0 22px; color: var(--v-muted); font-size: 1.0625rem; line-height: 1.75; max-width: 60ch; }
+.v-faq__a-inner { padding: 0 0 22px; color: var(--v-muted); font-size: 1.1875rem; line-height: 1.75; max-width: 60ch; }
 
 /* ============================================================
    Sticky bottom cart bar (PRD §2.7)
@@ -459,12 +459,12 @@ body {
 /* ============================================================
    Trust badge row
    ============================================================ */
-.v-trust { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 18px; color: var(--v-muted); font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.v-trust { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 18px; color: var(--v-muted); font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .v-trust span { display: inline-flex; align-items: center; gap: 6px; }
 .v-trust svg { width: 14px; height: 14px; }
 
 /* PDP/cart trust badges row — bolder + darker for legibility */
-.v-trust-badges { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.06em; color: var(--v-text); gap: 10px 22px; }
+.v-trust-badges { font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.06em; color: var(--v-text); gap: 10px 22px; }
 .v-trust-badges span { gap: 7px; }
 .v-trust-badges svg { width: 17px; height: 17px; color: var(--v-green); }
 
@@ -493,13 +493,13 @@ body {
   .v-btn .loading__spinner .spinner { animation-duration: 2s; }
 }
 .v-tier__main { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.v-tier__label { font-family: var(--v-font-body); font-weight: 600; font-size: 0.9375rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
-.v-tier__sub { font-size: 0.9375rem; color: var(--v-muted); }
+.v-tier__label { font-family: var(--v-font-body); font-weight: 600; font-size: 1.0625rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--v-text); }
+.v-tier__sub { font-size: 1.0625rem; color: var(--v-muted); }
 .v-tier__price { font-family: var(--v-font-body); font-weight: 700; font-size: 1.375rem; white-space: nowrap; }
 .v-tier__compare { display: block; font-size: 0.8125rem; font-weight: 400; color: var(--v-muted); text-decoration: line-through; margin-top: 2px; }
 .v-tier__badge { position: absolute; top: -11px; right: 16px; box-shadow: 0 2px 8px rgba(139, 26, 26, 0.25); }
 .v-tier__features { display: grid; gap: 6px; margin-top: 4px; }
-.v-tier__features li { display: flex; align-items: center; gap: 8px; font-size: 0.9375rem; color: var(--v-muted); }
+.v-tier__features li { display: flex; align-items: center; gap: 8px; font-size: 1.0625rem; color: var(--v-muted); }
 .v-tier__features svg { color: var(--v-green); flex: none; }
 .v-tier .v-badge--save { align-self: flex-start; }
 
@@ -507,8 +507,8 @@ body {
    Review cards (PRD §1.5, §2.6)
    ============================================================ */
 .v-review { background: var(--v-white); border: 1px solid var(--v-border); border-radius: var(--v-radius-md); padding: 22px; break-inside: avoid; }
-.v-review__text { font-size: 1.0625rem; line-height: 1.65; margin: 12px 0 16px; }
-.v-review__meta { display: flex; align-items: center; gap: 10px; font-size: 0.75rem; color: var(--v-muted); }
+.v-review__text { font-size: 1.1875rem; line-height: 1.65; margin: 12px 0 16px; }
+.v-review__meta { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--v-muted); }
 .v-review__avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--v-canvas-secondary); display: grid; place-items: center; font-weight: 600; color: var(--v-rust); font-size: 0.75rem; flex: none; }
 
 /* ============================================================
@@ -792,7 +792,7 @@ cart-items .cart-items thead { display: none; }
 .footer .footer__content-top .footer-block--newsletter { order: 2; margin: 0; width: 100%; }
 .footer .footer__content-top .footer__veloura-links { order: 3; width: 100%; }
 .footer__veloura-logo { display: block; height: 48px; width: auto; margin: 0 auto; }
-.footer__veloura-tagline { margin: 14px 0 0; font-family: var(--v-font-display); font-style: italic; font-size: 1rem; color: var(--v-muted); }
+.footer__veloura-tagline { margin: 14px 0 0; font-family: var(--v-font-display); font-style: italic; font-size: 1.125rem; color: var(--v-muted); }
 /* Remove the divider line above the copyright/payment bar; match footer spacing. */
 .footer .footer__content-bottom { border-top: 0; padding-top: 30px; }
 /* Localization selectors are disabled; hide the empty flex column so the
@@ -802,7 +802,7 @@ cart-items .cart-items thead { display: none; }
 .footer__veloura-links ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 40px; margin: 0; }
 .footer__veloura-links a {
   color: var(--v-text);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;

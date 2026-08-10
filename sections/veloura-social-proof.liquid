@@ -8,7 +8,7 @@
       {%- if section.settings.rating_text != blank -%}
         <div class="v-social__rating">
           <span class="v-stars">{% for i in (1..4) %}{% render 'veloura-icon', name: 'star', size: 16 %}{% endfor %}{% render 'veloura-icon', name: 'star-half', size: 16 %}</span>
-          <span class="v-label" style="font-size:0.75rem;color:var(--v-text);">{{ section.settings.rating_text }}</span>
+          <span class="v-label" style="font-size:0.875rem;color:var(--v-text);">{{ section.settings.rating_text }}</span>
         </div>
       {%- endif -%}
     </div>
@@ -33,7 +33,7 @@
         {%- elsif block.type == 'expert' -%}
           <article class="v-review v-review--expert v-reveal" {{ block.shopify_attributes }}>
             <span class="v-social__expert-icon">{% render 'veloura-icon', name: 'shield', size: 26 %}</span>
-            <p class="v-review__text v-italic" style="font-size:1.0625rem;">“{{ block.settings.text }}”</p>
+            <p class="v-review__text v-italic" style="font-size:1.1875rem;">“{{ block.settings.text }}”</p>
             <div class="v-review__meta"><strong style="color:var(--v-text);font-weight:600;">{{ block.settings.name }}</strong></div>
           </article>
         {%- endif -%}
