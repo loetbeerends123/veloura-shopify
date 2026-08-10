@@ -281,8 +281,11 @@
      taller than the banner, and with implicit `auto` rows the browser hands
      that surplus height to row 1 — which opened a big empty gap above the
      title. Pinning row 1 to its content sends the surplus to row 2 instead. */
-  .v-pdp__grid:has(> .v-pdp__offer) { row-gap: 18px; grid-template-rows: min-content auto; }
-  .v-pdp__grid > .v-pdp__offer { grid-column: 2; grid-row: 1; margin-bottom: 0; }
+  .v-pdp__grid:has(> .v-pdp__offer) { row-gap: 0; grid-template-rows: min-content auto; }
+  /* Banner sits directly on the title: kill the row gap and the buy box's own
+     top padding, which together left a visible strip of canvas. */
+  .v-pdp__grid:has(> .v-pdp__offer) > .v-pdp__buybox { padding-top: 0; }
+  .v-pdp__grid > .v-pdp__offer { grid-column: 2; grid-row: 1; margin-bottom: 14px; }
   .v-pdp__grid:has(> .v-pdp__offer) > .v-pdp__gallery { grid-column: 1; grid-row: 1 / span 2; }
   .v-pdp__grid:has(> .v-pdp__offer) > .v-pdp__buybox { grid-column: 2; grid-row: 2; }
   .v-pdp__gallery { width: min(calc(100vh - var(--header-height, 64px) - 44px), 48vw, 780px); }
