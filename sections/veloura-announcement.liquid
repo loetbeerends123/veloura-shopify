@@ -66,13 +66,14 @@
 .v-announce__item {
   display: inline-flex;
   align-items: center;
-  /* Bigger/bolder copy at the same bar height: the tighter line-height gives
-     back exactly what the larger font-size adds (was 14px text + 8px padding). */
-  padding: 9px 0;
+  /* Bigger/bolder copy at the same bar height: line-height and padding are
+     tightened to give back what the larger font-size adds, so the line box
+     stays ~37px (was 14px text + 8px padding). */
+  padding: 8px 0;
   font-family: var(--v-font-body);
   font-weight: 800;
-  font-size: 1rem;
-  line-height: 1.2;
+  font-size: 1.125rem;
+  line-height: 1.15;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: inherit;
