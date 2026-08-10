@@ -13,7 +13,12 @@
       "type": "veloura-product",
       "settings": {
         "overline": "",
-        "rating_text": "4.8 based on 471 Reviews",
+        "rating_text": "<strong>4.8</strong> · 471 reviews · 5,400+ women",
+        "award_text": "Award-Winning 2026 Innovation – Anti-Cellulite",
+        "usp_1": "Visibly smoother skin, week after week",
+        "usp_2": "Tones your legs while you live your life",
+        "usp_3": "Lifts and shapes from the first wear",
+        "usp_4": "A sleeker, more sculpted silhouette",
         "hero_claim": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>",
         "tagline": "",
         "body": "",
