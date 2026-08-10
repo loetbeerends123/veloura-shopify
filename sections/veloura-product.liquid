@@ -256,9 +256,11 @@
 .v-pdp__award { display: flex; align-items: center; gap: 8px; margin: 6px 0 8px; font-family: var(--v-font-body); font-size: 1rem; font-weight: 500; line-height: 1.3; color: var(--v-muted); }
 .v-pdp__award svg { flex: none; color: var(--v-rust); }
 .v-pdp__usps { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid var(--v-border); }
-.v-pdp__usps li { display: flex; align-items: center; gap: 15px; padding: 5px 0; font-family: var(--v-font-body); font-size: 1.125rem; font-weight: 500; line-height: 1.35; color: var(--v-text); }
-.v-pdp__usps li + li { margin-top: 9px; }
-.v-pdp__usps svg { flex: none; color: var(--v-rust); }
+.v-pdp__usps li { display: flex; align-items: center; gap: 14px; padding: 0; font-family: var(--v-font-body); font-size: 1.125rem; font-weight: 500; line-height: 1.35; color: var(--v-text); }
+.v-pdp__usps li + li { margin-top: 4px; }
+/* The icon box, not the text, sets the row height — keep it close to the line
+   height or the rows drift apart. */
+.v-pdp__usps svg { flex: none; width: 26px; height: 26px; color: var(--v-rust); }
 .v-pdp .v-pdp__name { font-size: clamp(2.25rem, 4.8vw, 3.15rem); font-weight: 600; letter-spacing: -0.008em; margin: 0 0 10px; }
 .v-pdp__rating { display: flex; align-items: center; gap: 10px; margin: 0 0 14px; }
 .v-pdp__rating .v-stars { font-size: 1.125rem; }
@@ -334,10 +336,10 @@
   .v-pdp .v-pdp__name { font-size: clamp(1.4375rem, 5.7vw, 1.9375rem); line-height: 1.18; }
   .v-pdp__sizeguide { margin-top: 4px; }
   .v-pdp__award { font-size: 0.9375rem; gap: 7px; margin: 5px 0 7px; }
-  .v-pdp__usps { padding-top: 12px; }
-  .v-pdp__usps li { font-size: 1.0625rem; gap: 12px; padding: 4px 0; }
-  .v-pdp__usps li + li { margin-top: 7px; }
-  .v-pdp__usps svg { width: 26px; height: 26px; }
+  .v-pdp__usps { padding-top: 11px; }
+  .v-pdp__usps li { font-size: 1.0625rem; gap: 11px; }
+  .v-pdp__usps li + li { margin-top: 3px; }
+  .v-pdp__usps svg { width: 24px; height: 24px; }
 }
 {% endstylesheet %}
 
