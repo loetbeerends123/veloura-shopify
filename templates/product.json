@@ -228,10 +228,43 @@
         "blush": false,
         "media_left": true
       }
+    },
+    "ugc": {
+      "type": "veloura-ugc",
+      "blocks": {
+        "c1": {
+          "type": "clip",
+          "settings": { "asset_file": "veloura-ugc-1.mp4" }
+        },
+        "c2": {
+          "type": "clip",
+          "settings": { "asset_file": "veloura-ugc-2.mp4" }
+        },
+        "c3": {
+          "type": "clip",
+          "settings": { "asset_file": "veloura-ugc-3.mp4" }
+        },
+        "c4": {
+          "type": "clip",
+          "settings": { "asset_file": "veloura-ugc-4.mp4" }
+        },
+        "c5": {
+          "type": "clip",
+          "settings": { "asset_file": "veloura-ugc-5.mp4" }
+        }
+      },
+      "block_order": ["c1", "c2", "c3", "c4", "c5"],
+      "settings": {
+        "blush": false,
+        "eyebrow": "Real Women, Real Results",
+        "heading": "Seen On Our Community",
+        "subheading": ""
+      }
     }
   },
   "order": [
     "main",
+    "ugc",
     "transformation",
     "journey",
     "video_split",

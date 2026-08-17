@@ -1,0 +1,271 @@
+{%- comment -%}
+  Veloura — UGC video strip. A row of portrait (9:16) customer clips that
+  autoplay muted + looped, forever. Desktop: 5 across, deliberately small.
+  Mobile: edge-bleed scroll-snap carousel.
+
+  Bandwidth: nothing is downloaded until the strip nears the viewport
+  (data-src is swapped in by the observer below), and clips pause when
+  scrolled out of view.
+{%- endcomment -%}
+
+<section class="v-section v-ugc {% if section.settings.blush %}v-section--blush{% endif %}">
+  <div class="v-container">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div class="v-ugc__head v-reveal">
+        {%- if section.settings.eyebrow != blank -%}<span class="v-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="v-h2 v-ugc__title">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.subheading != blank -%}<p class="v-ugc__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="v-ugc__track v-reveal" data-v-ugc>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          # Shopify transcodes uploaded videos into several resolutions. A browser plays the
+          # first <source> it can decode, so pick one deliberately: the smallest mp4 that is
+          # still >= 600px tall (these render ~200px wide), else the largest on offer.
+          assign clip_src = ''
+          assign clip_mime = 'video/mp4'
+          if block.settings.video != blank
+            assign best_h = 0
+            for source in block.settings.video.sources
+              if source.format != 'mp4'
+                continue
+              endif
+              if clip_src == blank
+                assign clip_src = source.url
+                assign clip_mime = source.mime_type
+                assign best_h = source.height
+              elsif best_h < 600 and source.height > best_h
+                assign clip_src = source.url
+                assign clip_mime = source.mime_type
+                assign best_h = source.height
+              elsif source.height >= 600 and source.height < best_h
+                assign clip_src = source.url
+                assign clip_mime = source.mime_type
+                assign best_h = source.height
+              endif
+            endfor
+          elsif block.settings.video_url != blank
+            assign clip_src = block.settings.video_url
+          elsif block.settings.asset_file != blank
+            assign clip_src = block.settings.asset_file | asset_url
+          endif
+
+          assign clip_poster = ''
+          if block.settings.poster != blank
+            assign clip_poster = block.settings.poster | image_url: width: 720
+          elsif block.settings.video.preview_image != blank
+            assign clip_poster = block.settings.video.preview_image | image_url: width: 720
+          endif
+        -%}
+        <figure class="v-ugc__item" {{ block.shopify_attributes }}>
+          <div class="v-ugc__frame">
+            <video
+              class="v-ugc__video"
+              muted
+              loop
+              playsinline
+              autoplay
+              disablepictureinpicture
+              preload="none"
+              tabindex="-1"
+              aria-label="{{ block.settings.caption | default: 'Veloura customer video' | escape }}"
+              {% if clip_poster != blank %}poster="{{ clip_poster }}"{% endif %}
+            >
+              {%- if clip_src != blank -%}
+                <source data-src="{{ clip_src }}" type="{{ clip_mime }}">
+              {%- endif -%}
+            </video>
+          </div>
+          {%- if block.settings.caption != blank -%}
+            <figcaption class="v-ugc__caption">{{ block.settings.caption }}</figcaption>
+          {%- endif -%}
+        </figure>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var roots = document.querySelectorAll('[data-v-ugc]');
+    if (!roots.length) return;
+
+    function load(video) {
+      if (video.dataset.vLoaded) return;
+      video.dataset.vLoaded = '1';
+      var sources = video.querySelectorAll('source[data-src]');
+      for (var i = 0; i < sources.length; i++) {
+        sources[i].src = sources[i].dataset.src;
+      }
+      video.load();
+    }
+
+    function play(video) {
+      video.muted = true; // iOS refuses autoplay otherwise
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!('IntersectionObserver' in window)) {
+      roots.forEach(function (root) {
+        root.querySelectorAll('video').forEach(function (v) { load(v); if (!reduced) play(v); });
+      });
+      return;
+    }
+
+    // Pre-load the clips a little before they scroll in, so the first frame is there.
+    var preloader = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          load(entry.target);
+          preloader.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '600px 0px' });
+
+    // Only the clips actually on screen keep playing.
+    var player = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          load(entry.target);
+          if (!reduced) play(entry.target);
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    roots.forEach(function (root) {
+      root.querySelectorAll('video').forEach(function (v) {
+        preloader.observe(v);
+        player.observe(v);
+      });
+    });
+  })();
+</script>
+
+{% stylesheet %}
+.v-ugc__head { text-align: center; margin-bottom: 32px; }
+.v-ugc__head .v-eyebrow { color: var(--v-rust); }
+.v-ugc__title { margin: 0; }
+.v-ugc__sub {
+  font-family: var(--v-font-body);
+  color: var(--v-muted);
+  font-size: 1.0625rem;
+  margin: 10px auto 0;
+  max-width: 56ch;
+}
+
+.v-ugc__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 16px;
+  max-width: 940px;   /* keeps the clips deliberately small on desktop */
+  margin: 0 auto;
+}
+.v-ugc__item { margin: 0; min-width: 0; }
+.v-ugc__frame {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--v-radius-md);
+  overflow: hidden;
+  background: #e6dcd6;
+  box-shadow: var(--v-shadow-card);
+}
+.v-ugc__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.v-ugc__caption {
+  font-family: var(--v-font-body);
+  font-size: 0.8125rem;
+  color: var(--v-muted);
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Tablet — 3 across, wrapping */
+@media (max-width: 1023px) {
+  .v-ugc__track {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 620px;
+  }
+}
+
+/* Mobile — edge-bleed scroll-snap carousel, ~2.2 clips visible */
+@media (max-width: 749px) {
+  .v-ugc__track {
+    display: flex;
+    grid-template-columns: none;
+    max-width: none;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* bleed past the container gutter so the strip reaches both screen edges */
+    margin-inline: calc(var(--v-gutter, 24px) * -1);
+    padding-inline: var(--v-gutter, 24px);
+    padding-bottom: 4px;
+  }
+  .v-ugc__track::-webkit-scrollbar { display: none; }
+  .v-ugc__item {
+    flex: 0 0 42%;
+    max-width: 200px;
+    scroll-snap-align: start;
+  }
+}
+@media (max-width: 400px) {
+  .v-ugc__item { flex-basis: 48%; }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Veloura UGC Videos",
+  "tag": "section",
+  "class": "veloura-section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "checkbox", "id": "blush", "label": "Blush background", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Real Women, Real Results" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Seen On Our Community" },
+    { "type": "text", "id": "subheading", "label": "Subheading" }
+  ],
+  "blocks": [
+    {
+      "type": "clip",
+      "name": "Video clip",
+      "settings": [
+        { "type": "paragraph", "content": "Use a Shopify-hosted video for the best loading speed. Otherwise the theme asset below is used. Clips always play muted and on loop." },
+        { "type": "video", "id": "video", "label": "Video (Shopify-hosted)" },
+        { "type": "text", "id": "video_url", "label": "…or external MP4 URL" },
+        { "type": "text", "id": "asset_file", "label": "…or theme asset filename", "info": "e.g. veloura-ugc-1.mp4" },
+        { "type": "image_picker", "id": "poster", "label": "Poster image (optional)" },
+        { "type": "text", "id": "caption", "label": "Caption (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Veloura UGC Videos",
+      "blocks": [
+        { "type": "clip", "settings": { "asset_file": "veloura-ugc-1.mp4" } },
+        { "type": "clip", "settings": { "asset_file": "veloura-ugc-2.mp4" } },
+        { "type": "clip", "settings": { "asset_file": "veloura-ugc-3.mp4" } },
+        { "type": "clip", "settings": { "asset_file": "veloura-ugc-4.mp4" } },
+        { "type": "clip", "settings": { "asset_file": "veloura-ugc-5.mp4" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
