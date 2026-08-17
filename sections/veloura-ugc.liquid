@@ -154,10 +154,13 @@
 </script>
 
 {% stylesheet %}
-.v-ugc__head { text-align: center; margin-bottom: 32px; }
+/* A quiet interlude between two big blocks — it gets far less room than a
+   full .v-section, whose 80px top and bottom stack with the neighbours'. */
+.v-section.v-ugc { padding-block: clamp(20px, 2.5vw, 30px); }
+.v-ugc__head { text-align: center; margin-bottom: clamp(12px, 1.8vw, 18px); }
 .v-ugc__head .v-eyebrow { color: var(--v-rust); }
-/* Two classes deep so it beats .v-h2's own colour regardless of stylesheet order. */
-.v-ugc .v-ugc__title { margin: 0; color: var(--v-rust); }
+/* Two classes deep so it beats .v-h2's own colour and weight regardless of stylesheet order. */
+.v-ugc .v-ugc__title { margin: 0; color: var(--v-rust); font-weight: 700; }
 .v-ugc__sub {
   font-family: var(--v-font-body);
   color: var(--v-muted);
