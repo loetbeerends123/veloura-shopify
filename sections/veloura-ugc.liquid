@@ -52,11 +52,16 @@
             assign clip_src = block.settings.asset_file | asset_url
           endif
 
+          # A poster means the strip is visible immediately, before a byte of video loads.
+          # Theme assets carry theirs alongside: veloura-ugc-1.mp4 -> veloura-ugc-1-poster.jpg.
           assign clip_poster = ''
           if block.settings.poster != blank
             assign clip_poster = block.settings.poster | image_url: width: 720
           elsif block.settings.video.preview_image != blank
             assign clip_poster = block.settings.video.preview_image | image_url: width: 720
+          elsif block.settings.asset_file != blank
+            assign poster_name = block.settings.asset_file | split: '.' | first | append: '-poster.jpg'
+            assign clip_poster = poster_name | asset_url
           endif
         -%}
         <figure class="v-ugc__item" {{ block.shopify_attributes }}>
