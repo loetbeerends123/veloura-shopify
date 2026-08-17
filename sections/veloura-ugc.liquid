@@ -151,7 +151,8 @@
 {% stylesheet %}
 .v-ugc__head { text-align: center; margin-bottom: 32px; }
 .v-ugc__head .v-eyebrow { color: var(--v-rust); }
-.v-ugc__title { margin: 0; }
+/* Two classes deep so it beats .v-h2's own colour regardless of stylesheet order. */
+.v-ugc .v-ugc__title { margin: 0; color: var(--v-rust); }
 .v-ugc__sub {
   font-family: var(--v-font-body);
   color: var(--v-muted);
