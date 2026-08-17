@@ -256,8 +256,8 @@
       "block_order": ["c1", "c2", "c3", "c4", "c5"],
       "settings": {
         "blush": false,
-        "eyebrow": "Real Women, Real Results",
-        "heading": "Seen On Our Community",
+        "eyebrow": "",
+        "heading": "Real Women, Real Results",
         "subheading": ""
       }
     }
