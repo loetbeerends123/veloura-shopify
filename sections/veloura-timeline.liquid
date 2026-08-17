@@ -35,6 +35,11 @@
   background: var(--v-rust); color: #fff; font-family: var(--v-font-display); font-size: 1.25rem; margin-bottom: 18px;
 }
 .v-timeline .v-section-head p { font-size: 1.25rem; }
+/* On the PDP the before/after block runs straight into this one and both are
+   blush, so their 80px paddings meet as one 160px seam of empty colour. Trim
+   the opening — only where that pairing actually occurs (not on the homepage,
+   where the video split sits between them). */
+.shopify-section:has(> .v-ba-section) + .shopify-section .v-timeline { padding-top: clamp(24px, 3vw, 36px); }
 .v-timeline__label { display: block; font-size: 0.9375rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v-rust); margin-bottom: 8px; }
 .v-timeline__title { font-family: var(--v-font-body); font-weight: 700; font-size: 1.375rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--v-text); margin: 0 0 10px; }
 .v-timeline--numbered .v-timeline__title { font-size: 1.5rem; letter-spacing: 0.02em; }
