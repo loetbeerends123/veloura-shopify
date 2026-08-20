@@ -18,7 +18,8 @@
         "subheading": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>.",
         "button_label": "Shop The Veloura Legging",
         "button_link": "shopify://products/veloura-cellulite-legging",
-        "urgency": ""
+        "urgency": "",
+        "proof_text": "4.8 · from 471 reviews"
       }
     },
     "before_after": {
@@ -30,7 +31,25 @@
         "heading": "See the structural change",
         "body": "<strong>Visible reduction in dimpling</strong> after just 30 days of consistent Velo-Lymph™ therapy.",
         "quote": "",
+        "author_name": "Jessica M.",
+        "author_age": "38 years old",
         "quote_attr": ""
+      }
+    },
+    "video_split": {
+      "type": "veloura-video-split",
+      "settings": {
+        "blush": true,
+        "media_left": true,
+        "video_url": "",
+        "eyebrow": "Velo-Lymph™ In Motion",
+        "heading": "Most leggings compress.",
+        "heading_accent": "Veloura activates.",
+        "subheading": "Same fabric on your skin. A completely different mechanism underneath.",
+        "body": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>",
+        "pills": "70% Polyamide, 30% Elastane, Squat-Proof, 100% Opaque, Feels Like A Second Skin",
+        "button_label": "",
+        "button_link": ""
       }
     },
     "timeline": {
@@ -98,21 +117,22 @@
         "guarantee": "30-Day Clinical Trial Guarantee",
         "t1_label": "1 Pair — Starter Protocol",
         "t1_sub": "Good for occasional use. Try the technology.",
-        "t1_price": "£44.99",
+        "t1_price": "£49.99",
+        "t1_compare": "",
         "t2_badge": "Most Popular",
         "t2_label": "2 Pairs — Buy 1 Get 1 Free",
-        "t2_price": "£44.99",
-        "t2_compare": "£89.98",
-        "t2_save": "Save £44.99 + Free Shipping",
+        "t2_price": "£49.99",
+        "t2_compare": "£99.98",
+        "t2_save": "Save £49.99 + Free Shipping",
         "feature_1": "Full cellular update",
         "feature_2": "Consistent daily therapy",
         "feature_3": "Never miss a day. Maximum clinical results.",
         "t3_badge": "Best Value",
         "t3_label": "3 Pairs — Best Value",
         "t3_sub": "Never miss a day. Maximum clinical results.",
-        "t3_price": "£59.99",
-        "t3_compare": "£134.97",
-        "t3_save": "Save £74.98 + Free Shipping"
+        "t3_price": "£69.99",
+        "t3_compare": "£149.97",
+        "t3_save": "Save £79.98 + Free Shipping"
       }
     },
     "social_proof": {
@@ -186,13 +206,6 @@
         "rating_text": "4.8/5 from 471 reviews",
         "link_label": "",
         "link_url": "shopify://products/veloura-cellulite-legging"
-      }
-    },
-    "video_split": {
-      "type": "veloura-video-split",
-      "settings": {
-        "blush": true,
-        "media_left": true
       }
     }
   },
