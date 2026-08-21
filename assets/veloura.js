@@ -628,11 +628,10 @@
     });
   }
 
-  /* ---- Announcement countdown --------------------------------------------
-     Drives the clock in every [data-v-countdown] pill of the announcement
-     marquee. The bar prints the pill once per repeat plus a duplicated group
-     for the seamless loop, so each clone runs off its own deadline value but
-     they all resolve to the same instant. Three modes: 'midnight' (end of the
+  /* ---- Offer countdown ----------------------------------------------------
+     Drives the clock in every [data-v-countdown] pill. The PDP offer banner
+     prints one for mobile and one for desktop, so each copy runs its own tick
+     but they resolve to the same instant. Three modes: 'midnight' (end of the
      visitor's day, rolls over on its own), 'date' (a fixed end stamp) and
      'rolling' (an evergreen per-visitor window kept in localStorage). */
   function initCountdown(root) {
@@ -676,8 +675,6 @@
           clock.textContent = expired;
         } else {
           el.hidden = true;
-          var sep = el.nextElementSibling;
-          if (sep && sep.classList.contains('v-announce__sep')) sep.hidden = true;
         }
         clearInterval(el._vTick);
       }

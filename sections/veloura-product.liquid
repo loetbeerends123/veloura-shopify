@@ -28,7 +28,32 @@
   assign product_form_id = 'product-form-' | append: section.id
   assign current_variant = product.selected_or_first_available_variant
   assign s = section.settings
+
+  comment
+    Offer-banner countdown: hidden when a fixed end date is asked for but not set.
+  endcomment
+  assign show_timer = s.show_countdown
+  if s.countdown_mode == 'date' and s.countdown_end == blank
+    assign show_timer = false
+  endif
 -%}
+{%- capture offer_timer -%}
+  {%- if show_timer -%}
+    <span
+      class="v-pdp__offer-timer"
+      data-v-countdown
+      data-mode="{{ s.countdown_mode }}"
+      data-end="{{ s.countdown_end | escape }}"
+      data-hours="{{ s.countdown_hours }}"
+      data-key="{{ section.id }}"
+      data-expired="{{ s.countdown_expired | escape }}"
+    >
+      {%- render 'veloura-icon', name: 'clock', size: 14 -%}
+      {%- if s.countdown_label != blank -%}<span class="v-pdp__offer-label">{{ s.countdown_label }}</span>{%- endif -%}
+      <span class="v-pdp__offer-clock" data-v-countdown-clock>--:--:--</span>
+    </span>
+  {%- endif -%}
+{%- endcapture -%}
 <section class="v-pdp" data-section-id="{{ section.id }}">
   {%- if s.community_text != blank -%}
     <div class="v-pdp-community">
@@ -48,7 +73,7 @@
       {%- endcomment -%}
       {%- unless product.handle contains 'shorts' -%}
         {%- if s.offer_banner != blank -%}
-          <p class="v-pdp__offer v-pdp__offer--mobile">{% render 'veloura-icon', name: 'sparkle', size: 16 %}{{ s.offer_banner }}</p>
+          <p class="v-pdp__offer v-pdp__offer--mobile">{% render 'veloura-icon', name: 'sparkle', size: 16 %}{%- if s.countdown_position == 'before' -%}{{ offer_timer }}{%- endif -%}<span class="v-pdp__offer-text">{{ s.offer_banner }}</span>{%- if s.countdown_position != 'before' -%}{{ offer_timer }}{%- endif -%}</p>
         {%- endif -%}
       {%- endunless -%}
 
@@ -101,7 +126,7 @@
         {%- comment -%} Desktop copy of the offer banner — hidden below 990px {%- endcomment -%}
         {%- unless product.handle contains 'shorts' -%}
           {%- if s.offer_banner != blank -%}
-            <p class="v-pdp__offer v-pdp__offer--desktop">{% render 'veloura-icon', name: 'sparkle', size: 16 %}{{ s.offer_banner }}</p>
+            <p class="v-pdp__offer v-pdp__offer--desktop">{% render 'veloura-icon', name: 'sparkle', size: 16 %}{%- if s.countdown_position == 'before' -%}{{ offer_timer }}{%- endif -%}<span class="v-pdp__offer-text">{{ s.offer_banner }}</span>{%- if s.countdown_position != 'before' -%}{{ offer_timer }}{%- endif -%}</p>
           {%- endif -%}
         {%- endunless -%}
         {%- if s.overline != blank -%}<span class="v-eyebrow">{{ s.overline }}</span>{%- endif -%}
@@ -240,8 +265,18 @@
 .v-pdp__thumb.is-active { border-color: var(--v-text); }
 .v-pdp__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .v-pdp__buybox { padding-top: 8px; scroll-margin-top: calc(var(--header-height, 64px) + 16px); }
-.v-pdp__offer { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; padding: 10px 16px; background: var(--v-badge-popular); color: #fff; font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-align: center; border-radius: var(--v-radius-sm); }
+.v-pdp__offer { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; padding: 10px 16px; background: var(--v-badge-popular); color: #fff; font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-align: center; border-radius: var(--v-radius-sm); flex-wrap: wrap; row-gap: 6px; }
 .v-pdp__offer svg { flex: none; }
+/* Countdown pill inside the banner. Tabular figures keep it a fixed width so
+   the centred line never shifts as the digits roll over; the banner wraps on
+   narrow phones rather than letting the clock overflow. */
+.v-pdp__offer-timer { display: inline-flex; align-items: center; gap: 6px; padding: 2px 10px; border-radius: 999px; background: rgba(255,255,255,0.18); font-size: 0.875rem; letter-spacing: 0.06em; }
+.v-pdp__offer-timer svg { opacity: 0.85; }
+.v-pdp__offer-timer[hidden] { display: none; }
+.v-pdp__offer-clock { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; }
+@media (max-width: 480px) {
+  .v-pdp__offer-timer { padding: 2px 8px; font-size: 0.8125rem; letter-spacing: 0.04em; }
+}
 /* Two copies of the banner exist (grid child for mobile, buy-box child for
    desktop); exactly one is displayed per breakpoint. Simpler and steadier than
    moving one element between grid rows, which kept leaving a gap above the
@@ -367,6 +402,33 @@
     { "type": "text", "id": "bullet_2", "label": "Bullet 2", "default": "Works automatically — no rollers, no creams, no extra routine" },
     { "type": "text", "id": "bullet_3", "label": "Bullet 3", "default": "Visible results in a few weeks — smoother-looking skin, just from wearing what you already wear" },
     { "type": "text", "id": "offer_banner", "label": "Offer banner (red)", "default": "Summer Sale — Buy 1 Get 1 Free + Free Shipping" },
+    { "type": "header", "content": "Offer banner countdown" },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown in the offer banner", "default": true },
+    { "type": "text", "id": "countdown_label", "label": "Label before the clock", "default": "Ends in" },
+    {
+      "type": "select",
+      "id": "countdown_position",
+      "label": "Countdown position",
+      "options": [
+        { "value": "before", "label": "Before the offer text" },
+        { "value": "after", "label": "After the offer text" }
+      ],
+      "default": "before"
+    },
+    {
+      "type": "select",
+      "id": "countdown_mode",
+      "label": "Counts down to",
+      "options": [
+        { "value": "midnight", "label": "Midnight tonight (resets each day)" },
+        { "value": "date", "label": "A fixed end date and time" },
+        { "value": "rolling", "label": "Rolling window per visitor" }
+      ],
+      "default": "midnight"
+    },
+    { "type": "text", "id": "countdown_end", "label": "End date and time", "info": "Fixed mode only. Format: 2026-09-01 23:59, in the visitor's local time. Leave blank to hide the countdown." },
+    { "type": "range", "id": "countdown_hours", "label": "Rolling window", "min": 1, "max": 48, "step": 1, "unit": "h", "default": 12 },
+    { "type": "text", "id": "countdown_expired", "label": "Text once a fixed countdown ends", "info": "Leave blank to hide the countdown when it runs out." },
     { "type": "text", "id": "atc_label", "label": "Add to cart label", "default": "Add to Cart" },
     { "type": "text", "id": "scarcity", "label": "Scarcity text", "default": "Only 34 left in stock now" },
     { "type": "text", "id": "guarantee", "label": "Guarantee text (green)", "default": "30-day money-back guarantee — feel the difference or your money back" }
