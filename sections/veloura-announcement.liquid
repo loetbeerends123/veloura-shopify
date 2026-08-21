@@ -4,6 +4,10 @@
   messages in a seamless horizontal scroll. Two identical groups sit back-to-back
   and the track translates by -50% so the loop is seamless. Pauses on hover and
   for reduced-motion users.
+
+  An optional countdown pill leads each repeat of the message set, so it rides
+  the marquee just ahead of the copy. Its clock is driven by initCountdown in
+  assets/veloura.js — every clone shares one deadline and one tick.
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
@@ -18,7 +22,29 @@
     assign messages = messages | append: s.message_3 | append: '||'
   endif
   assign messages = messages | split: '||'
+
+  assign show_timer = s.show_countdown
+  if s.countdown_mode == 'date' and s.countdown_end == blank
+    assign show_timer = false
+  endif
 -%}
+{%- capture timer_html -%}
+  <span
+    class="v-announce__timer"
+    data-v-countdown
+    data-mode="{{ s.countdown_mode }}"
+    data-end="{{ s.countdown_end | escape }}"
+    data-hours="{{ s.countdown_hours }}"
+    data-key="{{ section.id }}"
+    data-expired="{{ s.countdown_expired | escape }}"
+  >
+    {%- render 'veloura-icon', name: 'clock', size: 14 -%}
+    {%- if s.countdown_label != blank -%}
+      <span class="v-announce__timer-label">{{ s.countdown_label }}</span>
+    {%- endif -%}
+    <span class="v-announce__timer-clock" data-v-countdown-clock>--:--:--</span>
+  </span>
+{%- endcapture -%}
 {%- if messages.size > 0 -%}
   <div
     class="v-announce"
@@ -34,6 +60,12 @@
         {%- for copy in (1..2) -%}
           <div class="v-announce__group" {% unless forloop.first %}aria-hidden="true"{% endunless %}>
             {%- for r in (1..s.repeats) -%}
+              {%- if show_timer -%}
+                {{ timer_html }}
+                {%- if s.separator != blank -%}
+                  <span class="v-announce__sep" aria-hidden="true">{{ s.separator }}</span>
+                {%- endif -%}
+              {%- endif -%}
               {%- for msg in messages -%}
                 <span class="v-announce__item">{{ msg }}</span>
                 {%- if s.separator != blank -%}
@@ -87,9 +119,39 @@
   opacity: 0.7;
   color: inherit;
 }
+/* Countdown pill — inside the bar, riding the marquee ahead of the copy. Kept
+   shorter than the message line box so the bar height never changes. */
+.v-announce__timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-family: var(--v-font-body);
+  font-weight: 800;
+  font-size: 0.9375rem;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: inherit;
+}
+.v-announce__timer[hidden],
+.v-announce__sep[hidden] { display: none; }
+.v-announce__timer svg { flex: none; opacity: 0.85; }
+.v-announce__timer-clock {
+  /* Tabular figures keep the pill a fixed width, so the marquee never jitters
+     as the digits roll over. */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: 0.06em;
+}
 @keyframes v-announce-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+@media (max-width: 639px) {
+  .v-announce__timer { gap: 6px; padding: 3px 10px; font-size: 0.8125rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .v-announce__track { animation: none; transform: none; }
@@ -111,7 +173,25 @@
     { "type": "range", "id": "repeats", "label": "Repeats per loop (fills the bar)", "min": 1, "max": 8, "step": 1, "default": 4 },
     { "type": "range", "id": "speed", "label": "Scroll duration (seconds)", "min": 8, "max": 90, "step": 1, "unit": "s", "default": 50 },
     { "type": "color", "id": "bg_color", "label": "Background colour", "default": "#3A7D44" },
-    { "type": "color", "id": "text_color", "label": "Text colour", "default": "#FFFFFF" }
+    { "type": "color", "id": "text_color", "label": "Text colour", "default": "#FFFFFF" },
+    { "type": "header", "content": "Countdown timer" },
+    { "type": "paragraph", "content": "Shows a live countdown pill inside the bar, just ahead of the messages." },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown", "default": true },
+    { "type": "text", "id": "countdown_label", "label": "Label before the clock", "default": "Ends in" },
+    {
+      "type": "select",
+      "id": "countdown_mode",
+      "label": "Counts down to",
+      "options": [
+        { "value": "midnight", "label": "Midnight tonight (resets each day)" },
+        { "value": "date", "label": "A fixed end date and time" },
+        { "value": "rolling", "label": "Rolling window per visitor" }
+      ],
+      "default": "midnight"
+    },
+    { "type": "text", "id": "countdown_end", "label": "End date and time", "info": "Fixed mode only. Format: 2026-09-01 23:59, in the visitor's local time. Leave blank to hide the timer." },
+    { "type": "range", "id": "countdown_hours", "label": "Rolling window", "min": 1, "max": 48, "step": 1, "unit": "h", "default": 12 },
+    { "type": "text", "id": "countdown_expired", "label": "Text once a fixed countdown ends", "info": "Leave blank to hide the timer when it runs out." }
   ],
   "presets": [{ "name": "Veloura Announcement" }]
 }

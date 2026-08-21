@@ -628,6 +628,82 @@
     });
   }
 
+  /* ---- Announcement countdown --------------------------------------------
+     Drives the clock in every [data-v-countdown] pill of the announcement
+     marquee. The bar prints the pill once per repeat plus a duplicated group
+     for the seamless loop, so each clone runs off its own deadline value but
+     they all resolve to the same instant. Three modes: 'midnight' (end of the
+     visitor's day, rolls over on its own), 'date' (a fixed end stamp) and
+     'rolling' (an evergreen per-visitor window kept in localStorage). */
+  function initCountdown(root) {
+    var timers = (root || document).querySelectorAll('[data-v-countdown]');
+    if (!timers.length) return;
+    timers.forEach(function (el) {
+      if (el._vCountdown) return;
+      el._vCountdown = true;
+      var clock = el.querySelector('[data-v-countdown-clock]');
+      if (!clock) return;
+
+      var mode = el.getAttribute('data-mode') || 'midnight';
+      var hours = parseFloat(el.getAttribute('data-hours')) || 12;
+      var expired = el.getAttribute('data-expired') || '';
+      var store = 'v-countdown-' + (el.getAttribute('data-key') || 'default') + '-' + hours;
+
+      function deadline() {
+        if (mode === 'date') {
+          var t = Date.parse((el.getAttribute('data-end') || '').trim().replace(' ', 'T'));
+          return isNaN(t) ? 0 : t;
+        }
+        if (mode === 'rolling') {
+          var saved = 0;
+          try { saved = parseInt(localStorage.getItem(store), 10) || 0; } catch (e) {}
+          var left = saved - Date.now();
+          if (left <= 0 || left > hours * 3600000) {
+            saved = Date.now() + hours * 3600000;
+            try { localStorage.setItem(store, String(saved)); } catch (e) {}
+          }
+          return saved;
+        }
+        var midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+        return midnight.getTime();
+      }
+
+      function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+      function stop() {
+        if (expired) {
+          clock.textContent = expired;
+        } else {
+          el.hidden = true;
+          var sep = el.nextElementSibling;
+          if (sep && sep.classList.contains('v-announce__sep')) sep.hidden = true;
+        }
+        clearInterval(el._vTick);
+      }
+
+      var end = deadline();
+      function tick() {
+        var left = end - Date.now();
+        if (left <= 0) {
+          if (mode === 'date') return stop();
+          end = deadline();               // midnight / rolling start the next window
+          left = Math.max(end - Date.now(), 0);
+        }
+        var secs = Math.floor(left / 1000);
+        var days = Math.floor(secs / 86400);
+        var out =
+          pad(Math.floor((secs % 86400) / 3600)) + ':' +
+          pad(Math.floor((secs % 3600) / 60)) + ':' +
+          pad(secs % 60);
+        clock.textContent = days > 0 ? days + 'd ' + out : out;
+      }
+
+      el._vTick = setInterval(tick, 1000);
+      tick();
+    });
+  }
+
   /* ---- Boot --------------------------------------------------------------- */
   ready(function () {
     setHeaderHeight();
@@ -645,6 +721,7 @@
     initUpsellPicker();
     initAutoplayVideos();
     initStickyBar();
+    initCountdown();
   });
 
   window.addEventListener('resize', setHeaderHeight);
@@ -665,5 +742,6 @@
     initSizeGuide(s);
     initAutoplayVideos(s);
     initStickyBar();
+    initCountdown(s);
   });
 })();
