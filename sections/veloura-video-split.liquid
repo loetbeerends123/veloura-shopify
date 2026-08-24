@@ -76,7 +76,9 @@
 }
 .v-vsplit__video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .v-vsplit__copy .v-eyebrow { color: var(--v-rust); }
-.v-vsplit__title { margin: 0 0 16px; }
+/* Bold display face here, like the before/after heading — Playfair is loaded
+   up to 800, so 700 is a real cut, not a synthesised one. */
+.v-vsplit__title { margin: 0 0 16px; font-weight: 700; }
 .v-vsplit__title-2 { display: block; }
 .v-vsplit__sub { font-family: var(--v-font-body); font-size: 1.1875rem; font-weight: 700; color: var(--v-rust); letter-spacing: 0.01em; margin: 0 0 20px; }
 .v-vsplit__body { color: var(--v-muted); }
