@@ -12,6 +12,7 @@
     "main": {
       "type": "veloura-product",
       "settings": {
+        "community_text": "Join <strong>5,400+</strong> women who chose Veloura",
         "overline": "",
         "rating_text": "<strong>4.8</strong> · 471 reviews",
         "award_text": "Award-Winning 2026 Innovation – Anti-Cellulite",
@@ -26,21 +27,88 @@
         "bullet_2": "",
         "bullet_3": "",
         "offer_banner": "Summer Sale — Buy 1 Get 1 Free + Free Shipping",
+        "show_countdown": true,
+        "countdown_label": "Ends in",
+        "countdown_position": "before",
+        "countdown_mode": "midnight",
+        "countdown_end": "",
+        "countdown_hours": 12,
+        "countdown_expired": "",
         "atc_label": "Add to Cart",
         "scarcity": "Only 34 left in stock now",
         "guarantee": ""
       }
     },
-    "mechanism": {
-      "type": "veloura-mechanism",
+    "ugc": {
+      "type": "veloura-ugc",
+      "blocks": {
+        "c1": {
+          "type": "clip",
+          "settings": {
+            "video_url": "",
+            "asset_file": "veloura-ugc-1.mp4",
+            "caption": ""
+          }
+        },
+        "c2": {
+          "type": "clip",
+          "settings": {
+            "video_url": "",
+            "asset_file": "veloura-ugc-2.mp4",
+            "caption": ""
+          }
+        },
+        "c3": {
+          "type": "clip",
+          "settings": {
+            "video_url": "",
+            "asset_file": "veloura-ugc-3.mp4",
+            "caption": ""
+          }
+        },
+        "c4": {
+          "type": "clip",
+          "settings": {
+            "video_url": "",
+            "asset_file": "veloura-ugc-4.mp4",
+            "caption": ""
+          }
+        },
+        "c5": {
+          "type": "clip",
+          "settings": {
+            "video_url": "",
+            "asset_file": "veloura-ugc-5.mp4",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
       "settings": {
+        "blush": false,
+        "eyebrow": "",
+        "heading": "Real Women, Real Results!",
+        "subheading": ""
+      }
+    },
+    "transformation": {
+      "type": "veloura-before-after",
+      "settings": {
+        "layout": "split",
         "blush": true,
-        "eyebrow": "The Science",
-        "heading": "You Didn't Fail. You Were Treating the Wrong Problem.",
-        "paragraph_1": "Cellulite is a <strong>circulation issue, not fat</strong> — our weave boosts micro-circulation to smooth skin from within.",
-        "paragraph_2": "Your body repairs itself with movement. Veloura's <strong>47+ micro-pressure points</strong> keep it working <strong>every hour you wear them</strong>.",
-        "quote": "Micro-compression aids lymphatic drainage better than any topical I've reviewed. The effect is structural, not cosmetic.",
-        "quote_attr": "— Dr. Vanessa Cole, MD · Dermatology & Clinical Research"
+        "eyebrow": "",
+        "heading": "The Transformation You've Been Waiting For.",
+        "body": "Your transformation is <strong>structural</strong>. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura <strong>mechanically restructures the skin's surface</strong> from within.",
+        "quote": "I cried when I saw these photos side by side.",
+        "author_name": "Jessica M.",
+        "author_age": "38 years old",
+        "quote_attr": "Verified Purchase"
       }
     },
     "journey": {
@@ -87,6 +155,34 @@
         "subheading": ""
       }
     },
+    "video_split": {
+      "type": "veloura-video-split",
+      "settings": {
+        "blush": false,
+        "media_left": true,
+        "video_url": "",
+        "eyebrow": "Velo-Lymph™ In Motion",
+        "heading": "Most leggings compress.",
+        "heading_accent": "Veloura activates.",
+        "subheading": "Same fabric on your skin. A completely different mechanism underneath.",
+        "body": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>",
+        "pills": "70% Polyamide, 30% Elastane, Squat-Proof, 100% Opaque, Feels Like A Second Skin",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "mechanism": {
+      "type": "veloura-mechanism",
+      "settings": {
+        "blush": true,
+        "eyebrow": "The Science",
+        "heading": "You Didn't Fail. You Were Treating the Wrong Problem.",
+        "paragraph_1": "Cellulite is a <strong>circulation issue, not fat</strong> — our weave boosts micro-circulation to smooth skin from within.",
+        "paragraph_2": "Your body repairs itself with movement. Veloura's <strong>47+ micro-pressure points</strong> keep it working <strong>every hour you wear them</strong>.",
+        "quote": "Micro-compression aids lymphatic drainage better than any topical I've reviewed. The effect is structural, not cosmetic.",
+        "quote_attr": "— Dr. Vanessa Cole, MD · Dermatology & Clinical Research"
+      }
+    },
     "reviews": {
       "type": "veloura-reviews",
       "blocks": {
@@ -94,6 +190,7 @@
           "type": "review",
           "settings": {
             "name": "Faith B.",
+            "avatar": "shopify://shop_images/49ae1d26-1ce9-40fd-bbb8-611d55e67f06.png",
             "verified": true,
             "variant": "Size: S · Colour: Blush",
             "title": "I've tried everything. These work.",
@@ -130,23 +227,13 @@
         "rv3"
       ],
       "settings": {
+        "heading": "What Customers Are Saying",
         "score": "4.8",
         "count_text": "Based on 471 reviews",
+        "highlight_1": "5,400+ women treated",
+        "highlight_2": "30-day money-back guarantee",
         "show_write": true,
         "write_label": "Write a Review"
-      }
-    },
-    "transformation": {
-      "type": "veloura-before-after",
-      "settings": {
-        "layout": "split",
-        "blush": true,
-        "eyebrow": "",
-        "heading": "The Transformation You've Been Waiting For.",
-        "body": "Your transformation is <strong>structural</strong>. It's not an overnight process — it's a physiological one. By stimulating deep lymphatic drainage daily, Veloura <strong>mechanically restructures the skin's surface</strong> from within.",
-        "quote": "I cried when I saw these photos side by side.",
-        "author_age": "38 years old",
-        "quote_attr": "Verified Purchase"
       }
     },
     "faq": {
@@ -205,6 +292,10 @@
       ],
       "settings": {
         "blush": false,
+        "help_heading": "Need help?",
+        "help_text": "Our team is here for you, Monday to Friday, 8:30 am–7:00 pm.",
+        "button_label": "Contact our support",
+        "button_link": "",
         "eyebrow": "",
         "heading": "Frequently Asked Questions"
       }
@@ -220,45 +311,6 @@
       "type": "apps",
       "settings": {
         "include_margins": true
-      }
-    },
-    "video_split": {
-      "type": "veloura-video-split",
-      "settings": {
-        "blush": false,
-        "media_left": true
-      }
-    },
-    "ugc": {
-      "type": "veloura-ugc",
-      "blocks": {
-        "c1": {
-          "type": "clip",
-          "settings": { "asset_file": "veloura-ugc-1.mp4" }
-        },
-        "c2": {
-          "type": "clip",
-          "settings": { "asset_file": "veloura-ugc-2.mp4" }
-        },
-        "c3": {
-          "type": "clip",
-          "settings": { "asset_file": "veloura-ugc-3.mp4" }
-        },
-        "c4": {
-          "type": "clip",
-          "settings": { "asset_file": "veloura-ugc-4.mp4" }
-        },
-        "c5": {
-          "type": "clip",
-          "settings": { "asset_file": "veloura-ugc-5.mp4" }
-        }
-      },
-      "block_order": ["c1", "c2", "c3", "c4", "c5"],
-      "settings": {
-        "blush": false,
-        "eyebrow": "",
-        "heading": "Real Women, Real Results!",
-        "subheading": ""
       }
     }
   },
