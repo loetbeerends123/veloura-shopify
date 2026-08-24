@@ -283,14 +283,14 @@
    height or the rows drift apart. */
 .v-pdp__usps svg { flex: none; width: 30px; height: 30px; color: var(--v-rust); }
 .v-pdp .v-pdp__name { font-size: clamp(2.25rem, 4.8vw, 3.15rem); font-weight: 600; letter-spacing: -0.008em; margin: 0 0 10px; }
-.v-pdp__rating { display: flex; align-items: center; gap: 10px; margin: 0 0 9px; }
+/* Closes the title block: the hairline stays under the rating even though the
+   claim it used to open has moved below the trust badges. */
+.v-pdp__rating { display: flex; align-items: center; gap: 10px; margin: 0 0 9px; padding-bottom: 9px; border-bottom: 1px solid var(--v-border); }
 .v-pdp__rating .v-stars { font-size: 1.125rem; }
 .v-pdp__rating-text { font-size: 1.0625rem; font-weight: 600; color: var(--v-text); }
 /* The emphasis rule only covers p/li, so pull the bold bits in here by hand */
 .v-pdp__rating-text strong { color: var(--v-text); font-weight: 700; }
-/* Opens the claim + benefit rows under the trust badges, so it carries the
-   hairline above it. */
-.v-pdp .v-pdp__claim { font-size: clamp(1.95rem, 3.3vw, 2.4rem); line-height: 1.18; letter-spacing: -0.01em; margin: 0 0 13px; padding-top: 11px; border-top: 1px solid var(--v-border); }
+.v-pdp .v-pdp__claim { font-size: clamp(1.95rem, 3.3vw, 2.4rem); line-height: 1.18; letter-spacing: -0.01em; margin: 0 0 13px; }
 .v-pdp__tagline { font-family: var(--v-font-display); font-style: italic; font-weight: 500; font-size: clamp(1.55rem, 2.7vw, 1.9rem); line-height: 1.3; color: var(--v-text); margin: 16px 0 14px; }
 .v-pdp__body { font-size: 1.25rem; line-height: 1.65; margin: 0 0 6px; }
 .v-pdp__benefits { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; }
@@ -358,7 +358,7 @@
   .v-pdp__sizeguide { margin-top: 4px; }
   .v-pdp__award { font-size: 0.9375rem; gap: 7px; margin: 3px 0 4px; }
   .v-pdp__rating { margin-bottom: 7px; }
-  .v-pdp .v-pdp__claim { padding-top: 9px; margin-bottom: 11px; }
+  .v-pdp .v-pdp__claim { margin-bottom: 11px; }
   .v-pdp__usps li { font-size: 1.1875rem; gap: 12px; }
   .v-pdp__usps li + li { margin-top: 3px; }
   .v-pdp__usps svg { width: 27px; height: 27px; }
