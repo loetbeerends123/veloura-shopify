@@ -203,6 +203,7 @@
           "type": "review",
           "settings": {
             "name": "Eva S.",
+            "avatar": "shopify://shop_images/0bb05dcb7aeb8581555ebba235e172ed.jpg",
             "verified": true,
             "variant": "Size: M · Colour: Onyx",
             "title": "Results are real.",
@@ -214,6 +215,7 @@
           "type": "review",
           "settings": {
             "name": "Hannah W.",
+            "avatar": "shopify://shop_images/f7b5919c21a9581105f5077894c4aa52.jpg",
             "verified": true,
             "variant": "Size: L · Colour: Espresso",
             "title": "The lightness in my legs is unreal.",
