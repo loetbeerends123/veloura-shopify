@@ -64,6 +64,9 @@
 </section>
 
 {% stylesheet %}
+/* Sits closer to the section above than .v-section's default top padding —
+   the full-width rule up there was leaving a white band over the video. */
+.v-vsplit { padding-block-start: clamp(26px, 4vw, 42px); }
 .v-vsplit__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: center; }
 .v-vsplit__grid--rev { direction: rtl; }
 .v-vsplit__grid--rev > * { direction: ltr; }
