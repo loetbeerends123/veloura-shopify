@@ -82,10 +82,12 @@
 .v-vsplit__body { color: var(--v-muted); }
 .v-vsplit__body p { font-size: 1.3125rem; line-height: 1.7; margin: 0 0 16px; max-width: 54ch; }
 .v-vsplit__body p:last-child { margin-bottom: 0; }
-.v-vsplit__pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+/* The three spec pills fit one row at column width; they still wrap on a phone,
+   where the copy column goes full width. */
+.v-vsplit__pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
 .v-vsplit__pill {
   display: inline-flex; align-items: center;
-  padding: 9px 18px;
+  padding: 9px 15px;
   border: 1px solid var(--v-border-strong);
   border-radius: 100px;
   background: var(--v-white);
@@ -95,6 +97,7 @@
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 .v-vsplit__cta { margin-top: 28px; }
 @media (max-width: 849px) {
@@ -122,7 +125,7 @@
     { "type": "text", "id": "heading_accent", "label": "Heading — line 2", "default": "Veloura activates." },
     { "type": "text", "id": "subheading", "label": "Subheading (rust)", "default": "Same fabric on your skin. A completely different mechanism underneath." },
     { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>" },
-    { "type": "text", "id": "pills", "label": "Spec pills (comma-separated)", "default": "70% Polyamide, 30% Elastane, Squat-Proof, 100% Opaque, Feels Like A Second Skin" },
+    { "type": "text", "id": "pills", "label": "Spec pills (comma-separated)", "default": "Squat-Proof, 100% Opaque, Feels Like A Second Skin" },
     { "type": "header", "content": "Button (optional)" },
     { "type": "text", "id": "button_label", "label": "Button label" },
     { "type": "url", "id": "button_link", "label": "Button link" }
