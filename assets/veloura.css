@@ -517,6 +517,8 @@ body {
 .v-review__text { font-size: 1.1875rem; line-height: 1.65; margin: 12px 0 16px; }
 .v-review__meta { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--v-muted); }
 .v-review__avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--v-canvas-secondary); display: grid; place-items: center; font-weight: 600; color: var(--v-rust); font-size: 0.75rem; flex: none; }
+/* Same circle, filled with the reviewer's photo instead of their initial. */
+.v-review__avatar--photo { display: block; object-fit: cover; }
 
 /* ============================================================
    Dawn cart page — editorial restyle (PRD §7)

@@ -62,7 +62,12 @@
       {%- for block in section.blocks -%}
         <article class="v-reviews__item v-reveal" {{ block.shopify_attributes }}>
           <header class="v-reviews__top">
-            <span class="v-review__avatar">{{ block.settings.name | slice: 0 }}</span>
+            {%- comment -%} Profile photo when the block has one, initial otherwise {%- endcomment -%}
+            {%- if block.settings.avatar != blank -%}
+              <img class="v-review__avatar v-review__avatar--photo" src="{{ block.settings.avatar | image_url: width: 96 }}" alt="{{ block.settings.name | escape }}" width="32" height="32" loading="lazy">
+            {%- else -%}
+              <span class="v-review__avatar">{{ block.settings.name | slice: 0 }}</span>
+            {%- endif -%}
             <div class="v-reviews__who">
               <strong>{{ block.settings.name }}</strong>
               {%- if block.settings.verified -%}<span class="v-badge v-badge--verified">Verified Purchase</span>{%- endif -%}
@@ -154,6 +159,7 @@
       "name": "Review",
       "settings": [
         { "type": "text", "id": "name", "label": "Name", "default": "Faith B." },
+        { "type": "image_picker", "id": "avatar", "label": "Profile photo", "info": "Square image. Shown in the round avatar; the name's initial is used when empty." },
         { "type": "checkbox", "id": "verified", "label": "Verified purchase", "default": true },
         { "type": "text", "id": "variant", "label": "Variant line", "default": "Size: S · Colour: Slate" },
         { "type": "text", "id": "title", "label": "Title", "default": "I've tried everything. These work." },
