@@ -213,26 +213,58 @@
 
   /* ========================================================================
      4. Sticky bottom cart bar (PRD §2.7, §10.3)
-     Visible once the in-page ATC scrolls out of view.
+     Wide screens: visible once the in-page ATC scrolls out of view.
+     Single-column layout (<990px): the buy box sits under the photo, so the
+     in-page button is far below the fold on open. There the bar rides along
+     from the first paint and only steps aside while that button is actually
+     on screen, so a shopper always has a buy button in reach.
      ======================================================================== */
+  var stickyMq = null;
+  var stickyMqHandler = null;
+
   function initStickyBar() {
     var bar = document.querySelector('[data-sticky-bar]');
     var anchor = document.querySelector('[data-atc-anchor]');
     if (!bar || !anchor || !('IntersectionObserver' in window)) return;
-    // Theme editor re-runs this on section reloads; drop the old observer.
-    if (bar._vIo) bar._vIo.disconnect();
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        var show = !e.isIntersecting && e.boundingClientRect.top < 0;
-        bar.classList.toggle('is-visible', show);
-        bar.setAttribute('aria-hidden', show ? 'false' : 'true');
-        bar.toggleAttribute('inert', !show);
-        // Reserve space so the fixed bar never covers the footer/last CTA.
-        document.body.style.paddingBottom = show ? bar.offsetHeight + 'px' : '';
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -100% 0px' });
-    io.observe(anchor);
-    bar._vIo = io;
+    var narrow = window.matchMedia('(max-width: 989px)');
+
+    function apply(show) {
+      bar.classList.toggle('is-visible', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      bar.toggleAttribute('inert', !show);
+      // Reserve space so the fixed bar never covers the footer/last CTA.
+      document.body.style.paddingBottom = show ? bar.offsetHeight + 'px' : '';
+    }
+
+    function observe() {
+      // Theme editor re-runs this on section reloads, and a resize past the
+      // breakpoint re-arms it; drop the old observer either way.
+      if (bar._vIo) bar._vIo.disconnect();
+      var early = narrow.matches;
+      // The block is taller than a phone screen once the bundle widget is in
+      // it, so watch the button itself there — the block would hide the bar
+      // while the real button was still below the fold.
+      var target = anchor;
+      if (early) target = document.querySelector('[data-atc-form] [name="add"]') || anchor;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          apply(early ? !e.isIntersecting : (!e.isIntersecting && e.boundingClientRect.top < 0));
+        });
+      }, early ? { threshold: 0 } : { threshold: 0, rootMargin: '0px 0px -100% 0px' });
+      io.observe(target);
+      bar._vIo = io;
+    }
+
+    observe();
+
+    if (stickyMq && stickyMqHandler) {
+      if (stickyMq.removeEventListener) stickyMq.removeEventListener('change', stickyMqHandler);
+      else if (stickyMq.removeListener) stickyMq.removeListener(stickyMqHandler);
+    }
+    stickyMq = narrow;
+    stickyMqHandler = observe;
+    if (narrow.addEventListener) narrow.addEventListener('change', observe);
+    else if (narrow.addListener) narrow.addListener(observe);   // older Safari
   }
 
   /* ========================================================================
