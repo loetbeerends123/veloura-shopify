@@ -397,25 +397,37 @@ body {
 /* ============================================================
    Sticky bottom cart bar (PRD §2.7)
    ============================================================ */
+/* Mirrors the Kaching Bundles sticky ATC (app settings read off the live PDP,
+   2026-08-25): white bar, 54px photo at 11px radius, 15px regular title in
+   black, and a #008F03 pill button in 12px bold with 12px padding. Kaching has
+   sameSizeOnMobile on, so one set of sizes covers every width; the title
+   truncates instead of squeezing the button. No price — the bundle quotes it. */
 .v-sticky-bar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-  background: var(--v-canvas);
+  background: #FFFFFF;
   box-shadow: var(--v-shadow-sticky);
-  border-top: 1px solid var(--v-border);
   transform: translateY(100%);
   transition: transform 0.3s var(--v-ease);
 }
 .v-sticky-bar.is-visible { transform: translateY(0); }
-.v-sticky-bar__inner { display: flex; align-items: center; gap: 16px; min-height: 72px; padding-block: 10px; }
-.v-sticky-bar__thumb { width: 40px; height: 40px; border-radius: var(--v-radius-sm); object-fit: cover; flex: none; }
-.v-sticky-bar__name { font-weight: 500; font-size: 0.875rem; }
-.v-sticky-bar__price { font-weight: 600; font-size: 1rem; margin-left: auto; }
-.v-sticky-bar .v-btn { flex: none; }
+.v-sticky-bar__inner { display: flex; align-items: center; gap: 12px; padding-block: 10px; }
+.v-sticky-bar__thumb { width: 54px; height: 54px; border-radius: 11px; object-fit: cover; flex: none; }
+.v-sticky-bar__name {
+  flex: 1 1 auto; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: var(--v-font-body); font-weight: 400; font-size: 15px; line-height: 1.25; color: #000000;
+}
+.v-sticky-bar .v-btn {
+  flex: none;
+  background: #008F03; color: #FFFFFF;
+  font-size: 12px; font-weight: 700; letter-spacing: 0;
+  padding: 12px 22px; border-radius: 30px; box-shadow: none;
+}
+.v-sticky-bar .v-btn:hover { background: #007A03; }
 
 @media (max-width: 749px) {
-  .v-sticky-bar__name { font-size: 0.8125rem; }
   .v-sticky-bar__inner { gap: 10px; }
-  .v-sticky-bar .v-btn { padding: 13px 16px; font-size: 0.8125rem; }
+  .v-sticky-bar .v-btn { padding: 12px 16px; }
 }
 
 /* ============================================================

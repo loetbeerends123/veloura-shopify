@@ -501,13 +501,23 @@
   /* ========================================================================
      6. Sticky-bar "Start My Transformation" re-triggers in-page ATC (PRD §2.7)
      ======================================================================== */
+  /* The sticky button scrolls to the bundle widget instead of adding straight
+     to cart: size and colour are picked in Kaching's tiers, so an instant add
+     would send a default variant. Falls back to the buy box if the app widget
+     has not rendered. */
   function initStickyAtc() {
     document.querySelectorAll('[data-sticky-atc]').forEach(function (btn) {
+      if (btn._vStickyAtc) return;
+      btn._vStickyAtc = true;
       btn.addEventListener('click', function () {
-        var addBtn = document.querySelector('[data-atc-form] [name="add"]');
-        if (addBtn) { addBtn.click(); return; }
-        var form = document.querySelector('[data-atc-form]');
-        if (form && form.requestSubmit) form.requestSubmit();
+        var target =
+          document.querySelector('kaching-bundle-deals, kaching-bundle, .kaching-bundles__block') ||
+          document.querySelector('[data-atc-anchor]') ||
+          document.querySelector('#v-buybox');
+        if (!target) return;
+        var header = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height'), 10) || 0;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - header - 12;
+        window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
       });
     });
   }
