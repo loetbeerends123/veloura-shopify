@@ -415,9 +415,9 @@ body {
 .v-sticky-bar__thumb { width: 54px; height: 54px; border-radius: 11px; object-fit: cover; flex: none; }
 .v-sticky-bar__name {
   flex: 1 1 auto; min-width: 0;
-  /* Two lines rather than one clipped one: on a phone the CTA leaves the name
-     under ~100px, and "Veloura Cellulite Legging" has to stay readable. */
-  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  /* The full name wraps down the column — never clipped, however narrow the CTA
+     leaves it: "Veloura Cellulite Legging" stacks over as many lines as it needs. */
+  white-space: normal; overflow-wrap: break-word;
   font-family: var(--v-font-body); font-weight: 400; font-size: 15px; line-height: 1.25; color: #000000;
 }
 .v-sticky-bar .v-btn {
