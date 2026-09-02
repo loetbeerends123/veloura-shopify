@@ -285,6 +285,10 @@
       if (src === main.getAttribute('src')) return;
       main.style.opacity = '0';
       setTimeout(function () {
+        // Drop the LCP srcset first — with it in place the browser keeps
+        // painting the original candidate and ignores the new src.
+        main.removeAttribute('srcset');
+        main.removeAttribute('sizes');
         main.src = src;
         var alt = thumb.getAttribute('data-alt');
         if (alt) main.alt = alt;
@@ -599,6 +603,8 @@
         img.style.transition = 'opacity 0.15s ease';
         img.style.opacity = '0';
         setTimeout(function () {
+          img.removeAttribute('srcset');
+          img.removeAttribute('sizes');
           img.src = newSrc;
           var show = function () { img.style.opacity = '1'; };
           if (img.decode) img.decode().then(show, show);

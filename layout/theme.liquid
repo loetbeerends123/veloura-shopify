@@ -263,20 +263,59 @@
     {%- comment %} Veloura brand layer — fonts + tokens + components (PRD §2) {% endcomment -%}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {%- comment -%}
+      Loaded async (print → all on load): a blocking third-party stylesheet cost
+      a DNS + TLS round trip before anything painted. display=swap means the
+      copy shows in the fallback stack and swaps when Playfair/Inter arrive.
+    {%- endcomment -%}
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
     >
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap"
+      >
+    </noscript>
     {{ 'veloura.css' | asset_url | stylesheet_tag }}
 
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
+    {%- comment -%}
+      The drawer sheets are render-blocking only on /cart, where they style the
+      first paint. Everywhere else the drawer starts closed, so they load async
+      and stop holding up the product photo.
+    {%- endcomment -%}
     {%- if settings.cart_type == 'drawer' -%}
-      {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-      {{ 'component-totals.css' | asset_url | stylesheet_tag }}
-      {{ 'component-price.css' | asset_url | stylesheet_tag }}
-      {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+      {%- assign cart_css = 'component-cart-drawer.css,component-cart.css,component-totals.css,component-price.css,component-discounts.css' | split: ',' -%}
+      {%- for sheet in cart_css -%}
+        {%- if template.name == 'cart' -%}
+          {{ sheet | asset_url | stylesheet_tag }}
+        {%- else -%}
+          <link rel="stylesheet" href="{{ sheet | asset_url }}" media="print" onload="this.media='all'">
+        {%- endif -%}
+      {%- endfor -%}
+      <noscript>
+        {%- for sheet in cart_css -%}{{ sheet | asset_url | stylesheet_tag }}{%- endfor -%}
+      </noscript>
+    {%- endif -%}
+
+    {%- comment -%}
+      The product photo is the LCP element and sits in the body behind 250KB of
+      HTML; preloading it with the same srcset lets the fetch start immediately.
+    {%- endcomment -%}
+    {%- if template.name == 'product' and product.featured_image != blank -%}
+      <link
+        rel="preload"
+        as="image"
+        href="{{ product.featured_image | image_url: width: 1100 }}"
+        imagesrcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1100 }} 1100w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
+        imagesizes="(min-width: 990px) 48vw, 100vw"
+        fetchpriority="high"
+      >
     {%- endif -%}
 
     {%- comment -%}
