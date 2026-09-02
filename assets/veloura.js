@@ -450,6 +450,10 @@
       if (!entry || !entry.src || entry.src === main.getAttribute('src')) return;
       main.style.opacity = '0';
       setTimeout(function () {
+        // Clear the LCP srcset first: with it in place the browser keeps
+        // painting the original candidate and the colour never swaps.
+        main.removeAttribute('srcset');
+        main.removeAttribute('sizes');
         main.src = entry.src;
         if (entry.alt) main.alt = entry.alt;
         var show = function () { main.style.opacity = '1'; };
