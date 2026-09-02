@@ -15,7 +15,6 @@
     {%- endif -%}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
     <title>
@@ -312,7 +311,7 @@
         rel="preload"
         as="image"
         href="{{ product.featured_image | image_url: width: 1100 }}"
-        imagesrcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1100 }} 1100w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
+        imagesrcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 720 }} 720w, {{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1100 }} 1100w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
         imagesizes="(min-width: 990px) 48vw, 100vw"
         fetchpriority="high"
       >

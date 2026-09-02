@@ -70,7 +70,7 @@
           {%- if product.images.size > 0 -%}
             <img data-gallery-main
               src="{{ product.featured_image | image_url: width: 1100 }}"
-              srcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1100 }} 1100w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
+              srcset="{{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 720 }} 720w, {{ product.featured_image | image_url: width: 800 }} 800w, {{ product.featured_image | image_url: width: 1100 }} 1100w, {{ product.featured_image | image_url: width: 1400 }} 1400w"
               sizes="(min-width: 990px) 48vw, 100vw"
               alt="{{ product.featured_image.alt | default: product.title | escape }}"
               width="1100" height="1375" fetchpriority="high">

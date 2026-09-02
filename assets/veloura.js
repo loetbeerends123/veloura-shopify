@@ -229,11 +229,14 @@
     var narrow = window.matchMedia('(max-width: 989px)');
 
     function apply(show) {
+      // Measure once and reuse: reading offsetHeight straight after the class
+      // write forced a synchronous layout on every scroll toggle.
+      if (!bar._vHeight) bar._vHeight = bar.offsetHeight;
       bar.classList.toggle('is-visible', show);
       bar.setAttribute('aria-hidden', show ? 'false' : 'true');
       bar.toggleAttribute('inert', !show);
       // Reserve space so the fixed bar never covers the footer/last CTA.
-      document.body.style.paddingBottom = show ? bar.offsetHeight + 'px' : '';
+      document.body.style.paddingBottom = show ? bar._vHeight + 'px' : '';
     }
 
     function observe() {
@@ -775,7 +778,16 @@
     initCountdown();
   });
 
-  window.addEventListener('resize', setHeaderHeight);
+  var headerTick = null;
+  window.addEventListener('resize', function () {
+    if (headerTick) return;
+    headerTick = requestAnimationFrame(function () {
+      headerTick = null;
+      var bar = document.querySelector('[data-sticky-bar]');
+      if (bar) bar._vHeight = 0;   // width change can rewrap the bar
+      setHeaderHeight();
+    });
+  });
 
   // Re-init within the Shopify theme editor when sections are re-rendered.
   document.addEventListener('shopify:section:load', function (e) {
