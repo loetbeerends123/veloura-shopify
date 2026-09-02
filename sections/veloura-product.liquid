@@ -83,7 +83,7 @@
             {%- for image in product.images limit: 7 -%}
               <button type="button" class="v-pdp__thumb {% if forloop.first %}is-active{% endif %}" data-gallery-thumb
                       data-src="{{ image | image_url: width: 1100 }}" data-alt="{{ image.alt | escape }}">
-                <img src="{{ image | image_url: width: 160 }}" alt="" width="80" height="100" loading="lazy">
+                <img src="{{ image | image_url: width: 160 }}" alt="" width="80" height="100" loading="lazy" fetchpriority="low">
               </button>
             {%- endfor -%}
           </div>

@@ -24,7 +24,7 @@
             loop
             playsinline
             preload="none"
-            {% if section.settings.poster != blank %}poster="{{ section.settings.poster | image_url: width: 1200 }}"{% else %}poster="{{ 'veloura-lymph-video-poster.jpg' | asset_url }}"{% endif %}
+            {% if section.settings.poster != blank %}data-poster="{{ section.settings.poster | image_url: width: 1200 }}"{% else %}data-poster="{{ 'veloura-lymph-video-poster.jpg' | asset_url }}"{% endif %}
           >
             {%- if section.settings.video != blank -%}
               {%- for source in section.settings.video.sources -%}

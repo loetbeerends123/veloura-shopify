@@ -21,13 +21,13 @@
             <p class="v-review__text">“{{ block.settings.text }}”</p>
             {%- if block.settings.photo_1 != blank or block.settings.photo_2 != blank -%}
               <div class="v-review__photos">
-                {%- if block.settings.photo_1 != blank -%}<img src="{{ block.settings.photo_1 | image_url: width: 320 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="80" height="80" loading="lazy">{%- endif -%}
-                {%- if block.settings.photo_2 != blank -%}<img src="{{ block.settings.photo_2 | image_url: width: 320 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="80" height="80" loading="lazy">{%- endif -%}
+                {%- if block.settings.photo_1 != blank -%}<img src="{{ block.settings.photo_1 | image_url: width: 320 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="80" height="80" loading="lazy" fetchpriority="low">{%- endif -%}
+                {%- if block.settings.photo_2 != blank -%}<img src="{{ block.settings.photo_2 | image_url: width: 320 }}" alt="Customer photo — {{ block.settings.name | escape }}" width="80" height="80" loading="lazy" fetchpriority="low">{%- endif -%}
               </div>
             {%- endif -%}
             <div class="v-review__meta">
               {%- if block.settings.avatar != blank -%}
-                <img class="v-review__avatar v-review__avatar--photo" src="{{ block.settings.avatar | image_url: width: 96 }}" alt="{{ block.settings.name | escape }}" width="32" height="32" loading="lazy">
+                <img class="v-review__avatar v-review__avatar--photo" src="{{ block.settings.avatar | image_url: width: 96 }}" alt="{{ block.settings.name | escape }}" width="32" height="32" loading="lazy" fetchpriority="low">
               {%- else -%}
                 <span class="v-review__avatar">{{ block.settings.name | slice: 0 }}</span>
               {%- endif -%}

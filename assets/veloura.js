@@ -665,10 +665,22 @@
       var p = v.play();
       if (p && p.catch) p.catch(function () { /* blocked (e.g. Low Power Mode) — ignore */ });
     };
+    // The still is handed over well before the clip is reached: as a poster
+    // attribute it would be fetched during page load, against the LCP image.
+    var poster = function (v) {
+      if (v.dataset && v.dataset.poster && !v.poster) v.poster = v.dataset.poster;
+    };
     vids.forEach(function (v) {
       if (v._vAutoplay) return;
       v._vAutoplay = true;
       if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            poster(v);
+            obs.unobserve(v);
+          });
+        }, { rootMargin: '900px 0px' }).observe(v);
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (en) {
             v._vInView = en.isIntersecting;
@@ -678,6 +690,7 @@
         }, { threshold: 0.25 });
         io.observe(v);
       } else {
+        poster(v);
         v._vInView = true;
         tryPlay(v);
       }

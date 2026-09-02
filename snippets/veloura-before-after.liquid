@@ -12,17 +12,17 @@
 -%}
 <div class="v-ba" data-before-after style="aspect-ratio: {{ ratio }};">
   {%- if after_img -%}
-    <img class="v-ba__img v-ba__after" src="{{ after_img | image_url: width: 1200 }}" alt="{{ al | escape }}" loading="lazy" width="{{ after_img.width }}" height="{{ after_img.height }}">
+    <img class="v-ba__img v-ba__after" src="{{ after_img | image_url: width: 1200 }}" alt="{{ al | escape }}" loading="lazy" fetchpriority="low" width="{{ after_img.width }}" height="{{ after_img.height }}">
   {%- else -%}
-    <img class="v-ba__img v-ba__after" src="{{ 'veloura-after.png' | asset_img_url: '800x' }}" srcset="{{ 'veloura-after.png' | asset_img_url: '600x' }} 600w, {{ 'veloura-after.png' | asset_img_url: '800x' }} 800w" sizes="(min-width: 750px) 50vw, 100vw" alt="{{ al | escape }}" loading="lazy" width="1000" height="1500">
+    <img class="v-ba__img v-ba__after" src="{{ 'veloura-after.png' | asset_img_url: '800x' }}" srcset="{{ 'veloura-after.png' | asset_img_url: '600x' }} 600w, {{ 'veloura-after.png' | asset_img_url: '800x' }} 800w" sizes="(min-width: 750px) 50vw, 100vw" alt="{{ al | escape }}" loading="lazy" fetchpriority="low" width="1000" height="1500">
   {%- endif -%}
 
   <div class="v-ba__before-wrap">
     <div class="v-ba__before-inner">
       {%- if before_img -%}
-        <img class="v-ba__img" src="{{ before_img | image_url: width: 1200 }}" alt="{{ bl | escape }}" loading="lazy" width="{{ before_img.width }}" height="{{ before_img.height }}">
+        <img class="v-ba__img" src="{{ before_img | image_url: width: 1200 }}" alt="{{ bl | escape }}" loading="lazy" fetchpriority="low" width="{{ before_img.width }}" height="{{ before_img.height }}">
       {%- else -%}
-        <img class="v-ba__img" src="{{ 'veloura-before.png' | asset_img_url: '800x' }}" srcset="{{ 'veloura-before.png' | asset_img_url: '600x' }} 600w, {{ 'veloura-before.png' | asset_img_url: '800x' }} 800w" sizes="(min-width: 750px) 50vw, 100vw" alt="{{ bl | escape }}" loading="lazy" width="1000" height="1500">
+        <img class="v-ba__img" src="{{ 'veloura-before.png' | asset_img_url: '800x' }}" srcset="{{ 'veloura-before.png' | asset_img_url: '600x' }} 600w, {{ 'veloura-before.png' | asset_img_url: '800x' }} 800w" sizes="(min-width: 750px) 50vw, 100vw" alt="{{ bl | escape }}" loading="lazy" fetchpriority="low" width="1000" height="1500">
       {%- endif -%}
     </div>
   </div>
