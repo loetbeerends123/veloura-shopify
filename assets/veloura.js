@@ -11,10 +11,15 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Page load reveal --------------------------------------------------- */
+  /* ---- Page load reveal ---------------------------------------------------
+     .v-reveal blocks sit at opacity 0 until this class lands, so it must not
+     wait for the load event: that fires only once every image, script and font
+     is in — ~10s on a throttled phone — leaving the whole page blank meanwhile.
+     DOM-ready is the right moment; the load listener stays as a safety net. */
   function markLoaded() { document.body.classList.add('is-loaded'); }
-  if (document.readyState === 'complete') markLoaded();
-  else window.addEventListener('load', markLoaded);
+  if (document.readyState !== 'loading') markLoaded();
+  else document.addEventListener('DOMContentLoaded', markLoaded);
+  window.addEventListener('load', markLoaded);
 
   function ready(fn) {
     if (document.readyState !== 'loading') fn();

@@ -76,7 +76,7 @@
               preload="none"
               tabindex="-1"
               aria-label="{{ block.settings.caption | default: 'Veloura customer video' | escape }}"
-              {% if clip_poster != blank %}poster="{{ clip_poster }}"{% endif %}
+              {% if clip_poster != blank %}data-poster="{{ clip_poster }}"{% endif %}
             >
               {%- if clip_src != blank -%}
                 <source data-src="{{ clip_src }}" type="{{ clip_mime }}">
@@ -97,7 +97,14 @@
     var roots = document.querySelectorAll('[data-v-ugc]');
     if (!roots.length) return;
 
+    // The poster comes in with the clip: as an attribute it would be fetched
+    // at page load, five stills' worth of bandwidth against the product photo.
+    function showPoster(video) {
+      if (video.dataset.poster && !video.poster) video.poster = video.dataset.poster;
+    }
+
     function load(video) {
+      showPoster(video);
       if (video.dataset.vLoaded) return;
       video.dataset.vLoaded = '1';
       var sources = video.querySelectorAll('source[data-src]');
@@ -134,6 +141,18 @@
       });
     }, { rootMargin: '200px 0px' });
 
+    // Stills are cheap next to a clip, so fetch them well ahead of the video:
+    // the strip is never reached with an empty frame, and the bytes still stay
+    // out of the page-load window.
+    var posterLoader = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          showPoster(entry.target);
+          posterLoader.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '900px 0px' });
+
     // Only the clips actually on screen keep playing.
     var player = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -148,6 +167,7 @@
 
     roots.forEach(function (root) {
       root.querySelectorAll('video').forEach(function (v) {
+        posterLoader.observe(v);
         preloader.observe(v);
         player.observe(v);
       });
