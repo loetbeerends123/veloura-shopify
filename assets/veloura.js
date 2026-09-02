@@ -637,7 +637,9 @@
   /* ---- Autoplay videos on mobile -----------------------------------------
      iOS/Android often ignore the autoplay attribute until JS forces a muted
      play — and only reliably while the video is on screen. Set muted +
-     playsinline as properties and play/pause via IntersectionObserver. */
+     playsinline as properties and play/pause via IntersectionObserver.
+     Playback starts on scroll-in, never at load: kicking every clip off up
+     front pulled megabytes of video against the product photo's bandwidth. */
   function initAutoplayVideos(root) {
     var vids = (root || document).querySelectorAll('.v-vsplit__video, .v-fsplit__video, video[autoplay]');
     if (!vids.length) return;
@@ -652,19 +654,23 @@
     vids.forEach(function (v) {
       if (v._vAutoplay) return;
       v._vAutoplay = true;
-      tryPlay(v);
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (en) {
+            v._vInView = en.isIntersecting;
             if (en.isIntersecting) tryPlay(v);
             else if (!v.paused) v.pause();
           });
         }, { threshold: 0.25 });
         io.observe(v);
-      }
-      // Also retry on first touch, which satisfies stricter autoplay policies.
-      document.addEventListener('touchstart', function once() {
+      } else {
+        v._vInView = true;
         tryPlay(v);
+      }
+      // Retry on first touch, which satisfies stricter autoplay policies — but
+      // only for a clip already on screen, so a tap never pulls the others in.
+      document.addEventListener('touchstart', function once() {
+        if (v._vInView) tryPlay(v);
         document.removeEventListener('touchstart', once);
       }, { passive: true });
     });

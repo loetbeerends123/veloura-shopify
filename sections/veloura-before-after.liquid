@@ -19,7 +19,7 @@
                   {%- if section.settings.author_image != blank -%}
                     <img src="{{ section.settings.author_image | image_url: width: 120 }}" alt="{{ section.settings.author_name | default: 'Reviewer' | escape }}" width="52" height="52" loading="lazy">
                   {%- else -%}
-                    <img src="{{ 'veloura-review-avatar.png' | asset_url }}" alt="{{ section.settings.author_name | default: 'Reviewer' | escape }}" width="52" height="52" loading="lazy">
+                    <img src="{{ 'veloura-review-avatar.png' | asset_img_url: '120x' }}" alt="{{ section.settings.author_name | default: 'Reviewer' | escape }}" width="52" height="52" loading="lazy">
                   {%- endif -%}
                 </span>
                 <span class="v-ba-section__author-meta">

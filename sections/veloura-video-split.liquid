@@ -12,14 +12,19 @@
 
       <div class="v-vsplit__media v-reveal">
         <div class="v-vsplit__frame">
+          {%- comment -%}
+            No autoplay attribute and preload="none": the section sits well below
+            the fold, and the browser would otherwise pull the whole clip while
+            the product photo above is still loading. The poster stands in until
+            initAutoplayVideos (veloura.js) starts playback on scroll-in.
+          {%- endcomment -%}
           <video
             class="v-vsplit__video"
-            autoplay
             muted
             loop
             playsinline
-            preload="metadata"
-            {% if section.settings.poster != blank %}poster="{{ section.settings.poster | image_url: width: 1200 }}"{% endif %}
+            preload="none"
+            {% if section.settings.poster != blank %}poster="{{ section.settings.poster | image_url: width: 1200 }}"{% else %}poster="{{ 'veloura-lymph-video-poster.jpg' | asset_url }}"{% endif %}
           >
             {%- if section.settings.video != blank -%}
               {%- for source in section.settings.video.sources -%}
