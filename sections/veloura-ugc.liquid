@@ -122,7 +122,9 @@
       return;
     }
 
-    // Pre-load the clips a little before they scroll in, so the first frame is there.
+    // Pre-load the clips just before they scroll in. Keep this margin tight:
+    // until the bundle widget renders the document is a screen shorter, so a
+    // generous margin reached every clip and pulled megabytes against the LCP.
     var preloader = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -130,7 +132,7 @@
           preloader.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '600px 0px' });
+    }, { rootMargin: '200px 0px' });
 
     // Only the clips actually on screen keep playing.
     var player = new IntersectionObserver(function (entries) {
