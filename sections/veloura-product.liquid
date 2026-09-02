@@ -126,6 +126,19 @@
             <span class="v-pdp__rating-text">{{ s.rating_text }}</span>
           </div>
         {%- endif -%}
+        {%- if s.hero_claim != blank -%}<p class="v-pdp__claim v-serif">{{ s.hero_claim }}</p>{%- endif -%}
+        {%- comment -%}
+          Four benefit rows with line-art icons (PRD §2.1). Each row is icon +
+          one short promise; edit them in the theme editor.
+        {%- endcomment -%}
+        {%- if s.usp_1 != blank or s.usp_2 != blank or s.usp_3 != blank or s.usp_4 != blank -%}
+          <ul class="v-pdp__usps">
+            {%- if s.usp_1 != blank -%}<li>{% render 'veloura-icon', name: 'thigh-smooth', size: 30 %}<span>{{ s.usp_1 }}</span></li>{%- endif -%}
+            {%- if s.usp_2 != blank -%}<li>{% render 'veloura-icon', name: 'leg-tone', size: 30 %}<span>{{ s.usp_2 }}</span></li>{%- endif -%}
+            {%- if s.usp_3 != blank -%}<li>{% render 'veloura-icon', name: 'bum-lift', size: 30 %}<span>{{ s.usp_3 }}</span></li>{%- endif -%}
+            {%- if s.usp_4 != blank -%}<li>{% render 'veloura-icon', name: 'figure-slim', size: 30 %}<span>{{ s.usp_4 }}</span></li>{%- endif -%}
+          </ul>
+        {%- endif -%}
         <dialog class="v-sizeguide" data-sizeguide aria-label="Size chart">
           <div class="v-sizeguide__panel">
             <button type="button" class="v-sizeguide__close" data-sizeguide-close aria-label="Close">{% render 'veloura-icon', name: 'close', size: 18 %}</button>
@@ -204,20 +217,6 @@
           {% render 'veloura-trust-badges' %}
         </div>
 
-        {%- if s.hero_claim != blank -%}<p class="v-pdp__claim v-serif">{{ s.hero_claim }}</p>{%- endif -%}
-        {%- comment -%}
-          Four benefit rows with line-art icons (PRD §2.1). Each row is icon +
-          one short promise; edit them in the theme editor.
-        {%- endcomment -%}
-        {%- if s.usp_1 != blank or s.usp_2 != blank or s.usp_3 != blank or s.usp_4 != blank -%}
-          <ul class="v-pdp__usps">
-            {%- if s.usp_1 != blank -%}<li>{% render 'veloura-icon', name: 'thigh-smooth', size: 30 %}<span>{{ s.usp_1 }}</span></li>{%- endif -%}
-            {%- if s.usp_2 != blank -%}<li>{% render 'veloura-icon', name: 'leg-tone', size: 30 %}<span>{{ s.usp_2 }}</span></li>{%- endif -%}
-            {%- if s.usp_3 != blank -%}<li>{% render 'veloura-icon', name: 'bum-lift', size: 30 %}<span>{{ s.usp_3 }}</span></li>{%- endif -%}
-            {%- if s.usp_4 != blank -%}<li>{% render 'veloura-icon', name: 'figure-slim', size: 30 %}<span>{{ s.usp_4 }}</span></li>{%- endif -%}
-          </ul>
-        {%- endif -%}
-
         {%- if s.tagline != blank -%}<p class="v-pdp__tagline v-serif v-italic">{{ s.tagline }}</p>{%- endif -%}
         {%- if s.body != blank -%}<p class="v-pdp__body v-muted">{{ s.body }}</p>{%- endif -%}
         {%- if s.bullet_1 != blank or s.bullet_2 != blank or s.bullet_3 != blank -%}
@@ -256,7 +255,7 @@
 .v-pdp__thumb.is-active { border-color: var(--v-text); }
 .v-pdp__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .v-pdp__buybox { padding-top: 8px; scroll-margin-top: calc(var(--header-height, 64px) + 16px); }
-.v-pdp__offer { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0 0; padding: 10px 16px; background: var(--v-badge-popular); color: #fff; font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-align: center; border-radius: var(--v-radius-sm); flex-wrap: wrap; row-gap: 6px; }
+.v-pdp__offer { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 18px 0 0; padding: 10px 16px; background: var(--v-badge-popular); color: #fff; font-family: var(--v-font-body); font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-align: center; border-radius: var(--v-radius-sm); flex-wrap: wrap; row-gap: 6px; }
 .v-pdp__offer svg { flex: none; }
 /* Countdown pill inside the banner. Tabular figures keep it a fixed width so
    the centred line never shifts as the digits roll over; the banner wraps on
@@ -332,7 +331,6 @@
 .v-sizeguide__table tbody tr:nth-child(even) { background: var(--v-canvas-secondary); }
 .v-pdp__scarcity { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 14px 0 0; font-size: 1.0625rem; font-weight: 600; color: var(--v-scarcity); }
 .v-pdp__atc .v-trust-badges { margin-top: 16px; }
-.v-pdp__atc + .v-pdp__claim { margin-top: 14px; }
 .v-pdp__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--v-scarcity); display: inline-block; animation: v-pulse 1.6s ease-in-out infinite; }
 .v-pdp .v-pdp__guarantee { margin: 22px 0 0; font-size: 1.125rem; font-weight: 700; }
 @keyframes v-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
