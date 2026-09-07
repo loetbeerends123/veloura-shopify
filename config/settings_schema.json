@@ -15,6 +15,13 @@
         "content": "Brand controls for the Veloura theme layer. See README.md and Veloura_PRD_v2.md."
       },
       {
+        "type": "number",
+        "id": "veloura_free_shipping_threshold",
+        "label": "Free shipping threshold (in pounds)",
+        "default": 50,
+        "info": "Cart total needed for free shipping. The cart drawer and cart page show how far the shopper still is. Set to 0 to hide the bar and drop the qualifier from the badges."
+      },
+      {
         "type": "product",
         "id": "veloura_upsell_product",
         "label": "Cart upsell product (Cellulite Shorts)",

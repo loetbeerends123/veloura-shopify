@@ -628,6 +628,17 @@ body {
 .v-drawer-trust { margin-top: 10px; font-weight: 700; color: var(--v-rust); }
 .v-drawer-trust svg { color: var(--v-rust); }
 /* Cart drawer trust-badge row (icon over label) */
+/* Free-shipping progress (cart drawer + cart page). Rust fill on the canvas
+   track while there is a way to go; green once the threshold is cleared. */
+.v-ship { margin: 14px 0 2px; }
+.v-ship__label { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-family: var(--v-font-body); font-size: 0.9375rem; line-height: 1.35; color: var(--v-text); }
+.v-ship__label svg { flex: none; width: 16px; height: 16px; color: var(--v-rust); }
+.v-ship__label strong { font-weight: 700; color: var(--v-rust); }
+.v-ship__track { height: 6px; border-radius: 100px; background: var(--v-canvas-secondary); overflow: hidden; }
+.v-ship__fill { display: block; height: 100%; border-radius: inherit; background: var(--v-rust); transition: width 0.35s var(--v-ease); }
+.v-ship--unlocked .v-ship__label svg,
+.v-ship--unlocked .v-ship__label strong { color: var(--v-green); }
+.v-ship--unlocked .v-ship__fill { background: var(--v-green); }
 .v-cart-badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0 4px; }
 .v-cart-badges__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; }
 .v-cart-badges__item svg { width: 30px; height: 30px; color: var(--v-rust); flex: none; }
