@@ -1,12 +1,18 @@
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
-<link
-  rel="stylesheet"
-  href="{{ 'component-cart-notification.css' | asset_url }}"
-  media="print"
-  onload="this.media='all'"
->
+{%- comment -%}
+  Only the notification cart needs this: with the drawer on, cart-notification
+  markup is never rendered, so the sheet styles nothing.
+{%- endcomment -%}
+{%- unless settings.cart_type == 'drawer' -%}
+  <link
+    rel="stylesheet"
+    href="{{ 'component-cart-notification.css' | asset_url }}"
+    media="print"
+    onload="this.media='all'"
+  >
+{%- endunless -%}
 
 {%- if settings.predictive_search_enabled -%}
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
