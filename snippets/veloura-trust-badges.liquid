@@ -4,6 +4,6 @@
 {%- endcomment -%}
 <div class="v-trust v-trust-badges">
   <span>{% render 'veloura-icon', name: 'shield', size: 14 %} 30 Day Money Back Guarantee</span>
-  <span>{% render 'veloura-icon', name: 'bag', size: 14 %} {% if settings.veloura_free_shipping_threshold > 0 %}Free Shipping over {{ settings.veloura_free_shipping_threshold | times: 100 | money_without_trailing_zeros }}{% else %}Free Shipping{% endif %}</span>
+  <span>{% render 'veloura-icon', name: 'bag', size: 14 %} Free Shipping</span>
   <span>{% render 'veloura-icon', name: 'lock', size: 14 %} Secure Payment</span>
 </div>
