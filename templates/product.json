@@ -12,22 +12,22 @@
     "main": {
       "type": "veloura-product",
       "settings": {
-        "community_text": "Join <strong>5,400+</strong> women who chose Veloura",
+        "community_text": "",
         "overline": "",
-        "rating_text": "<strong>4.8</strong> · 471 reviews",
-        "award_text": "Award-Winning 2026 Innovation – Anti-Cellulite",
-        "usp_1": "Visibly smoother skin, week after week",
-        "usp_2": "Tones your legs while you live your life",
-        "usp_3": "Lifts and shapes from the first wear",
-        "usp_4": "A sleeker, more sculpted silhouette",
-        "hero_claim": "Reclaim your confidence. <strong>Smooth, sculpted legs in 8 weeks.</strong>",
+        "rating_text": "",
+        "award_text": "",
+        "usp_1": "Smooths the look of your legs under the fabric",
+        "usp_2": "Light, supportive compression",
+        "usp_3": "High waist that lifts and shapes your silhouette",
+        "usp_4": "Soft, breathable, squat-proof knit",
+        "hero_claim": "Reclaim your confidence. <strong>A smoother, sculpted look from the moment you put them on.</strong>",
         "tagline": "",
         "body": "",
         "bullet_1": "",
         "bullet_2": "",
         "bullet_3": "",
-        "offer_banner": "Summer Sale — Buy 1 Get 1 Free + Free Shipping",
-        "show_countdown": true,
+        "offer_banner": "Buy 1 Get 1 Free + Free Shipping",
+        "show_countdown": false,
         "countdown_label": "Ends in",
         "countdown_position": "before",
         "countdown_mode": "midnight",
@@ -35,7 +35,7 @@
         "countdown_hours": 12,
         "countdown_expired": "",
         "atc_label": "Add to Cart",
-        "scarcity": "Only 34 left in stock now",
+        "scarcity": "",
         "guarantee": ""
       }
     },
@@ -93,12 +93,13 @@
       "settings": {
         "blush": false,
         "eyebrow": "",
-        "heading": "Real Women, Real Results!",
+        "heading": "See Them In Motion",
         "subheading": ""
       }
     },
     "transformation": {
       "type": "veloura-before-after",
+      "disabled": true,
       "settings": {
         "layout": "split",
         "blush": true,
@@ -118,27 +119,27 @@
           "type": "step",
           "settings": {
             "icon": "droplet",
-            "label": "Week 2",
-            "title": "Circulation Activated",
-            "body": "Micro-circulation is stimulated. The skin begins to receive nutrients it has been denied."
+            "label": "Step 1",
+            "title": "Pull Them On",
+            "body": "Pull them up to your natural waist. The high waistband sits flat and stays put."
           }
         },
         "w2": {
           "type": "step",
           "settings": {
             "icon": "droplet",
-            "label": "Week 4",
-            "title": "Texture Softening",
-            "body": "The “orange peel” texture begins to soften. Stagnant fluid is actively draining."
+            "label": "Step 2",
+            "title": "Just Move",
+            "body": "The textured knit gives a gentle massage feel as you walk, train or sit at your desk."
           }
         },
         "w3": {
           "type": "step",
           "settings": {
             "icon": "droplet",
-            "label": "Week 8",
-            "title": "Visible Transformation",
-            "body": "Visible reduction in cellulite. Skin surface is measurably smoother to the touch."
+            "label": "Step 3",
+            "title": "Wash With Care",
+            "body": "Machine wash cold and hang dry to keep the fit and the texture."
           }
         }
       },
@@ -151,7 +152,7 @@
         "blush": true,
         "style": "numbered",
         "eyebrow": "",
-        "heading": "Your 8-Week Journey to Smooth",
+        "heading": "How To Wear Them",
         "subheading": ""
       }
     },
@@ -161,12 +162,12 @@
         "blush": false,
         "media_left": true,
         "video_url": "",
-        "eyebrow": "Velo-Lymph™ In Motion",
+        "eyebrow": "The Knit In Motion",
         "heading": "Most leggings compress.",
-        "heading_accent": "Veloura activates.",
-        "subheading": "Same fabric on your skin. A completely different mechanism underneath.",
-        "body": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>",
-        "pills": "Squat-Proof, 100% Opaque, Feels Like A Second Skin",
+        "heading_accent": "Veloura is knitted differently.",
+        "subheading": "Same easy legging on the outside. A textured knit on the inside.",
+        "body": "<p>The inside of every pair is knitted with a <strong>raised, textured pattern</strong> that gives a gentle massage feel as you move, combined with light, even compression that <strong>smooths how your legs look</strong> under the fabric. No creams, no rollers, nothing extra to remember.</p>",
+        "pills": "Squat-Proof, Opaque, Feels Like A Second Skin",
         "button_label": "",
         "button_link": ""
       }
@@ -175,16 +176,17 @@
       "type": "veloura-mechanism",
       "settings": {
         "blush": true,
-        "eyebrow": "The Science",
-        "heading": "You Didn't Fail. You Were Treating the Wrong Problem.",
-        "paragraph_1": "Cellulite is a <strong>circulation issue, not fat</strong> — our weave boosts micro-circulation to smooth skin from within.",
-        "paragraph_2": "Your body repairs itself with movement. Veloura's <strong>47+ micro-pressure points</strong> keep it working <strong>every hour you wear them</strong>.",
-        "quote": "Micro-compression aids lymphatic drainage better than any topical I've reviewed. The effect is structural, not cosmetic.",
-        "quote_attr": "— Dr. Vanessa Cole, MD · Dermatology & Clinical Research"
+        "eyebrow": "Our Promise",
+        "heading": "Not a Cream. Not a Miracle. A Better Legging.",
+        "paragraph_1": "Cellulite is common and completely normal — <strong>most women have it</strong>. No legging can make it disappear, and we won't pretend ours does.",
+        "paragraph_2": "What Veloura can do is <strong>smooth how your legs look and feel while you wear them</strong>, with light compression and a textured knit that's comfortable all day.",
+        "quote": "",
+        "quote_attr": ""
       }
     },
     "reviews": {
       "type": "veloura-reviews",
+      "disabled": true,
       "blocks": {
         "rv1": {
           "type": "review",
@@ -244,15 +246,15 @@
         "q1": {
           "type": "qa",
           "settings": {
-            "question": "How quickly will I see results?",
-            "answer": "Most customers notice a feeling of lightness within the first wear as stagnant fluid starts to move. Visible skin texture improvement typically begins around week 2–3 of daily wear. Structural changes — the real reduction in dimpling — are most visible at 6–8 weeks of consistent use."
+            "question": "Will these get rid of my cellulite?",
+            "answer": "No — and be wary of anyone who promises that. Veloura uses light compression and a textured knit to smooth the look of your legs while you wear them. Many people also find that light compression makes their legs feel less tired at the end of the day. It is clothing, not a medical treatment."
           }
         },
         "q2": {
           "type": "qa",
           "settings": {
             "question": "I've tried leggings before. Why is this different?",
-            "answer": "Standard compression leggings squeeze superficially, which can actually restrict circulation and worsen the appearance of cellulite over time. Veloura's VELO-LYMPH™ fabric uses 47 mapped micro-pressure points engineered to stimulate lymphatic flow with every step — it works with your body's movement, not against it."
+            "answer": "Most leggings are smooth on the inside. Veloura's knit has a raised, textured pattern that gives a gentle massage feel as you move, combined with light, even compression and a high waistband that stays put."
           }
         },
         "q3": {
@@ -273,14 +275,14 @@
           "type": "qa",
           "settings": {
             "question": "Can I wear them every day?",
-            "answer": "Absolutely — and we encourage it. The clinical results are cumulative: the more consistently you wear them, the better the structural improvement. Machine wash cold, hang dry. They maintain their therapeutic properties for 80+ washes."
+            "answer": "Yes. They're made to be comfortable all day. Machine wash cold and hang dry to keep the fit and the texture."
           }
         },
         "q6": {
           "type": "qa",
           "settings": {
-            "question": "What if they don't work for me?",
-            "answer": "We offer a 30-day Clinical Trial Guarantee. If you don't see measurable improvement in skin texture within 30 days of daily wear, contact us for a full refund."
+            "question": "What if they're not for me?",
+            "answer": "You're covered by our 30-day money-back guarantee. If you're not happy, contact us within 30 days and we'll sort out a refund."
           }
         }
       },
@@ -305,8 +307,8 @@
     "sticky": {
       "type": "veloura-sticky-bar",
       "settings": {
-        "price": "£44.99",
-        "cta_label": "Start My Transformation"
+        "price": "£39.99",
+        "cta_label": "Shop The Legging"
       }
     },
     "178367453436454fe2": {

@@ -12,18 +12,19 @@
     "hero": {
       "type": "veloura-hero",
       "settings": {
-        "eyebrow": "Velo-Lymph™ Technology",
+        "eyebrow": "Micro-Massage Knit",
         "heading": "Stop hiding",
         "heading_accent": "your legs.",
-        "subheading": "The only legging engineered to <strong>treat cellulite at the root</strong> through <strong>clinical micro-compression</strong>.",
+        "subheading": "A high-waisted legging with a <strong>textured micro-massage knit</strong> and light compression, designed to <strong>smooth your silhouette</strong> and feel supportive all day.",
         "button_label": "Shop The Veloura Legging",
         "button_link": "shopify://products/veloura-cellulite-legging",
         "urgency": "",
-        "proof_text": "4.8 · from 471 reviews"
+        "proof_text": ""
       }
     },
     "before_after": {
       "type": "veloura-before-after",
+      "disabled": true,
       "settings": {
         "layout": "card",
         "blush": false,
@@ -42,12 +43,12 @@
         "blush": true,
         "media_left": true,
         "video_url": "",
-        "eyebrow": "Velo-Lymph™ In Motion",
+        "eyebrow": "The Knit In Motion",
         "heading": "Most leggings compress.",
-        "heading_accent": "Veloura activates.",
-        "subheading": "Same fabric on your skin. A completely different mechanism underneath.",
-        "body": "<p>Cellulite isn't fat — it's stagnant lymphatic fluid. Our micro-massage weave maps <strong>47+ pressure points</strong> directly into the textile, each one triggering a specific lymphatic pathway with every step you take. Not a squeeze. A stimulation — continuous, passive, all day long.</p>",
-        "pills": "Squat-Proof, 100% Opaque, Feels Like A Second Skin",
+        "heading_accent": "Veloura is knitted differently.",
+        "subheading": "Same easy legging on the outside. A textured knit on the inside.",
+        "body": "<p>The inside of every pair is knitted with a <strong>raised, textured pattern</strong> that gives a gentle massage feel as you move, combined with light, even compression that <strong>smooths how your legs look</strong> under the fabric. No creams, no rollers, nothing extra to remember.</p>",
+        "pills": "Squat-Proof, Opaque, Feels Like A Second Skin",
         "button_label": "",
         "button_link": ""
       }
@@ -59,36 +60,36 @@
           "type": "step",
           "settings": {
             "icon": "droplet",
-            "label": "Day 1",
-            "title": "Fluid Activation",
-            "body": "Immediate sensation of lightness as stagnant lymphatic fluid begins to drain."
+            "label": "First wear",
+            "title": "A Sculpted Fit",
+            "body": "Light compression smooths and shapes your silhouette from the moment you pull them on."
           }
         },
         "s2": {
           "type": "step",
           "settings": {
             "icon": "wave",
-            "label": "Day 14",
-            "title": "Surface Smoothing",
-            "body": "Skin texture starts feeling softer. Micro-circulation increases, bringing nutrients to the dermis."
+            "label": "All day",
+            "title": "Supportive Comfort",
+            "body": "A gentle massage-feel knit and a high waistband that stays put, from the school run to the studio."
           }
         },
         "s3": {
           "type": "step",
           "settings": {
             "icon": "diamond",
-            "label": "Day 30",
-            "title": "Structural Release",
-            "body": "Fibrous bands begin to relax. Visible reduction in deeper dimpling starts to occur."
+            "label": "Every wash",
+            "title": "Easy Care",
+            "body": "Machine wash cold and hang dry to keep the fit and the texture."
           }
         },
         "s4": {
           "type": "step",
           "settings": {
             "icon": "sparkle",
-            "label": "Day 90+",
-            "title": "Lasting Remodelling",
-            "body": "Significant structural improvement. Continuous wear prevents new stagnation from forming."
+            "label": "Every day",
+            "title": "Made To Live In",
+            "body": "Soft, breathable fabric that is comfortable enough to wear as often as you like."
           }
         }
       },
@@ -102,41 +103,42 @@
         "blush": true,
         "style": "icon",
         "eyebrow": "",
-        "heading": "The path to smoother skin",
-        "subheading": "Micro-compression <strong>works continuously</strong>. Here is what to expect."
+        "heading": "What to expect",
+        "subheading": "Here is <strong>how they look and feel</strong> from the moment you put them on."
       }
     },
     "bundle": {
       "type": "veloura-bundle",
       "settings": {
-        "heading": "Commit to your results",
-        "subheading": "Choose your protocol. <strong>Consistent daily wear</strong> is the key to structural remodelling.",
+        "heading": "Choose your bundle",
+        "subheading": "Wear them often? <strong>A bundle saves you money.</strong>",
         "product": "",
         "cta_link": "shopify://products/veloura-cellulite-legging",
-        "cta_label": "Start My Transformation",
-        "guarantee": "30-Day Clinical Trial Guarantee",
-        "t1_label": "1 Pair — Starter Protocol",
-        "t1_sub": "Good for occasional use. Try the technology.",
+        "cta_label": "Shop The Legging",
+        "guarantee": "30-Day Money-Back Guarantee",
+        "t1_label": "1 Pair",
+        "t1_sub": "Try the legging.",
         "t1_price": "£39.99",
         "t1_compare": "",
-        "t2_badge": "Most Popular",
+        "t2_badge": "Buy 1 Get 1",
         "t2_label": "2 Pairs — Buy 1 Get 1 Free",
         "t2_price": "£39.99",
-        "t2_compare": "£89.98",
+        "t2_compare": "£79.98",
         "t2_save": "Save £39.99 + Free Shipping",
-        "feature_1": "Full cellular update",
-        "feature_2": "Consistent daily therapy",
-        "feature_3": "Never miss a day. Maximum clinical results.",
+        "feature_1": "Two pairs for the price of one",
+        "feature_2": "One to wear, one in the wash",
+        "feature_3": "Free UK shipping",
         "t3_badge": "Best Value",
         "t3_label": "3 Pairs — Best Value",
-        "t3_sub": "Never miss a day. Maximum clinical results.",
+        "t3_sub": "Enough to rotate through the week.",
         "t3_price": "£59.99",
-        "t3_compare": "£129.97",
+        "t3_compare": "£119.97",
         "t3_save": "Save £59.98 + Free Shipping"
       }
     },
     "social_proof": {
       "type": "veloura-social-proof",
+      "disabled": true,
       "blocks": {
         "r1": {
           "type": "review",
